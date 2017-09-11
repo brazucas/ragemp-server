@@ -11,16 +11,3 @@ var config = {
 
 
 firebase.initializeApp(config);
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    console.log('usuário autenticado.');
-    console.log(user);
-  } else {
-    console.log('usuário NÃO autenticado.');
-  }
-});
-
-firebase.auth().signInWithEmailAndPassword('pplp93@gmail.com', 'abcd1234').catch(function(error) {
-  console.log(error);
-});
