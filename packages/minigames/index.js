@@ -1,4 +1,4 @@
-var firebase = require('firebase');
+var firebase = require('firebase-admin');
 
 var handlers = {
   chat: require('./handler/playerChat'),
@@ -7,17 +7,12 @@ var handlers = {
   quit: require('./handler/playerQuit')
 }
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCPX0pGdwd-DdpVbZkK6K3VZpVaz6keU9s",
-  authDomain: "brazucas-ragemp.firebaseapp.com",
-  databaseURL: "https://brazucas-ragemp.firebaseio.com",
-  projectId: "brazucas-ragemp",
-  storageBucket: "brazucas-ragemp.appspot.com",
-  messagingSenderId: "695744593160"
-};
+var serviceAccount = require("./vendor/firebase/serviceAccountKey.json");
 
-
-var app = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp({
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: "https://brazucas-ragemp.firebaseio.com"
+});
 
 mp.events.add("playerJoin", handlers.join);
 mp.events.add("playerQuit", handlers.quit);

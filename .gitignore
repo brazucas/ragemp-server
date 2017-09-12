@@ -60,3 +60,4 @@ typings/
 *.iml
 .idea
 .listcache
+serviceAccountKey.json

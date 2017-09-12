@@ -1,25 +1,12 @@
-var firebase = require('./vendor/firebase/firebase');
+var bootstrap;
 
-var config = {
-    apiKey: "AIzaSyCPX0pGdwd-DdpVbZkK6K3VZpVaz6keU9s",
-    authDomain: "brazucas-ragemp.firebaseapp.com",
-    databaseURL: "https://brazucas-ragemp.firebaseio.com",
-    projectId: "brazucas-ragemp",
-    storageBucket: "brazucas-ragemp.appspot.com",
-    messagingSenderId: "695744593160"
-  };
+mp.events.add('guiReady', function () {
+  if (!bootstrap) {
+    // Creating CEF browser.
+    bootstrap = mp.browsers.new('package://browser/index.html');
+    // Init menus and events, when browser ready.
+    mp.events.add('browserDomReady', function (browser) {
 
-
-firebase.initializeApp(config);
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    console.log('usuário autenticado.');
-  } else {
-    console.log('usuário NÃO autenticado.');
+    });
   }
-});
-
-firebase.auth().signInWithEmailAndPassword('pplp93@gmail.com', 'abcd1234').catch(function(error) {
-  console.log(error);
 });
