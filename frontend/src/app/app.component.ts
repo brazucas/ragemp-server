@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
+import {FirebaseService} from "./firebase.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  user: Observable<firebase.User>;
+
+  constructor(public firebase: FirebaseService) {
+    firebase.login();
+
+    console.log(firebase.getUser());
+  }
 }
