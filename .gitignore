@@ -62,3 +62,4 @@ typings/
 .listcache
 serviceAccountKey.json
 conf.json
+client_packages/browser/*
