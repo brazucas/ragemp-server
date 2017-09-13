@@ -1,8 +1,0 @@
-{
-  "maxplayers" : 50,
-  "name" : "[:.:.Brazuca's Server.:.:]",
-  "gamemode" : "minigames",
-  "streamdistance" : 500.0,
-  "announce" : true,
-  "port": 22005
-}
