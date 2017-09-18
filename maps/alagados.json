@@ -1,0 +1,187 @@
+{
+  "Map": {
+    "id": "alagados",
+    "idNumber": 17,
+    "-xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+    "-xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "MapProperties": {
+      "duration": 300,
+      "anti_cheat": {
+        "weapons_allowed": false
+      }
+    },
+    "Objects": {
+      "MapObject": [
+        {
+          "Type": "Prop",
+          "Position": {
+            "X": "-1861.52",
+            "Y": "-1066.85254",
+            "Z": "-1.15"
+          },
+          "Rotation": {
+            "X": "0.49992916",
+            "Y": "-1.00003028",
+            "Z": "78.74932"
+          },
+          "Hash": "-2106551578",
+          "Dynamic": "false",
+          "Quaternion": {
+            "X": "0.00890842453",
+            "Y": "-0.003978339",
+            "Z": "0.6343879",
+            "W": "0.7729532"
+          },
+          "Door": "false"
+        },
+        {
+          "Type": "Prop",
+          "Position": {
+            "X": "-1864.07",
+            "Y": "-1081",
+            "Z": "-1.30853271"
+          },
+          "Rotation": {
+            "X": "-0.00127404206",
+            "Y": "-0.246428192",
+            "Z": "78.55665"
+          },
+          "Hash": "-2106551578",
+          "Dynamic": "false",
+          "Quaternion": {
+            "X": "0.00135284336",
+            "Y": "-0.0016716898",
+            "Z": "0.6330866",
+            "W": "0.774077952"
+          },
+          "Door": "false"
+        },
+        {
+          "Type": "Prop",
+          "Position": {
+            "X": "-1866.28",
+            "Y": "-1095.37",
+            "Z": "-1.31"
+          },
+          "Rotation": {
+            "X": "0.50001",
+            "Y": "-4.97589963E-06",
+            "Z": "-100.999542"
+          },
+          "Hash": "-2106551578",
+          "Dynamic": "false",
+          "Quaternion": {
+            "X": "-0.002775441",
+            "Y": "0.00336692063",
+            "Z": "0.77161473",
+            "W": "-0.6360752"
+          },
+          "Door": "false"
+        },
+        {
+          "Type": "Vehicle",
+          "Position": {
+            "X": "-1864.169",
+            "Y": "-1065.07117",
+            "Z": "4.29113245"
+          },
+          "Rotation": {
+            "X": "-1.10521913",
+            "Y": "0.435239822",
+            "Z": "-146.265137"
+          },
+          "Hash": "321739290",
+          "Dynamic": "true",
+          "Quaternion": {
+            "X": "-0.0008361325",
+            "Y": "-0.0103317322",
+            "Z": "0.9569167",
+            "W": "-0.2901777"
+          },
+          "SirensActive": "false",
+          "PrimaryColor": "132",
+          "SecondaryColor": "132"
+        },
+        {
+          "Type": "Vehicle",
+          "Position": {
+            "X": "-1855.30017",
+            "Y": "-1067.9707",
+            "Z": "4.18153048"
+          },
+          "Rotation": {
+            "X": "-0.6359961",
+            "Y": "0.06941467",
+            "Z": "163.032486"
+          },
+          "Hash": "321739290",
+          "Dynamic": "true",
+          "Quaternion": {
+            "X": "-0.00141791813",
+            "Y": "-0.00539998757",
+            "Z": "0.9890428",
+            "W": "0.147523388"
+          },
+          "SirensActive": "false",
+          "PrimaryColor": "132",
+          "SecondaryColor": "132"
+        },
+        {
+          "Type": "Vehicle",
+          "Position": {
+            "X": "-1861.3031",
+            "Y": "-1099.43945",
+            "Z": "4.13353062"
+          },
+          "Rotation": {
+            "X": "-0.146804154",
+            "Y": "-0.4399833",
+            "Z": "5.09148169"
+          },
+          "Hash": "321739290",
+          "Dynamic": "true",
+          "Quaternion": {
+            "X": "-0.00110929168",
+            "Y": "-0.0038926776",
+            "Z": "0.0444116928",
+            "W": "0.999005139"
+          },
+          "SirensActive": "false",
+          "PrimaryColor": "132",
+          "SecondaryColor": "132"
+        },
+        {
+          "Type": "Vehicle",
+          "Position": {
+            "X": "-1872.65588",
+            "Y": "-1095.318",
+            "Z": "4.02855539"
+          },
+          "Rotation": {
+            "X": "0.138156921",
+            "Y": "-0.446319848",
+            "Z": "-29.4610081"
+          },
+          "Hash": "321739290",
+          "Dynamic": "true",
+          "Quaternion": {
+            "X": "0.000175653055",
+            "Y": "-0.00407340936",
+            "Z": "-0.254266232",
+            "W": "0.9671257"
+          },
+          "SirensActive": "false",
+          "PrimaryColor": "132",
+          "SecondaryColor": "132"
+        }
+      ]
+    },
+    "Metadata": {
+      "Creator": "Mandrakke",
+      "Name": "Alagados",
+      "Description": "Mapa Alagados",
+      "LoadingPoint": { "-xsi:nil": "true" },
+      "TeleportPoint": { "-xsi:nil": "true" }
+    }
+  }
+}

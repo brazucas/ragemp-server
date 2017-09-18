@@ -6,6 +6,10 @@ import {AngularFireModule} from "angularfire2";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {FirebaseService} from "./firebase.service";
+import {LocationStrategy, PathLocationStrategy} from "@angular/common";
+import {AppRoutingModule} from "./app.routing";
+import {LayoutDefaultComponent} from "./layouts/layout-default.component";
+import {Layout404Component} from "./layouts/layout-404.component";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCPX0pGdwd-DdpVbZkK6K3VZpVaz6keU9s",
@@ -17,15 +21,23 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutDefaultComponent,
+    Layout404Component
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AppRoutingModule
   ],
-  providers: [FirebaseService],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: PathLocationStrategy,
+    },
+    FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

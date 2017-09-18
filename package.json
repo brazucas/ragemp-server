@@ -19,6 +19,8 @@
   "dependencies": {
     "eslint": "^4.6.1",
     "firebase-admin": "^5.2.1",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.2",
     "underscore": "^1.8.3"
   }
 }
