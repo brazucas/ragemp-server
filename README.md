@@ -28,7 +28,7 @@ Of course! the project is open-source and anyone can contribute.
 * How to contribute
     - New maps
         - Be sure you fulfilled the pre requisites.
-        - Construct the new map on map editor mod.
+        - Build the new map on map editor mod.
         - Export the map as `.xml`.
         - Send it to an admin or commit it directly to the `maps` directory and submit an pull request.
         - Wait until the map is implemented.
