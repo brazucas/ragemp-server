@@ -22,8 +22,9 @@ module.exports = {
 
   init: function () {
     this.loadMaps();
-
     console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
+
+
 
     this.loadMinigame('resta1');
   },
@@ -42,26 +43,46 @@ module.exports = {
         var loadedVehicles = 0, loadedProps = 0;
 
         _.forEach(mapData.Map.Objects.MapObject, function (object) {
-          switch(object.Type) {
+          switch (object.Type) {
             case 'Prop':
-              mp.objects.new(object.Hash, object.Position, object.Rotation);
+              mp.objects.new(object.Hash, new mp.Vector3(object.Position.X, object.Position.Y, object.Position.Z), new mp.Vector3(object.Rotation.X, object.Rotation.Y, object.Rotation.Z));
               ++loadedProps;
               break;
             case 'Vehicle':
-              mp.vehicles.new(object.Hash, object.Position);
+              mp.vehicles.new(object.Hash, new mp.Vector3(object.Position.X, object.Position.Y, object.Position.Z));
               ++loadedVehicles;
               break;
             default:
-              console.log('Objeto do tipo '+object.Type+' não pôde ser carregado.');
+              console.log('Objeto do tipo ' + object.Type + ' não pôde ser carregado.');
           }
         });
 
-        console.log(mapData.Map.Objects.MapObject.length + ' objetos carregados ('+loadedVehicles+' veículos, '+loadedProps+' objetos).');
+        console.log(mapData.Map.Objects.MapObject.length + ' objetos carregados (' + loadedVehicles + ' veículos, ' + loadedProps + ' objetos).');
+
+        this.unloadCurrentMap();
       } else {
-        console.log('O mapa ' + id + ' não implementa um ou vários objetos Map, Map.Objects ou Map.Objects.MapObject.');
+        console.log('O mapa ' + id + ' não implementa um ou várias propriedades como Map, Map.Objects ou Map.Objects.MapObject.');
       }
     } else {
       console.log('Mapa ' + id + ' não encontrado.');
     }
+  },
+
+  unloadCurrentMap: function () {
+    console.log('Descarregando mapa atual.');
+
+    var objectsLength = mp.objects.toArray().length;
+    var vehiclesLength = mp.vehicles.toArray().length;
+
+    mp.objects.forEach(function (object) {
+      object.destroy();
+    })
+
+    mp.vehicles.forEach(function (vehicle) {
+      vehicle.destroy();
+    });
+
+    console.log(objectsLength + ' objetos descarregados.');
+    console.log(vehiclesLength + ' veículos descarregados.');
   }
 }

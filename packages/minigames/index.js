@@ -1,5 +1,6 @@
 var firebase = require('firebase-admin');
 var minigames = require('./minigames');
+var commands = require('./lib/commands');
 
 var handlers = {
   chat: require('./handler/playerChat'),
