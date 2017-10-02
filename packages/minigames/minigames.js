@@ -24,8 +24,6 @@ module.exports = {
     this.loadMaps();
     console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
 
-
-
     this.loadMinigame('resta1');
   },
 
@@ -45,11 +43,11 @@ module.exports = {
         _.forEach(mapData.Map.Objects.MapObject, function (object) {
           switch (object.Type) {
             case 'Prop':
-              mp.objects.new(object.Hash, new mp.Vector3(object.Position.X, object.Position.Y, object.Position.Z), new mp.Vector3(object.Rotation.X, object.Rotation.Y, object.Rotation.Z));
+              mp.objects.new(parseInt(object.Hash), new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z)), new mp.Vector3(parseFloat(object.Rotation.X), parseFloat(object.Rotation.Y), parseFloat(object.Rotation.Z)));
               ++loadedProps;
               break;
             case 'Vehicle':
-              mp.vehicles.new(object.Hash, new mp.Vector3(object.Position.X, object.Position.Y, object.Position.Z));
+              mp.vehicles.new(parseInt(object.Hash), new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z)));
               ++loadedVehicles;
               break;
             default:
