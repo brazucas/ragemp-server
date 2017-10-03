@@ -1,11 +1,13 @@
 var glob = require('glob');
 var _ = require('underscore');
 var fs = require('fs');
-var util = require('util');
+var statuses = require('./consts/status');
+var mgsConsts = require('./consts/minigames');
 
 module.exports = {
   maps: [],
   mapSelected: null,
+  status: null,
 
   loadMaps: function () {
     var maps = glob.sync("packages/minigames/maps/*.json");
@@ -24,17 +26,18 @@ module.exports = {
     this.loadMaps();
     console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
 
-    this.loadMinigame('resta1');
+    this.status = statuses.WAITING_PLAYERS;
+
+    this.mainLoop();
   },
 
-  loadMinigame: function (id) {
-    console.log('Carregando Minigame ' + id + '.');
-    this.loadMap(id);
+  loadMinigame: function (map) {
+    console.log('Carregando Minigame ' + map.Map.Metadata.Name + '.');
+    this.loadMap(map);
   },
 
-  loadMap: function (id) {
-    console.log('Carregando mapa ' + id + '.');
-    var mapData = require('./maps/' + id + '.json');
+  loadMap: function (mapData) {
+    console.log('Carregando mapa ' + mapData.Map.Metadata.Name + '.');
 
     if (mapData) {
       if (mapData.Map && mapData.Map.Objects && mapData.Map.Objects.MapObject) {
@@ -56,8 +59,6 @@ module.exports = {
         });
 
         console.log(mapData.Map.Objects.MapObject.length + ' objetos carregados (' + loadedVehicles + ' veículos, ' + loadedProps + ' objetos).');
-
-        this.unloadCurrentMap();
       } else {
         console.log('O mapa ' + id + ' não implementa um ou várias propriedades como Map, Map.Objects ou Map.Objects.MapObject.');
       }
@@ -82,5 +83,44 @@ module.exports = {
 
     console.log(objectsLength + ' objetos descarregados.');
     console.log(vehiclesLength + ' veículos descarregados.');
+  },
+
+  mainLoop: function () {
+    switch (this.status) {
+      case statuses.WAITING_PLAYERS:
+        console.log('Aguardando jogadores');
+        if (mp.players.length >= mgsConsts.MINIMUM_PLAYERS) {
+          this.mapSelected = this.randomMinigame();
+          this.status = statuses.STARTING;
+        }
+        break;
+      case statuses.STARTING:
+        console.log('Iniciando minigame ' + this.getMapMetadata('Name'));
+        this.unloadCurrentMap();
+        this.loadMinigame(this.mapSelected);
+        this.status = statuses.IN_PROGRESS;
+        break;
+      case statuses.IN_PROGRESS:
+        console.log('Minigame ' + this.getMapMetadata('Name') + ' em progresso.');
+        break;
+      case statuses.FINISHED:
+        console.log('Minigame ' + this.getMapMetadata('Name') + ' finalizado.');
+        this.mapSelected = this.randomMinigame();
+        this.status = statuses.STARTING;
+        break;
+    }
+
+    var self = this;
+    setTimeout(function () {
+      self.mainLoop()
+    }, 1000);
+  },
+
+  randomMinigame: function () {
+    return this.maps[Math.round(Math.random() * this.maps.length - 1)];
+  },
+
+  getMapMetadata: function (property) {
+    return this.mapSelected['Map']['Metadata'][property];
   }
 }
