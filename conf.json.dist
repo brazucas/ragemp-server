@@ -4,10 +4,7 @@
   "gamemode" : "minigames",
   "streamdistance" : 500.0,
   "announce" : true,
-  "port": 22005,
-  "password": "abcd1234",
-  "max-ping": 200,
-  "min-fps": 40,
-  "language": "pt/en",
+  "port": 22005
+  "language": "pt",
   "url": "http://brazucas-server.com"
 }
