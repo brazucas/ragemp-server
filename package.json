@@ -18,6 +18,7 @@
   "homepage": "https://github.com/brazucas/ragemp#readme",
   "dependencies": {
     "eslint": "^4.6.1",
+    "firebase": "^4.10.0",
     "firebase-admin": "^5.2.1",
     "fs": "0.0.1-security",
     "glob": "^7.1.2",
