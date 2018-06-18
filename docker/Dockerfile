@@ -25,10 +25,8 @@ RUN useradd ragemp && \
 
 RUN chmod +x /opt/x64/server
 
-VOLUME /ragemp
+RUN mkdir /ragemp
 
 ADD start_server.sh /opt
-
-ADD * /ragemp/
 
 ENTRYPOINT ["/opt/start_server.sh"]
