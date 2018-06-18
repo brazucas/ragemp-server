@@ -2,7 +2,7 @@
 
 FROM debian:jessie
 
-ENV RAGEMP 0.2
+ENV RAGEMP 0.3.5
 
 MAINTAINER Disinterpreter "disinterpreter@protonmail.ch" & Pedro Papadópolis
 
@@ -17,16 +17,16 @@ RUN echo 'deb http://httpredir.debian.org/debian testing main contrib non-free' 
 
 RUN useradd ragemp && \
     # Mountable volume
-    mkdir /ragemp && \
-    # Download and extract
-    ADD server /tmp/
-    mkdir /opt/x64/ && \
+    mkdir /ragemp
+
+# Download and extract
+ADD server /tmp/
+
+RUN mkdir /opt/x64/ && \
     mv /tmp/server /opt/x64/server
 
 RUN chmod +x /opt/x64/server
 
-RUN mkdir /ragemp
-
-ADD start_server.sh /opt
+ADD docker/start_server.sh /opt
 
 ENTRYPOINT ["/opt/start_server.sh"]
