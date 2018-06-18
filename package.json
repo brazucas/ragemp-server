@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/brazucas/ragemp#readme",
   "dependencies": {
+    "@types/mocha": "^5.2.2",
+    "@types/node": "^10.3.3",
     "commitplease": "^3.2.0",
     "eslint": "^4.6.1",
     "fs": "0.0.1-security",
     "glob": "^7.1.2",
+    "mocha": "^5.2.0",
     "underscore": "^1.8.3",
     "util": "^0.10.3"
   }
