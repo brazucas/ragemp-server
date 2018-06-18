@@ -1,4 +1,3 @@
-var firebase = require('firebase-admin');
 var minigames = require('./minigames');
 var commands = require('./lib/commands');
 
@@ -8,13 +7,6 @@ var handlers = {
   join: require('./handler/playerJoin'),
   quit: require('./handler/playerQuit')
 }
-
-var serviceAccount = require("./vendor/firebase/serviceAccountKey.json");
-
-firebase.initializeApp({
-  credential: firebase.credential.cert(serviceAccount),
-  databaseURL: "https://brazucas-ragemp.firebaseio.com"
-});
 
 mp.events.add("playerJoin", handlers.join);
 mp.events.add("playerQuit", handlers.quit);
