@@ -1,9 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
-    "outDir": "dist",
-    "sourceMap": true
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "files": [
     "./node_modules/@types/mocha/index.d.ts",
