@@ -5,31 +5,31 @@ var fs = require("fs");
 var _ = require("underscore");
 var status_1 = require("./consts/status");
 var minigames_1 = require("./consts/minigames");
-module.exports = {
-    maps: [],
-    mapSelected: null,
-    status: null,
-    loadMaps: function () {
+var Minigames = (function () {
+    function Minigames() {
+        this.maps = [];
+        this.mapSelected = null;
+        this.status = null;
+        this.loadMaps();
+        console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
+        this.status = status_1.StatusConsts.WAITING_PLAYERS;
+        this.mainLoop();
+    }
+    Minigames.prototype.loadMaps = function () {
         var maps = glob.sync("packages/minigames/maps/*.json");
         var self = this;
         _.forEach(maps, function (map) {
             self.maps.push(JSON.parse(fs.readFileSync(map, 'utf8')));
         });
-    },
-    getMaps: function () {
+    };
+    Minigames.prototype.getMaps = function () {
         return this.maps;
-    },
-    init: function () {
-        this.loadMaps();
-        console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
-        this.status = status_1.StatusConsts.WAITING_PLAYERS;
-        this.mainLoop();
-    },
-    loadMinigame: function (map) {
+    };
+    Minigames.prototype.loadMinigame = function (map) {
         console.log('Carregando Minigame ' + map.Map.Metadata.Name + '.');
         this.loadMap(map);
-    },
-    loadMap: function (mapData) {
+    };
+    Minigames.prototype.loadMap = function (mapData) {
         console.log('Carregando mapa ' + mapData.Map.Metadata.Name + '.');
         if (mapData) {
             if (mapData.Map && mapData.Map.Objects && mapData.Map.Objects.MapObject) {
@@ -57,8 +57,8 @@ module.exports = {
         else {
             console.log('Mapa ' + mapData.Map.Metadata.id + ' não encontrado.');
         }
-    },
-    unloadCurrentMap: function () {
+    };
+    Minigames.prototype.unloadCurrentMap = function () {
         console.log('Descarregando mapa atual.');
         var objectsLength = mp.objects.toArray().length;
         var vehiclesLength = mp.vehicles.toArray().length;
@@ -70,8 +70,8 @@ module.exports = {
         });
         console.log(objectsLength + ' objetos descarregados.');
         console.log(vehiclesLength + ' veículos descarregados.');
-    },
-    mainLoop: function () {
+    };
+    Minigames.prototype.mainLoop = function () {
         switch (this.status) {
             case status_1.StatusConsts.WAITING_PLAYERS:
                 console.log('Aguardando jogadores');
@@ -99,12 +99,14 @@ module.exports = {
         setTimeout(function () {
             self.mainLoop();
         }, 1000);
-    },
-    randomMinigame: function () {
+    };
+    Minigames.prototype.randomMinigame = function () {
         return this.maps[Math.round(Math.random() * this.maps.length - 1)];
-    },
-    getMapMetadata: function (property) {
+    };
+    Minigames.prototype.getMapMetadata = function (property) {
         return this.mapSelected['Map']['Metadata'][property];
-    }
-};
+    };
+    return Minigames;
+}());
+exports.Minigames = Minigames;
 //# sourceMappingURL=minigames.js.map

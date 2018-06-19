@@ -6,39 +6,39 @@ import {MinigamesConsts} from "./consts/minigames";
 
 declare const mp: Mp;
 
-module.exports = {
-  maps: [],
-  mapSelected: null,
-  status: null,
+export class Minigames {
+  public maps: Array<any> = [];
+  public mapSelected: any = null;
+  public status: any = null;
 
-  loadMaps: function () {
-    let maps = glob.sync("packages/minigames/maps/*.json");
-    let self = this;
-
-    _.forEach(maps, function (map: Buffer) {
-      self.maps.push(JSON.parse(fs.readFileSync(map, 'utf8')));
-    })
-  },
-
-  getMaps: function () {
-    return this.maps;
-  },
-
-  init: function () {
+  constructor() {
     this.loadMaps();
     console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
 
     this.status = StatusConsts.WAITING_PLAYERS;
 
     this.mainLoop();
-  },
+  }
 
-  loadMinigame: function (map) {
+  public loadMaps() {
+    let maps = glob.sync("packages/minigames/maps/*.json");
+
+    let self = this;
+    _.forEach(maps, function (map: Buffer) {
+      self.maps.push(JSON.parse(fs.readFileSync(map, 'utf8')));
+    })
+  }
+
+  public getMaps() {
+    return this.maps;
+  }
+
+  public loadMinigame(map) {
     console.log('Carregando Minigame ' + map.Map.Metadata.Name + '.');
     this.loadMap(map);
-  },
+  }
 
-  loadMap: function (mapData) {
+  public loadMap(mapData) {
     console.log('Carregando mapa ' + mapData.Map.Metadata.Name + '.');
 
     if (mapData) {
@@ -72,9 +72,9 @@ module.exports = {
     } else {
       console.log('Mapa ' + mapData.Map.Metadata.id + ' não encontrado.');
     }
-  },
+  }
 
-  unloadCurrentMap: function () {
+  public unloadCurrentMap() {
     console.log('Descarregando mapa atual.');
 
     let objectsLength = mp.objects.toArray().length;
@@ -90,9 +90,9 @@ module.exports = {
 
     console.log(objectsLength + ' objetos descarregados.');
     console.log(vehiclesLength + ' veículos descarregados.');
-  },
+  }
 
-  mainLoop: function () {
+  private mainLoop() {
     switch (this.status) {
       case StatusConsts.WAITING_PLAYERS:
         console.log('Aguardando jogadores');
@@ -117,17 +117,17 @@ module.exports = {
         break;
     }
 
-    var self = this;
+    let self = this;
     setTimeout(function () {
       self.mainLoop()
     }, 1000);
-  },
+  }
 
-  randomMinigame: function () {
+  public randomMinigame() {
     return this.maps[Math.round(Math.random() * this.maps.length - 1)];
-  },
+  }
 
-  getMapMetadata: function (property) {
+  public getMapMetadata(property) {
     return this.mapSelected['Map']['Metadata'][property];
   }
 }
