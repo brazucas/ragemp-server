@@ -1,3 +1,3 @@
-export function PlayerDeathHandler (player: number, text: string) {
+export function PlayerDeathHandler (player: PlayerMp, text: string) {
   console.log('>>> Chat ', player, text);
 }

@@ -1,5 +1,5 @@
 {
-  "name": "brz",
+  "name": "Brazuca's Server RageMP",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/brazucas/ragemp#readme",
   "dependencies": {
+    "@types/glob": "^5.0.35",
     "@types/mocha": "^5.2.2",
     "@types/node": "^10.3.3",
     "commitplease": "^3.2.0",
@@ -24,7 +25,11 @@
     "fs": "0.0.1-security",
     "glob": "^7.1.2",
     "mocha": "^5.2.0",
+    "typescript": "^2.9.2",
     "underscore": "^1.8.3",
     "util": "^0.10.3"
+  },
+  "devDependencies": {
+    "@types/ragemp-s": "github:CocaColaBear/types-ragemp-s#master"
   }
 }
