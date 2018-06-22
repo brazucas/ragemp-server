@@ -6,6 +6,7 @@ import {PlayerQuitHandler} from "./handler/playerQuit";
 import {PlayerChatHandler} from "./handler/playerDeath";
 import {PlayerDeathHandler} from "./handler/playerChat";
 import EventKey = RageEnums.EventKey;
+import {BrazucasServer} from "../../common/brazucas-server";
 
 declare const mp: Mp;
 
@@ -14,4 +15,6 @@ mp.events.add(EventKey.PLAYER_QUIT, PlayerQuitHandler);
 mp.events.add(EventKey.PLAYER_CHAT, PlayerChatHandler);
 mp.events.add(EventKey.PLAYER_DEATH, PlayerDeathHandler);
 
-let minigames = new Minigames();
+let brazucasServer = new BrazucasServer();
+
+let minigames = new Minigames(brazucasServer);

@@ -3,6 +3,7 @@ import * as fs from "fs";
 import * as _ from "underscore";
 import {StatusConsts} from "./consts/status";
 import {MinigamesConsts} from "./consts/minigames";
+import {BrazucasServer} from "../../common/brazucas-server";
 
 declare const mp: Mp;
 
@@ -10,8 +11,18 @@ export class Minigames {
   public maps: Array<any> = [];
   public mapSelected: any = null;
   public status: any = null;
+  public brazucasServer: BrazucasServer;
 
-  constructor() {
+  constructor(brazucasServer: BrazucasServer) {
+    this.brazucasServer = brazucasServer;
+
+    this.brazucasServer.loadPlayer('Mandrakke_Army')
+      .subscribe(player => {
+        console.log('>>> player ', player);
+      }, error => {
+        console.log('>>> error ', error);
+      })
+
     this.loadMaps();
     console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
 

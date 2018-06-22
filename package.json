@@ -1,7 +1,7 @@
 {
-  "name": "Brazuca's Server RageMP",
+  "name": "brazucas-server-ragemp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Servidor do Brazucas para o RageMP",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,16 +20,22 @@
     "@types/glob": "^5.0.35",
     "@types/mocha": "^5.2.2",
     "@types/node": "^10.3.3",
+    "@types/ragemp-s": "github:CocaColaBear/types-ragemp-s#master",
+    "@types/rx": "^4.1.1",
     "commitplease": "^3.2.0",
     "eslint": "^4.6.1",
     "fs": "0.0.1-security",
     "glob": "^7.1.2",
     "mocha": "^5.2.0",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.2.1",
+    "rxjs-compat": "^6.2.1",
+    "sequelize": "^4.38.0",
+    "sequelize-typescript": "^0.6.5",
+    "sqlite3": "^4.0.0",
     "typescript": "^2.9.2",
     "underscore": "^1.8.3",
     "util": "^0.10.3"
   },
-  "devDependencies": {
-    "@types/ragemp-s": "github:CocaColaBear/types-ragemp-s#master"
-  }
+  "devDependencies": {}
 }

@@ -6,10 +6,17 @@ var _ = require("underscore");
 var status_1 = require("./consts/status");
 var minigames_1 = require("./consts/minigames");
 var Minigames = (function () {
-    function Minigames() {
+    function Minigames(brazucasServer) {
         this.maps = [];
         this.mapSelected = null;
         this.status = null;
+        this.brazucasServer = brazucasServer;
+        this.brazucasServer.loadPlayer('Mandrakke_Army')
+            .subscribe(function (player) {
+            console.log('>>> player ', player);
+        }, function (error) {
+            console.log('>>> error ', error);
+        });
         this.loadMaps();
         console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
         this.status = status_1.StatusConsts.WAITING_PLAYERS;
