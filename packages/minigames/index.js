@@ -11,5 +11,6 @@ mp.events.add("playerQuit" /* PLAYER_QUIT */, playerQuit_1.PlayerQuitHandler);
 mp.events.add("playerChat" /* PLAYER_CHAT */, playerDeath_1.PlayerChatHandler);
 mp.events.add("playerDeath" /* PLAYER_DEATH */, playerChat_1.PlayerDeathHandler);
 var brazucasServer = new brazucas_server_1.BrazucasServer();
-var minigames = new minigames_1.Minigames(brazucasServer);
+brazucasServer.onload()
+    .subscribe(function () { return new minigames_1.Minigames(brazucasServer); });
 //# sourceMappingURL=index.js.map

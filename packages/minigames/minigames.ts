@@ -4,6 +4,9 @@ import * as _ from "underscore";
 import {StatusConsts} from "./consts/status";
 import {MinigamesConsts} from "./consts/minigames";
 import {BrazucasServer} from "../../common/brazucas-server";
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/observable/of';
+import {Usuario} from "../../common/database/models/Usuario";
 
 declare const mp: Mp;
 
@@ -16,12 +19,13 @@ export class Minigames {
   constructor(brazucasServer: BrazucasServer) {
     this.brazucasServer = brazucasServer;
 
-    this.brazucasServer.loadPlayer('Mandrakke_Army')
-      .subscribe(player => {
-        console.log('>>> player ', player);
-      }, error => {
-        console.log('>>> error ', error);
-      })
+    this.init();
+  }
+
+  private async init() {
+    let jogador: Usuario = await this.brazucasServer.loadPlayer('Mandrakke_Army');
+
+    console.log('>>>> ', jogador.nome);
 
     this.loadMaps();
     console.log(this.getMaps().length + ' minigame(s) encontrado(s).');

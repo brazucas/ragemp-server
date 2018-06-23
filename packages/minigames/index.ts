@@ -17,4 +17,5 @@ mp.events.add(EventKey.PLAYER_DEATH, PlayerDeathHandler);
 
 let brazucasServer = new BrazucasServer();
 
-let minigames = new Minigames(brazucasServer);
+brazucasServer.onload()
+  .subscribe(() => new Minigames(brazucasServer) );
