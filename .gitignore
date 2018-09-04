@@ -63,3 +63,5 @@ typings/
 serviceAccountKey.json
 conf.json
 client_packages/browser/*
+
+/dist

@@ -1,5 +1,7 @@
 var bootstrap;
 
+require('freeroam/index.js');
+
 mp.events.add('guiReady', function () {
   if (!bootstrap) {
     // Creating CEF browser.
