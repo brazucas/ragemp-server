@@ -12,8 +12,6 @@ const fs = require("fs");
 const glob = require("glob");
 require("rxjs/add/observable/of");
 const _ = require("underscore");
-const rpg_consts_1 = require("./consts/rpg-consts");
-const status_1 = require("./consts/status");
 class Rpg {
     constructor(brazucasServer) {
         this.maps = [];
@@ -25,8 +23,7 @@ class Rpg {
     init() {
         return __awaiter(this, void 0, void 0, function* () {
             this.loadMaps();
-            console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
-            this.status = status_1.StatusConsts.WAITING_PLAYERS;
+            console.log(this.getMaps().length + ' mapa(s) encontrado(s).');
             this.mainLoop();
         });
     }
@@ -39,10 +36,6 @@ class Rpg {
     }
     getMaps() {
         return this.maps;
-    }
-    loadMinigame(map) {
-        console.log('Carregando Minigame ' + map.Map.Metadata.Name + '.');
-        this.loadMap(map);
     }
     loadMap(mapData) {
         console.log('Carregando mapa ' + mapData.Map.Metadata.Name + '.');
@@ -90,37 +83,14 @@ class Rpg {
     }
     mainLoop() {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('[MAINLOOP] Executando mainloop');
             switch (this.status) {
-                case status_1.StatusConsts.WAITING_PLAYERS:
-                    console.log('Aguardando jogadores');
-                    if (mp.players.length >= rpg_consts_1.RpgConsts.MINIMUM_PLAYERS) {
-                        this.mapSelected = this.randomMinigame();
-                        this.status = status_1.StatusConsts.STARTING;
-                    }
-                    break;
-                case status_1.StatusConsts.STARTING:
-                    console.log('Iniciando minigame ' + this.getMapMetadata('Name'));
-                    this.unloadCurrentMap();
-                    this.loadMinigame(this.mapSelected);
-                    this.status = status_1.StatusConsts.IN_PROGRESS;
-                    break;
-                case status_1.StatusConsts.IN_PROGRESS:
-                    console.log('Minigame ' + this.getMapMetadata('Name') + ' em progresso.');
-                    break;
-                case status_1.StatusConsts.FINISHED:
-                    console.log('Minigame ' + this.getMapMetadata('Name') + ' finalizado.');
-                    this.mapSelected = this.randomMinigame();
-                    this.status = status_1.StatusConsts.STARTING;
-                    break;
             }
             let self = this;
             setTimeout(function () {
                 self.mainLoop();
             }, 1000);
         });
-    }
-    randomMinigame() {
-        return this.maps[Math.round(Math.random() * this.maps.length - 1)];
     }
     getMapMetadata(property) {
         return this.mapSelected['Map']['Metadata'][property];
