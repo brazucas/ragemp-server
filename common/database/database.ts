@@ -3,6 +3,7 @@ import {environment} from "../environment";
 import * as SequelizeOrigin from "sequelize";
 import {Observable} from "rxjs/Rx";
 import 'rxjs/add/observable/of';
+import {from} from "rxjs";
 
 export class Database {
   public handler: any;
@@ -28,10 +29,10 @@ export class Database {
   }
 
   public sync(): Observable<any> {
-    return Observable.of(this.handler.sync());
+    return from(this.handler.sync());
   }
 
   public authenticate(): Observable<any> {
-    return Observable.of(this.handler.authenticate());
+    return from(this.handler.authenticate());
   }
 }

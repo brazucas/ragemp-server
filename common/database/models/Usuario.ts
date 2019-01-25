@@ -16,7 +16,6 @@ export class Usuario extends Model<Usuario> {
   senha: string;
 
 
-
   // @HasMany(() => Hobby)
   // hobbies: Hobby[];
 }

@@ -1,5 +1,5 @@
 import {Database} from "./database/database";
-import {Usuario} from "./database/models/usuario";
+import {Usuario} from "./database/models/Usuario";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/forkJoin';
