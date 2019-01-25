@@ -39,17 +39,17 @@ var glob = require("glob");
 var fs = require("fs");
 var _ = require("underscore");
 var status_1 = require("./consts/status");
-var minigames_1 = require("./consts/minigames");
+var rpg_1 = require("./consts/rpg");
 require("rxjs/add/observable/of");
-var Minigames = (function () {
-    function Minigames(brazucasServer) {
+var Rpg = (function () {
+    function Rpg(brazucasServer) {
         this.maps = [];
         this.mapSelected = null;
         this.status = null;
         this.brazucasServer = brazucasServer;
         this.init();
     }
-    Minigames.prototype.init = function () {
+    Rpg.prototype.init = function () {
         return __awaiter(this, void 0, void 0, function () {
             var jogador;
             return __generator(this, function (_a) {
@@ -67,21 +67,21 @@ var Minigames = (function () {
             });
         });
     };
-    Minigames.prototype.loadMaps = function () {
-        var maps = glob.sync("packages/minigames/maps/*.json");
+    Rpg.prototype.loadMaps = function () {
+        var maps = glob.sync("packages/rpg/maps/*.json");
         var self = this;
         _.forEach(maps, function (map) {
             self.maps.push(JSON.parse(fs.readFileSync(map, 'utf8')));
         });
     };
-    Minigames.prototype.getMaps = function () {
+    Rpg.prototype.getMaps = function () {
         return this.maps;
     };
-    Minigames.prototype.loadMinigame = function (map) {
+    Rpg.prototype.loadMinigame = function (map) {
         console.log('Carregando Minigame ' + map.Map.Metadata.Name + '.');
         this.loadMap(map);
     };
-    Minigames.prototype.loadMap = function (mapData) {
+    Rpg.prototype.loadMap = function (mapData) {
         console.log('Carregando mapa ' + mapData.Map.Metadata.Name + '.');
         if (mapData) {
             if (mapData.Map && mapData.Map.Objects && mapData.Map.Objects.MapObject) {
@@ -110,7 +110,7 @@ var Minigames = (function () {
             console.log('Mapa ' + mapData.Map.Metadata.id + ' não encontrado.');
         }
     };
-    Minigames.prototype.unloadCurrentMap = function () {
+    Rpg.prototype.unloadCurrentMap = function () {
         console.log('Descarregando mapa atual.');
         var objectsLength = mp.objects.toArray().length;
         var vehiclesLength = mp.vehicles.toArray().length;
@@ -123,11 +123,11 @@ var Minigames = (function () {
         console.log(objectsLength + ' objetos descarregados.');
         console.log(vehiclesLength + ' veículos descarregados.');
     };
-    Minigames.prototype.mainLoop = function () {
+    Rpg.prototype.mainLoop = function () {
         switch (this.status) {
             case status_1.StatusConsts.WAITING_PLAYERS:
                 console.log('Aguardando jogadores');
-                if (mp.players.length >= minigames_1.MinigamesConsts.MINIMUM_PLAYERS) {
+                if (mp.players.length >= rpg_1.RpgConsts.MINIMUM_PLAYERS) {
                     this.mapSelected = this.randomMinigame();
                     this.status = status_1.StatusConsts.STARTING;
                 }
@@ -152,13 +152,13 @@ var Minigames = (function () {
             self.mainLoop();
         }, 1000);
     };
-    Minigames.prototype.randomMinigame = function () {
+    Rpg.prototype.randomMinigame = function () {
         return this.maps[Math.round(Math.random() * this.maps.length - 1)];
     };
-    Minigames.prototype.getMapMetadata = function (property) {
+    Rpg.prototype.getMapMetadata = function (property) {
         return this.mapSelected['Map']['Metadata'][property];
     };
-    return Minigames;
+    return Rpg;
 }());
-exports.Minigames = Minigames;
-//# sourceMappingURL=minigames.js.map
+exports.Rpg = Rpg;
+//# sourceMappingURL=rpg.js.map

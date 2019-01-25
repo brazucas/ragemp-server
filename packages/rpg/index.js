@@ -1,6 +1,6 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-var minigames_1 = require("./minigames");
+var rpg_1 = require("./rpg");
 var playerJoin_1 = require("./handler/playerJoin");
 var playerQuit_1 = require("./handler/playerQuit");
 var playerDeath_1 = require("./handler/playerDeath");
@@ -12,5 +12,5 @@ mp.events.add("playerChat" /* PLAYER_CHAT */, playerDeath_1.PlayerChatHandler);
 mp.events.add("playerDeath" /* PLAYER_DEATH */, playerChat_1.PlayerDeathHandler);
 var brazucasServer = new brazucas_server_1.BrazucasServer();
 brazucasServer.onload()
-    .subscribe(function () { return new minigames_1.Minigames(brazucasServer); });
+    .subscribe(function () { new rpg_1.Rpg(brazucasServer); }, console.error);
 //# sourceMappingURL=index.js.map

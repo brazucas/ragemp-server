@@ -1,6 +1,6 @@
 'use strict';
 
-import {Minigames} from "./minigames";
+import {Rpg} from "./rpg";
 import {PlayerJoinHandler} from "./handler/playerJoin";
 import {PlayerQuitHandler} from "./handler/playerQuit";
 import {PlayerChatHandler} from "./handler/playerDeath";
@@ -18,4 +18,4 @@ mp.events.add(EventKey.PLAYER_DEATH, PlayerDeathHandler);
 let brazucasServer = new BrazucasServer();
 
 brazucasServer.onload()
-  .subscribe(() => new Minigames(brazucasServer) );
+  .subscribe(() => { new Rpg(brazucasServer)}, console.error );

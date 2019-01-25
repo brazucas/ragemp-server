@@ -5,6 +5,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/forkJoin';
 import * as Sequelize from "sequelize";
 import Bluebird = require("bluebird");
+import {forkJoin} from "rxjs";
 
 export class BrazucasServer {
   private database: Database;
@@ -14,7 +15,7 @@ export class BrazucasServer {
   }
 
   public onload(): Observable<any> {
-    return Observable.forkJoin(
+    return forkJoin(
       ...[
         this.database.sync(),
         this.database.authenticate()

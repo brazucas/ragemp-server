@@ -2,16 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var database_1 = require("./database/database");
 var usuario_1 = require("./database/models/usuario");
-var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/observable/of");
 require("rxjs/add/observable/forkJoin");
 var Sequelize = require("sequelize");
+var rxjs_1 = require("rxjs");
 var BrazucasServer = (function () {
     function BrazucasServer() {
         this.database = new database_1.Database();
     }
     BrazucasServer.prototype.onload = function () {
-        return Observable_1.Observable.forkJoin.apply(Observable_1.Observable, [
+        return rxjs_1.forkJoin.apply(void 0, [
             this.database.sync(),
             this.database.authenticate()
         ]);

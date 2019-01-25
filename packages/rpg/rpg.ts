@@ -2,15 +2,14 @@ import * as glob from "glob";
 import * as fs from "fs";
 import * as _ from "underscore";
 import {StatusConsts} from "./consts/status";
-import {MinigamesConsts} from "./consts/minigames";
+import {RpgConsts} from "./consts/rpg";
 import {BrazucasServer} from "../../common/brazucas-server";
-import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/of';
 import {Usuario} from "../../common/database/models/Usuario";
 
 declare const mp: Mp;
 
-export class Minigames {
+export class Rpg {
   public maps: Array<any> = [];
   public mapSelected: any = null;
   public status: any = null;
@@ -36,7 +35,7 @@ export class Minigames {
   }
 
   public loadMaps() {
-    let maps = glob.sync("packages/minigames/maps/*.json");
+    let maps = glob.sync("packages/rpg/maps/*.json");
 
     let self = this;
     _.forEach(maps, function (map: Buffer) {
@@ -111,7 +110,7 @@ export class Minigames {
     switch (this.status) {
       case StatusConsts.WAITING_PLAYERS:
         console.log('Aguardando jogadores');
-        if (mp.players.length >= MinigamesConsts.MINIMUM_PLAYERS) {
+        if (mp.players.length >= RpgConsts.MINIMUM_PLAYERS) {
           this.mapSelected = this.randomMinigame();
           this.status = StatusConsts.STARTING;
         }
