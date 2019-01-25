@@ -3,7 +3,7 @@ import * as glob from 'glob';
 import 'rxjs/add/observable/of';
 import * as _ from 'underscore';
 import { BrazucasServer } from '../../common/brazucas-server';
-import { RpgConsts } from './consts/rpg';
+import { RpgConsts } from './consts/rpg-consts';
 import { StatusConsts } from './consts/status';
 
 declare const mp: Mp;
@@ -103,7 +103,7 @@ export class Rpg {
     console.log(vehiclesLength + ' veículos descarregados.');
   }
 
-  private mainLoop() {
+  private async mainLoop() {
     switch (this.status) {
       case StatusConsts.WAITING_PLAYERS:
         console.log('Aguardando jogadores');
