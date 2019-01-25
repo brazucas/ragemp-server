@@ -26,8 +26,8 @@ Usuario = __decorate([
         createdAt: 'dataCriado',
         deletedAt: 'dataExcluido',
         updatedAt: 'dataAtualizado',
-        paranoid: true
+        paranoid: true,
     })
 ], Usuario);
 exports.Usuario = Usuario;
-//# sourceMappingURL=usuario.js.map
+//# sourceMappingURL=Usuario.js.map

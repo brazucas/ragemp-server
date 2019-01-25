@@ -1,12 +1,12 @@
 'use strict';
 
-import {Rpg} from "./rpg";
-import {PlayerJoinHandler} from "./handler/playerJoin";
-import {PlayerQuitHandler} from "./handler/playerQuit";
-import {PlayerChatHandler} from "./handler/playerDeath";
-import {PlayerDeathHandler} from "./handler/playerChat";
 import EventKey = RageEnums.EventKey;
-import {BrazucasServer} from "../../common/brazucas-server";
+import { BrazucasServer } from '../../common/brazucas-server';
+import { PlayerDeathHandler } from './handler/playerChat';
+import { PlayerChatHandler } from './handler/playerDeath';
+import { PlayerJoinHandler } from './handler/playerJoin';
+import { PlayerQuitHandler } from './handler/playerQuit';
+import { Rpg } from './rpg';
 
 declare const mp: Mp;
 
@@ -18,4 +18,4 @@ mp.events.add(EventKey.PLAYER_DEATH, PlayerDeathHandler);
 let brazucasServer = new BrazucasServer();
 
 brazucasServer.onload()
-  .subscribe(() => { new Rpg(brazucasServer)}, console.error );
+  .subscribe(() => new Rpg(brazucasServer), console.error );

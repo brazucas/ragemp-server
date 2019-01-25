@@ -8,12 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const glob = require("glob");
 const fs = require("fs");
-const _ = require("underscore");
-const status_1 = require("./consts/status");
-const rpg_1 = require("./consts/rpg");
+const glob = require("glob");
 require("rxjs/add/observable/of");
+const _ = require("underscore");
+const rpg_1 = require("./consts/rpg");
+const status_1 = require("./consts/status");
 class Rpg {
     constructor(brazucasServer) {
         this.maps = [];
@@ -24,8 +24,6 @@ class Rpg {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            let jogador = yield this.brazucasServer.loadPlayer('Mandrakke_Army');
-            console.log('>>>> ', jogador.nome);
             this.loadMaps();
             console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
             this.status = status_1.StatusConsts.WAITING_PLAYERS;
@@ -33,7 +31,7 @@ class Rpg {
         });
     }
     loadMaps() {
-        let maps = glob.sync("packages/rpg/maps/*.json");
+        let maps = glob.sync('packages/rpg/maps/*.json');
         let self = this;
         _.forEach(maps, function (map) {
             self.maps.push(JSON.parse(fs.readFileSync(map, 'utf8')));
@@ -54,21 +52,23 @@ class Rpg {
                 _.forEach(mapData.Map.Objects.MapObject, function (object) {
                     switch (object.Type) {
                         case 'Prop':
-                            mp.objects.new(parseInt(object.Hash), new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z)));
+                            mp.objects.new(parseInt(object.Hash, 10), new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z)));
                             ++loadedProps;
                             break;
                         case 'Vehicle':
-                            mp.vehicles.new(parseInt(object.Hash), new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z)));
+                            mp.vehicles.new(parseInt(object.Hash, 10), new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z)));
                             ++loadedVehicles;
                             break;
                         default:
                             console.log('Objeto do tipo ' + object.Type + ' não pôde ser carregado.');
                     }
                 });
-                console.log(mapData.Map.Objects.MapObject.length + ' objetos carregados (' + loadedVehicles + ' veículos, ' + loadedProps + ' objetos).');
+                console.log(mapData.Map.Objects.MapObject.length + ' objetos carregados (' + loadedVehicles + ' veículos, ' + loadedProps + '' +
+                    'objetos).');
             }
             else {
-                console.log('O mapa ' + mapData.Map.Metadata.id + ' não implementa um ou várias propriedades como Map, Map.Objects ou Map.Objects.MapObject.');
+                console.log('O mapa ' + mapData.Map.Metadata.id + ' não implementa um ou várias propriedades como Map, Map.Objects ou ' +
+                    'Map.Objects.MapObject.');
             }
         }
         else {

@@ -1,9 +1,9 @@
-import {Sequelize} from "sequelize-typescript";
-import {environment} from "../environment";
-import * as SequelizeOrigin from "sequelize";
-import {Observable} from "rxjs/Rx";
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import {from} from "rxjs";
+import { from } from 'rxjs/internal/observable/from';
+import * as SequelizeOrigin from 'sequelize';
+import { Sequelize } from 'sequelize-typescript';
+import { environment } from '../environment';
 
 export class Database {
   public handler: any;
@@ -18,13 +18,13 @@ export class Database {
       pool: {
         max: 5,
         min: 0,
-        idle: 10000
+        idle: 10000,
       },
       operatorsAliases: Op,
       dialect: 'mysql',
       username: environment.database_username,
       password: environment.database_password,
-      modelPaths: [__dirname + '/models']
+      modelPaths: [__dirname + '/models'],
     });
   }
 

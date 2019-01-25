@@ -1,7 +1,7 @@
 declare const mp: Mp;
 
 export function Commands() {
-  mp.events.addCommand("irparaveiculo", (player: PlayerMp, fullText: string, ...args: string[]): void => {
+  mp.events.addCommand('irparaveiculo', (player: PlayerMp, fullText: string, ...args: string[]): void => {
     let veh: VehicleMp = mp.vehicles[args[0]];
 
     if (veh && veh.position) {
@@ -10,4 +10,4 @@ export function Commands() {
       console.log('Veículo com ID ' + args[0] + ' não encontrado.');
     }
   });
-};
+}

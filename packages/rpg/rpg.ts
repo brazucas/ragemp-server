@@ -1,11 +1,10 @@
-import * as glob from "glob";
-import * as fs from "fs";
-import * as _ from "underscore";
-import {StatusConsts} from "./consts/status";
-import {RpgConsts} from "./consts/rpg";
-import {BrazucasServer} from "../../common/brazucas-server";
+import * as fs from 'fs';
+import * as glob from 'glob';
 import 'rxjs/add/observable/of';
-import {Usuario} from "../../common/database/models/Usuario";
+import * as _ from 'underscore';
+import { BrazucasServer } from '../../common/brazucas-server';
+import { RpgConsts } from './consts/rpg';
+import { StatusConsts } from './consts/status';
 
 declare const mp: Mp;
 
@@ -22,10 +21,6 @@ export class Rpg {
   }
 
   private async init() {
-    let jogador: Usuario = await this.brazucasServer.loadPlayer('Mandrakke_Army');
-
-    console.log('>>>> ', jogador.nome);
-
     this.loadMaps();
     console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
 
@@ -35,12 +30,12 @@ export class Rpg {
   }
 
   public loadMaps() {
-    let maps = glob.sync("packages/rpg/maps/*.json");
+    let maps = glob.sync('packages/rpg/maps/*.json');
 
     let self = this;
     _.forEach(maps, function (map: Buffer) {
       self.maps.push(JSON.parse(fs.readFileSync(map, 'utf8')));
-    })
+    });
   }
 
   public getMaps() {
@@ -63,14 +58,14 @@ export class Rpg {
           switch (object.Type) {
             case 'Prop':
               mp.objects.new(
-                parseInt(object.Hash),
+                parseInt(object.Hash, 10),
                 new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z)));
               ++loadedProps;
               break;
             case 'Vehicle':
               mp.vehicles.new(
-                parseInt(object.Hash),
-                new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z))
+                parseInt(object.Hash, 10),
+                new mp.Vector3(parseFloat(object.Position.X), parseFloat(object.Position.Y), parseFloat(object.Position.Z)),
               );
               ++loadedVehicles;
               break;
@@ -79,9 +74,11 @@ export class Rpg {
           }
         });
 
-        console.log(mapData.Map.Objects.MapObject.length + ' objetos carregados (' + loadedVehicles + ' veículos, ' + loadedProps + ' objetos).');
+        console.log(mapData.Map.Objects.MapObject.length + ' objetos carregados (' + loadedVehicles + ' veículos, ' + loadedProps + '' +
+          'objetos).');
       } else {
-        console.log('O mapa ' + mapData.Map.Metadata.id + ' não implementa um ou várias propriedades como Map, Map.Objects ou Map.Objects.MapObject.');
+        console.log('O mapa ' + mapData.Map.Metadata.id + ' não implementa um ou várias propriedades como Map, Map.Objects ou ' +
+          'Map.Objects.MapObject.');
       }
     } else {
       console.log('Mapa ' + mapData.Map.Metadata.id + ' não encontrado.');
@@ -96,7 +93,7 @@ export class Rpg {
 
     mp.objects.forEach(function (object) {
       object.destroy();
-    })
+    });
 
     mp.vehicles.forEach(function (vehicle) {
       vehicle.destroy();
@@ -133,7 +130,7 @@ export class Rpg {
 
     let self = this;
     setTimeout(function () {
-      self.mainLoop()
+      self.mainLoop();
     }, 1000);
   }
 

@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("rxjs/add/observable/of");
+const from_1 = require("rxjs/internal/observable/from");
+const SequelizeOrigin = require("sequelize");
 const sequelize_typescript_1 = require("sequelize-typescript");
 const environment_1 = require("../environment");
-const SequelizeOrigin = require("sequelize");
-require("rxjs/add/observable/of");
-const rxjs_1 = require("rxjs");
 class Database {
     constructor() {
         const Op = SequelizeOrigin.Op;
@@ -15,20 +15,20 @@ class Database {
             pool: {
                 max: 5,
                 min: 0,
-                idle: 10000
+                idle: 10000,
             },
             operatorsAliases: Op,
             dialect: 'mysql',
             username: environment_1.environment.database_username,
             password: environment_1.environment.database_password,
-            modelPaths: [__dirname + '/models']
+            modelPaths: [__dirname + '/models'],
         });
     }
     sync() {
-        return rxjs_1.from(this.handler.sync());
+        return from_1.from(this.handler.sync());
     }
     authenticate() {
-        return rxjs_1.from(this.handler.authenticate());
+        return from_1.from(this.handler.authenticate());
     }
 }
 exports.Database = Database;

@@ -1,11 +1,11 @@
-import {Table, Column, Model, HasMany} from 'sequelize-typescript';
+import { Column, Model, Table } from 'sequelize-typescript';
 
 @Table({
   timestamps: true,
   createdAt: 'dataCriado',
   deletedAt: 'dataExcluido',
   updatedAt: 'dataAtualizado',
-  paranoid: true
+  paranoid: true,
 })
 export class Usuario extends Model<Usuario> {
 

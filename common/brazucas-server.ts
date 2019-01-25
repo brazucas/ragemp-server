@@ -1,11 +1,11 @@
-import {Database} from "./database/database";
-import {Usuario} from "./database/models/Usuario";
-import {Observable} from "rxjs/Observable";
-import 'rxjs/add/observable/of';
+import Bluebird = require('bluebird');
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
-import * as Sequelize from "sequelize";
-import Bluebird = require("bluebird");
-import {forkJoin} from "rxjs";
+import 'rxjs/add/observable/of';
+import { forkJoin } from 'rxjs/internal/observable/forkJoin';
+import * as Sequelize from 'sequelize';
+import { Database } from './database/database';
+import { Usuario } from './database/models/Usuario';
 
 export class BrazucasServer {
   private database: Database;
@@ -18,8 +18,8 @@ export class BrazucasServer {
     return forkJoin(
       ...[
         this.database.sync(),
-        this.database.authenticate()
-      ]
+        this.database.authenticate(),
+      ],
     );
   }
 

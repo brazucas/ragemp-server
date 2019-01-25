@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("rxjs/add/observable/forkJoin");
+require("rxjs/add/observable/of");
+const forkJoin_1 = require("rxjs/internal/observable/forkJoin");
+const Sequelize = require("sequelize");
 const database_1 = require("./database/database");
 const Usuario_1 = require("./database/models/Usuario");
-require("rxjs/add/observable/of");
-require("rxjs/add/observable/forkJoin");
-const Sequelize = require("sequelize");
-const rxjs_1 = require("rxjs");
 class BrazucasServer {
     constructor() {
         this.database = new database_1.Database();
     }
     onload() {
-        return rxjs_1.forkJoin(...[
+        return forkJoin_1.forkJoin(...[
             this.database.sync(),
-            this.database.authenticate()
+            this.database.authenticate(),
         ]);
     }
     loadPlayer(playerName) {
