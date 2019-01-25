@@ -3,8 +3,6 @@ import * as glob from 'glob';
 import 'rxjs/add/observable/of';
 import * as _ from 'underscore';
 import { BrazucasServer } from '../../common/brazucas-server';
-import { RpgConsts } from './consts/rpg-consts';
-import { StatusConsts } from './consts/status';
 
 declare const mp: Mp;
 
@@ -22,9 +20,7 @@ export class Rpg {
 
   private async init() {
     this.loadMaps();
-    console.log(this.getMaps().length + ' minigame(s) encontrado(s).');
-
-    this.status = StatusConsts.WAITING_PLAYERS;
+    console.log(this.getMaps().length + ' mapa(s) encontrado(s).');
 
     this.mainLoop();
   }
@@ -40,11 +36,6 @@ export class Rpg {
 
   public getMaps() {
     return this.maps;
-  }
-
-  public loadMinigame(map) {
-    console.log('Carregando Minigame ' + map.Map.Metadata.Name + '.');
-    this.loadMap(map);
   }
 
   public loadMap(mapData) {
@@ -104,38 +95,16 @@ export class Rpg {
   }
 
   private async mainLoop() {
+    console.log('[MAINLOOP] Executando mainloop');
+
     switch (this.status) {
-      case StatusConsts.WAITING_PLAYERS:
-        console.log('Aguardando jogadores');
-        if (mp.players.length >= RpgConsts.MINIMUM_PLAYERS) {
-          this.mapSelected = this.randomMinigame();
-          this.status = StatusConsts.STARTING;
-        }
-        break;
-      case StatusConsts.STARTING:
-        console.log('Iniciando minigame ' + this.getMapMetadata('Name'));
-        this.unloadCurrentMap();
-        this.loadMinigame(this.mapSelected);
-        this.status = StatusConsts.IN_PROGRESS;
-        break;
-      case StatusConsts.IN_PROGRESS:
-        console.log('Minigame ' + this.getMapMetadata('Name') + ' em progresso.');
-        break;
-      case StatusConsts.FINISHED:
-        console.log('Minigame ' + this.getMapMetadata('Name') + ' finalizado.');
-        this.mapSelected = this.randomMinigame();
-        this.status = StatusConsts.STARTING;
-        break;
+
     }
 
     let self = this;
     setTimeout(function () {
       self.mainLoop();
     }, 1000);
-  }
-
-  public randomMinigame() {
-    return this.maps[Math.round(Math.random() * this.maps.length - 1)];
   }
 
   public getMapMetadata(property) {

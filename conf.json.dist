@@ -1,7 +1,7 @@
 {
 	"maxplayers" : 50,
 	"name" : "[:.:.Brazuca's Server.:.:] Minigames",
-	"gamemode" : "minigames",
+	"gamemode" : "rpg/minigames",
 	"streamdistance" : 500.0,
 	"announce" : true,
 	"port": 22005,
