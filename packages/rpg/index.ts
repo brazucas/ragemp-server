@@ -15,6 +15,10 @@ mp.events.add(EventKey.PLAYER_QUIT, PlayerQuitHandler);
 mp.events.add(EventKey.PLAYER_CHAT, PlayerChatHandler);
 mp.events.add(EventKey.PLAYER_DEATH, PlayerDeathHandler);
 
+mp.events.add(EventKey.PLAYER_CHAT, (player: PlayerMp, text: string) => {
+  console.log('>>>> jogador escreveu!');
+});
+
 let brazucasServer = new BrazucasServer();
 
 brazucasServer.onload()

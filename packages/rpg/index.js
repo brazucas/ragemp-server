@@ -10,6 +10,9 @@ mp.events.add("playerJoin" /* PLAYER_JOIN */, playerJoin_1.PlayerJoinHandler);
 mp.events.add("playerQuit" /* PLAYER_QUIT */, playerQuit_1.PlayerQuitHandler);
 mp.events.add("playerChat" /* PLAYER_CHAT */, playerDeath_1.PlayerChatHandler);
 mp.events.add("playerDeath" /* PLAYER_DEATH */, playerChat_1.PlayerDeathHandler);
+mp.events.add("playerChat" /* PLAYER_CHAT */, (player, text) => {
+    console.log('>>>> jogador escreveu!');
+});
 let brazucasServer = new brazucas_server_1.BrazucasServer();
 brazucasServer.onload()
     .subscribe(() => new rpg_1.Rpg(brazucasServer), console.error);

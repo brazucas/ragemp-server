@@ -83,7 +83,7 @@ class Rpg {
     }
     mainLoop() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('[MAINLOOP] Executando mainloop');
+            // console.log('[MAINLOOP] Executando mainloop');
             switch (this.status) {
             }
             let self = this;

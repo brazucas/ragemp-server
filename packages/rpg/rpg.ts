@@ -95,7 +95,7 @@ export class Rpg {
   }
 
   private async mainLoop() {
-    console.log('[MAINLOOP] Executando mainloop');
+    // console.log('[MAINLOOP] Executando mainloop');
 
     switch (this.status) {
 
