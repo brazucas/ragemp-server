@@ -7,7 +7,7 @@ import { Column, Model, Table } from 'sequelize-typescript';
   updatedAt: 'dataAtualizado',
   paranoid: true,
 })
-export class Usuario extends Model<Usuario> {
+export class Player extends Model<Player> {
 
   @Column
   nome: string;

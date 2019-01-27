@@ -5,7 +5,7 @@ require("rxjs/add/observable/of");
 const forkJoin_1 = require("rxjs/internal/observable/forkJoin");
 const Sequelize = require("sequelize");
 const database_1 = require("./database/database");
-const Usuario_1 = require("./database/models/Usuario");
+const Player_1 = require("./database/models/Player");
 class BrazucasServer {
     constructor() {
         this.database = new database_1.Database();
@@ -18,7 +18,7 @@ class BrazucasServer {
     }
     loadPlayer(playerName) {
         const Op = Sequelize.Op;
-        return Usuario_1.Usuario.findOne({ where: { nome: { [Op.eq]: playerName } } });
+        return Player_1.Player.findOne({ where: { nome: { [Op.eq]: playerName } } });
     }
 }
 exports.BrazucasServer = BrazucasServer;

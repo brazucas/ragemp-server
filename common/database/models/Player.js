@@ -10,17 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-let Usuario = class Usuario extends sequelize_typescript_1.Model {
+let Player = class Player extends sequelize_typescript_1.Model {
 };
 __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
-], Usuario.prototype, "nome", void 0);
+], Player.prototype, "nome", void 0);
 __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
-], Usuario.prototype, "senha", void 0);
-Usuario = __decorate([
+], Player.prototype, "senha", void 0);
+Player = __decorate([
     sequelize_typescript_1.Table({
         timestamps: true,
         createdAt: 'dataCriado',
@@ -28,6 +28,6 @@ Usuario = __decorate([
         updatedAt: 'dataAtualizado',
         paranoid: true,
     })
-], Usuario);
-exports.Usuario = Usuario;
-//# sourceMappingURL=Usuario.js.map
+], Player);
+exports.Player = Player;
+//# sourceMappingURL=Player.js.map
