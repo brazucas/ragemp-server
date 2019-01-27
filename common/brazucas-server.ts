@@ -5,7 +5,7 @@ import 'rxjs/add/observable/of';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import * as Sequelize from 'sequelize';
 import { Database } from './database/database';
-import { Player } from './database/models/Player';
+import { Jogador } from './database/models/Jogador';
 
 export class BrazucasServer {
   private database: Database;
@@ -23,9 +23,9 @@ export class BrazucasServer {
     );
   }
 
-  public loadPlayer(playerName: string): Bluebird<Player> {
+  public loadPlayer(playerName: string): Bluebird<Jogador> {
     const Op = Sequelize.Op;
 
-    return Player.findOne({where: {nome: {[Op.eq]: playerName}}});
+    return Jogador.findOne({where: {nome: {[Op.eq]: playerName}}});
   }
 }
