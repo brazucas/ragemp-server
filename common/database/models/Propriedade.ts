@@ -16,6 +16,27 @@ export class Propriedade extends Model<Propriedade> {
   @Column
   nomeExibido: string;
 
+  @Column
+  portaEntradaX: number;
+
+  @Column
+  portaEntradaY: number;
+
+  @Column
+  portaEntradaZ: number;
+
+  @Column
+  portaSaidaX: number;
+
+  @Column
+  portaSaidaY: number;
+
+  @Column
+  portaSaidaZ: number;
+
+  @Column
+  iconePickup: string;
+
   @ForeignKey(() => TipoPropriedade)
   tipo: TipoPropriedade;
 }

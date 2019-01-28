@@ -22,6 +22,9 @@ class Database {
             username: environment_1.environment.database_username,
             password: environment_1.environment.database_password,
             modelPaths: [__dirname + '/models'],
+            sync: {
+                alter: true,
+            }
         });
     }
     sync() {

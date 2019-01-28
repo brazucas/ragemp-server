@@ -65,3 +65,5 @@ conf.json
 client_packages/browser/*
 
 /dist
+
+/common/database/config/config.json

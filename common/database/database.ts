@@ -25,6 +25,9 @@ export class Database {
       username: environment.database_username,
       password: environment.database_password,
       modelPaths: [__dirname + '/models'],
+      sync: {
+        alter: true,
+      }
     });
   }
 

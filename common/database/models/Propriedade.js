@@ -22,6 +22,34 @@ __decorate([
     __metadata("design:type", String)
 ], Propriedade.prototype, "nomeExibido", void 0);
 __decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Propriedade.prototype, "portaEntradaX", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Propriedade.prototype, "portaEntradaY", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Propriedade.prototype, "portaEntradaZ", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Propriedade.prototype, "portaSaidaX", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Propriedade.prototype, "portaSaidaY", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Propriedade.prototype, "portaSaidaZ", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], Propriedade.prototype, "iconePickup", void 0);
+__decorate([
     sequelize_typescript_1.ForeignKey(() => TipoPropriedade_1.TipoPropriedade),
     __metadata("design:type", TipoPropriedade_1.TipoPropriedade)
 ], Propriedade.prototype, "tipo", void 0);
