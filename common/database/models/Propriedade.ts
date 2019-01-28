@@ -1,4 +1,4 @@
-import { BelongsTo, Column, Model, Sequelize, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, Model, Table } from 'sequelize-typescript';
 import { TipoPropriedade } from './TipoPropriedade';
 
 @Table({
@@ -37,6 +37,6 @@ export class Propriedade extends Model<Propriedade> {
   @Column
   iconePickup: string;
 
-  @BelongsTo(() => TipoPropriedade, {foreignKey: 'tipo'})
+  @BelongsTo(() => TipoPropriedade, {foreignKey: {allowNull: false, name: 'tipo'}})
   tipoPropriedade: TipoPropriedade;
 }

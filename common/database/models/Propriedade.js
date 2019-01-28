@@ -50,7 +50,7 @@ __decorate([
     __metadata("design:type", String)
 ], Propriedade.prototype, "iconePickup", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsTo(() => TipoPropriedade_1.TipoPropriedade, { foreignKey: 'tipo' }),
+    sequelize_typescript_1.BelongsTo(() => TipoPropriedade_1.TipoPropriedade, { foreignKey: { allowNull: false, name: 'tipo' } }),
     __metadata("design:type", TipoPropriedade_1.TipoPropriedade)
 ], Propriedade.prototype, "tipoPropriedade", void 0);
 Propriedade = __decorate([
