@@ -1,4 +1,5 @@
 import { Veiculo } from '../../../../common/database/models/Veiculo';
+import { VeiculoProvider } from '../../providers/veiculo.provider';
 
 declare const mp: Mp;
 
@@ -15,5 +16,10 @@ export async function carregarVeiculos() {
     veiculoMp.engine = veiculo.motor;
     veiculoMp.dimension = veiculo.mundo;
     veiculoMp.numberPlate = veiculo.placaExibido;
+
+    VeiculoProvider.veiculos.next({
+      mp: veiculoMp,
+      storage: veiculo,
+    });
   });
 }

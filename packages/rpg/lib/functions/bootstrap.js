@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Veiculo_1 = require("../../../../common/database/models/Veiculo");
+const veiculo_provider_1 = require("../../providers/veiculo.provider");
 function carregarVeiculos() {
     return __awaiter(this, void 0, void 0, function* () {
         let veiculos = yield Veiculo_1.Veiculo.findAll();
@@ -19,6 +20,10 @@ function carregarVeiculos() {
             veiculoMp.engine = veiculo.motor;
             veiculoMp.dimension = veiculo.mundo;
             veiculoMp.numberPlate = veiculo.placaExibido;
+            veiculo_provider_1.VeiculoProvider.veiculos.next({
+                mp: veiculoMp,
+                storage: veiculo,
+            });
         });
     });
 }
