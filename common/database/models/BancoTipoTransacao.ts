@@ -1,7 +1,5 @@
 import { Column, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript';
-import { Jogador } from './Jogador';
-import { Notificacao } from './Notificacao';
-import { Propriedade } from './Propriedade';
+import { BancoTransacao } from './BancoTransacao';
 
 @Table({
   timestamps: true,
@@ -10,7 +8,7 @@ import { Propriedade } from './Propriedade';
   updatedAt: 'dataAtualizado',
   paranoid: true,
 })
-export class TipoPropriedade extends Model<TipoPropriedade> {
+export class BancoTipoTransacao extends Model<BancoTipoTransacao> {
 
   @PrimaryKey
   @Column
@@ -22,6 +20,6 @@ export class TipoPropriedade extends Model<TipoPropriedade> {
   @Column({allowNull: false, unique: true})
   identificador: string;
 
-  @HasMany(() => Propriedade, 'tipo')
-  propriedades: Propriedade[];
+  @HasMany(() => BancoTransacao, 'tipo')
+  transacoes: BancoTransacao[];
 }

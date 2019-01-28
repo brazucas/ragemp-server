@@ -10,31 +10,31 @@ import { TipoPropriedade } from './TipoPropriedade';
 })
 export class Propriedade extends Model<Propriedade> {
 
-  @Column
+  @Column({allowNull: false, unique: true})
   nomeOriginal: string;
 
-  @Column
+  @Column({allowNull: false, unique: true})
   nomeExibido: string;
 
-  @Column
+  @Column({allowNull: false})
   portaEntradaX: number;
 
-  @Column
+  @Column({allowNull: false})
   portaEntradaY: number;
 
-  @Column
+  @Column({allowNull: false})
   portaEntradaZ: number;
 
-  @Column
+  @Column({allowNull: false})
   portaSaidaX: number;
 
-  @Column
+  @Column({allowNull: false})
   portaSaidaY: number;
 
-  @Column
+  @Column({allowNull: false})
   portaSaidaZ: number;
 
-  @Column
+  @Column({allowNull: false})
   iconePickup: string;
 
   @BelongsTo(() => TipoPropriedade, {foreignKey: {allowNull: false, name: 'tipo'}})

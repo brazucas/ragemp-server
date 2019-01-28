@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
+const Propriedade_1 = require("./Propriedade");
 let TipoPropriedade = class TipoPropriedade extends sequelize_typescript_1.Model {
 };
 __decorate([
@@ -18,13 +19,17 @@ __decorate([
     __metadata("design:type", Number)
 ], TipoPropriedade.prototype, "id", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], TipoPropriedade.prototype, "nome", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
     __metadata("design:type", String)
 ], TipoPropriedade.prototype, "identificador", void 0);
+__decorate([
+    sequelize_typescript_1.HasMany(() => Propriedade_1.Propriedade, 'tipo'),
+    __metadata("design:type", Array)
+], TipoPropriedade.prototype, "propriedades", void 0);
 TipoPropriedade = __decorate([
     sequelize_typescript_1.Table({
         timestamps: true,

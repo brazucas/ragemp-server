@@ -10,15 +10,15 @@ import { Jogador } from './Jogador';
 })
 export class Profissao extends Model<Profissao> {
 
-  @Column
+  @Column({allowNull: false, unique: true})
   nome: string;
 
-  @Column
+  @Column({allowNull: false, defaultValue: 10})
   vagas: number;
 
-  @Column
+  @Column({allowNull: false, defaultValue: 1})
   nivelMinimo: number;
 
-  @HasMany(() => Jogador)
+  @HasMany(() => Jogador, 'profissao')
   jogadores: Jogador[];
 }

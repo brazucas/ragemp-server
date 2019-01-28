@@ -10,26 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Jogador_1 = require("./Jogador");
-let Profissao = class Profissao extends sequelize_typescript_1.Model {
+const BancoTransacao_1 = require("./BancoTransacao");
+let BancoTipoTransacao = class BancoTipoTransacao extends sequelize_typescript_1.Model {
 };
+__decorate([
+    sequelize_typescript_1.PrimaryKey,
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], BancoTipoTransacao.prototype, "id", void 0);
+__decorate([
+    sequelize_typescript_1.Column({ allowNull: false }),
+    __metadata("design:type", String)
+], BancoTipoTransacao.prototype, "nome", void 0);
 __decorate([
     sequelize_typescript_1.Column({ allowNull: false, unique: true }),
     __metadata("design:type", String)
-], Profissao.prototype, "nome", void 0);
+], BancoTipoTransacao.prototype, "identificador", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, defaultValue: 10 }),
-    __metadata("design:type", Number)
-], Profissao.prototype, "vagas", void 0);
-__decorate([
-    sequelize_typescript_1.Column({ allowNull: false, defaultValue: 1 }),
-    __metadata("design:type", Number)
-], Profissao.prototype, "nivelMinimo", void 0);
-__decorate([
-    sequelize_typescript_1.HasMany(() => Jogador_1.Jogador, 'profissao'),
+    sequelize_typescript_1.HasMany(() => BancoTransacao_1.BancoTransacao, 'tipo'),
     __metadata("design:type", Array)
-], Profissao.prototype, "jogadores", void 0);
-Profissao = __decorate([
+], BancoTipoTransacao.prototype, "transacoes", void 0);
+BancoTipoTransacao = __decorate([
     sequelize_typescript_1.Table({
         timestamps: true,
         createdAt: 'dataCriado',
@@ -37,6 +38,6 @@ Profissao = __decorate([
         updatedAt: 'dataAtualizado',
         paranoid: true,
     })
-], Profissao);
-exports.Profissao = Profissao;
-//# sourceMappingURL=Profissao.js.map
+], BancoTipoTransacao);
+exports.BancoTipoTransacao = BancoTipoTransacao;
+//# sourceMappingURL=BancoTipoTransacao.js.map

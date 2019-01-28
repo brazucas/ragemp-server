@@ -14,39 +14,39 @@ const TipoPropriedade_1 = require("./TipoPropriedade");
 let Propriedade = class Propriedade extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
     __metadata("design:type", String)
 ], Propriedade.prototype, "nomeOriginal", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
     __metadata("design:type", String)
 ], Propriedade.prototype, "nomeExibido", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", Number)
 ], Propriedade.prototype, "portaEntradaX", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", Number)
 ], Propriedade.prototype, "portaEntradaY", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", Number)
 ], Propriedade.prototype, "portaEntradaZ", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", Number)
 ], Propriedade.prototype, "portaSaidaX", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", Number)
 ], Propriedade.prototype, "portaSaidaY", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", Number)
 ], Propriedade.prototype, "portaSaidaZ", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], Propriedade.prototype, "iconePickup", void 0);
 __decorate([

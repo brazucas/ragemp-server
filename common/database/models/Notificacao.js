@@ -11,25 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
 const Jogador_1 = require("./Jogador");
-let Profissao = class Profissao extends sequelize_typescript_1.Model {
+let Notificacao = class Notificacao extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
-], Profissao.prototype, "nome", void 0);
+], Notificacao.prototype, "titulo", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, defaultValue: 10 }),
-    __metadata("design:type", Number)
-], Profissao.prototype, "vagas", void 0);
+    sequelize_typescript_1.Column({ allowNull: false }),
+    __metadata("design:type", String)
+], Notificacao.prototype, "descricao", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, defaultValue: 1 }),
-    __metadata("design:type", Number)
-], Profissao.prototype, "nivelMinimo", void 0);
+    sequelize_typescript_1.Column({ defaultValue: false }),
+    __metadata("design:type", Boolean)
+], Notificacao.prototype, "lido", void 0);
 __decorate([
-    sequelize_typescript_1.HasMany(() => Jogador_1.Jogador, 'profissao'),
-    __metadata("design:type", Array)
-], Profissao.prototype, "jogadores", void 0);
-Profissao = __decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], Notificacao.prototype, "dataLido", void 0);
+__decorate([
+    sequelize_typescript_1.ForeignKey(() => Jogador_1.Jogador),
+    __metadata("design:type", Jogador_1.Jogador)
+], Notificacao.prototype, "jogador", void 0);
+Notificacao = __decorate([
     sequelize_typescript_1.Table({
         timestamps: true,
         createdAt: 'dataCriado',
@@ -37,6 +41,6 @@ Profissao = __decorate([
         updatedAt: 'dataAtualizado',
         paranoid: true,
     })
-], Profissao);
-exports.Profissao = Profissao;
-//# sourceMappingURL=Profissao.js.map
+], Notificacao);
+exports.Notificacao = Notificacao;
+//# sourceMappingURL=Notificacao.js.map

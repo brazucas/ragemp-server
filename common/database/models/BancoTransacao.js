@@ -10,26 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Jogador_1 = require("./Jogador");
-let Profissao = class Profissao extends sequelize_typescript_1.Model {
+const BancoConta_1 = require("./BancoConta");
+const BancoTipoTransacao_1 = require("./BancoTipoTransacao");
+let BancoTransacao = class BancoTransacao extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
-    __metadata("design:type", String)
-], Profissao.prototype, "nome", void 0);
-__decorate([
-    sequelize_typescript_1.Column({ allowNull: false, defaultValue: 10 }),
+    sequelize_typescript_1.Column,
     __metadata("design:type", Number)
-], Profissao.prototype, "vagas", void 0);
+], BancoTransacao.prototype, "valor", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, defaultValue: 1 }),
-    __metadata("design:type", Number)
-], Profissao.prototype, "nivelMinimo", void 0);
+    sequelize_typescript_1.BelongsTo(() => BancoConta_1.BancoConta, { foreignKey: { allowNull: false, name: 'conta' } }),
+    __metadata("design:type", BancoConta_1.BancoConta)
+], BancoTransacao.prototype, "bancoTransacaoConta", void 0);
 __decorate([
-    sequelize_typescript_1.HasMany(() => Jogador_1.Jogador, 'profissao'),
-    __metadata("design:type", Array)
-], Profissao.prototype, "jogadores", void 0);
-Profissao = __decorate([
+    sequelize_typescript_1.BelongsTo(() => BancoTipoTransacao_1.BancoTipoTransacao, { foreignKey: { allowNull: false, name: 'tipo' } }),
+    __metadata("design:type", BancoTipoTransacao_1.BancoTipoTransacao)
+], BancoTransacao.prototype, "bancoTransacaoTipo", void 0);
+BancoTransacao = __decorate([
     sequelize_typescript_1.Table({
         timestamps: true,
         createdAt: 'dataCriado',
@@ -37,6 +34,6 @@ Profissao = __decorate([
         updatedAt: 'dataAtualizado',
         paranoid: true,
     })
-], Profissao);
-exports.Profissao = Profissao;
-//# sourceMappingURL=Profissao.js.map
+], BancoTransacao);
+exports.BancoTransacao = BancoTransacao;
+//# sourceMappingURL=BancoTransacao.js.map

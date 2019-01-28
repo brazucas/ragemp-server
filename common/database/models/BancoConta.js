@@ -10,26 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
+const Propriedade_1 = require("./Propriedade");
 const Jogador_1 = require("./Jogador");
-let Profissao = class Profissao extends sequelize_typescript_1.Model {
+let BancoConta = class BancoConta extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
-], Profissao.prototype, "nome", void 0);
+], BancoConta.prototype, "numero", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, defaultValue: 10 }),
-    __metadata("design:type", Number)
-], Profissao.prototype, "vagas", void 0);
+    sequelize_typescript_1.BelongsTo(() => Propriedade_1.Propriedade, { foreignKey: { allowNull: false, name: 'propriedade' } }),
+    __metadata("design:type", Propriedade_1.Propriedade)
+], BancoConta.prototype, "bancoContaPropriedade", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, defaultValue: 1 }),
-    __metadata("design:type", Number)
-], Profissao.prototype, "nivelMinimo", void 0);
-__decorate([
-    sequelize_typescript_1.HasMany(() => Jogador_1.Jogador, 'profissao'),
-    __metadata("design:type", Array)
-], Profissao.prototype, "jogadores", void 0);
-Profissao = __decorate([
+    sequelize_typescript_1.BelongsTo(() => Jogador_1.Jogador, { foreignKey: { allowNull: false, name: 'jogador' } }),
+    __metadata("design:type", Jogador_1.Jogador)
+], BancoConta.prototype, "bancoContaJogador", void 0);
+BancoConta = __decorate([
     sequelize_typescript_1.Table({
         timestamps: true,
         createdAt: 'dataCriado',
@@ -37,6 +34,6 @@ Profissao = __decorate([
         updatedAt: 'dataAtualizado',
         paranoid: true,
     })
-], Profissao);
-exports.Profissao = Profissao;
-//# sourceMappingURL=Profissao.js.map
+], BancoConta);
+exports.BancoConta = BancoConta;
+//# sourceMappingURL=BancoConta.js.map

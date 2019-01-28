@@ -1,5 +1,7 @@
-import { Column, ForeignKey, HasOne, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, ForeignKey, HasMany, HasOne, Model, Table } from 'sequelize-typescript';
 import { Profissao } from './Profissao';
+import { Notificacao } from './Notificacao';
+import { TipoPropriedade } from './TipoPropriedade';
 
 @Table({
   timestamps: true,
@@ -10,15 +12,18 @@ import { Profissao } from './Profissao';
 })
 export class Jogador extends Model<Jogador> {
 
-  @Column
+  @Column({allowNull: false, unique: true})
   nome: string;
 
-  @Column
+  @Column({allowNull: false})
   senha: string;
 
-  @Column
+  @Column({defaultValue: 1})
   nivel: number;
 
-  @ForeignKey(() => Profissao)
-  profissao: Profissao;
+  @BelongsTo(() => Profissao, {foreignKey: {allowNull: false, name: 'profissao'}})
+  jogadorProfissao: Profissao;
+
+  @HasMany(() => Notificacao)
+  notificacoes: Notificacao[];
 }
