@@ -26,6 +26,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Profissao.prototype, "nivelMinimo", void 0);
 __decorate([
+    sequelize_typescript_1.Column({ allowNull: false }),
+    __metadata("design:type", Number)
+], Profissao.prototype, "salario", void 0);
+__decorate([
     sequelize_typescript_1.HasMany(() => Jogador_1.Jogador, 'profissao'),
     __metadata("design:type", Array)
 ], Profissao.prototype, "jogadores", void 0);

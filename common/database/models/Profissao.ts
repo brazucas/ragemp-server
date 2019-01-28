@@ -19,6 +19,9 @@ export class Profissao extends Model<Profissao> {
   @Column({allowNull: false, defaultValue: 1})
   nivelMinimo: number;
 
+  @Column({allowNull: false})
+  salario: number;
+
   @HasMany(() => Jogador, 'profissao')
   jogadores: Jogador[];
 }

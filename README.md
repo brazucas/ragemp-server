@@ -1,4 +1,5 @@
-# About Brazuca's
+# Sobre o Brazuca's
+
 Brazuca's is a Brazilian gaming server started in 2006, originally a server created for the GTA SA-MP mod. We survived throughout the years there until late 2014, where the player base dropped significantly, server admins/developers became adult and after a few months having no players and a infrastructure cost around $100, we finally decided to completely shutdown the server.
 
 There was a few comebacks from Brazuca's in the following years, but not enough player base to keep it online (server costs increased significantly as Dollar became more valued compared to Brazilian Real). As GTA V were launched few years before, we decided that SA-MP became outdated and that we would wait until GTA V has a decent multiplayer mod, is RageMP our messiah? we'll find it out in this project.
