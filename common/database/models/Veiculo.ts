@@ -1,4 +1,4 @@
-import { BelongsTo, Column, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, DataType, Model, Table } from 'sequelize-typescript';
 import { TipoPropriedade } from './TipoPropriedade';
 import { Jogador } from './Jogador';
 
@@ -9,7 +9,7 @@ import { Jogador } from './Jogador';
   updatedAt: 'dataAtualizado',
   paranoid: true,
 })
-export class Propriedade extends Model<Propriedade> {
+export class Veiculo extends Model<Veiculo> {
 
   @Column({allowNull: false, unique: true})
   placaOriginal: string;
@@ -20,13 +20,13 @@ export class Propriedade extends Model<Propriedade> {
   @Column({allowNull: false})
   modelo: string;
 
-  @Column({allowNull: false})
+  @Column({allowNull: false, type: DataType.FLOAT})
   posicaoX: number;
 
-  @Column({allowNull: false})
+  @Column({allowNull: false, type: DataType.FLOAT})
   posicaoY: number;
 
-  @Column({allowNull: false})
+  @Column({allowNull: false, type: DataType.FLOAT})
   posicaoZ: number;
 
   @Column({allowNull: false})
@@ -36,22 +36,22 @@ export class Propriedade extends Model<Propriedade> {
   transparencia: number;
 
   @Column({allowNull: false})
-  corPrimariaR: string;
+  corPrimariaR: number;
 
   @Column({allowNull: false})
-  corPrimariaG: string;
+  corPrimariaG: number;
 
   @Column({allowNull: false})
-  corPrimariaB: string;
+  corPrimariaB: number;
 
   @Column({allowNull: false})
-  corSecundariaR: string;
+  corSecundariaR: number;
 
   @Column({allowNull: false})
-  corSecundariaG: string;
+  corSecundariaG: number;
 
   @Column({allowNull: false})
-  corSecundariaB: string;
+  corSecundariaB: number;
 
   @Column({allowNull: false, defaultValue: true})
   trancado: boolean;
@@ -71,6 +71,6 @@ export class Propriedade extends Model<Propriedade> {
   @Column({allowNull: false, defaultValue: true})
   aVenda: boolean;
 
-  @BelongsTo(() => Jogador, {foreignKey: {allowNull: false, name: 'jogador'}})
+  @BelongsTo(() => Jogador, {foreignKey: {allowNull: true, name: 'jogador'}})
   jogadorVeiculo: Jogador;
 }

@@ -3,11 +3,12 @@ import * as glob from 'glob';
 import 'rxjs/add/observable/of';
 import * as _ from 'underscore';
 import { BrazucasServer } from '../../common/brazucas-server';
+import { carregarVeiculos } from './lib/functions/bootstrap';
 
 declare const mp: Mp;
 
 export class Rpg {
-  public maps: Array<any> = [];
+  private maps: Array<any> = [];
   public mapSelected: any = null;
   public status: any = null;
   public brazucasServer: BrazucasServer;
@@ -19,27 +20,38 @@ export class Rpg {
   }
 
   private async init() {
-    this.loadMaps();
-    console.log(this.getMaps().length + ' mapa(s) encontrado(s).');
+    this.carregarMapas();
+
+    console.log(`${this.maps.length} mapa(s) carregado(s).`);
+
+    await carregarVeiculos();
+
+    console.log(`${mp.vehicles.length} veículos carregados.`);
 
     this.mainLoop();
   }
 
-  public loadMaps() {
+  private carregarArquivosMapas() {
     let maps = glob.sync('packages/rpg/maps/*.json');
 
     let self = this;
     _.forEach(maps, function (map: Buffer) {
       self.maps.push(JSON.parse(fs.readFileSync(map, 'utf8')));
     });
-  }
 
-  public getMaps() {
     return this.maps;
   }
 
-  public loadMap(mapData) {
-    console.log('Carregando mapa ' + mapData.Map.Metadata.Name + '.');
+  private carregarMapas() {
+    let mapas = this.carregarArquivosMapas();
+
+    mapas.forEach((mapa) => {
+      this.carregarMapa(mapa);
+    });
+  }
+
+  public carregarMapa(mapData) {
+    console.log(`Carregando mapa ${mapData.Map.Metadata.Name}.`);
 
     if (mapData) {
       if (mapData.Map && mapData.Map.Objects && mapData.Map.Objects.MapObject) {
@@ -61,18 +73,18 @@ export class Rpg {
               ++loadedVehicles;
               break;
             default:
-              console.log('Objeto do tipo ' + object.Type + ' não pôde ser carregado.');
+              console.log(`Objeto do tipo ${object.Type} não pôde ser carregado.`);
           }
         });
 
-        console.log(mapData.Map.Objects.MapObject.length + ' objetos carregados (' + loadedVehicles + ' veículos, ' + loadedProps + '' +
-          'objetos).');
+        console.log(`${mapData.Map.Objects.MapObject.length} objetos carregados (${loadedVehicles} veículos, ${loadedProps} 
+          objetos)`);
       } else {
-        console.log('O mapa ' + mapData.Map.Metadata.id + ' não implementa um ou várias propriedades como Map, Map.Objects ou ' +
-          'Map.Objects.MapObject.');
+        console.log(`O mapa ${mapData.Map.Metadata.id} não implementa um ou várias propriedades como Map, Map.Objects ou 
+          Map.Objects.MapObject.`);
       }
     } else {
-      console.log('Mapa ' + mapData.Map.Metadata.id + ' não encontrado.');
+      console.log(`Mapa ${mapData.Map.Metadata.id} não encontrado.`);
     }
   }
 
