@@ -29,4 +29,6 @@ RUN chmod +x /opt/x64/server
 
 ADD docker/start_server.sh /opt
 
+RUN chmod +x /opt/start_server.sh
+
 ENTRYPOINT ["/opt/start_server.sh"]
