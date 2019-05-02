@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function PlayerDeathHandler(player, text) {
+function PlayerChatHandler(player, text) {
     console.log('>>> Chat ', player, text);
 }
-exports.PlayerDeathHandler = PlayerDeathHandler;
+exports.PlayerChatHandler = PlayerChatHandler;
 //# sourceMappingURL=playerChat.js.map

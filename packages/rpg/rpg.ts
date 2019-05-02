@@ -46,7 +46,7 @@ export class Rpg {
     let mapas = this.carregarArquivosMapas();
 
     mapas.forEach((mapa) => {
-      this.carregarMapa(mapa);
+      // this.carregarMapa(mapa);
     });
   }
 

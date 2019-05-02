@@ -1,1 +1,1 @@
-{"version":3,"file":"playerJoin.js","sourceRoot":"","sources":["playerJoin.ts"],"names":[],"mappings":";;AAAA,SAAgB,iBAAiB,CAAE,MAAgB;IACjD,OAAO,CAAC,GAAG,CAAC,WAAW,EAAE,MAAM,CAAC,CAAC;AACnC,CAAC;AAFD,8CAEC"}
+{"version":3,"file":"playerJoin.js","sourceRoot":"","sources":["playerJoin.ts"],"names":[],"mappings":";;AAAA,oDAAyD;AAEzD,SAAgB,iBAAiB,CAAC,MAAgB;IAChD,OAAO,CAAC,KAAK,CAAC,aAAa,MAAM,CAAC,IAAI,wBAAwB,MAAM,CAAC,EAAE,GAAG,CAAC,CAAC;IAE5E,uBAAc,CAAC,MAAM,MAAM,CAAC,IAAI,wBAAwB,CAAC,CAAC;AAC5D,CAAC;AAJD,8CAIC"}

@@ -41,7 +41,7 @@ class Rpg {
     carregarMapas() {
         let mapas = this.carregarArquivosMapas();
         mapas.forEach((mapa) => {
-            this.carregarMapa(mapa);
+            // this.carregarMapa(mapa);
         });
     }
     carregarMapa(mapData) {
