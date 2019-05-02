@@ -11,7 +11,8 @@
     "allowSyntheticDefaultImports": true,
     "declaration": false,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
   },
   "files": [
     "./node_modules/@types/mocha/index.d.ts",
