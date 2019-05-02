@@ -1,1 +1,1 @@
-{"version":3,"file":"playerQuit.js","sourceRoot":"","sources":["playerQuit.ts"],"names":[],"mappings":";;AAAA,2BAAmC,MAAgB,EAAE,QAAgB,EAAE,MAAc;IACnF,OAAO,CAAC,GAAG,CAAC,WAAW,EAAE,MAAM,EAAE,QAAQ,EAAE,MAAM,CAAC,CAAC;AACrD,CAAC;AAFD,8CAEC"}
+{"version":3,"file":"playerQuit.js","sourceRoot":"","sources":["playerQuit.ts"],"names":[],"mappings":";;AAAA,SAAgB,iBAAiB,CAAE,MAAgB,EAAE,QAAgB,EAAE,MAAc;IACnF,OAAO,CAAC,GAAG,CAAC,WAAW,EAAE,MAAM,EAAE,QAAQ,EAAE,MAAM,CAAC,CAAC;AACrD,CAAC;AAFD,8CAEC"}

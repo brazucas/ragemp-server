@@ -11,7 +11,8 @@ mp.events.add("playerQuit" /* PLAYER_QUIT */, playerQuit_1.PlayerQuitHandler);
 mp.events.add("playerChat" /* PLAYER_CHAT */, playerDeath_1.PlayerChatHandler);
 mp.events.add("playerDeath" /* PLAYER_DEATH */, playerChat_1.PlayerDeathHandler);
 mp.events.add("playerChat" /* PLAYER_CHAT */, (player, text) => {
-    console.log('>>>> jogador escreveu!');
+    console.log('>>>> jogador escreveu! ', player, text);
+    mp.players.broadcast(`${player.name}: ${text}`);
 });
 let brazucasServer = new brazucas_server_1.BrazucasServer();
 brazucasServer.onload()
