@@ -19,16 +19,16 @@ describe('AppComponent', () => {
         const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     });
-    it(`should have as title 'brazucas-browser'`, () => {
+    it(`should have as title 'browser'`, () => {
         const fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
         const app = fixture.debugElement.componentInstance;
-        expect(app.title).toEqual('brazucas-browser');
+        expect(app.title).toEqual('browser');
     });
     it('should render title in a h1 tag', () => {
         const fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('h1').textContent).toContain('Welcome to brazucas-browser!');
+        expect(compiled.querySelector('h1').textContent).toContain('Welcome to browser!');
     });
 });
 //# sourceMappingURL=app.component.spec.js.map

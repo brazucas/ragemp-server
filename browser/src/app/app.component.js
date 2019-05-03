@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 let AppComponent = class AppComponent {
     constructor() {
-        this.title = 'brazucas-browser';
+        this.title = 'browser';
     }
 };
 AppComponent = __decorate([

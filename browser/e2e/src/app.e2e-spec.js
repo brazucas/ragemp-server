@@ -17,7 +17,7 @@ describe('workspace-project App', () => {
     });
     it('should display welcome message', () => {
         page.navigateTo();
-        expect(page.getTitleText()).toEqual('Welcome to brazucas-browser!');
+        expect(page.getTitleText()).toEqual('Welcome to browser!');
     });
     afterEach(() => __awaiter(this, void 0, void 0, function* () {
         // Assert that there are no errors emitted from the browser
