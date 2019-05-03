@@ -8,6 +8,10 @@ class Comandos {
         player.giveWeapon(asset, 1000);
         player.notify(`Arma ${weaponHash} recebida!`);
     }
+    static posicaoatual(player) {
+        console.debug(`[COMANDOS - posicaoatual] Posição atual de ${player.name}: ${player.position.toString()}`);
+        player.outputChatBox(`Posição atual: ${player.position.toString()}`);
+    }
 }
 exports.Comandos = Comandos;
 //# sourceMappingURL=commands.js.map

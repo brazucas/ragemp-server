@@ -10,4 +10,10 @@ export class Comandos {
 
     player.notify(`Arma ${weaponHash} recebida!`);
   }
+
+  public static posicaoatual(player: PlayerMp) {
+    console.debug(`[COMANDOS - posicaoatual] Posição atual de ${player.name}: ${player.position.toString()}`);
+
+    player.outputChatBox(`Posição atual: ${player.position.toString()}`);
+  }
 }
