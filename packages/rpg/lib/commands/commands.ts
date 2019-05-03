@@ -1,10 +1,10 @@
-export class Comandos {
+import { ComandosAdmin } from './comandos-admin';
+
+export class Comandos extends ComandosAdmin {
   public static dararma(player: PlayerMp, weaponHash: string) {
     console.debug(`[COMANDOS - dararma] Dando arma ${weaponHash} para o jogador ${player.name}`);
 
     const asset = mp.joaat(weaponHash);
-
-    console.log('>>>> asset ', asset);
 
     player.giveWeapon(asset, 1000);
 

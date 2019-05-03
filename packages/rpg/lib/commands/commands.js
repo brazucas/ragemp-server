@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Comandos {
+const comandos_admin_1 = require("./comandos-admin");
+class Comandos extends comandos_admin_1.ComandosAdmin {
     static dararma(player, weaponHash) {
         console.debug(`[COMANDOS - dararma] Dando arma ${weaponHash} para o jogador ${player.name}`);
         const asset = mp.joaat(weaponHash);
-        console.log('>>>> asset ', asset);
         player.giveWeapon(asset, 1000);
         player.notify(`Arma ${weaponHash} recebida!`);
     }
