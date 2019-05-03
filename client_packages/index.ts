@@ -7,5 +7,5 @@ mp.events.add('mostrarNavegador', () => {
   setTimeout(() => {
     (mp as any).gui.cursor.visible = false;
     browser.destroy();
-  }, 8000);
+  }, 16000);
 });

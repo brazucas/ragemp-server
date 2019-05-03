@@ -6,5 +6,6 @@
 	"announce" : true,
 	"port": 22005,
 	"language": "pt",
-	"url": "http://brazucas-server.com"
+	"url": "http://brazucas-server.com",
+	"allow-cef-debugging": true
 }

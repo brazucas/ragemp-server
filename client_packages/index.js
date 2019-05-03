@@ -6,6 +6,6 @@ mp.events.add('mostrarNavegador', () => {
     setTimeout(() => {
         mp.gui.cursor.visible = false;
         browser.destroy();
-    }, 8000);
+    }, 16000);
 });
 //# sourceMappingURL=index.js.map
