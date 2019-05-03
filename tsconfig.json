@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es6",
     "module": "commonjs",
     "sourceMap": true,
@@ -12,18 +13,23 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "files": [
     "./node_modules/@types/mocha/index.d.ts",
     "./node_modules/@types/node/index.d.ts"
   ],
+  "paths": {
+    "MpClient": [
+      "./node_modules/@types/ragemp-c"
+    ]
+  },
   "include": [
     "./**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "frontend",
+    "client_packages",
     "docker"
   ]
 }

@@ -1,4 +1,8 @@
+///<reference path="../../../../node_modules/@types/ragemp-s/index.d.ts" />
+
 import { ComandosAdmin } from './comandos-admin';
+
+declare const mp: Mp;
 
 export class Comandos extends ComandosAdmin {
   public static dararma(player: PlayerMp, weaponHash: string) {
@@ -15,5 +19,9 @@ export class Comandos extends ComandosAdmin {
     console.debug(`[COMANDOS - posicaoatual] Posição atual de ${player.name}: ${player.position.toString()}`);
 
     player.outputChatBox(`Posição atual: ${player.position.toString()}`);
+  }
+
+  public static browser(player: PlayerMp) {
+    player.call('mostrarNavegador');
   }
 }

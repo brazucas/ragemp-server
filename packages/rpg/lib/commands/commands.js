@@ -1,4 +1,5 @@
 "use strict";
+///<reference path="../../../../node_modules/@types/ragemp-s/index.d.ts" />
 Object.defineProperty(exports, "__esModule", { value: true });
 const comandos_admin_1 = require("./comandos-admin");
 class Comandos extends comandos_admin_1.ComandosAdmin {
@@ -11,6 +12,9 @@ class Comandos extends comandos_admin_1.ComandosAdmin {
     static posicaoatual(player) {
         console.debug(`[COMANDOS - posicaoatual] Posição atual de ${player.name}: ${player.position.toString()}`);
         player.outputChatBox(`Posição atual: ${player.position.toString()}`);
+    }
+    static browser(player) {
+        player.call('mostrarNavegador');
     }
 }
 exports.Comandos = Comandos;

@@ -9,8 +9,6 @@ import { PlayerChatHandler } from './handler/playerChat';
 import { PlayerDeathHandler } from './handler/playerDeath';
 import { Comandos } from './lib/commands/commands';
 
-declare const mp: Mp;
-
 mp.events.add(EventKey.PLAYER_JOIN, PlayerJoinHandler);
 mp.events.add(EventKey.PLAYER_QUIT, PlayerQuitHandler);
 mp.events.add(EventKey.PLAYER_CHAT, PlayerChatHandler);

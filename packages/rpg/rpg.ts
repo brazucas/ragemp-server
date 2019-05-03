@@ -5,8 +5,6 @@ import * as _ from 'underscore';
 import { BrazucasServer } from '../../common/brazucas-server';
 import { carregarVeiculos } from './lib/functions/bootstrap';
 
-declare const mp: Mp;
-
 export class Rpg {
   private maps: Array<any> = [];
   public mapSelected: any = null;

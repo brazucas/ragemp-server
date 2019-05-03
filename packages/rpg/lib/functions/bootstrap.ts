@@ -1,3 +1,5 @@
+///<reference path="../../../../node_modules/@types/ragemp-s/index.d.ts" />
+
 import { Veiculo } from '../../../../common/database/models/Veiculo';
 import { VeiculoProvider } from '../../providers/veiculo.provider';
 
