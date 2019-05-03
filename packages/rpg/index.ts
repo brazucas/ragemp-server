@@ -22,9 +22,9 @@ mp.events.add('playerCommand', (player: PlayerMp, command: string) => {
   const arr = command.split(' ');
 
   if (Comandos[arr[0]]) {
-    const args = arr.shift();
+    const comando = arr[0];
 
-    Comandos[arr[0]](player, ...args);
+    Comandos[comando](player, ...arr.shift());
   } else {
     player.outputChatBox('!{#FF0000}Comando desconhecido');
   }
