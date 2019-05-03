@@ -7,7 +7,7 @@ class ComandosAdmin {
         }
         let playerOrigem;
         let playerDestino;
-        if (parseInt(playerOrigemHash)) {
+        if (!isNaN(parseInt(playerOrigemHash))) {
             playerOrigem = mp.players.at(playerOrigemHash);
         }
         else {
@@ -17,7 +17,7 @@ class ComandosAdmin {
                 }
             });
         }
-        if (parseInt(playerDestinoHash)) {
+        if (!isNaN(parseInt(playerDestinoHash))) {
             playerDestino = mp.players.at(playerDestinoHash);
         }
         else {
@@ -28,11 +28,11 @@ class ComandosAdmin {
             });
         }
         if (!playerOrigem) {
-            return player.outputChatBox((parseInt(playerOrigemHash))
+            return player.outputChatBox((!isNaN(parseInt(playerOrigemHash)))
                 ? `Jogador com ID ${playerOrigemHash} não encontrado.` : `Jogador com nick ${playerOrigemHash} não encontrado.`);
         }
         if (!playerDestino) {
-            return player.outputChatBox((parseInt(playerDestinoHash))
+            return player.outputChatBox((!isNaN(parseInt(playerDestinoHash)))
                 ? `Jogador com ID ${playerDestinoHash} não encontrado.` : `Jogador com nick ${playerDestinoHash} não encontrado.`);
         }
         if (playerOrigem === playerDestino) {

@@ -7,7 +7,7 @@ export class ComandosAdmin {
     let playerOrigem: PlayerMp;
     let playerDestino: PlayerMp;
 
-    if (parseInt((playerOrigemHash as string))) {
+    if (!isNaN(parseInt((playerOrigemHash as string)))) {
       playerOrigem = mp.players.at((playerOrigemHash as number));
     } else {
       mp.players.forEach((player) => {
@@ -17,7 +17,7 @@ export class ComandosAdmin {
       });
     }
 
-    if (parseInt((playerDestinoHash as string))) {
+    if (!isNaN(parseInt((playerDestinoHash as string)))) {
       playerDestino = mp.players.at((playerDestinoHash as number));
     } else {
       mp.players.forEach((player) => {
@@ -29,13 +29,13 @@ export class ComandosAdmin {
 
     if (!playerOrigem) {
       return player.outputChatBox(
-        (parseInt((playerOrigemHash as string)))
+        (!isNaN(parseInt((playerOrigemHash as string))))
           ? `Jogador com ID ${playerOrigemHash} não encontrado.` : `Jogador com nick ${playerOrigemHash} não encontrado.`);
     }
 
     if (!playerDestino) {
       return player.outputChatBox(
-        (parseInt((playerDestinoHash as string)))
+        (!isNaN(parseInt((playerDestinoHash as string))))
           ? `Jogador com ID ${playerDestinoHash} não encontrado.` : `Jogador com nick ${playerDestinoHash} não encontrado.`);
     }
 
