@@ -1,6 +1,6 @@
 export class Comandos {
-  public static darArma(player: PlayerMp, weaponHash: string) {
-    console.debug(`[COMANDOS - darArma] Dando arma ${weaponHash} para o jogador ${player.name}`);
+  public static dararma(player: PlayerMp, weaponHash: string) {
+    console.debug(`[COMANDOS - dararma] Dando arma ${weaponHash} para o jogador ${player.name}`);
 
     const asset = mp.joaat(weaponHash);
 

@@ -4,4 +4,6 @@ export function PlayerDeathHandler (player: PlayerMp, reason: number, killer: Pl
   console.debug(`[MORTE] ${killer.name} matou ${player.name} (${reason}) (${razaoMorte(reason)})`);
 
   mp.players.broadcast(`[MORTE] ${killer.name} matou ${player.name} (${razaoMorte(reason)})`);
+
+  (player as any).resurrect();
 }
