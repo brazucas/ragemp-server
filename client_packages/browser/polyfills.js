@@ -5715,8 +5715,10 @@ Zone.__load_patch('PromiseRejectionEvent', function (global, Zone) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zone.js/dist/zone */ "./node_modules/zone.js/dist/zone.js");
-/* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _zone_flags_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./zone-flags.ts */ "./src/zone-flags.ts");
+/* harmony import */ var _zone_flags_ts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_zone_flags_ts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! zone.js/dist/zone */ "./node_modules/zone.js/dist/zone.js");
+/* harmony import */ var zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(zone_js_dist_zone__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.
@@ -5766,6 +5768,7 @@ __webpack_require__.r(__webpack_exports__);
  *  (window as any).__Zone_enable_cross_context_check = true;
  *
  */
+
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
@@ -5773,6 +5776,22 @@ __webpack_require__.r(__webpack_exports__);
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+
+/***/ }),
+
+/***/ "./src/zone-flags.ts":
+/*!***************************!*\
+  !*** ./src/zone-flags.ts ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Prevents Angular change detection from
+ * running with certain Web Component callbacks
+ */
+window.__Zone_disable_customElements = true;
 
 
 /***/ }),
