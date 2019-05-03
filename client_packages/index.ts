@@ -1,1 +1,1 @@
-require('../browser/index.js');
+require('browser/index.js');
