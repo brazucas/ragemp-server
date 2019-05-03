@@ -9,3 +9,115 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+@mixin center($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+@mixin animation-name($aniname) {
+  -o-animation-name: $aniname;
+  -ms-animation-name: $aniname;
+  -webkit-animation-name: $aniname;
+  animation-name: $aniname;
+}
+
+@mixin animation-duration($duration) {
+  -o-animation-duration: $duration;
+  -ms-animation-duration: $duration;
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+
+@mixin animation-duration($duration) {
+  -o-animation-duration: $duration;
+  -ms-animation-duration: $duration;
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+
+@mixin animation-timing-function($timing) {
+  -o-animation-timing-function: $timing;
+  -ms-animation-timing-function: $timing;
+  -webkit-animation-timing-function: $timing;
+  animation-timing-function: $timing;
+}
+
+@mixin animation-iteration-count($count) {
+  -o-animation-iteration-count: $count;
+  -ms-animation-iteration-count: $count;
+  -webkit-animation-iteration-count: $count;
+  animation-iteration-count: $count;
+}
+
+.go-up {
+  @include animation-name(go-up);
+  @include animation-iteration-count(1);
+  @include animation-timing-function(cubic-bezier(.55, 0, .1, 1));
+  @include animation-duration(0.3s);
+
+  &.delay-1 {
+    @include animation-duration(0.5s);
+  }
+
+  &.delay-2 {
+    @include animation-duration(0.7s);
+  }
+
+  &.delay-3 {
+    @include animation-duration(0.9s);
+  }
+
+  &.delay-4 {
+    @include animation-duration(1.1s);
+  }
+
+  &.delay-5 {
+    @include animation-duration(1.3s);
+  }
+
+  &.delay-6 {
+    @include animation-duration(1.5s);
+  }
+
+  &.delay-7 {
+    @include animation-duration(1.7s);
+  }
+
+  &.delay-8 {
+    @include animation-duration(1.9s);
+  }
+
+  &.delay-9 {
+    @include animation-duration(2.1s);
+  }
+
+  &.delay-10 {
+    @include animation-duration(2.3s);
+  }
+}
+
+@keyframes go-up {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
