@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class ComandosAdmin {
     static tlt(player, playerOrigemHash, playerDestinoHash) {
+        if (!playerOrigemHash || !playerDestinoHash) {
+            player.outputChatBox('!{FF0000}[SINTAXE] /tlt [id/nick] [id/nick]');
+        }
         let playerOrigem;
         let playerDestino;
         if (typeof playerOrigemHash === 'number') {
