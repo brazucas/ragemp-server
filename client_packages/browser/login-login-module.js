@@ -840,7 +840,7 @@ exports.toSubscriber = toSubscriber;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"float\" [formGroup]=\"formGroup\" (submit)=\"login()\">\n  <div class=\"container go-up delay-1\">\n    <div class=\"header\">\n      <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n\n      <ion-icon name=\"close\" color=\"primary\" size=\"large\" (click)=\"fechar()\"></ion-icon>\n    </div>\n\n    <ng-content></ng-content>\n  </div>\n</form>\n"
+module.exports = "<form class=\"float\">\n  <div class=\"container go-up delay-1\">\n    <div class=\"header\">\n      <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n\n      <ion-icon name=\"close\" color=\"primary\" size=\"large\" (click)=\"fechar()\"></ion-icon>\n    </div>\n\n    <ng-content></ng-content>\n  </div>\n</form>\n"
 
 /***/ }),
 
@@ -873,6 +873,9 @@ var PaginaComponent = /** @class */ (function () {
     function PaginaComponent() {
     }
     PaginaComponent.prototype.ngOnInit = function () { };
+    PaginaComponent.prototype.fechar = function () {
+        browser.destroy();
+    };
     PaginaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-pagina',
@@ -949,7 +952,7 @@ var LoginPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content>\n    <app-pagina>\n        <div class=\"titulo\">Bem vindo de volta, {{ player.name }}!</div>\n\n        <ion-item>\n            <ion-label position=\"floating\">Nick</ion-label>\n            <ion-input formControlName=\"usuario\" type=\"text\" disabled></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label position=\"floating\">Senha</ion-label>\n            <ion-input #senha formControlName=\"senha\" type=\"password\"></ion-input>\n        </ion-item>\n\n        <div class=\"acoes\">\n            <button type=\"submit\" [disabled]=\"!formGroup.valid\" class=\"btn-enviar\">Login</button>\n\n            <a routerLink=\"esqueci-senha\">Esqueceu sua senha?</a>\n        </div>\n    </app-pagina>\n</ion-content>\n"
+module.exports = "<ion-content>\n    <app-pagina [formGroup]=\"formGroup\" (submit)=\"login()\">\n        <div class=\"titulo\">Bem vindo de volta, {{ player.name }}!</div>\n\n        <ion-item>\n            <ion-label position=\"floating\">Nick</ion-label>\n            <ion-input formControlName=\"usuario\" type=\"text\"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label position=\"floating\">Senha</ion-label>\n            <ion-input #senha formControlName=\"senha\" type=\"password\"></ion-input>\n        </ion-item>\n\n        <div class=\"acoes\">\n            <button type=\"submit\" [disabled]=\"!formGroup.valid\" class=\"btn-enviar\">Login</button>\n\n            <a routerLink=\"esqueci-senha\">Esqueceu sua senha?</a>\n        </div>\n    </app-pagina>\n</ion-content>\n"
 
 /***/ }),
 
@@ -992,7 +995,10 @@ var LoginPage = /** @class */ (function () {
         this.toastCtrl = toastCtrl;
         this.loginService = loginService;
         this.formGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
-            usuario: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', {
+            usuario: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]({
+                value: '',
+                disabled: true,
+            }, {
                 validators: [
                     _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(40),
                     _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
@@ -1005,9 +1011,6 @@ var LoginPage = /** @class */ (function () {
             }),
         });
     }
-    LoginPage.prototype.fechar = function () {
-        browser.destroy();
-    };
     LoginPage.prototype.ngOnInit = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {

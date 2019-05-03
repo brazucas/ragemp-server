@@ -1,10 +1,10 @@
 <ion-content>
-    <app-pagina>
+    <app-pagina [formGroup]="formGroup" (submit)="login()">
         <div class="titulo">Bem vindo de volta, {{ player.name }}!</div>
 
         <ion-item>
             <ion-label position="floating">Nick</ion-label>
-            <ion-input formControlName="usuario" type="text" disabled></ion-input>
+            <ion-input formControlName="usuario" type="text"></ion-input>
         </ion-item>
 
         <ion-item>

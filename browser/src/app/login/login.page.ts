@@ -20,7 +20,10 @@ export class LoginPage implements OnInit {
   public player: PlayerMp | any;
 
   public formGroup = new FormGroup({
-    usuario: new FormControl('', {
+    usuario: new FormControl({
+      value: '',
+      disabled: true,
+    }, {
       validators: [
         Validators.maxLength(40),
         Validators.required,
@@ -36,10 +39,6 @@ export class LoginPage implements OnInit {
   constructor(public toastCtrl: ToastController,
               public loginService: LoginService) {
 
-  }
-
-  public fechar() {
-    browser.destroy();
   }
 
   async ngOnInit() {
