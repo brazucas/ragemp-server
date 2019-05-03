@@ -1,7 +1,7 @@
 export class ComandosAdmin {
   public static tlt(player: PlayerMp, playerOrigemHash: number | string, playerDestinoHash: number | string) {
     if (!playerOrigemHash || !playerDestinoHash) {
-      player.outputChatBox('!{FF0000}[SINTAXE] /tlt [id/nick] [id/nick]');
+      return player.outputChatBox('!{FF0000}[SINTAXE] /tlt [id/nick] [id/nick]');
     }
 
     let playerOrigem: PlayerMp;
