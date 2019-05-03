@@ -12,28 +12,6 @@
   }
 }
 
-.float {
-  @include center(true, true);
-  width: 100%;
-}
-
-.container {
-  width: 50%;
-  margin: 0 auto;
-  background-color: #383a3e;
-  box-shadow: 0 9px 20px rgba(0, 0, 0, 0.3);
-}
-
-.header {
-  border-bottom: 1px solid #86888f;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-
-}
-
 .titulo {
   padding: 10px 0;
   font-size: 20px;

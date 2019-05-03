@@ -1,0 +1,11 @@
+<form class="float" [formGroup]="formGroup" (submit)="login()">
+  <div class="container go-up delay-1">
+    <div class="header">
+      <img src="assets/logotipo_full_web.png" alt="" width="120px"/>
+
+      <ion-icon name="close" color="primary" size="large" (click)="fechar()"></ion-icon>
+    </div>
+
+    <ng-content></ng-content>
+  </div>
+</form>

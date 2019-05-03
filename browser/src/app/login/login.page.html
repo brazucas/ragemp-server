@@ -1,29 +1,21 @@
 <ion-content>
-    <form class="float" [formGroup]="formGroup" (submit)="login()">
-        <div class="container go-up delay-1">
-            <div class="header">
-                <img src="assets/logotipo_full_web.png" alt="" width="120px"/>
+    <app-pagina>
+        <div class="titulo">Bem vindo de volta, {{ player.name }}!</div>
 
-                <ion-icon name="close" color="primary" size="large" (click)="fechar()"></ion-icon>
-            </div>
+        <ion-item>
+            <ion-label position="floating">Nick</ion-label>
+            <ion-input formControlName="usuario" type="text" disabled></ion-input>
+        </ion-item>
 
-            <div class="titulo">Bem vindo de volta, {{ player.name }}!</div>
+        <ion-item>
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input #senha formControlName="senha" type="password"></ion-input>
+        </ion-item>
 
-            <ion-item>
-                <ion-label position="floating">Nick</ion-label>
-                <ion-input formControlName="usuario" type="text" disabled></ion-input>
-            </ion-item>
+        <div class="acoes">
+            <button type="submit" [disabled]="!formGroup.valid" class="btn-enviar">Login</button>
 
-            <ion-item>
-                <ion-label position="floating">Senha</ion-label>
-                <ion-input #senha formControlName="senha" type="password"></ion-input>
-            </ion-item>
-
-            <div class="acoes">
-                <button type="submit" [disabled]="!formGroup.valid" class="btn-enviar">Login</button>
-
-                <a routerLink="esqueci-senha">Esqueceu sua senha?</a>
-            </div>
+            <a routerLink="esqueci-senha">Esqueceu sua senha?</a>
         </div>
-    </form>
+    </app-pagina>
 </ion-content>
