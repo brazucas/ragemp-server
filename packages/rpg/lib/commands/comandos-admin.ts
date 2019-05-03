@@ -7,21 +7,21 @@ export class ComandosAdmin {
     let playerOrigem: PlayerMp;
     let playerDestino: PlayerMp;
 
-    if (typeof playerOrigemHash === 'number') {
-      playerOrigem = mp.players.at(playerOrigemHash);
+    if (parseInt((playerOrigemHash as string))) {
+      playerOrigem = mp.players.at((playerOrigemHash as number));
     } else {
       mp.players.forEach((player) => {
-        if (player.name.toLowerCase() === playerOrigemHash.toLowerCase()) {
+        if (player.name.toLowerCase() === (playerOrigemHash as string).toLowerCase()) {
           playerOrigem = player;
         }
       });
     }
 
-    if (typeof playerDestinoHash === 'number') {
-      playerDestino = mp.players.at(playerDestinoHash);
+    if (parseInt((playerDestinoHash as string))) {
+      playerDestino = mp.players.at((playerDestinoHash as number));
     } else {
       mp.players.forEach((player) => {
-        if (player.name.toLowerCase() === playerDestinoHash.toLowerCase()) {
+        if (player.name.toLowerCase() === (playerDestinoHash as string).toLowerCase()) {
           playerDestino = player;
         }
       });
@@ -29,13 +29,13 @@ export class ComandosAdmin {
 
     if (!playerOrigem) {
       return player.outputChatBox(
-        (typeof player === 'number')
+        (parseInt((playerOrigemHash as string)))
           ? `Jogador com ID ${playerOrigemHash} não encontrado.` : `Jogador com nick ${playerOrigemHash} não encontrado.`);
     }
 
     if (!playerDestino) {
       return player.outputChatBox(
-        (typeof player === 'number')
+        (parseInt((playerDestinoHash as string)))
           ? `Jogador com ID ${playerDestinoHash} não encontrado.` : `Jogador com nick ${playerDestinoHash} não encontrado.`);
     }
 
