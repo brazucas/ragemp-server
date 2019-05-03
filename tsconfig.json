@@ -19,17 +19,12 @@
     "./node_modules/@types/mocha/index.d.ts",
     "./node_modules/@types/node/index.d.ts"
   ],
-  "paths": {
-    "MpClient": [
-      "./node_modules/@types/ragemp-c"
-    ]
-  },
   "include": [
     "./**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "client_packages",
+    "client_packages/brazucas-browser",
     "docker"
   ]
 }

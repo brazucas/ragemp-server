@@ -2,8 +2,6 @@
 
 import { ComandosAdmin } from './comandos-admin';
 
-declare const mp: Mp;
-
 export class Comandos extends ComandosAdmin {
   public static dararma(player: PlayerMp, weaponHash: string) {
     console.debug(`[COMANDOS - dararma] Dando arma ${weaponHash} para o jogador ${player.name}`);
