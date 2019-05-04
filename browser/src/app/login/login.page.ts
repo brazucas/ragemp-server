@@ -42,6 +42,7 @@ export class LoginPage implements OnInit {
 
   async ngOnInit() {
     console.log('>>>>> mp ', mp);
+    console.log(mp);
     this.player = playerMock;
     // if (typeof mp !== 'undefined') {
     //   this.player = mp.players.local;
