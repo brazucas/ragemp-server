@@ -2,9 +2,9 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { playerMock } from '../mock';
 import { IonInput, ToastController } from '@ionic/angular';
 import { LoginService } from '../services/login.service';
+import { RagempService } from '../services/ragemp.service';
 
 declare let mp: Mp;
 declare let browser: BrowserMp;
@@ -16,8 +16,6 @@ declare let browser: BrowserMp;
 })
 export class LoginPage implements OnInit {
   @ViewChild('senha') campoSenha: IonInput;
-
-  public player: PlayerMp | any;
 
   public formGroup = new FormGroup({
     usuario: new FormControl({
@@ -37,18 +35,14 @@ export class LoginPage implements OnInit {
   });
 
   constructor(public toastCtrl: ToastController,
-              public loginService: LoginService) {
+              public loginService: LoginService,
+              public ragemp: RagempService) {
+    this.ragemp.playerName.subscribe((playerName) => {
+      this.formGroup.controls.usuario.patchValue(playerName);
+    })
   }
 
   async ngOnInit() {
-    if (typeof mp !== 'undefined') {
-      this.player = mp.players.local;
-    } else {
-      this.player = playerMock;
-    }
-
-    this.formGroup.controls.usuario.patchValue(this.player.name);
-
     this.campoSenha.setFocus();
   }
 

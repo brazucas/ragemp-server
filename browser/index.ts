@@ -12,6 +12,7 @@ mp.events.add('mostrarNavegador', () => {
     browser = null;
   } else {
     browser = mp.browsers.new('package://browser/index.html#/login');
+    browser.execute(`window.my.ragemp.setPlayerName('${mp.players.local.name}')`);
 
     mp.gui.cursor.visible = true;
     mp.gui.chat.push('Mostrando navegador');
