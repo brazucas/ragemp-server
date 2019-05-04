@@ -1,4 +1,4 @@
-window["browser"] = null;
+let browser: BrowserMp;
 let cursorVisible = false;
 
 mp.events.add(RageEnums.EventKey.PLAYER_JOIN, () => {
@@ -7,11 +7,11 @@ mp.events.add(RageEnums.EventKey.PLAYER_JOIN, () => {
 });
 
 mp.events.add('mostrarNavegador', () => {
-  if (window["browser"]) {
-    window["browser"].destroy();
-    window["browser"] = null;
+  if (browser) {
+    browser.destroy();
+    browser = null;
   } else {
-    window["browser"] = mp.browsers.new('package://browser/index.html#/login');
+    browser = mp.browsers.new('package://browser/index.html#/login');
 
     mp.gui.cursor.visible = true;
     mp.gui.chat.push('Mostrando navegador');

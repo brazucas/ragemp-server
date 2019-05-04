@@ -874,7 +874,7 @@ var PaginaComponent = /** @class */ (function () {
     }
     PaginaComponent.prototype.ngOnInit = function () { };
     PaginaComponent.prototype.fechar = function () {
-        browser.destroy();
+        mp.browsers.forEach(function (browser) { return browser.destroy(); });
     };
     PaginaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
