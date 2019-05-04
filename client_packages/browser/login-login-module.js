@@ -1014,6 +1014,7 @@ var LoginPage = /** @class */ (function () {
     LoginPage.prototype.ngOnInit = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                console.log('>>>>> mp ', mp);
                 this.player = _mock__WEBPACK_IMPORTED_MODULE_3__["playerMock"];
                 return [2 /*return*/];
             });
