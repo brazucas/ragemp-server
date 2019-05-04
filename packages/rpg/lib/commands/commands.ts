@@ -22,4 +22,8 @@ export class Comandos extends ComandosAdmin {
   public static browser(player: PlayerMp) {
     player.call('mostrarNavegador', []);
   }
+
+  public static cursor(player: PlayerMp) {
+    player.call('cursor', []);
+  }
 }

@@ -1,5 +1,10 @@
 let browser: BrowserMp;
 
+mp.events.add(RageEnums.EventKey.PLAYER_JOIN, () => {
+  mp.gui.cursor.visible = false;
+  mp.browsers.forEach((browser) => browser.destroy());
+});
+
 mp.events.add('mostrarNavegador', () => {
   browser = mp.browsers.new('package://browser/index.html#/login');
 
@@ -7,25 +12,10 @@ mp.events.add('mostrarNavegador', () => {
   mp.gui.chat.push('Mostrando navegador');
 });
 
-mp.events.add(RageEnums.EventKey.PLAYER_COMMAND, (player: PlayerMp, command: string) => {
-  console.debug(`[COMANDO] ${player.name} enviou o comando ${command}`);
-
-  const arr = command.split(' ');
-
-  if (Comandos[arr[0]]) {
-    const comando = arr[0];
-
-    arr.shift();
-
-    Comandos[comando](player, ...arr);
-  } else {
-    mp.gui.chat.push('!{#FF0000}Comando desconhecido');
-  }
+mp.events.add('cursor', () => {
+  mp.gui.cursor.visible = !mp.gui.cursor.visible;
 });
 
-const Comandos = {
-  cursor: (player: PlayerMp) => {
-    browser.destroy();
-    mp.gui.cursor.visible = false;
-  }
-};
+mp.events.add('cursor2', () => {
+  mp.gui.cursor.visible = !mp.gui.cursor.visible;
+});

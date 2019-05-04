@@ -1,24 +1,16 @@
 var browser;
+mp.events.add("playerJoin" /* PLAYER_JOIN */, function () {
+    mp.gui.cursor.visible = false;
+    mp.browsers.forEach(function (browser) { return browser.destroy(); });
+});
 mp.events.add('mostrarNavegador', function () {
     browser = mp.browsers["new"]('package://browser/index.html#/login');
     mp.gui.cursor.visible = true;
     mp.gui.chat.push('Mostrando navegador');
 });
-mp.events.add("playerCommand" /* PLAYER_COMMAND */, function (player, command) {
-    console.debug("[COMANDO] " + player.name + " enviou o comando " + command);
-    var arr = command.split(' ');
-    if (Comandos[arr[0]]) {
-        var comando = arr[0];
-        arr.shift();
-        Comandos[comando].apply(Comandos, [player].concat(arr));
-    }
-    else {
-        mp.gui.chat.push('!{#FF0000}Comando desconhecido');
-    }
+mp.events.add('cursor', function () {
+    mp.gui.cursor.visible = !mp.gui.cursor.visible;
 });
-var Comandos = {
-    cursor: function (player) {
-        browser.destroy();
-        mp.gui.cursor.visible = false;
-    }
-};
+mp.events.add('cursor2', function () {
+    mp.gui.cursor.visible = !mp.gui.cursor.visible;
+});

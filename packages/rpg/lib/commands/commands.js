@@ -16,6 +16,9 @@ class Comandos extends comandos_admin_1.ComandosAdmin {
     static browser(player) {
         player.call('mostrarNavegador', []);
     }
+    static cursor(player) {
+        player.call('cursor', []);
+    }
 }
 exports.Comandos = Comandos;
 //# sourceMappingURL=commands.js.map
