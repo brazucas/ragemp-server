@@ -5,9 +5,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { playerMock } from '../mock';
 import { IonInput, ToastController } from '@ionic/angular';
 import { LoginService } from '../services/login.service';
+import { browser } from '../../../index';
 
 declare let mp: Mp;
-declare let browser: BrowserMp;
 
 @Component({
   selector: 'app-login',
