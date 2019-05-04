@@ -9,7 +9,7 @@ mp.events.add(RageEnums.EventKey.PLAYER_JOIN, () => {
 mp.events.add('mostrarNavegador', () => {
   if (browser) {
     browser.destroy();
-    browser = undefined;
+    browser = null;
   } else {
     browser = mp.browsers.new('package://browser/index.html#/login');
 

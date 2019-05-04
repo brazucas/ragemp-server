@@ -8,7 +8,7 @@ mp.events.add("playerJoin" /* PLAYER_JOIN */, function () {
 mp.events.add('mostrarNavegador', function () {
     if (exports.browser) {
         exports.browser.destroy();
-        exports.browser = undefined;
+        exports.browser = null;
     }
     else {
         exports.browser = mp.browsers["new"]('package://browser/index.html#/login');
