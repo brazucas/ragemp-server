@@ -1,39 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["login-login-module"],{
 
-/***/ "./index.ts":
-/*!******************!*\
-  !*** ./index.ts ***!
-  \******************/
-/*! exports provided: browser */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "browser", function() { return browser; });
-var browser;
-var cursorVisible = false;
-mp.events.add("playerJoin" /* PLAYER_JOIN */, function () {
-    mp.gui.cursor.visible = false;
-    mp.browsers.forEach(function (browser) { return browser.destroy(); });
-});
-mp.events.add('mostrarNavegador', function () {
-    if (browser) {
-        browser.destroy();
-        browser = null;
-    }
-    else {
-        browser = mp.browsers.new('package://browser/index.html#/login');
-        mp.gui.cursor.visible = true;
-        mp.gui.chat.push('Mostrando navegador');
-    }
-});
-mp.events.add('cursor', function () {
-    mp.gui.cursor.visible = cursorVisible = !cursorVisible;
-});
-
-
-/***/ }),
-
 /***/ "./node_modules/rxjs/internal/Observable.js":
 /*!**************************************************!*\
   !*** ./node_modules/rxjs/internal/Observable.js ***!
@@ -901,8 +867,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginaComponent", function() { return PaginaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../index */ "./index.ts");
-
 
 
 var PaginaComponent = /** @class */ (function () {
@@ -910,7 +874,7 @@ var PaginaComponent = /** @class */ (function () {
     }
     PaginaComponent.prototype.ngOnInit = function () { };
     PaginaComponent.prototype.fechar = function () {
-        _index__WEBPACK_IMPORTED_MODULE_2__["browser"].destroy();
+        browser.destroy();
     };
     PaginaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1019,9 +983,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mock__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mock */ "./src/app/mock.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _services_login_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/login.service */ "./src/app/services/login.service.ts");
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../index */ "./index.ts");
 /// <reference path="../../../node_modules/@types/ragemp-c/index.d.ts" />
-
 
 
 
@@ -1083,7 +1045,7 @@ var LoginPage = /** @class */ (function () {
                     case 2:
                         toast = _a.sent();
                         toast.present();
-                        _index__WEBPACK_IMPORTED_MODULE_6__["browser"].destroy();
+                        browser.destroy();
                         return [3 /*break*/, 5];
                     case 3:
                         err_1 = _a.sent();
@@ -1096,7 +1058,7 @@ var LoginPage = /** @class */ (function () {
                     case 4:
                         toast = _a.sent();
                         toast.present();
-                        _index__WEBPACK_IMPORTED_MODULE_6__["browser"].destroy();
+                        browser.destroy();
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }

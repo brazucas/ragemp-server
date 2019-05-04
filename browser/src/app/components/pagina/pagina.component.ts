@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { browser } from '../../../../index';
+
+declare let browser: BrowserMp;
 
 @Component({
   selector: 'app-pagina',
