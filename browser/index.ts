@@ -1,4 +1,5 @@
 let browser: BrowserMp;
+let cursorVisible = false;
 
 mp.events.add(RageEnums.EventKey.PLAYER_JOIN, () => {
   mp.gui.cursor.visible = false;
@@ -6,16 +7,16 @@ mp.events.add(RageEnums.EventKey.PLAYER_JOIN, () => {
 });
 
 mp.events.add('mostrarNavegador', () => {
-  browser = mp.browsers.new('package://browser/index.html#/login');
+  if (browser) {
+    browser.destroy();
+  } else {
+    browser = mp.browsers.new('package://browser/index.html#/login');
 
-  mp.gui.cursor.visible = true;
-  mp.gui.chat.push('Mostrando navegador');
+    mp.gui.cursor.visible = true;
+    mp.gui.chat.push('Mostrando navegador');
+  }
 });
 
 mp.events.add('cursor', () => {
-  mp.gui.cursor.visible = !mp.gui.cursor.visible;
-});
-
-mp.events.add('cursor2', () => {
-  mp.gui.cursor.visible = !mp.gui.cursor.visible;
+  mp.gui.cursor.visible = cursorVisible = !cursorVisible;
 });
