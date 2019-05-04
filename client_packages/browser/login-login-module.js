@@ -840,7 +840,7 @@ exports.toSubscriber = toSubscriber;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"float\">\n  <div class=\"container go-up delay-1\">\n    <div class=\"header\">\n      <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n\n      <ion-icon name=\"close\" color=\"primary\" size=\"large\" (click)=\"fechar()\"></ion-icon>\n    </div>\n\n    <ng-content></ng-content>\n  </div>\n</form>\n"
+module.exports = "<form class=\"float\">\n  <div class=\"container go-up delay-1\">\n    <div class=\"header\">\n      <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n\n      <ion-icon name=\"close\" color=\"primary\" size=\"large\" (click)=\"fechar()\"></ion-icon>\n      <a (click)=\"fechar()\">Fechar</a>\n    </div>\n\n    <ng-content></ng-content>\n  </div>\n</form>\n"
 
 /***/ }),
 
@@ -1014,14 +1014,7 @@ var LoginPage = /** @class */ (function () {
     LoginPage.prototype.ngOnInit = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                if (typeof mp !== 'undefined') {
-                    this.player = mp.players.local;
-                }
-                else {
-                    this.player = _mock__WEBPACK_IMPORTED_MODULE_3__["playerMock"];
-                }
-                this.formGroup.controls.usuario.patchValue(this.player.name);
-                this.campoSenha.setFocus();
+                this.player = _mock__WEBPACK_IMPORTED_MODULE_3__["playerMock"];
                 return [2 /*return*/];
             });
         });
