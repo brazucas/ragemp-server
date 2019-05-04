@@ -1,3 +1,5 @@
+import { AutenticacaoResultado, DadosLogin } from './src/interfaces/login.interface';
+
 let browser: BrowserMp;
 let cursorVisible = false;
 
@@ -21,4 +23,17 @@ mp.events.add('mostrarNavegador', () => {
 
 mp.events.add('cursor', () => {
   mp.gui.cursor.visible = cursorVisible = !cursorVisible;
+});
+
+mp.events.add('FecharBrowser', () => {
+  browser.destroy();
+  browser = null;
+});
+
+mp.events.add('AutenticarJogador', (dados: DadosLogin) => {
+  mp.events.callRemote('AutenticarJogador', dados);
+});
+
+mp.events.add('AutenticacaoResultado', (resultado: AutenticacaoResultado) => {
+  browser.execute(`window.my.login.autenticacaoResultado(${resultado.autenticado}, ${resultado.credenciaisInvalidas})`);
 });

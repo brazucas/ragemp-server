@@ -6,8 +6,7 @@ import { IonInput, ToastController } from '@ionic/angular';
 import { LoginService } from '../services/login.service';
 import { RagempService } from '../services/ragemp.service';
 
-declare let mp: Mp;
-declare let browser: BrowserMp;
+declare let mp: any;
 
 @Component({
   selector: 'app-login',
@@ -60,7 +59,7 @@ export class LoginPage implements OnInit {
 
       toast.present();
 
-      browser.destroy();
+      mp.trigger('FecharBrowser');
     } catch (err) {
       const toast = await this.toastCtrl.create({
         message: err.mensagem || 'Um erro ocorreu ao autenticar',
@@ -70,7 +69,7 @@ export class LoginPage implements OnInit {
       });
       toast.present();
 
-      browser.destroy();
+      mp.trigger('FecharBrowser');;
     }
   }
 

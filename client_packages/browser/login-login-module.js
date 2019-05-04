@@ -1201,7 +1201,7 @@ var PaginaComponent = /** @class */ (function () {
     }
     PaginaComponent.prototype.ngOnInit = function () { };
     PaginaComponent.prototype.fechar = function () {
-        mp.browsers.forEach(function (browser) { return browser.destroy(); });
+        mp.trigger('FecharBrowser');
     };
     PaginaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1370,7 +1370,7 @@ var LoginPage = /** @class */ (function () {
                     case 2:
                         toast = _a.sent();
                         toast.present();
-                        browser.destroy();
+                        mp.trigger('FecharBrowser');
                         return [3 /*break*/, 5];
                     case 3:
                         err_1 = _a.sent();
@@ -1383,7 +1383,8 @@ var LoginPage = /** @class */ (function () {
                     case 4:
                         toast = _a.sent();
                         toast.present();
-                        browser.destroy();
+                        mp.trigger('FecharBrowser');
+                        ;
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -1430,20 +1431,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var LoginService = /** @class */ (function () {
     function LoginService() {
+        if (!window) {
+            window = {};
+        }
+        window.my = window || {};
+        window.login = window.ragemp || {};
+        window.login.autenticacaoResultado = this.autenticacaoResultado.bind(this);
     }
     LoginService.prototype.login = function (dados) {
+        var _this = this;
         return new rxjs_internal_Observable__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
+            _this.loginObserver = observer;
             if (typeof mp !== 'undefined') {
-                mp.events.add('AutenticacaoResultado', function (data) {
-                    if (data.autenticado) {
-                        observer.next(data);
-                        observer.complete();
-                    }
-                    else {
-                        observer.error(data);
-                    }
-                });
-                mp.events.callRemote('AutenticarJogador', dados);
+                mp.trigger('AutenticarJogador', dados);
             }
             else {
                 observer.next({
@@ -1452,6 +1452,15 @@ var LoginService = /** @class */ (function () {
                 observer.complete();
             }
         });
+    };
+    LoginService.prototype.autenticacaoResultado = function (autenticado, credenciaisInvalidas) {
+        if (autenticado) {
+            this.loginObserver.next({ autenticado: autenticado });
+            this.loginObserver.complete();
+        }
+        else {
+            this.loginObserver.error({ autenticado: false, credenciaisInvalidas: credenciaisInvalidas });
+        }
     };
     LoginService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

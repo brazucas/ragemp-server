@@ -1,6 +1,6 @@
 export interface AutenticacaoResultado {
   autenticado: boolean,
-  mensagem?: string,
+  credenciaisInvalidas?: boolean,
 }
 
 export interface DadosLogin {

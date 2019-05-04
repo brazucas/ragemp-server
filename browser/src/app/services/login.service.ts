@@ -1,31 +1,32 @@
 import { Injectable } from '@angular/core';
 import { AutenticacaoResultado, DadosLogin } from '../../interfaces/login.interface';
 import { Observable } from 'rxjs/internal/Observable';
+import { Observer } from 'rxjs/internal/types';
 
-declare let mp: Mp;
-declare let browser: BrowserMp;
+declare let mp: any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  public loginObserver: Observer<AutenticacaoResultado>;
 
   constructor() {
+    if (!window) {
+      (window as any) = {};
+    }
+
+    (window as any).my = window || {};
+    (window as any).login = (window as any).ragemp || {};
+    (window as any).login.autenticacaoResultado = this.autenticacaoResultado.bind(this);
   }
 
   public login(dados: DadosLogin): Observable<AutenticacaoResultado> {
     return new Observable((observer) => {
-      if (typeof mp !== 'undefined') {
-        mp.events.add('AutenticacaoResultado', (data: AutenticacaoResultado) => {
-          if (data.autenticado) {
-            observer.next(data);
-            observer.complete();
-          } else {
-            observer.error(data);
-          }
-        });
+      this.loginObserver = observer;
 
-        mp.events.callRemote('AutenticarJogador', dados);
+      if (typeof mp !== 'undefined') {
+        mp.trigger('AutenticarJogador', dados);
       } else {
         observer.next({
           autenticado: true,
@@ -33,5 +34,14 @@ export class LoginService {
         observer.complete();
       }
     });
+  }
+
+  public autenticacaoResultado(autenticado: boolean, credenciaisInvalidas: boolean) {
+    if (autenticado) {
+      this.loginObserver.next({autenticado: autenticado});
+      this.loginObserver.complete();
+    } else {
+      this.loginObserver.error({autenticado: false, credenciaisInvalidas: credenciaisInvalidas});
+    }
   }
 }

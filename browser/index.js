@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var browser;
 var cursorVisible = false;
 mp.events.add("playerJoin" /* PLAYER_JOIN */, function () {
@@ -18,4 +20,14 @@ mp.events.add('mostrarNavegador', function () {
 });
 mp.events.add('cursor', function () {
     mp.gui.cursor.visible = cursorVisible = !cursorVisible;
+});
+mp.events.add('FecharBrowser', function () {
+    browser.destroy();
+    browser = null;
+});
+mp.events.add('AutenticarJogador', function (dados) {
+    mp.events.callRemote('AutenticarJogador', dados);
+});
+mp.events.add('AutenticacaoResultado', function (resultado) {
+    browser.execute("window.my.login.autenticacaoResultado(" + resultado.autenticado + ", " + resultado.credenciaisInvalidas + ")");
 });

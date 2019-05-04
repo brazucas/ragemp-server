@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+declare let mp: any;
+
 @Component({
   selector: 'app-pagina',
   templateUrl: './pagina.component.html',
@@ -12,6 +14,6 @@ export class PaginaComponent implements OnInit {
   ngOnInit() {}
 
   public fechar() {
-    mp.browsers.forEach((browser) => browser.destroy());
+    mp.trigger('FecharBrowser');
   }
 }

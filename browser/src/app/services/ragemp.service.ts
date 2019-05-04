@@ -11,7 +11,7 @@ export class RagempService {
     if (!window) {
       (window as any) = {};
     }
-    
+
     (window as any).my = window || {};
     (window as any).ragemp = (window as any).ragemp || {};
     (window as any).ragemp.setPlayerName = this.setPlayerName.bind(this);
