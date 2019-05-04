@@ -41,18 +41,15 @@ export class LoginPage implements OnInit {
   }
 
   async ngOnInit() {
-    console.log('>>>>> mp ', mp);
-    console.log(mp);
-    this.player = playerMock;
-    // if (typeof mp !== 'undefined') {
-    //   this.player = mp.players.local;
-    // } else {
-    //   this.player = playerMock;
-    // }
-    //
-    // this.formGroup.controls.usuario.patchValue(this.player.name);
-    //
-    // this.campoSenha.setFocus();
+    if (typeof mp !== 'undefined') {
+      this.player = mp.players.local;
+    } else {
+      this.player = playerMock;
+    }
+
+    this.formGroup.controls.usuario.patchValue(this.player.name);
+
+    this.campoSenha.setFocus();
   }
 
   public async login() {

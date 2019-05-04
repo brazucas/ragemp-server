@@ -1014,9 +1014,14 @@ var LoginPage = /** @class */ (function () {
     LoginPage.prototype.ngOnInit = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                console.log('>>>>> mp ', mp);
-                console.log(mp);
-                this.player = _mock__WEBPACK_IMPORTED_MODULE_3__["playerMock"];
+                if (typeof mp !== 'undefined') {
+                    this.player = mp.players.local;
+                }
+                else {
+                    this.player = _mock__WEBPACK_IMPORTED_MODULE_3__["playerMock"];
+                }
+                this.formGroup.controls.usuario.patchValue(this.player.name);
+                this.campoSenha.setFocus();
                 return [2 /*return*/];
             });
         });
