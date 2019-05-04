@@ -38,19 +38,19 @@ export class LoginPage implements OnInit {
 
   constructor(public toastCtrl: ToastController,
               public loginService: LoginService) {
-
   }
 
   async ngOnInit() {
-    if (typeof mp !== 'undefined') {
-      this.player = mp.players.local;
-    } else {
-      this.player = playerMock;
-    }
-
-    this.formGroup.controls.usuario.patchValue(this.player.name);
-
-    this.campoSenha.setFocus();
+    this.player = playerMock;
+    // if (typeof mp !== 'undefined') {
+    //   this.player = mp.players.local;
+    // } else {
+    //   this.player = playerMock;
+    // }
+    //
+    // this.formGroup.controls.usuario.patchValue(this.player.name);
+    //
+    // this.campoSenha.setFocus();
   }
 
   public async login() {
