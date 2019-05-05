@@ -1,0 +1,43 @@
+<ion-content>
+    <app-pagina>
+        <div class="lista">
+            <div class="cabecalho">
+                <div class="nome-servidor">
+
+                </div>
+                <div class="total-jogadores">
+                    Jogadores online: {{ listaJogadoresMock.length }}
+                </div>
+            </div>
+
+            <div class="container-jogadores">
+                <div class="cabecalho-lista">
+                    <div class="id">ID</div>
+                    <div class="nome">Nome</div>
+                    <div class="nivel">Nível</div>
+                    <div class="ping">Ping</div>
+                </div>
+
+                <div class="lista-jogadores">
+                    <div class="jogador" *ngFor="let player of listaJogadoresMock">
+                        <div class="id">
+                            {{ player.id }}
+                        </div>
+
+                        <div class="nome">
+                            {{ player.name }}
+                        </div>
+
+                        <div class="nivel">
+                            {{ player.data.nivel }}
+                        </div>
+
+                        <div class="ping">
+                            {{ player.ping }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </app-pagina>
+</ion-content>

@@ -1,7 +1,6 @@
-import { BelongsTo, Column, ForeignKey, HasMany, HasOne, Model, Table } from 'sequelize-typescript';
-import { Profissao } from './Profissao';
+import { BelongsTo, Column, HasMany, Model, Table } from 'sequelize-typescript';
 import { Notificacao } from './Notificacao';
-import { TipoPropriedade } from './TipoPropriedade';
+import { Profissao } from './Profissao';
 
 @Table({
   timestamps: true,

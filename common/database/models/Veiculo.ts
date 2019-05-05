@@ -1,5 +1,4 @@
 import { BelongsTo, Column, DataType, Model, Table } from 'sequelize-typescript';
-import { TipoPropriedade } from './TipoPropriedade';
 import { Jogador } from './Jogador';
 
 @Table({

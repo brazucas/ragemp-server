@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { RPGVeiculo } from '../interfaces/veiculo.interface';
-import { MpVeiculoCorInterface } from '../interfaces/mp.veiculo-cor.interface';
 import { Observable } from 'rxjs/Observable';
+import { MpVeiculoCorInterface } from '../interfaces/mp.veiculo-cor.interface';
+import { RPGVeiculo } from '../interfaces/veiculo.interface';
 
 export class VeiculoProvider {
   private static veiculosArmazenados: Array<RPGVeiculo> = [];

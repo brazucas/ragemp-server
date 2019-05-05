@@ -1,13 +1,13 @@
+import bcrypt from 'bcrypt-nodejs';
 import Bluebird = require('bluebird');
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/of';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import * as Sequelize from 'sequelize';
+import * as util from 'util';
 import { Database } from './database/database';
 import { Jogador } from './database/models/Jogador';
-import bcrypt from 'bcrypt-nodejs';
-import * as util from 'util';
 
 export class BrazucasServer {
   private database: Database;

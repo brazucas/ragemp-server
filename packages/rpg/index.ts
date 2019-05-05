@@ -2,13 +2,13 @@
 
 import EventKey = RageEnums.EventKey;
 import { BrazucasServer } from '../../common/brazucas-server';
-import { PlayerJoinHandler } from './handler/playerJoin';
-import { PlayerQuitHandler } from './handler/playerQuit';
-import { Rpg } from './rpg';
 import { PlayerChatHandler } from './handler/playerChat';
 import { PlayerDeathHandler } from './handler/playerDeath';
+import { PlayerJoinHandler } from './handler/playerJoin';
+import { PlayerQuitHandler } from './handler/playerQuit';
 import { Comandos } from './lib/commands/commands';
 import { carregarEventos } from './lib/events/events';
+import { Rpg } from './rpg';
 
 mp.events.add(EventKey.PLAYER_JOIN, PlayerJoinHandler);
 mp.events.add(EventKey.PLAYER_QUIT, PlayerQuitHandler);

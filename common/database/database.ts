@@ -27,7 +27,7 @@ export class Database {
       modelPaths: [__dirname + '/models'],
       sync: {
         alter: true,
-      }
+      },
     });
   }
 

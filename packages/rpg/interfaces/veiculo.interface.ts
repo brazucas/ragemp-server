@@ -1,6 +1,6 @@
 import { Veiculo } from '../../../common/database/models/Veiculo';
 
 export interface RPGVeiculo {
-  mp: VehicleMp,
-  storage: Veiculo,
+  mp: VehicleMp;
+  storage: Veiculo;
 }

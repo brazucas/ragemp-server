@@ -10,7 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.scss'],
 })
 export class AppComponent {
-  public mostrarNavegador = true;
+  public mostrarNavegador = (typeof mp === 'undefined');
 
   constructor(
     private platform: Platform,

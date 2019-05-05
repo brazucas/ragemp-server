@@ -63,11 +63,11 @@ class Rpg {
                             console.log(`Objeto do tipo ${object.Type} não pôde ser carregado.`);
                     }
                 });
-                console.log(`${mapData.Map.Objects.MapObject.length} objetos carregados (${loadedVehicles} veículos, ${loadedProps} 
+                console.log(`${mapData.Map.Objects.MapObject.length} objetos carregados (${loadedVehicles} veículos, ${loadedProps}
           objetos)`);
             }
             else {
-                console.log(`O mapa ${mapData.Map.Metadata.id} não implementa um ou várias propriedades como Map, Map.Objects ou 
+                console.log(`O mapa ${mapData.Map.Metadata.id} não implementa um ou várias propriedades como Map, Map.Objects ou
           Map.Objects.MapObject.`);
             }
         }

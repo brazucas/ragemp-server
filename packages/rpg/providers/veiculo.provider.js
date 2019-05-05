@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const mp_veiculo_cor_interface_1 = require("../interfaces/mp.veiculo-cor.interface");
 const Observable_1 = require("rxjs/Observable");
+const mp_veiculo_cor_interface_1 = require("../interfaces/mp.veiculo-cor.interface");
 class VeiculoProvider {
     static findFromMp(vehicle) {
         return VeiculoProvider.veiculosArmazenados.find((rpgVeiculo) => rpgVeiculo.mp === vehicle);

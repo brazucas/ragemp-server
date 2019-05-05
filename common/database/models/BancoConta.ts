@@ -1,6 +1,6 @@
 import { BelongsTo, Column, Model, Table } from 'sequelize-typescript';
-import { Propriedade } from './Propriedade';
 import { Jogador } from './Jogador';
+import { Propriedade } from './Propriedade';
 
 @Table({
   timestamps: true,

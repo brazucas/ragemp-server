@@ -1,9 +1,9 @@
 export interface AutenticacaoResultado {
-  autenticado: boolean,
-  credenciaisInvalidas?: boolean,
+  autenticado: boolean;
+  credenciaisInvalidas?: boolean;
 }
 
 export interface DadosLogin {
-  usuario: string,
-  senha: string,
+  usuario: string;
+  senha: string;
 }

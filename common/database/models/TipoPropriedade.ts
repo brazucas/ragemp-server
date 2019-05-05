@@ -1,6 +1,4 @@
 import { Column, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript';
-import { Jogador } from './Jogador';
-import { Notificacao } from './Notificacao';
 import { Propriedade } from './Propriedade';
 
 @Table({

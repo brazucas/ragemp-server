@@ -1,0 +1,84 @@
+:host {
+  --ion-background-color: transparent;
+
+  ion-label {
+    --color: #FFFFFF;
+  }
+
+  ion-input {
+    --color: #FFFFFF;
+  }
+}
+
+.lista {
+  padding: 10px;
+  color: #FFFFFF;
+
+  .cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .total-jogadores {
+      margin-bottom: 20px;
+    }
+  }
+
+  .container-jogadores {
+    width: 100%;
+
+    .cabecalho-lista {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #222;
+      border-radius: 3px;
+
+      div {
+        text-align: center;
+
+        &.nome {
+          text-align: left;
+        }
+      }
+    }
+
+    .nome {
+      width: 250px;
+    }
+
+    .id, .nivel, .ping {
+      width: 50px;
+    }
+
+    .lista-jogadores {
+      max-height: 400px;
+      overflow-y: scroll;
+      width: 100%;
+
+      .jogador {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px;
+
+        div {
+          text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow-x: hidden;
+
+          &.nome {
+            text-align: left;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: #666;
+        }
+      }
+    }
+  }
+}

@@ -14,12 +14,14 @@ import { LoginPage } from './login/login.page';
 import { HomePage } from './home/home.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PlayersOnlinePage } from './players-online/players-online.page';
 
 @NgModule({
   declarations: [
     AppComponent,
     PaginaComponent,
     IconeComponent,
+    PlayersOnlinePage,
     LoginPage,
     HomePage,
   ],

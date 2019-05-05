@@ -8,14 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const bcrypt_nodejs_1 = require("bcrypt-nodejs");
 require("rxjs/add/observable/forkJoin");
 require("rxjs/add/observable/of");
 const forkJoin_1 = require("rxjs/internal/observable/forkJoin");
 const Sequelize = require("sequelize");
+const util = require("util");
 const database_1 = require("./database/database");
 const Jogador_1 = require("./database/models/Jogador");
-const bcrypt_nodejs_1 = require("bcrypt-nodejs");
-const util = require("util");
 class BrazucasServer {
     constructor() {
         this.database = new database_1.Database();

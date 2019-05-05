@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Propriedade_1 = require("./Propriedade");
 const Jogador_1 = require("./Jogador");
+const Propriedade_1 = require("./Propriedade");
 let BancoConta = class BancoConta extends sequelize_typescript_1.Model {
 };
 __decorate([
