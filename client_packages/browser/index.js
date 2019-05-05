@@ -69,6 +69,16 @@ mp.keys.bind(0x75, true, function () {
 });
 mp.keys.bind(0x5A, true, function () {
     mudarPaginaNavegador('players-online');
+    var jogadores = [];
+    mp.players.forEach(function (player) { return jogadores.push({
+        name: player.name,
+        ping: player.ping,
+        id: player.id,
+        data: {
+            nivel: 0
+        }
+    }); });
+    browser.execute("window.my.playersOnline.listaJogadores('" + JSON.stringify(jogadores) + "')");
     abrirNavegador();
 });
 mp.keys.bind(0x5A, false, function () {

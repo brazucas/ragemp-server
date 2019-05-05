@@ -1,4 +1,5 @@
 import { AutenticacaoResultado, DadosLogin } from './src/interfaces/login.interface';
+import { JogadorOnline } from './src/app/players-online/players-online.page';
 
 let browser: BrowserMp;
 let cursorVisible = false;
@@ -84,6 +85,20 @@ mp.keys.bind(0x75, true, function () {
 
 mp.keys.bind(0x5A, true, function () {
   mudarPaginaNavegador('players-online');
+
+  let jogadores: JogadorOnline[] = [];
+
+  mp.players.forEach((player) => jogadores.push({
+    name: player.name,
+    ping: player.ping,
+    id: player.id,
+    data: {
+      nivel: 0,
+    }
+  }));
+
+  browser.execute(`window.my.playersOnline.listaJogadores('${JSON.stringify(jogadores)}')`);
+
   abrirNavegador();
 });
 

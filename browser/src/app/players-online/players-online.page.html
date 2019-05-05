@@ -6,7 +6,7 @@
 
                 </div>
                 <div class="total-jogadores">
-                    Jogadores online: {{ listaJogadoresMock.length }}
+                    Jogadores online: {{ jogadores.value.length }}
                 </div>
             </div>
 
@@ -18,23 +18,29 @@
                     <div class="ping">Ping</div>
                 </div>
 
-                <div class="lista-jogadores">
-                    <div class="jogador" *ngFor="let player of listaJogadoresMock">
-                        <div class="id">
-                            {{ player.id }}
-                        </div>
+                <div class="lista-jogadores" [apresentarAsync]="jogadores">
+                    <ng-container *casoResultado="let lista">
+                        <div class="jogador" *ngFor="let player of lista">
+                            <div class="id">
+                                {{ player.id }}
+                            </div>
 
-                        <div class="nome">
-                            {{ player.name }}
-                        </div>
+                            <div class="nome">
+                                {{ player.name }}
+                            </div>
 
-                        <div class="nivel">
-                            {{ player.data.nivel }}
-                        </div>
+                            <div class="nivel">
+                                {{ player.data.nivel }}
+                            </div>
 
-                        <div class="ping">
-                            {{ player.ping }}
+                            <div class="ping">
+                                {{ player.ping }}
+                            </div>
                         </div>
+                    </ng-container>
+
+                    <div *casoErro>
+                        Um erro ocorreu ao buscar a lista de jogadores!
                     </div>
                 </div>
             </div>

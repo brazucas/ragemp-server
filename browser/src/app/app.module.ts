@@ -15,6 +15,12 @@ import { HomePage } from './home/home.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PlayersOnlinePage } from './players-online/players-online.page';
+import {
+  ApresentarAsyncDirective,
+  CasoCarregandoDirective,
+  CasoErroDirective,
+  CasoResultadoDirective
+} from './directives/apresentar-async.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +30,10 @@ import { PlayersOnlinePage } from './players-online/players-online.page';
     PlayersOnlinePage,
     LoginPage,
     HomePage,
+    ApresentarAsyncDirective,
+    CasoResultadoDirective,
+    CasoCarregandoDirective,
+    CasoErroDirective,
   ],
   entryComponents: [],
   imports: [

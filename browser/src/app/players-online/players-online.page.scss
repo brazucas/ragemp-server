@@ -53,8 +53,8 @@
     }
 
     .lista-jogadores {
-      max-height: 400px;
-      overflow-y: scroll;
+      height: 400px;
+      overflow-y: auto;
       width: 100%;
 
       .jogador {
