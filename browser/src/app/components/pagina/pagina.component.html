@@ -3,8 +3,7 @@
     <div class="header">
       <img src="assets/logotipo_full_web.png" alt="" width="120px"/>
 
-      <ion-icon name="close" color="primary" size="large" (click)="fechar()"></ion-icon>
-      <a (click)="fechar()">Fechar</a>
+      <app-icone (click)="fechar()" name="md-close" *ngIf="podeFechar"></app-icone>
     </div>
 
     <ng-content></ng-content>

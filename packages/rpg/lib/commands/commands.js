@@ -14,7 +14,7 @@ class Comandos extends comandos_admin_1.ComandosAdmin {
         player.outputChatBox(`Posição atual: ${player.position.toString()}`);
     }
     static browser(player) {
-        player.call('mostrarNavegador', []);
+        player.call('IniciarNavegador', []);
     }
     static cursor(player) {
         player.call('cursor', []);

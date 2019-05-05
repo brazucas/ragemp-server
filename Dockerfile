@@ -15,6 +15,15 @@ RUN echo 'deb http://httpredir.debian.org/debian testing main contrib non-free' 
     apt-get install -y -t testing gcc wget && \
     apt-get clean
 
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+
+RUN apt-get install git python-pip openssh-client -y
+
+RUN apt-get install curl software-properties-common && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install nodejs && \
+    curl -L https://npmjs.org/install.sh | -
+
 RUN useradd ragemp && \
     # Mountable volume
     mkdir /ragemp

@@ -20,7 +20,7 @@ export class Comandos extends ComandosAdmin {
   }
 
   public static browser(player: PlayerMp) {
-    player.call('mostrarNavegador', []);
+    player.call('IniciarNavegador', []);
   }
 
   public static cursor(player: PlayerMp) {

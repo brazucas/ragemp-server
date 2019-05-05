@@ -2,22 +2,48 @@ import { AutenticacaoResultado, DadosLogin } from './src/interfaces/login.interf
 
 let browser: BrowserMp;
 let cursorVisible = false;
+let navegadorAberto = false;
+let noClipCamera: CameraMp;
 
-mp.events.add(RageEnums.EventKey.PLAYER_JOIN, () => {
+noClipCamera = mp.cameras.new('default', new mp.Vector3(-485, 1095.75, 323.85), new mp.Vector3(0, 0, 0), 45);
+noClipCamera.setActive(true);
+mp.game.cam.renderScriptCams(true, true, 60000, true, false);
+
+mp.players.local.freezePosition(true);
+mp.game.cam.doScreenFadeIn(5000);
+mp.gui.cursor.visible = false;
+mp.browsers.forEach((browser) => browser.destroy());
+mp.players.local.setVisible(false, false);
+mp.players.local.setCollision(false, false);
+
+iniciarNavegador();
+
+function iniciarNavegador() {
+  browser = mp.browsers.new('package://browser/index.html');
+  browser.execute(`window.my.app.mudarPagina('login')`);
+  browser.execute(`window.my.ragemp.setPlayerName('${mp.players.local.name}')`);
+
+  abrirNavegador();
+}
+
+function abrirNavegador() {
+  this.navegadorAberto = true;
+  browser.execute(`window.my.app.toggle(true)`);
+  mp.gui.cursor.visible = true;
+}
+
+function fecharNavegador() {
+  this.navegadorAberto = false;
+  browser.execute(`window.my.app.toggle(false)`);
   mp.gui.cursor.visible = false;
-  mp.browsers.forEach((browser) => browser.destroy());
-});
+}
 
-mp.events.add('mostrarNavegador', () => {
+mp.events.add('IniciarNavegador', () => {
   if (browser) {
     browser.destroy();
     browser = null;
   } else {
-    browser = mp.browsers.new('package://browser/index.html#/login');
-    browser.execute(`window.my.ragemp.setPlayerName('${mp.players.local.name}')`);
-
-    mp.gui.cursor.visible = true;
-    mp.gui.chat.push('Mostrando navegador');
+    iniciarNavegador();
   }
 });
 
@@ -26,14 +52,24 @@ mp.events.add('cursor', () => {
 });
 
 mp.events.add('FecharBrowser', () => {
-  browser.destroy();
-  browser = null;
+  fecharNavegador();
 });
 
 mp.events.add('AutenticarJogador', (dados: DadosLogin) => {
-  mp.events.callRemote('AutenticarJogador', dados);
+  mp.events.callRemote('AutenticarJogador', mp.players.local, dados);
 });
 
 mp.events.add('AutenticacaoResultado', (resultado: AutenticacaoResultado) => {
+  if (resultado.autenticado) {
+    mp.players.local.setVisible(true, true);
+    mp.players.local.setCollision(true, true);
+    mp.players.local.freezePosition(false);
+    mp.gui.cursor.visible = true;
+  }
+
   browser.execute(`window.my.login.autenticacaoResultado(${resultado.autenticado}, ${resultado.credenciaisInvalidas})`);
+});
+
+mp.keys.bind(0x75, true, function() {
+  navegadorAberto ? fecharNavegador() : abrirNavegador();
 });

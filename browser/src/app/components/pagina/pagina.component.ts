@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 declare let mp: any;
 
@@ -8,6 +8,7 @@ declare let mp: any;
   styleUrls: ['./pagina.component.scss'],
 })
 export class PaginaComponent implements OnInit {
+  @Input() podeFechar: boolean = true;
 
   constructor() { }
 

@@ -1,5 +1,5 @@
-<ion-content>
-    <app-pagina [formGroup]="formGroup" (submit)="login()">
+<ion-content *ngIf="mostrarFormulario">
+    <app-pagina [formGroup]="formGroup" [podeFechar]="false" (submit)="login()">
         <div class="titulo">Bem vindo de volta, {{ formGroup.controls.usuario.value }}!</div>
 
         <ion-item>

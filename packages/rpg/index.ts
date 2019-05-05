@@ -8,6 +8,7 @@ import { Rpg } from './rpg';
 import { PlayerChatHandler } from './handler/playerChat';
 import { PlayerDeathHandler } from './handler/playerDeath';
 import { Comandos } from './lib/commands/commands';
+import { carregarEventos } from './lib/events/events';
 
 mp.events.add(EventKey.PLAYER_JOIN, PlayerJoinHandler);
 mp.events.add(EventKey.PLAYER_QUIT, PlayerQuitHandler);
@@ -33,4 +34,7 @@ mp.events.add('playerCommand', (player: PlayerMp, command: string) => {
 let brazucasServer = new BrazucasServer();
 
 brazucasServer.onload()
-  .subscribe(() => new Rpg(brazucasServer), console.error);
+  .subscribe(() => {
+    new Rpg(brazucasServer);
+    carregarEventos(brazucasServer);
+  }, console.error);

@@ -1,6 +1,6 @@
 /// <reference path="../../../node_modules/@types/ragemp-c/index.d.ts" />
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonInput, ToastController } from '@ionic/angular';
 import { LoginService } from '../services/login.service';
@@ -13,8 +13,9 @@ declare let mp: any;
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements AfterViewInit {
   @ViewChild('senha') campoSenha: IonInput;
+  public mostrarFormulario = true;
 
   public formGroup = new FormGroup({
     usuario: new FormControl({
@@ -38,16 +39,18 @@ export class LoginPage implements OnInit {
               public ragemp: RagempService) {
     this.ragemp.playerName.subscribe((playerName) => {
       this.formGroup.controls.usuario.patchValue(playerName);
-    })
+    });
   }
 
-  async ngOnInit() {
+  async ngAfterViewInit() {
     this.campoSenha.setFocus();
   }
 
   public async login() {
     try {
       await this.loginService.login(this.formGroup.value).toPromise();
+
+      this.mostrarFormulario = false;
 
       const toast = await this.toastCtrl.create({
         message: 'Autenticado com sucesso!',
@@ -59,7 +62,9 @@ export class LoginPage implements OnInit {
 
       toast.present();
 
-      mp.trigger('FecharBrowser');
+      setTimeout(() => {
+        mp.trigger('FecharBrowser');
+      }, 3000);
     } catch (err) {
       const toast = await this.toastCtrl.create({
         message: err.mensagem || 'Um erro ocorreu ao autenticar',
@@ -68,8 +73,6 @@ export class LoginPage implements OnInit {
         duration: 3000
       });
       toast.present();
-
-      mp.trigger('FecharBrowser');;
     }
   }
 
