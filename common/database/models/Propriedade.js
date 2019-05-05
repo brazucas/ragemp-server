@@ -14,11 +14,11 @@ const TipoPropriedade_1 = require("./TipoPropriedade");
 let Propriedade = class Propriedade extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], Propriedade.prototype, "nomeOriginal", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], Propriedade.prototype, "nomeExibido", void 0);
 __decorate([
@@ -60,6 +60,12 @@ Propriedade = __decorate([
         deletedAt: 'dataExcluido',
         updatedAt: 'dataAtualizado',
         paranoid: true,
+        indexes: [
+            {
+                unique: true,
+                fields: ['nomeOriginal', 'nomeExibido'],
+            }
+        ]
     })
 ], Propriedade);
 exports.Propriedade = Propriedade;

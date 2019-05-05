@@ -179,7 +179,7 @@ export class CasoErroDirective {
         this.viewContainer.createEmbeddedView(this.templateRef, {
           $implicit: erro,
           repetir: () => {
-            let observableEntrada = this.apresentarAsync.input$;
+            const observableEntrada = this.apresentarAsync.input$;
             observableEntrada.next(observableEntrada.value);
           },
         });

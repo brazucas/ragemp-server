@@ -8,33 +8,68 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const bcrypt_nodejs_1 = require("bcrypt-nodejs");
+const rxjs_1 = require("rxjs");
 require("rxjs/add/observable/forkJoin");
 require("rxjs/add/observable/of");
 const forkJoin_1 = require("rxjs/internal/observable/forkJoin");
 const Sequelize = require("sequelize");
-const util = require("util");
 const database_1 = require("./database/database");
 const Jogador_1 = require("./database/models/Jogador");
+const util_1 = require("./util/util");
 class BrazucasServer {
     constructor() {
+        this.isReady = new rxjs_1.BehaviorSubject(false);
         this.database = new database_1.Database();
     }
     onload() {
-        return forkJoin_1.forkJoin(...[
+        const fork = forkJoin_1.forkJoin(...[
             this.database.sync(),
             this.database.authenticate(),
         ]);
+        fork.subscribe(() => this.isReady.next(true));
+        return fork;
     }
     loadPlayer(playerName) {
-        const Op = Sequelize.Op;
-        return Jogador_1.Jogador.findOne({ where: { nome: { [Op.eq]: playerName } } });
+        return Jogador_1.Jogador.findOne({
+            ['where']: {
+                nome: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('nome')), '=', playerName.toLowerCase())
+            }
+        });
     }
     autenticarJogador(playerName, senha) {
         return __awaiter(this, void 0, void 0, function* () {
-            const Op = Sequelize.Op;
-            const senhaHash = yield util.promisify(bcrypt_nodejs_1.default.hash)(senha, null);
-            return Jogador_1.Jogador.findOne({ where: { nome: { [Op.eq]: playerName }, senha: { [Op.eq]: senhaHash } } });
+            const jogador = yield this.loadPlayer(playerName);
+            if (!jogador) {
+                throw 'Jogador não encontrado';
+            }
+            const autenticado = yield util_1.bcryptCompare(senha, jogador.senha);
+            return autenticado ? jogador : null;
+        });
+    }
+    registrarJogador(player, dados) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.debug(`[REGISTRO] Novo jogador ${player.name}`);
+            if (!dados.senhaConfirma || !dados.senha || !dados.celular || !dados.email ||
+                !dados.senhaConfirma.length || !dados.senha.length || !dados.celular.length || !dados.email.length) {
+                throw 'Todos os campos devem ser informados';
+            }
+            if (dados.senha !== dados.senhaConfirma) {
+                throw 'As senhas informadas diferem';
+            }
+            const jogadorExistente = yield this.loadPlayer(player.name);
+            if (jogadorExistente) {
+                throw 'Já existe um jogador cadastrado com esse nick';
+            }
+            console.debug(`[REGISTRO] Criando jogador ${player.name}`);
+            const senhaHash = yield util_1.bcryptHash(dados.senha);
+            let jogador = new Jogador_1.Jogador({
+                nome: player.name,
+                senha: senhaHash,
+                nivel: 1,
+                email: dados.email,
+                celular: util_1.soNumeros(dados.celular),
+            });
+            return jogador.save();
         });
     }
 }

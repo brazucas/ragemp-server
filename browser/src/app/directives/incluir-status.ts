@@ -13,7 +13,7 @@ export function incluirStatus<T>(inicial?: T, absorverErros = true) {
   return (obs: Observable<T>): Observable<IncluindoStatus<T>> => {
     let ultimo: any = inicial;
 
-    let incluindoStatus = concat<IncluindoStatus<T>>(
+    const incluindoStatus = concat<IncluindoStatus<T>>(
       of({carregando: true, resultado: inicial}),
       obs.pipe(
         map(resultado => {

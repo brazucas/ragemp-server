@@ -8,10 +8,6 @@ const playerQuit_1 = require("./handler/playerQuit");
 const commands_1 = require("./lib/commands/commands");
 const events_1 = require("./lib/events/events");
 const rpg_1 = require("./rpg");
-mp.events.add("playerJoin" /* PLAYER_JOIN */, playerJoin_1.PlayerJoinHandler);
-mp.events.add("playerQuit" /* PLAYER_QUIT */, playerQuit_1.PlayerQuitHandler);
-mp.events.add("playerChat" /* PLAYER_CHAT */, playerChat_1.PlayerChatHandler);
-mp.events.add("playerDeath" /* PLAYER_DEATH */, playerDeath_1.PlayerDeathHandler);
 mp.events.add('playerCommand', (player, command) => {
     console.debug(`[COMANDO] ${player.name} enviou o comando ${command}`);
     const arr = command.split(' ');
@@ -25,6 +21,10 @@ mp.events.add('playerCommand', (player, command) => {
     }
 });
 let brazucasServer = new brazucas_server_1.BrazucasServer();
+mp.events.add("playerJoin" /* PLAYER_JOIN */, playerJoin_1.PlayerJoinHandler.bind(playerJoin_1.PlayerJoinHandler, brazucasServer));
+mp.events.add("playerQuit" /* PLAYER_QUIT */, playerQuit_1.PlayerQuitHandler.bind(playerQuit_1.PlayerQuitHandler, brazucasServer));
+mp.events.add("playerChat" /* PLAYER_CHAT */, playerChat_1.PlayerChatHandler.bind(playerChat_1.PlayerChatHandler, brazucasServer));
+mp.events.add("playerDeath" /* PLAYER_DEATH */, playerDeath_1.PlayerDeathHandler.bind(playerDeath_1.PlayerDeathHandler, brazucasServer));
 brazucasServer.onload()
     .subscribe(() => {
     new rpg_1.Rpg(brazucasServer);

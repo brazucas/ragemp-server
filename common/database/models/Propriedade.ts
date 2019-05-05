@@ -7,13 +7,19 @@ import { TipoPropriedade } from './TipoPropriedade';
   deletedAt: 'dataExcluido',
   updatedAt: 'dataAtualizado',
   paranoid: true,
+  indexes: [
+    {
+      unique: true,
+      fields: ['nomeOriginal', 'nomeExibido'],
+    }
+  ]
 })
 export class Propriedade extends Model<Propriedade> {
 
-  @Column({allowNull: false, unique: true})
+  @Column({allowNull: false})
   nomeOriginal: string;
 
-  @Column({allowNull: false, unique: true})
+  @Column({allowNull: false})
   nomeExibido: string;
 
   @Column({allowNull: false})

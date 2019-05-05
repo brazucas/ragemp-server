@@ -18,7 +18,7 @@ export class PlayersOnlinePage implements OnInit {
     (window as any).playersOnline = (window as any).playersOnline || {};
     (window as any).playersOnline.listaJogadores = this.listaJogadores.bind(this);
 
-    if(typeof mp === 'undefined') {
+    if (typeof mp === 'undefined') {
       this.jogadores.next([
         {
           name: 'GermanB',
@@ -197,7 +197,7 @@ export interface JogadorOnline {
   name: string;
   data: {
     nivel: number;
-  }
+  };
   ping: number;
   id: number;
 }

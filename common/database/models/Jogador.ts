@@ -8,19 +8,31 @@ import { Profissao } from './Profissao';
   deletedAt: 'dataExcluido',
   updatedAt: 'dataAtualizado',
   paranoid: true,
+  indexes: [
+    {
+      unique: true,
+      fields: ['nome'],
+    }
+  ]
 })
 export class Jogador extends Model<Jogador> {
 
-  @Column({allowNull: false, unique: true})
+  @Column({allowNull: false})
   nome: string;
 
   @Column({allowNull: false})
   senha: string;
 
+  @Column({allowNull: false})
+  email: string;
+
+  @Column({allowNull: false})
+  celular: string;
+
   @Column({defaultValue: 1})
   nivel: number;
 
-  @BelongsTo(() => Profissao, {foreignKey: {allowNull: false, name: 'profissao'}})
+  @BelongsTo(() => Profissao, {foreignKey: {allowNull: true, name: 'profissao'}})
   jogadorProfissao: Profissao;
 
   @HasMany(() => Notificacao)

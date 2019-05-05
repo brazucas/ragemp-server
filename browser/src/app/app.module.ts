@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { BrMaskerModule } from 'br-mask';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import {
   CasoErroDirective,
   CasoResultadoDirective
 } from './directives/apresentar-async.directive';
+import { RegistroPage } from './registro/registro.page';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import {
     PlayersOnlinePage,
     LoginPage,
     HomePage,
+    RegistroPage,
     ApresentarAsyncDirective,
     CasoResultadoDirective,
     CasoCarregandoDirective,
@@ -43,6 +46,7 @@ import {
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    BrMaskerModule,
   ],
   providers: [
     StatusBar,

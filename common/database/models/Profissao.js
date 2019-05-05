@@ -14,7 +14,7 @@ const Jogador_1 = require("./Jogador");
 let Profissao = class Profissao extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], Profissao.prototype, "nome", void 0);
 __decorate([
@@ -40,6 +40,12 @@ Profissao = __decorate([
         deletedAt: 'dataExcluido',
         updatedAt: 'dataAtualizado',
         paranoid: true,
+        indexes: [
+            {
+                unique: true,
+                fields: ['nome'],
+            }
+        ]
     })
 ], Profissao);
 exports.Profissao = Profissao;

@@ -1,0 +1,51 @@
+@import '../../global';
+
+:host {
+  --ion-background-color: transparent;
+
+  ion-label {
+    --color: #FFFFFF;
+  }
+
+  ion-input {
+    --color: #FFFFFF;
+  }
+}
+
+.titulo {
+  padding: 10px 0;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px;
+  padding: 5px 0;
+  align-items: center;
+}
+
+.btn-enviar {
+  background-color: #319136;
+  color: #FFFFFF;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-enviar[disabled] {
+  opacity: .3;
+}
+
+.subtitulo {
+  text-align: center;
+  background-color: #222;
+  border-radius: 3px;
+  color: #FFFFFF;
+  margin: 8px;
+  font-size: 12px;
+  padding: 20px;
+}

@@ -14,11 +14,11 @@ const Jogador_1 = require("./Jogador");
 let Veiculo = class Veiculo extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], Veiculo.prototype, "placaOriginal", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], Veiculo.prototype, "placaExibido", void 0);
 __decorate([
@@ -104,6 +104,12 @@ Veiculo = __decorate([
         deletedAt: 'dataExcluido',
         updatedAt: 'dataAtualizado',
         paranoid: true,
+        indexes: [
+            {
+                unique: true,
+                fields: ['placaOriginal', 'placaExibido'],
+            }
+        ]
     })
 ], Veiculo);
 exports.Veiculo = Veiculo;

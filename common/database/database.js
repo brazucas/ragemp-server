@@ -24,6 +24,7 @@ class Database {
             modelPaths: [__dirname + '/models'],
             sync: {
                 alter: true,
+                force: false,
             },
         });
     }

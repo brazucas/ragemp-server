@@ -7,6 +7,12 @@ import { Propriedade } from './Propriedade';
   deletedAt: 'dataExcluido',
   updatedAt: 'dataAtualizado',
   paranoid: true,
+  indexes: [
+    {
+      unique: true,
+      fields: ['identificador'],
+    }
+  ]
 })
 export class TipoPropriedade extends Model<TipoPropriedade> {
 
@@ -17,7 +23,7 @@ export class TipoPropriedade extends Model<TipoPropriedade> {
   @Column({allowNull: false})
   nome: string;
 
-  @Column({allowNull: false, unique: true})
+  @Column({allowNull: false})
   identificador: string;
 
   @HasMany(() => Propriedade, 'tipo')

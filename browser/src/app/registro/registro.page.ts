@@ -1,24 +1,24 @@
-/// <reference path="../../../node_modules/@types/ragemp-c/index.d.ts" />
-
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonInput, ToastController } from '@ionic/angular';
+import { RegistroResultado } from '../../interfaces/login.interface';
 import { LoginService } from '../services/login.service';
 import { RagempService } from '../services/ragemp.service';
 
 declare let mp: any;
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-registro',
+  templateUrl: './registro.page.html',
+  styleUrls: ['./registro.page.scss'],
 })
-export class LoginPage implements AfterViewInit {
-  @ViewChild('senha') campoSenha: IonInput;
+export class RegistroPage implements AfterViewInit {
+
+  @ViewChild('email') campoEmail: IonInput;
   public mostrarFormulario = true;
 
   public formGroup = new FormGroup({
-    usuario: new FormControl({
+    nome: new FormControl({
       value: '',
       disabled: true,
     }, {
@@ -27,8 +27,28 @@ export class LoginPage implements AfterViewInit {
         Validators.required,
       ],
     }),
+    email: new FormControl('', {
+      validators: [
+        Validators.maxLength(80),
+        Validators.required,
+        Validators.email,
+      ],
+    }),
+    celular: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.minLength(14),
+      ],
+    }),
     senha: new FormControl('', {
       validators: [
+        Validators.maxLength(40),
+        Validators.required,
+      ],
+    }),
+    senhaConfirma: new FormControl('', {
+      validators: [
+        Validators.maxLength(40),
         Validators.required,
       ],
     }),
@@ -38,22 +58,26 @@ export class LoginPage implements AfterViewInit {
               public loginService: LoginService,
               public ragemp: RagempService) {
     this.ragemp.playerName.subscribe((playerName) => {
-      this.formGroup.controls.usuario.patchValue(playerName);
+      this.formGroup.controls.nome.patchValue(playerName);
     });
   }
 
   async ngAfterViewInit() {
-    this.campoSenha.setFocus();
+    this.campoEmail.setFocus();
   }
 
-  public async login() {
+  public async registrar() {
     try {
-      await this.loginService.login(this.formGroup.value).toPromise();
+      const resultado: RegistroResultado = await this.loginService.registrar(this.formGroup.value).toPromise();
 
       this.mostrarFormulario = false;
 
+      if (resultado.jogador) {
+        this.ragemp.jogadorLocal.next(resultado.jogador);
+      }
+
       const toast = await this.toastCtrl.create({
-        message: 'Autenticado com sucesso!',
+        message: 'Registrado com sucesso!',
         position: 'top',
         color: 'success',
         duration: 3000,
@@ -67,7 +91,7 @@ export class LoginPage implements AfterViewInit {
       }, 3000);
     } catch (err) {
       const toast = await this.toastCtrl.create({
-        message: err.credenciaisInvalidas ? 'Credenciais Inválidas' : 'Um erro ocorreu ao autenticar',
+        message: err.mensagem || 'Um erro ocorreu ao cadastrar',
         position: 'top',
         color: 'danger',
         duration: 3000

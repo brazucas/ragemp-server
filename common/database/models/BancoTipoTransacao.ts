@@ -7,6 +7,12 @@ import { BancoTransacao } from './BancoTransacao';
   deletedAt: 'dataExcluido',
   updatedAt: 'dataAtualizado',
   paranoid: true,
+  indexes: [
+    {
+      unique: true,
+      fields: ['identificador'],
+    }
+  ]
 })
 export class BancoTipoTransacao extends Model<BancoTipoTransacao> {
 
@@ -17,7 +23,7 @@ export class BancoTipoTransacao extends Model<BancoTipoTransacao> {
   @Column({allowNull: false})
   nome: string;
 
-  @Column({allowNull: false, unique: true})
+  @Column({allowNull: false})
   identificador: string;
 
   @HasMany(() => BancoTransacao, 'tipo')

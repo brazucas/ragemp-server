@@ -1,0 +1,42 @@
+<ion-content *ngIf="mostrarFormulario">
+  <app-pagina [formGroup]="formGroup" [podeFechar]="false" (submit)="registrar()">
+    <div class="titulo">
+      <small>[:.:.Brazuca's Server.:.:] Sempre um passo a frente</small>
+    </div>
+
+    <div class="subtitulo">
+      O servidor ainda não está pronto, mas você já pode fazer o seu registro para receber avisos sobre
+      o andamento do desenvolvimento!
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Nick</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">E-mail <small>Em breve será exigida verificação do e-mail</small></ion-label>
+      <ion-input #email formControlName="email" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Celular/Telemóvel <small>Em breve será exigida verificação do celular</small></ion-label>
+      <ion-input [brmasker]="{form: formGroup.get('celular'), phone: true}"
+                 formControlName="celular" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input formControlName="senha" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Confirme a senha</ion-label>
+      <ion-input formControlName="senhaConfirma" type="password"></ion-input>
+    </ion-item>
+
+    <div class="acoes">
+      <button type="submit" [disabled]="!formGroup.valid" class="btn-enviar">Registrar</button>
+    </div>
+  </app-pagina>
+</ion-content>

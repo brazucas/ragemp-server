@@ -8,7 +8,7 @@ declare let mp: any;
   styleUrls: ['./pagina.component.scss'],
 })
 export class PaginaComponent implements OnInit {
-  @Input() podeFechar: boolean = true;
+  @Input() podeFechar = true;
 
   constructor() { }
 

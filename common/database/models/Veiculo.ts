@@ -7,13 +7,19 @@ import { Jogador } from './Jogador';
   deletedAt: 'dataExcluido',
   updatedAt: 'dataAtualizado',
   paranoid: true,
+  indexes: [
+    {
+      unique: true,
+      fields: ['placaOriginal', 'placaExibido'],
+    }
+  ]
 })
 export class Veiculo extends Model<Veiculo> {
 
-  @Column({allowNull: false, unique: true})
+  @Column({allowNull: false})
   placaOriginal: string;
 
-  @Column({allowNull: false, unique: true})
+  @Column({allowNull: false})
   placaExibido: string;
 
   @Column({allowNull: false})

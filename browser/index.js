@@ -17,8 +17,17 @@ mp.players.local.setCollision(false, false);
 iniciarNavegador();
 function iniciarNavegador() {
     browser = mp.browsers["new"]('package://browser/index.html');
-    mudarPaginaNavegador('login');
-    browser.execute("window.my.ragemp.setPlayerName('" + mp.players.local.name + "')");
+    setTimeout(function () {
+        browser.execute("window.my.ragemp.setPlayerName('" + mp.players.local.name + "')");
+    }, 2000);
+}
+function dadosJogador(dados) {
+    if (dados) {
+        mudarPaginaNavegador('login');
+    }
+    else {
+        mudarPaginaNavegador('registro');
+    }
     abrirNavegador();
 }
 function abrirNavegador() {
@@ -40,6 +49,7 @@ mp.events.add('IniciarNavegador', function () {
         iniciarNavegador();
     }
 });
+mp.events.add('DadosJogador', dadosJogador);
 mp.events.add('cursor', function () {
     mp.gui.cursor.visible = cursorVisible = !cursorVisible;
 });
@@ -49,17 +59,32 @@ mp.events.add('FecharBrowser', function () {
     }
 });
 mp.events.add('AutenticarJogador', function (dados) {
-    mp.events.callRemote('AutenticarJogador', mp.players.local, dados);
+    mp.events.callRemote('AutenticarJogador', dados);
 });
-mp.events.add('AutenticacaoResultado', function (resultado) {
+function AutenticacaoResultado(resultado) {
     if (resultado.autenticado) {
         autenticacaoResultado = resultado;
         mp.players.local.setVisible(true, true);
         mp.players.local.setCollision(true, true);
         mp.players.local.freezePosition(false);
-        mp.gui.cursor.visible = true;
+        noClipCamera.setActive(false);
+        noClipCamera.destroy();
+        mp.game.cam.renderScriptCams(false, false, 0, true, false);
+        mp.gui.cursor.visible = false;
     }
     browser.execute("window.my.login.autenticacaoResultado(" + resultado.autenticado + ", " + resultado.credenciaisInvalidas + ")");
+}
+mp.events.add('AutenticacaoResultado', AutenticacaoResultado);
+mp.events.add('RegistrarJogador', function (dados) {
+    mp.events.callRemote('RegistrarJogador', dados);
+});
+mp.events.add('RegistroResultado', function (resultado) {
+    browser.execute("window.my.login.registroResultado('" + JSON.stringify(resultado) + "')");
+    if (resultado.registrado) {
+        AutenticacaoResultado({
+            autenticado: true
+        });
+    }
 });
 function mudarPaginaNavegador(pagina) {
     browser.execute("window.my.app.mudarPagina('" + pagina + "')");

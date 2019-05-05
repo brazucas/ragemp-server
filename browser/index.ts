@@ -1,5 +1,6 @@
-import { AutenticacaoResultado, DadosLogin } from './src/interfaces/login.interface';
 import { JogadorOnline } from './src/app/players-online/players-online.page';
+import { Jogador } from './src/interfaces/jogador.interface';
+import { AutenticacaoResultado, DadosLogin, DadosRegistro, RegistroResultado } from './src/interfaces/login.interface';
 
 let browser: BrowserMp;
 let cursorVisible = false;
@@ -22,8 +23,18 @@ iniciarNavegador();
 
 function iniciarNavegador() {
   browser = mp.browsers.new('package://browser/index.html');
-  mudarPaginaNavegador('login');
-  browser.execute(`window.my.ragemp.setPlayerName('${mp.players.local.name}')`);
+
+  setTimeout(() => {
+    browser.execute(`window.my.ragemp.setPlayerName('${mp.players.local.name}')`);
+  }, 2000);
+}
+
+function dadosJogador(dados: Jogador) {
+  if (dados) {
+    mudarPaginaNavegador('login');
+  } else {
+    mudarPaginaNavegador('registro');
+  }
 
   abrirNavegador();
 }
@@ -49,6 +60,8 @@ mp.events.add('IniciarNavegador', () => {
   }
 });
 
+mp.events.add('DadosJogador', dadosJogador);
+
 mp.events.add('cursor', () => {
   mp.gui.cursor.visible = cursorVisible = !cursorVisible;
 });
@@ -60,30 +73,49 @@ mp.events.add('FecharBrowser', () => {
 });
 
 mp.events.add('AutenticarJogador', (dados: DadosLogin) => {
-  mp.events.callRemote('AutenticarJogador', mp.players.local, dados);
+  mp.events.callRemote('AutenticarJogador', dados);
 });
 
-mp.events.add('AutenticacaoResultado', (resultado: AutenticacaoResultado) => {
+function AutenticacaoResultado(resultado: AutenticacaoResultado) {
   if (resultado.autenticado) {
     autenticacaoResultado = resultado;
     mp.players.local.setVisible(true, true);
     mp.players.local.setCollision(true, true);
     mp.players.local.freezePosition(false);
-    mp.gui.cursor.visible = true;
+    noClipCamera.setActive(false);
+    noClipCamera.destroy();
+    mp.game.cam.renderScriptCams(false, false, 0, true, false);
+    mp.gui.cursor.visible = false;
   }
 
   browser.execute(`window.my.login.autenticacaoResultado(${resultado.autenticado}, ${resultado.credenciaisInvalidas})`);
+}
+
+mp.events.add('AutenticacaoResultado', AutenticacaoResultado);
+
+mp.events.add('RegistrarJogador', (dados: DadosRegistro) => {
+  mp.events.callRemote('RegistrarJogador', dados);
+});
+
+mp.events.add('RegistroResultado', (resultado: RegistroResultado) => {
+  browser.execute(`window.my.login.registroResultado('${JSON.stringify(resultado)}')`);
+
+  if (resultado.registrado) {
+    AutenticacaoResultado({
+      autenticado: true,
+    });
+  }
 });
 
 function mudarPaginaNavegador(pagina: string) {
   browser.execute(`window.my.app.mudarPagina('${pagina}')`);
 }
 
-mp.keys.bind(0x75, true, function () {
+mp.keys.bind(0x75, true, function() {
   navegadorAberto ? fecharNavegador() : abrirNavegador();
 });
 
-mp.keys.bind(0x5A, true, function () {
+mp.keys.bind(0x5A, true, function() {
   mudarPaginaNavegador('players-online');
 
   let jogadores: JogadorOnline[] = [];
@@ -102,6 +134,6 @@ mp.keys.bind(0x5A, true, function () {
   abrirNavegador();
 });
 
-mp.keys.bind(0x5A, false, function () {
+mp.keys.bind(0x5A, false, function() {
   fecharNavegador();
 });

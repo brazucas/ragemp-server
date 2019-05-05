@@ -1,6 +1,5 @@
 'use strict';
 
-import EventKey = RageEnums.EventKey;
 import { BrazucasServer } from '../../common/brazucas-server';
 import { PlayerChatHandler } from './handler/playerChat';
 import { PlayerDeathHandler } from './handler/playerDeath';
@@ -9,11 +8,7 @@ import { PlayerQuitHandler } from './handler/playerQuit';
 import { Comandos } from './lib/commands/commands';
 import { carregarEventos } from './lib/events/events';
 import { Rpg } from './rpg';
-
-mp.events.add(EventKey.PLAYER_JOIN, PlayerJoinHandler);
-mp.events.add(EventKey.PLAYER_QUIT, PlayerQuitHandler);
-mp.events.add(EventKey.PLAYER_CHAT, PlayerChatHandler);
-mp.events.add(EventKey.PLAYER_DEATH, PlayerDeathHandler);
+import EventKey = RageEnums.EventKey;
 
 mp.events.add('playerCommand', (player: PlayerMp, command: string) => {
   console.debug(`[COMANDO] ${player.name} enviou o comando ${command}`);
@@ -32,6 +27,11 @@ mp.events.add('playerCommand', (player: PlayerMp, command: string) => {
 });
 
 let brazucasServer = new BrazucasServer();
+
+mp.events.add(EventKey.PLAYER_JOIN, PlayerJoinHandler.bind(PlayerJoinHandler, brazucasServer));
+mp.events.add(EventKey.PLAYER_QUIT, PlayerQuitHandler.bind(PlayerQuitHandler, brazucasServer));
+mp.events.add(EventKey.PLAYER_CHAT, PlayerChatHandler.bind(PlayerChatHandler, brazucasServer));
+mp.events.add(EventKey.PLAYER_DEATH, PlayerDeathHandler.bind(PlayerDeathHandler, brazucasServer));
 
 brazucasServer.onload()
   .subscribe(() => {

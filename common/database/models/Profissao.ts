@@ -7,10 +7,16 @@ import { Jogador } from './Jogador';
   deletedAt: 'dataExcluido',
   updatedAt: 'dataAtualizado',
   paranoid: true,
+  indexes: [
+    {
+      unique: true,
+      fields: ['nome'],
+    }
+  ]
 })
 export class Profissao extends Model<Profissao> {
 
-  @Column({allowNull: false, unique: true})
+  @Column({allowNull: false})
   nome: string;
 
   @Column({allowNull: false, defaultValue: 10})

@@ -23,7 +23,7 @@ __decorate([
     __metadata("design:type", String)
 ], TipoPropriedade.prototype, "nome", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], TipoPropriedade.prototype, "identificador", void 0);
 __decorate([
@@ -37,6 +37,12 @@ TipoPropriedade = __decorate([
         deletedAt: 'dataExcluido',
         updatedAt: 'dataAtualizado',
         paranoid: true,
+        indexes: [
+            {
+                unique: true,
+                fields: ['identificador'],
+            }
+        ]
     })
 ], TipoPropriedade);
 exports.TipoPropriedade = TipoPropriedade;

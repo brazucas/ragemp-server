@@ -10,9 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const environment_1 = require("../../../../common/environment");
 function eventoLogin(brazucasServer) {
-    mp.events.add('AutenticarJogador', (player, dados) => __awaiter(this, void 0, void 0, function* () {
+    mp.events.add('AutenticarJogador', (player, dadosStringify) => __awaiter(this, void 0, void 0, function* () {
+        const dados = JSON.parse(dadosStringify);
+        console.log(`[EVENTO] eventoLogin `, player, dados);
         try {
-            const jogador = yield brazucasServer.autenticarJogador(dados.usuario, dados.senha);
+            const jogador = yield brazucasServer.autenticarJogador(player.name, dados.senha);
             if (jogador) {
                 player.spawn(environment_1.environment.posicaoLogin);
                 player.call('AutenticacaoResultado', [{
@@ -28,9 +30,38 @@ function eventoLogin(brazucasServer) {
             }
         }
         catch (err) {
+            console.error(err.toString());
             player.call('AutenticacaoResultado', [{
                     credenciaisInvalidas: false,
                     autenticado: false,
+                }]);
+        }
+    }));
+    mp.events.add('RegistrarJogador', (player, dadosStringify) => __awaiter(this, void 0, void 0, function* () {
+        const dados = JSON.parse(dadosStringify);
+        console.log('[EVENTO] RegistrarJogador ', player, dados);
+        try {
+            const jogador = yield brazucasServer.registrarJogador(player, dados);
+            if (jogador) {
+                player.spawn(environment_1.environment.posicaoLogin);
+                player.call('RegistroResultado', [{
+                        erro: false,
+                        jogador: jogador,
+                        registrado: true,
+                    }]);
+            }
+            else {
+                player.call('RegistroResultado', [{
+                        erro: true,
+                    }]);
+            }
+        }
+        catch (err) {
+            console.debug(`[REGISTRO] Um erro ocorreu ao criar o jogador ${player.name}`);
+            console.error(err.toString());
+            player.call('RegistroResultado', [{
+                    erro: true,
+                    mensagem: err.toString() || 'Erro interno ao cadastrar',
                 }]);
         }
     }));

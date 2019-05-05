@@ -15,7 +15,7 @@ const Profissao_1 = require("./Profissao");
 let Jogador = class Jogador extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, unique: true }),
+    sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", String)
 ], Jogador.prototype, "nome", void 0);
 __decorate([
@@ -23,11 +23,19 @@ __decorate([
     __metadata("design:type", String)
 ], Jogador.prototype, "senha", void 0);
 __decorate([
+    sequelize_typescript_1.Column({ allowNull: false }),
+    __metadata("design:type", String)
+], Jogador.prototype, "email", void 0);
+__decorate([
+    sequelize_typescript_1.Column({ allowNull: false }),
+    __metadata("design:type", String)
+], Jogador.prototype, "celular", void 0);
+__decorate([
     sequelize_typescript_1.Column({ defaultValue: 1 }),
     __metadata("design:type", Number)
 ], Jogador.prototype, "nivel", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsTo(() => Profissao_1.Profissao, { foreignKey: { allowNull: false, name: 'profissao' } }),
+    sequelize_typescript_1.BelongsTo(() => Profissao_1.Profissao, { foreignKey: { allowNull: true, name: 'profissao' } }),
     __metadata("design:type", Profissao_1.Profissao)
 ], Jogador.prototype, "jogadorProfissao", void 0);
 __decorate([
@@ -41,6 +49,12 @@ Jogador = __decorate([
         deletedAt: 'dataExcluido',
         updatedAt: 'dataAtualizado',
         paranoid: true,
+        indexes: [
+            {
+                unique: true,
+                fields: ['nome'],
+            }
+        ]
     })
 ], Jogador);
 exports.Jogador = Jogador;
