@@ -40,6 +40,8 @@ export class LoginPage implements AfterViewInit {
     this.ragemp.playerName$.subscribe((playerName) => {
       this.formGroup.controls.usuario.patchValue(playerName);
     });
+
+    this.formGroup.controls.usuario.patchValue('Mandrakke_Army');
   }
 
   async ngAfterViewInit() {
