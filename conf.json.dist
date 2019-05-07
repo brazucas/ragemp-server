@@ -1,9 +1,9 @@
 {
 	"maxplayers" : 50,
-	"name" : "[:.:.Brazuca's Server.:.:] Minigames",
+	"name" : "[:.:.Brazuca's Server.:.:] Sempre um passo a frente!",
 	"gamemode" : "rpg/minigames",
 	"streamdistance" : 500.0,
-	"announce" : true,
+	"announce" : false,
 	"port": 22005,
 	"language": "pt",
 	"url": "http://brazucas-server.com",
