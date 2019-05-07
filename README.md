@@ -1,7 +1,5 @@
 # Histórico
 
-<sup>
-
 ##### Sobre o Brazuca's
 
 O Brazuca's é um servidor de jogo de uma modificação do jogo Grand Theft Auto: San Andreas chamado SA-MP (San Andreas Multiplayer), que permite que qualquer pessoa crie seu próprio servidor do jogo e outras pessoas possam jogar nele, utilizando uma API fornecida pelos desenvolvedores do mod. Mais informações em http://sa-mp.com. O Brazuca's surgiu em 2006 e passou por altos e baixos, até que em meados de 2014 passou a ficar praticamente sem jogadores.
@@ -29,7 +27,6 @@ Atualmente nosso time de testes está cheio.
 ##### Posso entrar no time de desenvolvimento?
 
 Claro! o projeto é de código aberto e qualquer um pode contribuir, basta fazer um fork e pull requests.
-</sup>
 
 # Abrindo o servidor local
 
