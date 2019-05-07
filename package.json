@@ -24,6 +24,7 @@
     "@types/ragemp-s": "github:CocaColaBear/types-ragemp-s#master",
     "@types/rx": "^4.1.1",
     "@types/sequelize": "^4.27.23",
+    "bcrypt": "^3.0.6",
     "bcrypt-nodejs": "0.0.3",
     "commitplease": "^3.2.0",
     "eslint": "^4.6.1",
