@@ -44,6 +44,11 @@ class ComandosAdmin {
         mp.players.broadcast(`!{0000FF}[ADMIN] ${player.name} teleporta ${playerOrigem.name} para ${playerDestino.name}`);
         playerOrigem.position = playerDestino.position;
     }
+	static coords(player) {
+		let playerPos = player.position;
+		console.log(playerPos);
+		player.outputChatBox(`Coordenadas: ${player.position}`);
+	}
 }
 exports.ComandosAdmin = ComandosAdmin;
 //# sourceMappingURL=comandos-admin.js.map
