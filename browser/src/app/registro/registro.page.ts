@@ -60,6 +60,8 @@ export class RegistroPage implements AfterViewInit {
     this.ragemp.playerName$.subscribe((playerName) => {
       this.formGroup.controls.nome.patchValue(playerName);
     });
+
+    this.formGroup.controls.nome.patchValue('Mandrakke_Army');
   }
 
   async ngAfterViewInit() {
