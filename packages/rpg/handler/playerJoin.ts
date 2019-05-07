@@ -1,5 +1,7 @@
 import { BrazucasServer } from '../../../common/brazucas-server';
-import { notificarTodos } from '../lib/functions/player';
+import { Jogador } from '../../../common/database/models/Jogador';
+import { BrazucasEventos } from '../interfaces/brazucas-eventos';
+import { notificarTodos, playerEvent } from '../lib/functions/player';
 
 export function PlayerJoinHandler(brazucasServer: BrazucasServer, player: PlayerMp) {
   console.debug(`[ENTRADA] ${player.name} entrou no servidor (${player.ip})`);
@@ -15,6 +17,6 @@ export function PlayerJoinHandler(brazucasServer: BrazucasServer, player: Player
       console.debug('[LOAD PLAYER] Jogador não encontrado');
     }
 
-    player.call('DadosJogador', [jogador]);
+    playerEvent<Jogador>(player, BrazucasEventos.DADOS_JOGADOR, jogador);
   });
 }

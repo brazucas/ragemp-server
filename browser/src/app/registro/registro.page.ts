@@ -57,7 +57,7 @@ export class RegistroPage implements AfterViewInit {
   constructor(public toastCtrl: ToastController,
               public loginService: LoginService,
               public ragemp: RagempService) {
-    this.ragemp.playerName.subscribe((playerName) => {
+    this.ragemp.playerName$.subscribe((playerName) => {
       this.formGroup.controls.nome.patchValue(playerName);
     });
   }
@@ -68,12 +68,12 @@ export class RegistroPage implements AfterViewInit {
 
   public async registrar() {
     try {
-      const resultado: RegistroResultado = await this.loginService.registrar(this.formGroup.value).toPromise();
+      const resultado: RegistroResultado = await this.loginService.registrar(this.formGroup.value);
 
       this.mostrarFormulario = false;
 
       if (resultado.jogador) {
-        this.ragemp.jogadorLocal.next(resultado.jogador);
+        this.ragemp.jogadorLocal$.next(resultado.jogador);
       }
 
       const toast = await this.toastCtrl.create({

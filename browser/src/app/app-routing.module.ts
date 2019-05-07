@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPage},
   {path: 'players-online', component: PlayersOnlinePage},
   {path: 'registro', component: RegistroPage},
+  { path: 'criar-veiculo', loadChildren: './criar-veiculo/criar-veiculo.module#CriarVeiculoPageModule' },
 ];
 
 @NgModule({

@@ -1,4 +1,12 @@
+import { BrazucasServer } from '../../../../common/brazucas-server';
+
 export class ComandosAdmin {
+  protected brazucasServer: BrazucasServer;
+
+  constructor(brazucasServer: BrazucasServer) {
+    this.brazucasServer = brazucasServer;
+  }
+
   public static tlt(player: PlayerMp, playerOrigemHash: number | string, playerDestinoHash: number | string) {
     if (!playerOrigemHash || !playerDestinoHash) {
       return player.outputChatBox('!{FF0000}[SINTAXE] /tlt [id/nick] [id/nick]');

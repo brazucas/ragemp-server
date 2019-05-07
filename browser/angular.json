@@ -26,6 +26,11 @@
                 "output": ""
               },
               {
+                "glob": "ragemp/*.js",
+                "input": "./",
+                "output": ""
+              },
+              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"

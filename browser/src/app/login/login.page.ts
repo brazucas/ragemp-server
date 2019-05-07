@@ -37,7 +37,7 @@ export class LoginPage implements AfterViewInit {
   constructor(public toastCtrl: ToastController,
               public loginService: LoginService,
               public ragemp: RagempService) {
-    this.ragemp.playerName.subscribe((playerName) => {
+    this.ragemp.playerName$.subscribe((playerName) => {
       this.formGroup.controls.usuario.patchValue(playerName);
     });
   }
@@ -48,7 +48,7 @@ export class LoginPage implements AfterViewInit {
 
   public async login() {
     try {
-      await this.loginService.login(this.formGroup.value).toPromise();
+      await this.loginService.login(this.formGroup.value);
 
       this.mostrarFormulario = false;
 

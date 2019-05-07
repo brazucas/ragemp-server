@@ -1,9 +1,17 @@
 ///<reference path="../../../../node_modules/@types/ragemp-s/index.d.ts" />
 
+import { BrazucasServer } from '../../../../common/brazucas-server';
+import { BrazucasEventos } from '../../interfaces/brazucas-eventos';
+import { playerEvent } from '../functions/player';
 import { ComandosAdmin } from './comandos-admin';
 
-export class Comandos extends ComandosAdmin {
-  public static dararma(player: PlayerMp, weaponHash: string) {
+export class Commands extends ComandosAdmin {
+
+  constructor(brazucasServer: BrazucasServer) {
+    super(brazucasServer);
+  }
+
+  public dararma(player: PlayerMp, weaponHash: string) {
     console.debug(`[COMANDOS - dararma] Dando arma ${weaponHash} para o jogador ${player.name}`);
 
     const asset = mp.joaat(weaponHash);
@@ -13,17 +21,17 @@ export class Comandos extends ComandosAdmin {
     player.notify(`Arma ${weaponHash} recebida!`);
   }
 
-  public static posicaoatual(player: PlayerMp) {
+  public posicaoatual(player: PlayerMp) {
     console.debug(`[COMANDOS - posicaoatual] Posição atual de ${player.name}: ${player.position.toString()}`);
 
     player.outputChatBox(`Posição atual: ${player.position.toString()}`);
   }
 
-  public static browser(player: PlayerMp) {
-    player.call('IniciarNavegador', []);
+  public browser(player: PlayerMp) {
+    playerEvent<any>(player, BrazucasEventos.INICIAR_NAVEGADOR);
   }
 
-  public static cursor(player: PlayerMp) {
-    player.call('cursor', []);
+  public cursor(player: PlayerMp) {
+    playerEvent<any>(player, BrazucasEventos.CURSOR);
   }
 }

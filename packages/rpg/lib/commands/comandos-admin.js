@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class ComandosAdmin {
+    constructor(brazucasServer) {
+        this.brazucasServer = brazucasServer;
+    }
     static tlt(player, playerOrigemHash, playerDestinoHash) {
         if (!playerOrigemHash || !playerDestinoHash) {
             return player.outputChatBox('!{FF0000}[SINTAXE] /tlt [id/nick] [id/nick]');

@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const brazucas_eventos_1 = require("../interfaces/brazucas-eventos");
 const player_1 = require("../lib/functions/player");
 function PlayerJoinHandler(brazucasServer, player) {
     console.debug(`[ENTRADA] ${player.name} entrou no servidor (${player.ip})`);
@@ -20,7 +21,7 @@ function PlayerJoinHandler(brazucasServer, player) {
         else {
             console.debug('[LOAD PLAYER] Jogador não encontrado');
         }
-        player.call('DadosJogador', [jogador]);
+        player_1.playerEvent(player, brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR, jogador);
     }));
 }
 exports.PlayerJoinHandler = PlayerJoinHandler;
