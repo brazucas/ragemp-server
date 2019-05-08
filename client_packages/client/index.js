@@ -63,6 +63,9 @@ class Client {
             this.browsers.playersOnline.execute(`window.my.playersOnline.listaJogadores('${JSON.stringify(jogadores)}')`);
             this.browsers.playersOnline.mostrar();
         });
+        mp.keys.bind(0x5A, false, () => {
+            this.browsers.playersOnline.esconder();
+        });
     }
 }
 class Commands {
@@ -71,6 +74,7 @@ class Commands {
     }
     criarveiculo() {
         this.client.browsers.central.navegar('criar-veiculo');
+        this.client.browsers.central.mostrar();
     }
 }
 class Navegador {
@@ -144,6 +148,7 @@ class ServerEvents {
         mp.gui.cursor.visible = this.client.cursorVisible = !this.client.cursorVisible;
     }
     DadosJogador(jogador) {
+        this.client.jogador = jogador;
         if (jogador) {
             this.client.login();
         }

@@ -5,6 +5,7 @@ import { ServerEvent } from '../packages/rpg/interfaces/brazucas-eventos';
 import EventKey = RageEnums.EventKey;
 
 class Client {
+  public jogador: Jogador;
   public serverEvents: ServerEvents;
   public browserEvents: BrowserEvents;
 
@@ -93,6 +94,10 @@ class Client {
 
       this.browsers.playersOnline.mostrar();
     });
+
+    mp.keys.bind(0x5A, false, () => {
+      this.browsers.playersOnline.esconder();
+    });
   }
 }
 
@@ -105,6 +110,7 @@ class Commands {
 
   public criarveiculo() {
     this.client.browsers.central.navegar('criar-veiculo');
+    this.client.browsers.central.mostrar();
   }
 }
 
@@ -199,6 +205,8 @@ class ServerEvents {
   }
 
   public DadosJogador(jogador: Jogador) {
+    this.client.jogador = jogador;
+
     if (jogador) {
       this.client.login();
     } else {

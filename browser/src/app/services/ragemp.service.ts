@@ -10,6 +10,7 @@ declare let mp: any;
   providedIn: 'root'
 })
 export class RagempService {
+  public dadosJogador$: BehaviorSubject<Jogador> = new BehaviorSubject(null);
   public playerName$: BehaviorSubject<string> = new BehaviorSubject(null);
   public jogadorLocal$: BehaviorSubject<Jogador> = new BehaviorSubject(null);
   public serverEvent$: Subject<ServerEvent> = new Subject();
@@ -31,11 +32,12 @@ export class RagempService {
 
       mp.trigger(BrazucasEventos.BROWSER, eventId, event, JSON.stringify(data));
 
-      const subscriber = this.serverEvent$.subscribe((serverEvent) => {
-        console.debug(`alou goiânia ${JSON.stringify(serverEvent)}`);
-        console.debug(`alou goiânia2 ${eventId}`);
-        console.debug(`alou goiânia3 ${(serverEvent.eventId === eventId)}`);
-        console.debug(`alou goiânia4 ${JSON.stringify(serverEvent.data)}`);
+      const subscriber = this.serverEvent$.subscribe((serverEvent: ServerEvent) => {
+        console.debug(`[EVENTO] (ID ${eventId}) ${JSON.stringify(serverEvent)}`);
+
+        if (typeof this[serverEvent.event] === 'function') {
+          this[serverEvent.event](serverEvent.data);
+        }
 
         if (serverEvent.eventId === eventId) {
           clearTimeout(timeout);
@@ -61,6 +63,10 @@ export class RagempService {
       data: data,
       eventId: eventId,
     });
+  }
+
+  public [BrazucasEventos.DADOS_JOGADOR](jogador: Jogador) {
+    this.dadosJogador$.next(jogador);
   }
 }
 
