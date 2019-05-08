@@ -202,7 +202,7 @@ var Veiculos;
     Veiculos[Veiculos["FELON2"] = 4205676014] = "FELON2";
     Veiculos[Veiculos["FELTZER2"] = 2299640309] = "FELTZER2";
     Veiculos[Veiculos["FELTZER3"] = 2728226064] = "FELTZER3";
-    Veiculos[Veiculos["FIRETRUK"] = 1938952078] = "FIRETRUK";
+    Veiculos[Veiculos["FIRETRUCK"] = 1938952078] = "FIRETRUCK";
     Veiculos[Veiculos["FIXTER"] = 3458454463] = "FIXTER";
     Veiculos[Veiculos["FLATBED"] = 1353720154] = "FLATBED";
     Veiculos[Veiculos["FMJ"] = 1426219628] = "FMJ";

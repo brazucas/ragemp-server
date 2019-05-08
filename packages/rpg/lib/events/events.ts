@@ -1,4 +1,4 @@
-import { AutenticacaoResultado, DadosLogin, DadosRegistro, RegistroResultado } from '../../../../browser/src/interfaces/login.interface';
+import { DadosLogin, DadosRegistro, RegistroResultado } from '../../../../browser/src/interfaces/login.interface';
 import { BrazucasServer } from '../../../../common/brazucas-server';
 import { Jogador } from '../../../../common/database/models/Jogador';
 import { environment } from '../../../../common/environment';
@@ -19,23 +19,26 @@ export class Events {
       if (jogador) {
         player.spawn(environment.posicaoLogin);
 
-        playerEvent<AutenticacaoResultado>(player, BrazucasEventos.AUTENTICACAO_RESULTADO, {
+        return {
+          eventoResposta: 'AutenticacaoResultado',
           credenciaisInvalidas: false,
           autenticado: true,
-        });
+        };
       } else {
-        playerEvent<AutenticacaoResultado>(player, BrazucasEventos.AUTENTICACAO_RESULTADO, {
+        return {
+          eventoResposta: 'AutenticacaoResultado',
           credenciaisInvalidas: true,
           autenticado: false,
-        });
+        };
       }
     } catch (err) {
       console.error(err.toString());
 
-      playerEvent<AutenticacaoResultado>(player, BrazucasEventos.AUTENTICACAO_RESULTADO, {
+      return {
+        eventoResposta: 'AutenticacaoResultado',
         credenciaisInvalidas: false,
         autenticado: false,
-      });
+      };
     }
   }
 

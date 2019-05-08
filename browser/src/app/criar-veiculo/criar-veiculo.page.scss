@@ -1,0 +1,71 @@
+@import '../../global';
+
+:host {
+  --ion-background-color: transparent;
+
+  ion-label {
+    --color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+
+  ion-input {
+    --color: #FFFFFF;
+  }
+
+  ion-searchbar {
+    --color: #FFFFFF;
+  }
+}
+
+select {
+  width: 100%;
+  background-color: transparent;
+}
+
+option {
+  color: #FFFFFF;
+}
+
+.titulo {
+  padding: 10px 0;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px;
+  padding: 5px 0;
+}
+
+.btn-enviar {
+  background-color: #319136;
+  color: #FFFFFF;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-enviar[disabled] {
+  opacity: .3;
+}
+
+.container-veiculo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+
+  .imagem-modelo {
+
+  }
+}
+
+.posicao, .booleans {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

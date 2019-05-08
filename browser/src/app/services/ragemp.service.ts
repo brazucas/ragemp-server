@@ -27,16 +27,20 @@ export class RagempService {
 
   public callRagempEvent(event: string, data: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      mp.trigger(BrazucasEventos.BROWSER, event, JSON.stringify(data));
+      const eventId = Math.round(Math.random() * 10000000);
+
+      mp.trigger(BrazucasEventos.BROWSER, eventId, event, JSON.stringify(data));
 
       const subscriber = this.serverEvent$.subscribe((serverEvent) => {
-        const eventData = JSON.parse(serverEvent.data);
+        console.debug(`alou goiânia ${JSON.stringify(serverEvent)}`);
+        console.debug(`alou goiânia2 ${eventId}`);
+        console.debug(`alou goiânia3 ${(serverEvent.eventId === eventId)}`);
+        console.debug(`alou goiânia4 ${JSON.stringify(serverEvent.data)}`);
 
-        if (serverEvent.event === event) {
+        if (serverEvent.eventId === eventId) {
           clearTimeout(timeout);
+          resolve(serverEvent.data);
           subscriber.unsubscribe();
-
-          resolve(eventData);
         }
       });
 
@@ -51,15 +55,17 @@ export class RagempService {
     this.playerName$.next(playerName);
   }
 
-  public serverEvent(event: string, data: any) {
+  public serverEvent(eventId: number, event: string, data: string) {
     this.serverEvent$.next({
       event: event,
       data: data,
+      eventId: eventId,
     });
   }
 }
 
 export interface ServerEvent {
+  eventId: number,
   event: string,
   data: any,
 }

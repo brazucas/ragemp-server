@@ -21,24 +21,27 @@ class Events {
                 const jogador = yield this.brazucasServer.autenticarJogador(player.name, dados.senha);
                 if (jogador) {
                     player.spawn(environment_1.environment.posicaoLogin);
-                    player_1.playerEvent(player, brazucas_eventos_1.BrazucasEventos.AUTENTICACAO_RESULTADO, {
+                    return {
+                        eventoResposta: 'AutenticacaoResultado',
                         credenciaisInvalidas: false,
                         autenticado: true,
-                    });
+                    };
                 }
                 else {
-                    player_1.playerEvent(player, brazucas_eventos_1.BrazucasEventos.AUTENTICACAO_RESULTADO, {
+                    return {
+                        eventoResposta: 'AutenticacaoResultado',
                         credenciaisInvalidas: true,
                         autenticado: false,
-                    });
+                    };
                 }
             }
             catch (err) {
                 console.error(err.toString());
-                player_1.playerEvent(player, brazucas_eventos_1.BrazucasEventos.AUTENTICACAO_RESULTADO, {
+                return {
+                    eventoResposta: 'AutenticacaoResultado',
                     credenciaisInvalidas: false,
                     autenticado: false,
-                });
+                };
             }
         });
     }

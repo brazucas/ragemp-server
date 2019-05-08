@@ -3,6 +3,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonInput, ToastController } from '@ionic/angular';
+import { AutenticacaoResultado } from '../../interfaces/login.interface';
 import { LoginService } from '../services/login.service';
 import { RagempService } from '../services/ragemp.service';
 
@@ -48,7 +49,11 @@ export class LoginPage implements AfterViewInit {
 
   public async login() {
     try {
-      await this.loginService.login(this.formGroup.value);
+      const autenticacaoResultado: AutenticacaoResultado = await this.loginService.login(this.formGroup.value);
+
+      if (!autenticacaoResultado.autenticado) {
+        throw autenticacaoResultado;
+      }
 
       this.mostrarFormulario = false;
 

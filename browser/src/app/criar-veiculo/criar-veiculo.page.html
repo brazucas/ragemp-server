@@ -1,9 +1,87 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>criar-veiculo</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content *ngIf="mostrarFormulario">
+    <app-pagina [formGroup]="formGroup" [podeFechar]="true" (submit)="criarVeiculo()">
+        <div class="titulo">Criando Veículo</div>
 
-<ion-content>
+        <div class="container-veiculo">
+            <div class="imagem-modelo">
+                <img [src]="'assets/veiculos/'+ formGroup.controls.modelo.value.toLowerCase() +'.png'" alt=""
+                     width="200px"/>
+            </div>
 
+            <div class="formulario">
+                <div class="titulo">
+                    Modelo
+                </div>
+
+                <ion-searchbar placeholder="Pesquisar" (ionChange)="modeloPesquisa($event)"></ion-searchbar>
+
+                <select id="modelo" class="modelos" formControlName="modelo" formArrayName="" size="6"
+                        (change)="modeloSelecionado($event)">
+                    <option *ngFor="let veiculo of (listaVeiculos | filter: filtroPesquisa)">
+                        {{ veiculo }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="posicao">
+            <ion-item>
+                <ion-label position="floating">Cor</ion-label>
+                <ion-input formControlName="cor" [(colorPicker)]="color" [style.background]="color"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Placa</ion-label>
+                <ion-input formControlName="placa" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Proprietário</ion-label>
+                <ion-input formControlName="proprietario" type="text"></ion-input>
+            </ion-item>
+        </div>
+
+        <div class="posicao">
+            <ion-item>
+                <ion-label position="floating">Posição X</ion-label>
+                <ion-input formControlName="posicaoX" readonly type="text" placeholder="Posição X"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Posição Y</ion-label>
+                <ion-input formControlName="posicaoX" readonly type="text" placeholder="Posição Y"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Posição Z</ion-label>
+                <ion-input formControlName="posicaoX" readonly type="text" placeholder="Posição Z"></ion-input>
+            </ion-item>
+        </div>
+
+        <div class="booleans">
+            <ion-item>
+                <ion-label position="floating">Trancado?</ion-label>
+                <ion-toggle formControlName="trancado"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Motor ligado?</ion-label>
+                <ion-toggle formControlName="motor"></ion-toggle>
+            </ion-item>
+        </div>
+
+        <ion-item>
+            <ion-label position="floating">Transparência</ion-label>
+            <ion-input formControlName="transparencia" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Tamanho</ion-label>
+            <ion-input formControlName="tamanho" type="number"></ion-input>
+        </ion-item>
+
+        <div class="acoes">
+            <button type="submit" [disabled]="!formGroup.valid" class="btn-enviar">Criar</button>
+        </div>
+    </app-pagina>
 </ion-content>

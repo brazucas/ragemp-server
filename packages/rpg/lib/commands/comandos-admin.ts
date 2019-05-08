@@ -60,4 +60,14 @@ export class ComandosAdmin {
 
     playerOrigem.position = playerDestino.position;
   }
+
+  irparaveiculo(player: PlayerMp, vehId: number) {
+    let veh: VehicleMp = mp.vehicles[vehId];
+
+    if (veh && veh.position) {
+      player.position = veh.position;
+    } else {
+      console.log('Veículo com ID ' + vehId + ' não encontrado.');
+    }
+  }
 }

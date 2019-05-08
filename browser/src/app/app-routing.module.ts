@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginPage } from './login/login.page';
+import { CriarVeiculoPage } from './criar-veiculo/criar-veiculo.page';
 import { HomePage } from './home/home.page';
+import { LoginPage } from './login/login.page';
 import { PlayersOnlinePage } from './players-online/players-online.page';
 import { RegistroPage } from './registro/registro.page';
 
@@ -11,7 +12,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPage},
   {path: 'players-online', component: PlayersOnlinePage},
   {path: 'registro', component: RegistroPage},
-  { path: 'criar-veiculo', loadChildren: './criar-veiculo/criar-veiculo.module#CriarVeiculoPageModule' },
+  {path: 'criar-veiculo', component: CriarVeiculoPage},
 ];
 
 @NgModule({

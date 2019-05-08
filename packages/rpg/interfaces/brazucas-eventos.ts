@@ -11,6 +11,7 @@ export enum BrazucasEventos {
 }
 
 export interface ServerEvent<T> {
+  eventId?: number,
   event: string,
   data: T,
 }

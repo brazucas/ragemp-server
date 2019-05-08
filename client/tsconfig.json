@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "lib": [
+      "es5", "es2015.promise", "dom", "es2015"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "outDir": "../client_packages",
+  },
+  "files": [
+    "../browser/node_modules/@types/ragemp-c/index.d.ts"
+  ],
+  "include": [
+    "./**/*.ts"
+  ],
+}
+
