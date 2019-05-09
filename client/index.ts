@@ -1,6 +1,8 @@
 import { JogadorOnline } from '../browser/src/app/players-online/players-online.page';
 import { Jogador } from '../browser/src/interfaces/jogador.interface';
 import { AutenticacaoResultado, RegistroResultado } from '../browser/src/interfaces/login.interface';
+import { EnumToArray } from '../common/util/util';
+import { Veiculos } from '../common/util/vehicles';
 import { ServerEvent } from '../packages/rpg/interfaces/brazucas-eventos';
 import EventKey = RageEnums.EventKey;
 
@@ -30,6 +32,22 @@ class Client {
     mp.gui.cursor.visible = false;
     mp.players.local.setVisible(false, false);
     mp.players.local.setCollision(false, false);
+
+    const veiculosCategorias = [];
+
+    EnumToArray(Veiculos).forEach((hash: string) => {
+      const veiculo = mp.vehicles.new(mp.game.joaat(hash), new mp.Vector3(100, 100, 100));
+
+      const classe = veiculo.getClass();
+
+      if (!veiculosCategorias[classe]) {
+        veiculosCategorias[classe] = [];
+      }
+
+      veiculosCategorias[classe].push(hash);
+    });
+
+    console.log(`[VEICULOS CATEGORIAS] ${JSON.stringify(veiculosCategorias)}`);
 
     this.keysBindings();
     this.initServerEvents();

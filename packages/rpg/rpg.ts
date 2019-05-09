@@ -33,7 +33,7 @@ export class Rpg {
     let maps = glob.sync('packages/rpg/maps/*.json');
 
     let self = this;
-    _.forEach(maps, function (map: Buffer) {
+    _.forEach(maps, function(map: Buffer) {
       self.maps.push(JSON.parse(fs.readFileSync(map, 'utf8')));
     });
 
@@ -55,7 +55,7 @@ export class Rpg {
       if (mapData.Map && mapData.Map.Objects && mapData.Map.Objects.MapObject) {
         let loadedVehicles = 0, loadedProps = 0;
 
-        _.forEach(mapData.Map.Objects.MapObject, function (object: any) {
+        _.forEach(mapData.Map.Objects.MapObject, function(object: any) {
           switch (object.Type) {
             case 'Prop':
               mp.objects.new(
@@ -92,11 +92,11 @@ export class Rpg {
     let objectsLength = mp.objects.toArray().length;
     let vehiclesLength = mp.vehicles.toArray().length;
 
-    mp.objects.forEach(function (object) {
+    mp.objects.forEach(function(object) {
       object.destroy();
     });
 
-    mp.vehicles.forEach(function (vehicle) {
+    mp.vehicles.forEach(function(vehicle) {
       vehicle.destroy();
     });
 
@@ -112,7 +112,7 @@ export class Rpg {
     }
 
     let self = this;
-    setTimeout(function () {
+    setTimeout(function() {
       self.mainLoop();
     }, 1000);
   }

@@ -15,8 +15,8 @@
     "skipLibCheck": true,
     "outDir": "../client_packages",
   },
-  "files": [
-    "../browser/node_modules/@types/ragemp-c/index.d.ts"
+  "typeRoots": [
+    "node_modules/@types"
   ],
   "include": [
     "./**/*.ts"

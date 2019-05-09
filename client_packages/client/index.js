@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const util_1 = require("../common/util/util");
+const vehicles_1 = require("../common/util/vehicles");
 class Client {
     constructor() {
         this.browsers = {
@@ -14,6 +16,16 @@ class Client {
         mp.gui.cursor.visible = false;
         mp.players.local.setVisible(false, false);
         mp.players.local.setCollision(false, false);
+        const veiculosCategorias = [];
+        util_1.EnumToArray(vehicles_1.Veiculos).forEach((hash) => {
+            const veiculo = mp.vehicles.new(mp.game.joaat(hash), new mp.Vector3(100, 100, 100));
+            const classe = veiculo.getClass();
+            if (!veiculosCategorias[classe]) {
+                veiculosCategorias[classe] = [];
+            }
+            veiculosCategorias[classe].push(hash);
+        });
+        console.log(`[VEICULOS CATEGORIAS] ${JSON.stringify(veiculosCategorias)}`);
         this.keysBindings();
         this.initServerEvents();
         this.initBrowserEvents();
