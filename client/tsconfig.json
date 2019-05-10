@@ -14,6 +14,7 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "outDir": "../client_packages",
+    "rootDir": "../"
   },
   "typeRoots": [
     "node_modules/@types"
