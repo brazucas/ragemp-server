@@ -17,6 +17,7 @@ import { LoginPage } from './login/login.page';
 import { HomePage } from './home/home.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NickInvalidoPage } from './nick-invalido/nick-invalido.page';
 import { PlayersOnlinePage } from './players-online/players-online.page';
 import {
   ApresentarAsyncDirective,
@@ -37,6 +38,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     HomePage,
     RegistroPage,
     CriarVeiculoPage,
+    NickInvalidoPage,
     ApresentarAsyncDirective,
     CasoResultadoDirective,
     CasoCarregandoDirective,

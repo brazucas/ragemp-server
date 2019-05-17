@@ -4,6 +4,7 @@ import 'rxjs/add/observable/of';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import { Observable } from 'rxjs/Observable';
 import * as Sequelize from 'sequelize';
+import { PLAYER_NAME_MAXLENGTH, PLAYER_NAME_MINLENGTH, PLAYER_NAME_REGEXP } from '../browser/src/app/services/ragemp.service';
 import { DadosRegistro } from '../browser/src/interfaces/login.interface';
 import { Database } from './database/database';
 import { Jogador } from './database/models/Jogador';
@@ -63,6 +64,17 @@ export class BrazucasServer {
 
     if (dados.senha !== dados.senhaConfirma) {
       throw 'As senhas informadas diferem';
+    }
+
+    const playerNameClean = PLAYER_NAME_REGEXP.exec(player.name);
+
+    if (
+      !playerNameClean ||
+      (playerNameClean[1].length !== player.name.length) ||
+      player.name.length < PLAYER_NAME_MINLENGTH ||
+      player.name.length > PLAYER_NAME_MAXLENGTH
+    ) {
+      throw 'Nick não permitido';
     }
 
     const jogadorExistente = await this.loadPlayer(player.name);

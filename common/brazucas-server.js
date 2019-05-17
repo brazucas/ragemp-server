@@ -13,6 +13,7 @@ require("rxjs/add/observable/forkJoin");
 require("rxjs/add/observable/of");
 const forkJoin_1 = require("rxjs/internal/observable/forkJoin");
 const Sequelize = require("sequelize");
+const ragemp_service_1 = require("../browser/src/app/services/ragemp.service");
 const database_1 = require("./database/database");
 const Jogador_1 = require("./database/models/Jogador");
 const util_1 = require("./util/util");
@@ -55,6 +56,13 @@ class BrazucasServer {
             }
             if (dados.senha !== dados.senhaConfirma) {
                 throw 'As senhas informadas diferem';
+            }
+            const playerNameClean = ragemp_service_1.PLAYER_NAME_REGEXP.exec(player.name);
+            if (!playerNameClean ||
+                (playerNameClean[1].length !== player.name.length) ||
+                player.name.length < ragemp_service_1.PLAYER_NAME_MINLENGTH ||
+                player.name.length > ragemp_service_1.PLAYER_NAME_MAXLENGTH) {
+                throw 'Nick não permitido';
             }
             const jogadorExistente = yield this.loadPlayer(player.name);
             if (jogadorExistente) {
