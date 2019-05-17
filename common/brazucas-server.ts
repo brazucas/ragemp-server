@@ -4,10 +4,10 @@ import 'rxjs/add/observable/of';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import { Observable } from 'rxjs/Observable';
 import * as Sequelize from 'sequelize';
-import { PLAYER_NAME_MAXLENGTH, PLAYER_NAME_MINLENGTH, PLAYER_NAME_REGEXP } from '../browser/src/app/services/ragemp.service';
 import { DadosRegistro } from '../browser/src/interfaces/login.interface';
 import { Database } from './database/database';
 import { Jogador } from './database/models/Jogador';
+import { PLAYER_NAME_MAXLENGTH, PLAYER_NAME_MINLENGTH, PLAYER_NAME_REGEXP } from './interfaces';
 import { bcryptCompare, bcryptHash, soNumeros } from './util/util';
 import Bluebird = require('bluebird');
 

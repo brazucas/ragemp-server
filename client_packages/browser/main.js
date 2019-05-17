@@ -1,5 +1,24 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "../common/interfaces.ts":
+/*!*******************************!*\
+  !*** ../common/interfaces.ts ***!
+  \*******************************/
+/*! exports provided: PLAYER_NAME_REGEXP, PLAYER_NAME_MINLENGTH, PLAYER_NAME_MAXLENGTH */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLAYER_NAME_REGEXP", function() { return PLAYER_NAME_REGEXP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLAYER_NAME_MINLENGTH", function() { return PLAYER_NAME_MINLENGTH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLAYER_NAME_MAXLENGTH", function() { return PLAYER_NAME_MAXLENGTH; });
+var PLAYER_NAME_REGEXP = new RegExp('([a-zA-Z,0-9]+(_|)[a-zA-Z,0-9]+)');
+var PLAYER_NAME_MINLENGTH = 3;
+var PLAYER_NAME_MAXLENGTH = 22;
+
+
+/***/ }),
+
 /***/ "../common/util/vehicles.ts":
 /*!**********************************!*\
   !*** ../common/util/vehicles.ts ***!
@@ -1591,7 +1610,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+/* harmony import */ var _common_interfaces__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../common/interfaces */ "../common/interfaces.ts");
+/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+
 
 
 
@@ -1641,11 +1662,11 @@ var AppComponent = /** @class */ (function () {
             if (!playerName) {
                 return;
             }
-            var playerNameClean = _services_ragemp_service__WEBPACK_IMPORTED_MODULE_5__["PLAYER_NAME_REGEXP"].exec(playerName);
+            var playerNameClean = _common_interfaces__WEBPACK_IMPORTED_MODULE_5__["PLAYER_NAME_REGEXP"].exec(playerName);
             if (!playerNameClean ||
                 (playerNameClean[1].length !== playerName.length) ||
-                playerName.length < _services_ragemp_service__WEBPACK_IMPORTED_MODULE_5__["PLAYER_NAME_MINLENGTH"] ||
-                playerName.length > _services_ragemp_service__WEBPACK_IMPORTED_MODULE_5__["PLAYER_NAME_MAXLENGTH"]) {
+                playerName.length < _common_interfaces__WEBPACK_IMPORTED_MODULE_5__["PLAYER_NAME_MINLENGTH"] ||
+                playerName.length > _common_interfaces__WEBPACK_IMPORTED_MODULE_5__["PLAYER_NAME_MAXLENGTH"]) {
                 return _this.navCtrl.navigateForward(['/nick-invalido']);
             }
         });
@@ -1662,7 +1683,7 @@ var AppComponent = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"],
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"],
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"],
-            _services_ragemp_service__WEBPACK_IMPORTED_MODULE_5__["RagempService"]])
+            _services_ragemp_service__WEBPACK_IMPORTED_MODULE_6__["RagempService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -2550,15 +2571,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NickInvalidoPage", function() { return NickInvalidoPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+/* harmony import */ var _common_interfaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../common/interfaces */ "../common/interfaces.ts");
+/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+
 
 
 
 var NickInvalidoPage = /** @class */ (function () {
     function NickInvalidoPage(ragemp) {
         this.ragemp = ragemp;
-        this.PLAYER_NAME_MINLENGTH = _services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__["PLAYER_NAME_MINLENGTH"];
-        this.PLAYER_NAME_MAXLENGTH = _services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__["PLAYER_NAME_MAXLENGTH"];
+        this.PLAYER_NAME_MINLENGTH = _common_interfaces__WEBPACK_IMPORTED_MODULE_2__["PLAYER_NAME_MINLENGTH"];
+        this.PLAYER_NAME_MAXLENGTH = _common_interfaces__WEBPACK_IMPORTED_MODULE_2__["PLAYER_NAME_MAXLENGTH"];
     }
     NickInvalidoPage.prototype.ngOnInit = function () {
         this.playerName$ = this.ragemp.playerName$;
@@ -2569,7 +2592,7 @@ var NickInvalidoPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./nick-invalido.page.html */ "./src/app/nick-invalido/nick-invalido.page.html"),
             styles: [__webpack_require__(/*! ./nick-invalido.page.scss */ "./src/app/nick-invalido/nick-invalido.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__["RagempService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_ragemp_service__WEBPACK_IMPORTED_MODULE_3__["RagempService"]])
     ], NickInvalidoPage);
     return NickInvalidoPage;
 }());
@@ -3058,14 +3081,11 @@ var LoginService = /** @class */ (function () {
 /*!********************************************!*\
   !*** ./src/app/services/ragemp.service.ts ***!
   \********************************************/
-/*! exports provided: PLAYER_NAME_REGEXP, PLAYER_NAME_MINLENGTH, PLAYER_NAME_MAXLENGTH, RagempService */
+/*! exports provided: RagempService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLAYER_NAME_REGEXP", function() { return PLAYER_NAME_REGEXP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLAYER_NAME_MINLENGTH", function() { return PLAYER_NAME_MINLENGTH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLAYER_NAME_MAXLENGTH", function() { return PLAYER_NAME_MAXLENGTH; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RagempService", function() { return RagempService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
@@ -3078,9 +3098,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var PLAYER_NAME_REGEXP = new RegExp('([a-zA-Z,0-9]+(_|)[a-zA-Z,0-9]+)');
-var PLAYER_NAME_MINLENGTH = 3;
-var PLAYER_NAME_MAXLENGTH = 22;
 var RagempService = /** @class */ (function () {
     function RagempService() {
         this.dadosJogador$ = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);

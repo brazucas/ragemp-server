@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PLAYER_NAME_MAXLENGTH, PLAYER_NAME_MINLENGTH, RagempService } from '../services/ragemp.service';
+import { PLAYER_NAME_MAXLENGTH, PLAYER_NAME_MINLENGTH } from '../../../../common/interfaces';
+import { RagempService } from '../services/ragemp.service';
 
 @Component({
   selector: 'app-nick-invalido',

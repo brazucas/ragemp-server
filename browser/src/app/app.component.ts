@@ -3,7 +3,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { NavController, Platform } from '@ionic/angular';
-import { PLAYER_NAME_MAXLENGTH, PLAYER_NAME_MINLENGTH, PLAYER_NAME_REGEXP, RagempService } from './services/ragemp.service';
+import { PLAYER_NAME_MAXLENGTH, PLAYER_NAME_MINLENGTH, PLAYER_NAME_REGEXP } from '../../../common/interfaces';
+import { RagempService } from './services/ragemp.service';
 
 @Component({
   selector: 'app-root',

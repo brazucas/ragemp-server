@@ -13,9 +13,6 @@ const core_1 = require("@angular/core");
 const rxjs_1 = require("rxjs");
 const BehaviorSubject_1 = require("rxjs/internal/BehaviorSubject");
 const brazucas_eventos_1 = require("../../../../packages/rpg/interfaces/brazucas-eventos");
-exports.PLAYER_NAME_REGEXP = new RegExp('([a-zA-Z,0-9]+(_|)[a-zA-Z,0-9]+)');
-exports.PLAYER_NAME_MINLENGTH = 3;
-exports.PLAYER_NAME_MAXLENGTH = 22;
 let RagempService = class RagempService {
     constructor() {
         this.dadosJogador$ = new BehaviorSubject_1.BehaviorSubject(null);
