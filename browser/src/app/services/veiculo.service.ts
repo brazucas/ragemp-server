@@ -18,7 +18,8 @@ export class VeiculoService {
 
 export interface DadosVeiculo {
   modelo: string,
-  cor: string,
+  corPrimaria: string,
+  corSecundaria: string,
   placa: string,
   proprietario: string,
   posicaoX: string,

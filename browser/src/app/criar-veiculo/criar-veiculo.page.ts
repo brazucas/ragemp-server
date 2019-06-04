@@ -15,7 +15,8 @@ export class CriarVeiculoPage implements AfterViewInit {
   public mostrarFormulario = true;
   public listaVeiculos = EnumToArray(Veiculos).sort();
 
-  public color = '#FF0000';
+  public corPrimaria = '#FF0000';
+  public corSecundaria = '#FF0000';
 
   public filtroPesquisa: string;
 
@@ -25,7 +26,12 @@ export class CriarVeiculoPage implements AfterViewInit {
         Validators.required,
       ],
     }),
-    cor: new FormControl('#FF0000', {
+    corPrimaria: new FormControl('#FF0000', {
+      validators: [
+        Validators.required,
+      ],
+    }),
+    corSecundaria: new FormControl('#FF0000', {
       validators: [
         Validators.required,
       ],
@@ -99,8 +105,14 @@ export class CriarVeiculoPage implements AfterViewInit {
     }
   }
 
-  public corVeiculo(cor: string) {
-    this.formGroup.controls.cor.patchValue(cor);
+  public corVeiculoPrimaria(cor: string) {
+    this.formGroup.controls.corPrimaria.patchValue(cor);
+    this.formGroup.controls.corSecundaria.patchValue(cor);
+    this.corSecundaria = cor;
+  }
+
+  public corVeiculoSecundaria(cor: string) {
+    this.formGroup.controls.corSecundaria.patchValue(cor);
   }
 
   public modeloSelecionado($event) {

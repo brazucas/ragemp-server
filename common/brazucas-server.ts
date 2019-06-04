@@ -106,7 +106,8 @@ export class BrazucasServer {
       throw 'Modelo não encontrado';
     }
 
-    const rgb = hexToRgb(dadosVeiculo.cor);
+    const rgbPrimaria = hexToRgb(dadosVeiculo.corPrimaria);
+    const rgbSecundaria = hexToRgb(dadosVeiculo.corSecundaria);
 
     const jogador = await this.loadPlayer(player.name);
 
@@ -119,12 +120,12 @@ export class BrazucasServer {
       posicaoZ: dadosVeiculo.posicaoZ,
       rotacao: 0,
       transparencia: dadosVeiculo.transparencia,
-      corPrimariaR: rgb.r,
-      corPrimariaG: rgb.g,
-      corPrimariaB: rgb.b,
-      corSecundariaR: rgb.r,
-      corSecundariaG: rgb.g,
-      corSecundariaB: rgb.b,
+      corPrimariaR: rgbPrimaria.r,
+      corPrimariaG: rgbPrimaria.g,
+      corPrimariaB: rgbPrimaria.b,
+      corSecundariaR: rgbSecundaria.r,
+      corSecundariaG: rgbSecundaria.g,
+      corSecundariaB: rgbSecundaria.b,
       trancado: dadosVeiculo.trancado,
       motor: dadosVeiculo.motor,
       mundo: 0,
@@ -141,7 +142,7 @@ export class BrazucasServer {
 
     veiculoMp.engine = dadosVeiculo.motor;
     veiculoMp.locked = dadosVeiculo.trancado;
-    veiculoMp.setColorRGB(rgb.r, rgb.g, rgb.b, rgb.r, rgb.g, rgb.b);
+    veiculoMp.setColorRGB(rgbPrimaria.r, rgbPrimaria.g, rgbPrimaria.b, rgbSecundaria.r, rgbSecundaria.g, rgbSecundaria.b);
     veiculoMp.numberPlate = dadosVeiculo.placa;
     veiculoMp.alpha = dadosVeiculo.transparencia;
 
