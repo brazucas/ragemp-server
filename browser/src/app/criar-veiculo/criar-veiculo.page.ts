@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Veiculos } from '../../../../common/util/vehicles';
 import { EnumToArray } from '../../interfaces/util';
 import { RagempService } from '../services/ragemp.service';
@@ -79,6 +79,7 @@ export class CriarVeiculoPage implements AfterViewInit {
 
   constructor(public ragemp: RagempService,
               public toastCtrl: ToastController,
+              public loading: LoadingController,
               public veiculo: VeiculoService) {
     if (typeof mp === 'undefined') {
       this.formGroup.patchValue({
@@ -115,7 +116,11 @@ export class CriarVeiculoPage implements AfterViewInit {
   }
 
   public async criarVeiculo() {
+    const loading = await this.loading.create();
+
     try {
+      loading.present();
+
       await this.veiculo.criarVeiculo(this.formGroup.value);
 
       this.mostrarFormulario = false;
@@ -128,6 +133,7 @@ export class CriarVeiculoPage implements AfterViewInit {
 
       });
 
+      loading.dismiss();
       toast.present();
 
       setTimeout(() => {
@@ -135,6 +141,8 @@ export class CriarVeiculoPage implements AfterViewInit {
         this.mostrarFormulario = true;
       }, 3000);
     } catch (err) {
+      loading.dismiss();
+      
       const toast = await this.toastCtrl.create({
         message: err.mensagem || 'Um erro ocorreu ao criar o veículo',
         position: 'top',

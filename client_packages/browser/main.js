@@ -1991,10 +1991,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CriarVeiculoPage = /** @class */ (function () {
-    function CriarVeiculoPage(ragemp, toastCtrl, veiculo) {
+    function CriarVeiculoPage(ragemp, toastCtrl, loading, veiculo) {
         var _this = this;
         this.ragemp = ragemp;
         this.toastCtrl = toastCtrl;
+        this.loading = loading;
         this.veiculo = veiculo;
         this.mostrarFormulario = true;
         this.listaVeiculos = Object(_interfaces_util__WEBPACK_IMPORTED_MODULE_5__["EnumToArray"])(_common_util_vehicles__WEBPACK_IMPORTED_MODULE_4__["Veiculos"]).sort();
@@ -2092,14 +2093,19 @@ var CriarVeiculoPage = /** @class */ (function () {
     };
     CriarVeiculoPage.prototype.criarVeiculo = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var toast, err_1, toast;
+            var loading, toast, err_1, toast;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 5]);
-                        return [4 /*yield*/, this.veiculo.criarVeiculo(this.formGroup.value)];
+                    case 0: return [4 /*yield*/, this.loading.create()];
                     case 1:
+                        loading = _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 5, , 7]);
+                        loading.present();
+                        return [4 /*yield*/, this.veiculo.criarVeiculo(this.formGroup.value)];
+                    case 3:
                         _a.sent();
                         this.mostrarFormulario = false;
                         return [4 /*yield*/, this.toastCtrl.create({
@@ -2108,27 +2114,29 @@ var CriarVeiculoPage = /** @class */ (function () {
                                 color: 'success',
                                 duration: 3000,
                             })];
-                    case 2:
+                    case 4:
                         toast = _a.sent();
+                        loading.dismiss();
                         toast.present();
                         setTimeout(function () {
                             _this.ragemp.closeBrowser();
                             _this.mostrarFormulario = true;
                         }, 3000);
-                        return [3 /*break*/, 5];
-                    case 3:
+                        return [3 /*break*/, 7];
+                    case 5:
                         err_1 = _a.sent();
+                        loading.dismiss();
                         return [4 /*yield*/, this.toastCtrl.create({
                                 message: err_1.mensagem || 'Um erro ocorreu ao criar o veículo',
                                 position: 'top',
                                 color: 'danger',
                                 duration: 3000
                             })];
-                    case 4:
+                    case 6:
                         toast = _a.sent();
                         toast.present();
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
@@ -2141,6 +2149,7 @@ var CriarVeiculoPage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_ragemp_service__WEBPACK_IMPORTED_MODULE_6__["RagempService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
             _services_veiculo_service__WEBPACK_IMPORTED_MODULE_7__["VeiculoService"]])
     ], CriarVeiculoPage);
     return CriarVeiculoPage;
@@ -2508,10 +2517,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var LoginPage = /** @class */ (function () {
-    function LoginPage(toastCtrl, loginService, ragemp) {
+    function LoginPage(toastCtrl, loginService, loading, ragemp) {
         var _this = this;
         this.toastCtrl = toastCtrl;
         this.loginService = loginService;
+        this.loading = loading;
         this.ragemp = ragemp;
         this.mostrarFormulario = true;
         this.formGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
@@ -2544,14 +2554,19 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage.prototype.login = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var autenticacaoResultado, toast, err_1, toast;
+            var loading, autenticacaoResultado, toast, err_1, toast;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 5]);
-                        return [4 /*yield*/, this.loginService.login(this.formGroup.value)];
+                    case 0: return [4 /*yield*/, this.loading.create()];
                     case 1:
+                        loading = _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 5, , 7]);
+                        loading.present();
+                        return [4 /*yield*/, this.loginService.login(this.formGroup.value)];
+                    case 3:
                         autenticacaoResultado = _a.sent();
                         if (!autenticacaoResultado.autenticado) {
                             throw autenticacaoResultado;
@@ -2563,26 +2578,28 @@ var LoginPage = /** @class */ (function () {
                                 color: 'success',
                                 duration: 3000,
                             })];
-                    case 2:
+                    case 4:
                         toast = _a.sent();
                         toast.present();
+                        loading.dismiss();
                         setTimeout(function () {
                             _this.ragemp.closeBrowser();
                         }, 3000);
-                        return [3 /*break*/, 5];
-                    case 3:
+                        return [3 /*break*/, 7];
+                    case 5:
                         err_1 = _a.sent();
+                        loading.dismiss();
                         return [4 /*yield*/, this.toastCtrl.create({
                                 message: err_1.credenciaisInvalidas ? 'Credenciais Inválidas' : 'Um erro ocorreu ao autenticar',
                                 position: 'top',
                                 color: 'danger',
                                 duration: 3000
                             })];
-                    case 4:
+                    case 6:
                         toast = _a.sent();
                         toast.present();
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
@@ -2599,6 +2616,7 @@ var LoginPage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
             _services_login_service__WEBPACK_IMPORTED_MODULE_4__["LoginService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
             _services_ragemp_service__WEBPACK_IMPORTED_MODULE_5__["RagempService"]])
     ], LoginPage);
     return LoginPage;
@@ -2982,10 +3000,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var RegistroPage = /** @class */ (function () {
-    function RegistroPage(toastCtrl, loginService, ragemp) {
+    function RegistroPage(toastCtrl, loginService, loading, ragemp) {
         var _this = this;
         this.toastCtrl = toastCtrl;
         this.loginService = loginService;
+        this.loading = loading;
         this.ragemp = ragemp;
         this.mostrarFormulario = true;
         this.formGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
@@ -3039,14 +3058,19 @@ var RegistroPage = /** @class */ (function () {
     };
     RegistroPage.prototype.registrar = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var resultado, toast, err_1, toast;
+            var loading, resultado, toast, err_1, toast;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 5]);
-                        return [4 /*yield*/, this.loginService.registrar(this.formGroup.value)];
+                    case 0: return [4 /*yield*/, this.loading.create()];
                     case 1:
+                        loading = _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 5, , 7]);
+                        loading.present();
+                        return [4 /*yield*/, this.loginService.registrar(this.formGroup.value)];
+                    case 3:
                         resultado = _a.sent();
                         this.mostrarFormulario = false;
                         if (resultado.jogador) {
@@ -3058,26 +3082,28 @@ var RegistroPage = /** @class */ (function () {
                                 color: 'success',
                                 duration: 3000,
                             })];
-                    case 2:
+                    case 4:
                         toast = _a.sent();
+                        loading.dismiss();
                         toast.present();
                         setTimeout(function () {
                             _this.ragemp.closeBrowser();
                         }, 3000);
-                        return [3 /*break*/, 5];
-                    case 3:
+                        return [3 /*break*/, 7];
+                    case 5:
                         err_1 = _a.sent();
+                        loading.dismiss();
                         return [4 /*yield*/, this.toastCtrl.create({
                                 message: err_1.mensagem || 'Um erro ocorreu ao cadastrar',
                                 position: 'top',
                                 color: 'danger',
                                 duration: 3000
                             })];
-                    case 4:
+                    case 6:
                         toast = _a.sent();
                         toast.present();
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
@@ -3094,6 +3120,7 @@ var RegistroPage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
             _services_login_service__WEBPACK_IMPORTED_MODULE_4__["LoginService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
             _services_ragemp_service__WEBPACK_IMPORTED_MODULE_5__["RagempService"]])
     ], RegistroPage);
     return RegistroPage;

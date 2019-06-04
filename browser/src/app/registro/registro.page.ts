@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IonInput, ToastController } from '@ionic/angular';
+import { IonInput, LoadingController, ToastController } from '@ionic/angular';
 import { RegistroResultado } from '../../interfaces/login.interface';
 import { LoginService } from '../services/login.service';
 import { RagempService } from '../services/ragemp.service';
@@ -56,6 +56,7 @@ export class RegistroPage implements AfterViewInit {
 
   constructor(public toastCtrl: ToastController,
               public loginService: LoginService,
+              public loading: LoadingController,
               public ragemp: RagempService) {
     this.ragemp.playerName$.subscribe((playerName) => {
       this.formGroup.controls.nome.patchValue(playerName);
@@ -69,7 +70,11 @@ export class RegistroPage implements AfterViewInit {
   }
 
   public async registrar() {
+    const loading = await this.loading.create();
+
     try {
+      loading.present();
+
       const resultado: RegistroResultado = await this.loginService.registrar(this.formGroup.value);
 
       this.mostrarFormulario = false;
@@ -86,12 +91,15 @@ export class RegistroPage implements AfterViewInit {
 
       });
 
+      loading.dismiss();
       toast.present();
 
       setTimeout(() => {
         this.ragemp.closeBrowser();
       }, 3000);
     } catch (err) {
+      loading.dismiss();
+
       const toast = await this.toastCtrl.create({
         message: err.mensagem || 'Um erro ocorreu ao cadastrar',
         position: 'top',
