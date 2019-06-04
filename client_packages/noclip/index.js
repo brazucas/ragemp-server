@@ -15,7 +15,8 @@ var getCrossProduct = function(v1, v2) {
   return vector;
 };
 var bindVirtualKeys = {
-  F2: 0x71
+  F2: 0x71,
+  F7: 0x76,
 };
 var bindASCIIKeys = {
   Q: 69,
@@ -29,7 +30,7 @@ var noClipCamera;
 var shiftModifier = false;
 var controlModifier = false;
 var localPlayer = mp.players.local;
-mp.keys.bind(bindVirtualKeys.F2, true, function() {
+mp.keys.bind(bindVirtualKeys.F7, true, function() {
   isNoClip = !isNoClip;
   mp.game.ui.displayRadar(!isNoClip);
   if (isNoClip) {
