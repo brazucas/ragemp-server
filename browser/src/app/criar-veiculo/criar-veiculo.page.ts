@@ -142,7 +142,7 @@ export class CriarVeiculoPage implements AfterViewInit {
       }, 3000);
     } catch (err) {
       loading.dismiss();
-      
+
       const toast = await this.toastCtrl.create({
         message: err.mensagem || 'Um erro ocorreu ao criar o veículo',
         position: 'top',
