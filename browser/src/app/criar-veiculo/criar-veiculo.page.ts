@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Veiculos } from '../../../../common/util/vehicles';
 import { EnumToArray } from '../../interfaces/util';
+import { maskMoneyToFloat } from '../../util/string-util';
 import { RagempService } from '../services/ragemp.service';
 import { VeiculoService } from '../services/veiculo.service';
 
@@ -41,6 +42,16 @@ export class CriarVeiculoPage implements AfterViewInit {
         Validators.required,
       ],
     }),
+    valorOriginal: new FormControl('', {
+      validators: [
+        Validators.required,
+      ],
+    }),
+    valorVenda: new FormControl('', {
+      validators: [
+        Validators.required,
+      ],
+    }),
     proprietario: new FormControl('', {
       validators: [
         Validators.required,
@@ -62,6 +73,11 @@ export class CriarVeiculoPage implements AfterViewInit {
       ],
     }),
     trancado: new FormControl(true, {
+      validators: [
+        Validators.required,
+      ],
+    }),
+    aVenda: new FormControl(true, {
       validators: [
         Validators.required,
       ],
@@ -132,6 +148,10 @@ export class CriarVeiculoPage implements AfterViewInit {
 
     try {
       loading.present();
+
+      const valores = this.formGroup.value;
+      valores.valorOriginal = maskMoneyToFloat(valores.valorOriginal);
+      valores.valorVenda = maskMoneyToFloat(valores.valorVenda);
 
       await this.veiculo.criarVeiculo(this.formGroup.value);
 

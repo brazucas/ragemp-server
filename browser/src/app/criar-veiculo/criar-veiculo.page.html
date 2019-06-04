@@ -38,17 +38,31 @@
                            (colorPickerChange)="corVeiculoSecundaria($event)"
                            [style.background]="corSecundaria"></ion-input>
             </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Proprietário</ion-label>
+                <ion-input formControlName="proprietario" type="text"></ion-input>
+            </ion-item>
         </div>
 
         <div class="posicao">
             <ion-item>
                 <ion-label position="floating">Placa</ion-label>
-                <ion-input formControlName="placa" type="text"></ion-input>
+                <ion-input formControlName="placa" placeholder="Ex: BRZ5" type="text"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-label position="floating">Proprietário</ion-label>
-                <ion-input formControlName="proprietario" type="text"></ion-input>
+                <ion-label position="floating">Valor Original</ion-label>
+                <ion-input formControlName="valorOriginal" type="text"
+                           placeholder="(R$) Real"
+                           [brmasker]="{form: formGroup.get('valorOriginal'), money: true, thousand: '.'}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Valor Venda</ion-label>
+                <ion-input formControlName="valorVenda" type="text"
+                           placeholder="(R$) Real"
+                           [brmasker]="{form: formGroup.get('valorVenda'), money: true, thousand: '.'}"></ion-input>
             </ion-item>
         </div>
 
@@ -76,20 +90,27 @@
             </ion-item>
 
             <ion-item>
+                <ion-label position="floating">A Venda?</ion-label>
+                <ion-toggle formControlName="aVenda"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
                 <ion-label position="floating">Motor ligado?</ion-label>
                 <ion-toggle formControlName="motor"></ion-toggle>
             </ion-item>
         </div>
 
-        <ion-item>
-            <ion-label position="floating">Transparência</ion-label>
-            <ion-input formControlName="transparencia" type="number"></ion-input>
-        </ion-item>
+        <div class="posicao">
+            <ion-item>
+                <ion-label position="floating">Transparência</ion-label>
+                <ion-input formControlName="transparencia" type="number"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label position="floating">Tamanho</ion-label>
-            <ion-input formControlName="tamanho" type="number"></ion-input>
-        </ion-item>
+            <ion-item>
+                <ion-label position="floating">Tamanho</ion-label>
+                <ion-input formControlName="tamanho" type="number"></ion-input>
+            </ion-item>
+        </div>
 
         <div class="acoes">
             <button type="submit" [disabled]="!formGroup.valid" class="btn-enviar">Criar</button>

@@ -90,6 +90,9 @@ class BrazucasServer {
             const rgbPrimaria = util_1.hexToRgb(dadosVeiculo.corPrimaria);
             const rgbSecundaria = util_1.hexToRgb(dadosVeiculo.corSecundaria);
             const jogador = yield this.loadPlayer(player.name);
+            if (!jogador) {
+                throw 'Jogador não encontrado';
+            }
             const veiculo = new Veiculo_1.Veiculo({
                 placaOriginal: dadosVeiculo.placa,
                 placaExibido: dadosVeiculo.placa,
@@ -108,9 +111,9 @@ class BrazucasServer {
                 trancado: dadosVeiculo.trancado,
                 motor: dadosVeiculo.motor,
                 mundo: 0,
-                valorOriginal: 1000,
-                valorVenda: 1000,
-                aVenda: true,
+                valorOriginal: dadosVeiculo.valorOriginal,
+                valorVenda: dadosVeiculo.valorVenda,
+                aVenda: dadosVeiculo.aVenda,
                 jogadorVeiculo: jogador,
             });
             yield veiculo.save();

@@ -27,6 +27,7 @@ class Rpg {
             console.log(`${this.maps.length} mapa(s) carregado(s).`);
             yield bootstrap_1.carregarVeiculos();
             console.log(`${mp.vehicles.length} veículos carregados.`);
+            yield bootstrap_1.carregarTimers(this.brazucasServer);
             this.mainLoop();
         });
     }

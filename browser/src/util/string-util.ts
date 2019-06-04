@@ -207,3 +207,7 @@ export function soDigitos(numeroFormatado: string) {
     return numeroFormatado;
   }
 }
+
+export function maskMoneyToFloat(numeroFormatado: string) {
+  return parseInt(soDigitos(numeroFormatado)) / 100;
+}

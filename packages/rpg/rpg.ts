@@ -3,7 +3,7 @@ import * as glob from 'glob';
 import 'rxjs/add/observable/of';
 import * as _ from 'underscore';
 import { BrazucasServer } from '../../common/brazucas-server';
-import { carregarVeiculos } from './lib/functions/bootstrap';
+import { carregarTimers, carregarVeiculos } from './lib/functions/bootstrap';
 
 export class Rpg {
   private maps: Array<any> = [];
@@ -25,6 +25,8 @@ export class Rpg {
     await carregarVeiculos();
 
     console.log(`${mp.vehicles.length} veículos carregados.`);
+
+    await carregarTimers(this.brazucasServer);
 
     this.mainLoop();
   }

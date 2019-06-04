@@ -111,6 +111,10 @@ export class BrazucasServer {
 
     const jogador = await this.loadPlayer(player.name);
 
+    if (!jogador) {
+      throw 'Jogador não encontrado';
+    }
+
     const veiculo = new Veiculo({
       placaOriginal: dadosVeiculo.placa,
       placaExibido: dadosVeiculo.placa,
@@ -129,9 +133,9 @@ export class BrazucasServer {
       trancado: dadosVeiculo.trancado,
       motor: dadosVeiculo.motor,
       mundo: 0,
-      valorOriginal: 1000,
-      valorVenda: 1000,
-      aVenda: true,
+      valorOriginal: dadosVeiculo.valorOriginal,
+      valorVenda: dadosVeiculo.valorVenda,
+      aVenda: dadosVeiculo.aVenda,
       jogadorVeiculo: jogador,
     });
 

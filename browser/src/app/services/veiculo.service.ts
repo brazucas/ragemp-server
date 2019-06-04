@@ -29,4 +29,7 @@ export interface DadosVeiculo {
   motor: boolean,
   transparencia: number,
   tamanho: string,
+  valorOriginal: number,
+  valorVenda: number,
+  aVenda: boolean,
 }
