@@ -27,7 +27,8 @@
         <div class="posicao">
             <ion-item>
                 <ion-label position="floating">Cor</ion-label>
-                <ion-input formControlName="cor" [(colorPicker)]="color" [style.background]="color"></ion-input>
+                <ion-input formControlName="cor" [(colorPicker)]="color" (colorPickerChange)="corVeiculo($event)"
+                           [style.background]="color"></ion-input>
             </ion-item>
 
             <ion-item>

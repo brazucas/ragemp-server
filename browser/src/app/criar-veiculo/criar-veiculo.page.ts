@@ -77,7 +77,6 @@ export class CriarVeiculoPage implements AfterViewInit {
     }),
   });
 
-
   constructor(public ragemp: RagempService,
               public toastCtrl: ToastController,
               public veiculo: VeiculoService) {
@@ -97,6 +96,10 @@ export class CriarVeiculoPage implements AfterViewInit {
         });
       });
     }
+  }
+
+  public corVeiculo(cor: string) {
+    this.formGroup.controls.cor.patchValue(cor);
   }
 
   public modeloSelecionado($event) {
