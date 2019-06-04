@@ -10,7 +10,13 @@ declare let mp: any;
   providedIn: 'root'
 })
 export class RagempService {
-  public dadosJogador$: BehaviorSubject<Jogador> = new BehaviorSubject(null);
+  public browserName$: BehaviorSubject<string> = new BehaviorSubject(null);
+  public dadosJogador$: BehaviorSubject<Jogador> = new BehaviorSubject({
+    nome: '',
+    email: '',
+    celular: '',
+    senha: '',
+  });
   public playerName$: BehaviorSubject<string> = new BehaviorSubject(null);
   public jogadorLocal$: BehaviorSubject<Jogador> = new BehaviorSubject(null);
   public serverEvent$: Subject<ServerEvent> = new Subject();
@@ -23,6 +29,8 @@ export class RagempService {
     (window as any).my = window || {};
     (window as any).ragemp = (window as any).ragemp || {};
     (window as any).ragemp.setPlayerName = this.setPlayerName.bind(this);
+    (window as any).ragemp.setBrowserName = this.setBrowserName.bind(this);
+    (window as any).ragemp[BrazucasEventos.DADOS_JOGADOR] = this[BrazucasEventos.DADOS_JOGADOR].bind(this);
     (window as any).ragemp.serverEvent = this.serverEvent.bind(this);
   }
 
@@ -57,6 +65,10 @@ export class RagempService {
     this.playerName$.next(playerName);
   }
 
+  public setBrowserName(browserName: string) {
+    this.browserName$.next(browserName);
+  }
+
   public serverEvent(eventId: number, event: string, data: string) {
     this.serverEvent$.next({
       event: event,
@@ -65,8 +77,12 @@ export class RagempService {
     });
   }
 
-  public [BrazucasEventos.DADOS_JOGADOR](jogador: Jogador) {
-    this.dadosJogador$.next(jogador);
+  public closeBrowser() {
+    mp.trigger('FecharBrowser', this.browserName$.value);
+  }
+
+  public [BrazucasEventos.DADOS_JOGADOR](jogador: string) {
+    this.dadosJogador$.next(Object.assign(this.dadosJogador$.value, JSON.parse(jogador)));
   }
 }
 

@@ -15,7 +15,13 @@ const BehaviorSubject_1 = require("rxjs/internal/BehaviorSubject");
 const brazucas_eventos_1 = require("../../../../packages/rpg/interfaces/brazucas-eventos");
 let RagempService = class RagempService {
     constructor() {
-        this.dadosJogador$ = new BehaviorSubject_1.BehaviorSubject(null);
+        this.browserName$ = new BehaviorSubject_1.BehaviorSubject(null);
+        this.dadosJogador$ = new BehaviorSubject_1.BehaviorSubject({
+            nome: '',
+            email: '',
+            celular: '',
+            senha: '',
+        });
         this.playerName$ = new BehaviorSubject_1.BehaviorSubject(null);
         this.jogadorLocal$ = new BehaviorSubject_1.BehaviorSubject(null);
         this.serverEvent$ = new rxjs_1.Subject();
@@ -25,6 +31,8 @@ let RagempService = class RagempService {
         window.my = window || {};
         window.ragemp = window.ragemp || {};
         window.ragemp.setPlayerName = this.setPlayerName.bind(this);
+        window.ragemp.setBrowserName = this.setBrowserName.bind(this);
+        window.ragemp[brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR] = this[brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR].bind(this);
         window.ragemp.serverEvent = this.serverEvent.bind(this);
     }
     callRagempEvent(event, data) {
@@ -51,6 +59,9 @@ let RagempService = class RagempService {
     setPlayerName(playerName) {
         this.playerName$.next(playerName);
     }
+    setBrowserName(browserName) {
+        this.browserName$.next(browserName);
+    }
     serverEvent(eventId, event, data) {
         this.serverEvent$.next({
             event: event,
@@ -58,8 +69,11 @@ let RagempService = class RagempService {
             eventId: eventId,
         });
     }
+    closeBrowser() {
+        mp.trigger('FecharBrowser', this.browserName$.value);
+    }
     [brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR](jogador) {
-        this.dadosJogador$.next(jogador);
+        this.dadosJogador$.next(Object.assign(this.dadosJogador$.value, JSON.parse(jogador)));
     }
 };
 RagempService = __decorate([

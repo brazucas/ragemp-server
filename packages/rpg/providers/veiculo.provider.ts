@@ -5,7 +5,7 @@ import { RPGVeiculo } from '../interfaces/veiculo.interface';
 
 export class VeiculoProvider {
   private static veiculosArmazenados: Array<RPGVeiculo> = [];
-  public static veiculos: BehaviorSubject<RPGVeiculo>;
+  public static veiculos: BehaviorSubject<RPGVeiculo> = new BehaviorSubject(null);
 
   public static findFromMp(vehicle: VehicleMp) {
     return VeiculoProvider.veiculosArmazenados.find((rpgVeiculo) => rpgVeiculo.mp === vehicle);
@@ -39,9 +39,9 @@ export class VeiculoProvider {
       let rpgVeiculo = VeiculoProvider.findFromMp(vehicle);
 
       if (rpgVeiculo) {
-        rpgVeiculo.storage.posicaoX = vehicle.position.x;
-        rpgVeiculo.storage.posicaoY = vehicle.position.y;
-        rpgVeiculo.storage.posicaoZ = vehicle.position.z;
+        rpgVeiculo.storage.posicaoX = vehicle.position.x.toString();
+        rpgVeiculo.storage.posicaoY = vehicle.position.y.toString();
+        rpgVeiculo.storage.posicaoZ = vehicle.position.z.toString();
         rpgVeiculo.storage.rotacao = vehicle.heading;
 
         resolver.next(rpgVeiculo.storage.save());

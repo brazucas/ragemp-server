@@ -15,8 +15,10 @@ const forkJoin_1 = require("rxjs/internal/observable/forkJoin");
 const Sequelize = require("sequelize");
 const database_1 = require("./database/database");
 const Jogador_1 = require("./database/models/Jogador");
+const Veiculo_1 = require("./database/models/Veiculo");
 const interfaces_1 = require("./interfaces");
 const util_1 = require("./util/util");
+const vehicles_1 = require("./util/vehicles");
 class BrazucasServer {
     constructor() {
         this.isReady = new rxjs_1.BehaviorSubject(false);
@@ -70,7 +72,7 @@ class BrazucasServer {
             }
             console.debug(`[REGISTRO] Criando jogador ${player.name}`);
             const senhaHash = yield util_1.bcryptHash(dados.senha);
-            let jogador = new Jogador_1.Jogador({
+            const jogador = new Jogador_1.Jogador({
                 nome: player.name,
                 senha: senhaHash,
                 nivel: 1,
@@ -78,6 +80,47 @@ class BrazucasServer {
                 celular: util_1.soNumeros(dados.celular),
             });
             return jogador.save();
+        });
+    }
+    criarVeiculo(player, dadosVeiculo) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!vehicles_1.Veiculos[dadosVeiculo.modelo]) {
+                throw 'Modelo não encontrado';
+            }
+            const rgb = util_1.hexToRgb(dadosVeiculo.cor);
+            const jogador = yield this.loadPlayer(player.name);
+            const veiculo = new Veiculo_1.Veiculo({
+                placaOriginal: dadosVeiculo.placa,
+                placaExibido: dadosVeiculo.placa,
+                modelo: dadosVeiculo.modelo,
+                posicaoX: dadosVeiculo.posicaoX,
+                posicaoY: dadosVeiculo.posicaoY,
+                posicaoZ: dadosVeiculo.posicaoZ,
+                rotacao: 0,
+                transparencia: dadosVeiculo.transparencia,
+                corPrimariaR: rgb.r,
+                corPrimariaG: rgb.g,
+                corPrimariaB: rgb.b,
+                corSecundariaR: rgb.r,
+                corSecundariaG: rgb.g,
+                corSecundariaB: rgb.b,
+                trancado: dadosVeiculo.trancado,
+                motor: dadosVeiculo.motor,
+                mundo: 0,
+                valorOriginal: 1000,
+                valorVenda: 1000,
+                aVenda: true,
+                jogadorVeiculo: jogador,
+            });
+            yield veiculo.save();
+            const veiculoMp = mp.vehicles.new(vehicles_1.Veiculos[dadosVeiculo.modelo], new mp.Vector3(parseFloat(dadosVeiculo.posicaoX), parseFloat(dadosVeiculo.posicaoY), parseFloat(dadosVeiculo.posicaoZ)));
+            veiculoMp.engine = dadosVeiculo.motor;
+            veiculoMp.locked = dadosVeiculo.trancado;
+            veiculoMp.setColorRGB(rgb.r, rgb.g, rgb.b, rgb.r, rgb.g, rgb.b);
+            veiculoMp.numberPlate = dadosVeiculo.placa;
+            veiculoMp.alpha = dadosVeiculo.transparencia;
+            veiculoMp.spawn(veiculoMp.position, 0);
+            return true;
         });
     }
 }

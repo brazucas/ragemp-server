@@ -9,8 +9,8 @@ function EnumToArray(enumme) {
 class Client {
     constructor() {
         this.browsers = {
-            central: new Navegador(),
-            playersOnline: new Navegador(),
+            central: new Navegador('central'),
+            playersOnline: new Navegador('playersOnline'),
         };
         this.noClipCamera = mp.cameras.new('default', new mp.Vector3(-485, 1095.75, 323.85), new mp.Vector3(0, 0, 0), 45);
         this.noClipCamera.setActive(true);
@@ -40,14 +40,14 @@ class Client {
         this.browserEvents = new BrowserEvents(this);
     }
     bindCommands() {
-        mp.events.add("playerCommand" /* PLAYER_COMMAND */, (player, command) => {
+        const comandos = new Commands(this);
+        mp.events.add("playerCommand" /* PLAYER_COMMAND */, (command) => {
             console.debug(`[COMANDO CLIENTE] comando ${command} solicitado`);
-            const comandos = new Commands(this);
             const arr = command.split(' ');
             if (comandos[arr[0]]) {
                 const comando = arr[0];
                 arr.shift();
-                comandos[comando](player, ...arr);
+                comandos[comando](mp.players.local, ...arr);
             }
             else {
                 mp.gui.chat.push('!{#FF0000}Comando desconhecido');
@@ -56,21 +56,34 @@ class Client {
     }
     keysBindings() {
         mp.keys.bind(0x5A, true, () => {
-            this.browsers.playersOnline.navegar('players-online');
-            let jogadores = [];
-            mp.players.forEach((player) => jogadores.push({
-                name: player.name,
-                ping: player.ping,
-                id: player.id,
-                data: {
-                    nivel: 0,
-                }
-            }));
-            this.browsers.playersOnline.execute(`window.my.playersOnline.listaJogadores('${JSON.stringify(jogadores)}')`);
-            this.browsers.playersOnline.mostrar();
+            if (this.autenticacaoResultado.autenticado) {
+                this.browsers.playersOnline.navegar('players-online');
+                let jogadores = [];
+                mp.players.forEach((player) => jogadores.push({
+                    name: player.name,
+                    ping: player.ping,
+                    id: player.id,
+                    data: {
+                        nivel: 0,
+                    }
+                }));
+                this.browsers.playersOnline.execute(`window.my.playersOnline.listaJogadores('${JSON.stringify(jogadores)}')`);
+                this.browsers.playersOnline.mostrar();
+            }
         });
         mp.keys.bind(0x5A, false, () => {
-            this.browsers.playersOnline.esconder();
+            if (this.autenticacaoResultado.autenticado) {
+                this.browsers.playersOnline.esconder();
+            }
+        });
+        mp.keys.bind(0x02, false, () => {
+            const browsers = Object.keys(this.browsers).map((key) => {
+                return this.browsers[key];
+            });
+            const navegadoresAbertos = browsers.filter((browser) => browser.navegadorAberto);
+            if (navegadoresAbertos.length > 0) {
+                mp.gui.cursor.visible = true;
+            }
         });
     }
 }
@@ -81,13 +94,19 @@ class Commands {
     criarveiculo() {
         this.client.browsers.central.navegar('criar-veiculo');
         this.client.browsers.central.mostrar();
+        this.client.browsers.central.execute(`window.my.ragemp.DadosJogador('${JSON.stringify({
+            posicaoX: mp.players.local.position.x,
+            posicaoY: mp.players.local.position.y,
+            posicaoZ: mp.players.local.position.z,
+        })}')`);
     }
 }
 class Navegador {
-    constructor() {
+    constructor(browserName) {
         this.browser = mp.browsers.new('package://browser/index.html');
         setTimeout(() => {
             this.browser.execute(`window.my.ragemp.setPlayerName('${mp.players.local.name}')`);
+            this.browser.execute(`window.my.ragemp.setBrowserName('${browserName}')`);
         }, 2000);
         mp.keys.bind(0x75, true, () => {
             this.navegadorAberto ? this.esconder() : this.mostrar();
@@ -99,7 +118,12 @@ class Navegador {
     mostrar() {
         this.navegadorAberto = true;
         this.browser.execute(`window.my.app.toggleNavegador(true)`);
-        mp.gui.cursor.visible = true;
+        setTimeout(() => {
+            mp.gui.cursor.visible = true;
+        }, 100);
+    }
+    publish(event, eventId, data) {
+        this.execute(`window.my.ragemp.serverEvent(${eventId}, '${event}', ${JSON.stringify(data)})`);
     }
     esconder() {
         this.navegadorAberto = false;
@@ -126,7 +150,7 @@ class ServerEvents {
         });
     }
     browserEvent(event, eventId, data) {
-        this.client.browsers.central.execute(`window.my.ragemp.serverEvent(${eventId}, '${event}', ${JSON.stringify(data)})`);
+        this.client.browsers.central.publish(event, eventId, data);
     }
     forwardEventToBrowser(serverEvent) {
         this.browserEvent(serverEvent.event, serverEvent.eventId, serverEvent.data);
@@ -174,6 +198,11 @@ class BrowserEvents {
                 event: event,
                 data: data,
             }));
+        });
+        mp.events.add('FecharBrowser', (browserName) => {
+            if (typeof this.client.browsers[browserName] !== 'undefined') {
+                this.client.browsers[browserName].esconder();
+            }
         });
     }
 }

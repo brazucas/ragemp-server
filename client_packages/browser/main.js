@@ -670,6 +670,7 @@ var BrazucasEventos;
     BrazucasEventos["BROWSER"] = "browser";
     BrazucasEventos["SERVER"] = "server";
     BrazucasEventos["AUTENTICAR_JOGADOR"] = "AutenticarJogador";
+    BrazucasEventos["CRIAR_VEICULO"] = "CriarVeiculo";
     BrazucasEventos["REGISTRAR_JOGADOR"] = "RegistrarJogador";
     BrazucasEventos["AUTENTICACAO_RESULTADO"] = "AutenticacaoResultado";
     BrazucasEventos["REGISTRO_RESULTADO"] = "RegistroResultado";
@@ -1909,15 +1910,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginaComponent", function() { return PaginaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+
 
 
 var PaginaComponent = /** @class */ (function () {
-    function PaginaComponent() {
+    function PaginaComponent(ragemp) {
+        this.ragemp = ragemp;
         this.podeFechar = true;
     }
     PaginaComponent.prototype.ngOnInit = function () { };
     PaginaComponent.prototype.fechar = function () {
-        mp.trigger('FecharBrowser');
+        this.ragemp.closeBrowser();
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -1929,7 +1933,7 @@ var PaginaComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./pagina.component.html */ "./src/app/components/pagina/pagina.component.html"),
             styles: [__webpack_require__(/*! ./pagina.component.scss */ "./src/app/components/pagina/pagina.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__["RagempService"]])
     ], PaginaComponent);
     return PaginaComponent;
 }());
@@ -1945,7 +1949,7 @@ var PaginaComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content *ngIf=\"mostrarFormulario\">\n    <app-pagina [formGroup]=\"formGroup\" [podeFechar]=\"true\" (submit)=\"criarVeiculo()\">\n        <div class=\"titulo\">Criando Veículo</div>\n\n        <div class=\"container-veiculo\">\n            <div class=\"imagem-modelo\">\n                <img [src]=\"'assets/veiculos/'+ formGroup.controls.modelo.value.toLowerCase() +'.png'\" alt=\"\"\n                     width=\"200px\"/>\n            </div>\n\n            <div class=\"formulario\">\n                <div class=\"titulo\">\n                    Modelo\n                </div>\n\n                <ion-searchbar placeholder=\"Pesquisar\" (ionChange)=\"modeloPesquisa($event)\"></ion-searchbar>\n\n                <select id=\"modelo\" class=\"modelos\" formControlName=\"modelo\" formArrayName=\"\" size=\"6\"\n                        (change)=\"modeloSelecionado($event)\">\n                    <option *ngFor=\"let veiculo of (listaVeiculos | filter: filtroPesquisa)\">\n                        {{ veiculo }}\n                    </option>\n                </select>\n            </div>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Cor</ion-label>\n                <ion-input formControlName=\"cor\" [(colorPicker)]=\"color\" [style.background]=\"color\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Placa</ion-label>\n                <ion-input formControlName=\"placa\" type=\"text\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Proprietário</ion-label>\n                <ion-input formControlName=\"proprietario\" type=\"text\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Posição X</ion-label>\n                <ion-input formControlName=\"posicaoX\" readonly type=\"text\" placeholder=\"Posição X\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Posição Y</ion-label>\n                <ion-input formControlName=\"posicaoX\" readonly type=\"text\" placeholder=\"Posição Y\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Posição Z</ion-label>\n                <ion-input formControlName=\"posicaoX\" readonly type=\"text\" placeholder=\"Posição Z\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"booleans\">\n            <ion-item>\n                <ion-label position=\"floating\">Trancado?</ion-label>\n                <ion-toggle formControlName=\"trancado\"></ion-toggle>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Motor ligado?</ion-label>\n                <ion-toggle formControlName=\"motor\"></ion-toggle>\n            </ion-item>\n        </div>\n\n        <ion-item>\n            <ion-label position=\"floating\">Transparência</ion-label>\n            <ion-input formControlName=\"transparencia\" type=\"number\"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label position=\"floating\">Tamanho</ion-label>\n            <ion-input formControlName=\"tamanho\" type=\"number\"></ion-input>\n        </ion-item>\n\n        <div class=\"acoes\">\n            <button type=\"submit\" [disabled]=\"!formGroup.valid\" class=\"btn-enviar\">Criar</button>\n        </div>\n    </app-pagina>\n</ion-content>\n"
+module.exports = "<ion-content *ngIf=\"mostrarFormulario\">\n    <app-pagina [formGroup]=\"formGroup\" [podeFechar]=\"true\" (submit)=\"criarVeiculo()\">\n        <div class=\"titulo\">Criando Veículo</div>\n\n        <div class=\"container-veiculo\">\n            <div class=\"imagem-modelo\">\n                <img [src]=\"'assets/veiculos/'+ formGroup.controls.modelo.value.toLowerCase() +'.png'\" alt=\"\"\n                     width=\"200px\"/>\n            </div>\n\n            <div class=\"formulario\">\n                <div class=\"titulo\">\n                    Modelo\n                </div>\n\n                <ion-searchbar placeholder=\"Pesquisar\" (ionChange)=\"modeloPesquisa($event)\"></ion-searchbar>\n\n                <select id=\"modelo\" class=\"modelos\" formControlName=\"modelo\" size=\"6\"\n                        (change)=\"modeloSelecionado($event)\">\n                    <option *ngFor=\"let veiculo of (listaVeiculos | filter: filtroPesquisa)\">\n                        {{ veiculo }}\n                    </option>\n                </select>\n            </div>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Cor</ion-label>\n                <ion-input formControlName=\"cor\" [(colorPicker)]=\"color\" [style.background]=\"color\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Placa</ion-label>\n                <ion-input formControlName=\"placa\" type=\"text\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Proprietário</ion-label>\n                <ion-input formControlName=\"proprietario\" type=\"text\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Posição X</ion-label>\n                <ion-input formControlName=\"posicaoX\" readonly type=\"text\" placeholder=\"Posição X\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Posição Y</ion-label>\n                <ion-input formControlName=\"posicaoY\" readonly type=\"text\" placeholder=\"Posição Y\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Posição Z</ion-label>\n                <ion-input formControlName=\"posicaoZ\" readonly type=\"text\" placeholder=\"Posição Z\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"booleans\">\n            <ion-item>\n                <ion-label position=\"floating\">Trancado?</ion-label>\n                <ion-toggle formControlName=\"trancado\"></ion-toggle>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Motor ligado?</ion-label>\n                <ion-toggle formControlName=\"motor\"></ion-toggle>\n            </ion-item>\n        </div>\n\n        <ion-item>\n            <ion-label position=\"floating\">Transparência</ion-label>\n            <ion-input formControlName=\"transparencia\" type=\"number\"></ion-input>\n        </ion-item>\n\n        <ion-item>\n            <ion-label position=\"floating\">Tamanho</ion-label>\n            <ion-input formControlName=\"tamanho\" type=\"number\"></ion-input>\n        </ion-item>\n\n        <div class=\"acoes\">\n            <button type=\"submit\" [disabled]=\"!formGroup.valid\" class=\"btn-enviar\">Criar</button>\n        </div>\n    </app-pagina>\n</ion-content>\n"
 
 /***/ }),
 
@@ -1973,17 +1977,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _common_util_vehicles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../common/util/vehicles */ "../common/util/vehicles.ts");
-/* harmony import */ var _interfaces_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../interfaces/util */ "./src/interfaces/util.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _common_util_vehicles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../common/util/vehicles */ "../common/util/vehicles.ts");
+/* harmony import */ var _interfaces_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../interfaces/util */ "./src/interfaces/util.ts");
+/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+/* harmony import */ var _services_veiculo_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/veiculo.service */ "./src/app/services/veiculo.service.ts");
+
+
+
 
 
 
 
 
 var CriarVeiculoPage = /** @class */ (function () {
-    function CriarVeiculoPage() {
+    function CriarVeiculoPage(ragemp, toastCtrl, veiculo) {
+        var _this = this;
+        this.ragemp = ragemp;
+        this.toastCtrl = toastCtrl;
+        this.veiculo = veiculo;
         this.mostrarFormulario = true;
-        this.listaVeiculos = Object(_interfaces_util__WEBPACK_IMPORTED_MODULE_4__["EnumToArray"])(_common_util_vehicles__WEBPACK_IMPORTED_MODULE_3__["Veiculos"]).sort();
+        this.listaVeiculos = Object(_interfaces_util__WEBPACK_IMPORTED_MODULE_5__["EnumToArray"])(_common_util_vehicles__WEBPACK_IMPORTED_MODULE_4__["Veiculos"]).sort();
         this.color = '#FF0000';
         this.formGroup = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             modelo: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('adder', {
@@ -2049,6 +2063,16 @@ var CriarVeiculoPage = /** @class */ (function () {
                 posicaoZ: 1233.123183323,
             });
         }
+        else {
+            this.ragemp.dadosJogador$.subscribe(function (dadosJogador) {
+                console.debug("DADOS JOGADOR " + JSON.stringify(dadosJogador));
+                _this.formGroup.patchValue({
+                    posicaoX: dadosJogador.posicaoX,
+                    posicaoY: dadosJogador.posicaoY,
+                    posicaoZ: dadosJogador.posicaoZ,
+                });
+            });
+        }
     }
     CriarVeiculoPage.prototype.modeloSelecionado = function ($event) {
         console.log('>>>> ', $event, this.formGroup.controls.modelo.value);
@@ -2064,6 +2088,47 @@ var CriarVeiculoPage = /** @class */ (function () {
         });
     };
     CriarVeiculoPage.prototype.criarVeiculo = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast, err_1, toast;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 5]);
+                        return [4 /*yield*/, this.veiculo.criarVeiculo(this.formGroup.value)];
+                    case 1:
+                        _a.sent();
+                        this.mostrarFormulario = false;
+                        return [4 /*yield*/, this.toastCtrl.create({
+                                message: 'Veículo criado com sucesso!',
+                                position: 'top',
+                                color: 'success',
+                                duration: 3000,
+                            })];
+                    case 2:
+                        toast = _a.sent();
+                        toast.present();
+                        setTimeout(function () {
+                            _this.ragemp.closeBrowser();
+                            _this.mostrarFormulario = true;
+                        }, 3000);
+                        return [3 /*break*/, 5];
+                    case 3:
+                        err_1 = _a.sent();
+                        return [4 /*yield*/, this.toastCtrl.create({
+                                message: err_1.mensagem || 'Um erro ocorreu ao criar o veículo',
+                                position: 'top',
+                                color: 'danger',
+                                duration: 3000
+                            })];
+                    case 4:
+                        toast = _a.sent();
+                        toast.present();
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
     };
     CriarVeiculoPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2071,7 +2136,9 @@ var CriarVeiculoPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./criar-veiculo.page.html */ "./src/app/criar-veiculo/criar-veiculo.page.html"),
             styles: [__webpack_require__(/*! ./criar-veiculo.page.scss */ "./src/app/criar-veiculo/criar-veiculo.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_ragemp_service__WEBPACK_IMPORTED_MODULE_6__["RagempService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
+            _services_veiculo_service__WEBPACK_IMPORTED_MODULE_7__["VeiculoService"]])
     ], CriarVeiculoPage);
     return CriarVeiculoPage;
 }());
@@ -2475,6 +2542,7 @@ var LoginPage = /** @class */ (function () {
     LoginPage.prototype.login = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var autenticacaoResultado, toast, err_1, toast;
+            var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -2496,7 +2564,7 @@ var LoginPage = /** @class */ (function () {
                         toast = _a.sent();
                         toast.present();
                         setTimeout(function () {
-                            mp.trigger('FecharBrowser');
+                            _this.ragemp.closeBrowser();
                         }, 3000);
                         return [3 /*break*/, 5];
                     case 3:
@@ -2969,6 +3037,7 @@ var RegistroPage = /** @class */ (function () {
     RegistroPage.prototype.registrar = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var resultado, toast, err_1, toast;
+            var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -2990,7 +3059,7 @@ var RegistroPage = /** @class */ (function () {
                         toast = _a.sent();
                         toast.present();
                         setTimeout(function () {
-                            mp.trigger('FecharBrowser');
+                            _this.ragemp.closeBrowser();
                         }, 3000);
                         return [3 /*break*/, 5];
                     case 3:
@@ -3100,7 +3169,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var RagempService = /** @class */ (function () {
     function RagempService() {
-        this.dadosJogador$ = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+        this.browserName$ = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+        this.dadosJogador$ = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]({
+            nome: '',
+            email: '',
+            celular: '',
+            senha: '',
+        });
         this.playerName$ = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
         this.jogadorLocal$ = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
         this.serverEvent$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
@@ -3110,6 +3185,8 @@ var RagempService = /** @class */ (function () {
         window.my = window || {};
         window.ragemp = window.ragemp || {};
         window.ragemp.setPlayerName = this.setPlayerName.bind(this);
+        window.ragemp.setBrowserName = this.setBrowserName.bind(this);
+        window.ragemp[_packages_rpg_interfaces_brazucas_eventos__WEBPACK_IMPORTED_MODULE_4__["BrazucasEventos"].DADOS_JOGADOR] = this[_packages_rpg_interfaces_brazucas_eventos__WEBPACK_IMPORTED_MODULE_4__["BrazucasEventos"].DADOS_JOGADOR].bind(this);
         window.ragemp.serverEvent = this.serverEvent.bind(this);
     }
     RagempService.prototype.callRagempEvent = function (event, data) {
@@ -3137,6 +3214,9 @@ var RagempService = /** @class */ (function () {
     RagempService.prototype.setPlayerName = function (playerName) {
         this.playerName$.next(playerName);
     };
+    RagempService.prototype.setBrowserName = function (browserName) {
+        this.browserName$.next(browserName);
+    };
     RagempService.prototype.serverEvent = function (eventId, event, data) {
         this.serverEvent$.next({
             event: event,
@@ -3144,8 +3224,11 @@ var RagempService = /** @class */ (function () {
             eventId: eventId,
         });
     };
+    RagempService.prototype.closeBrowser = function () {
+        mp.trigger('FecharBrowser', this.browserName$.value);
+    };
     RagempService.prototype[_packages_rpg_interfaces_brazucas_eventos__WEBPACK_IMPORTED_MODULE_4__["BrazucasEventos"].DADOS_JOGADOR] = function (jogador) {
-        this.dadosJogador$.next(jogador);
+        this.dadosJogador$.next(Object.assign(this.dadosJogador$.value, JSON.parse(jogador)));
     };
     RagempService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -3154,6 +3237,44 @@ var RagempService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], RagempService);
     return RagempService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/veiculo.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/veiculo.service.ts ***!
+  \*********************************************/
+/*! exports provided: VeiculoService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VeiculoService", function() { return VeiculoService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _packages_rpg_interfaces_brazucas_eventos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../packages/rpg/interfaces/brazucas-eventos */ "../packages/rpg/interfaces/brazucas-eventos.ts");
+/* harmony import */ var _ragemp_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ragemp.service */ "./src/app/services/ragemp.service.ts");
+
+
+
+
+var VeiculoService = /** @class */ (function () {
+    function VeiculoService(ragemp) {
+        this.ragemp = ragemp;
+    }
+    VeiculoService.prototype.criarVeiculo = function (dados) {
+        return this.ragemp.callRagempEvent(_packages_rpg_interfaces_brazucas_eventos__WEBPACK_IMPORTED_MODULE_2__["BrazucasEventos"].CRIAR_VEICULO, dados);
+    };
+    VeiculoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ragemp_service__WEBPACK_IMPORTED_MODULE_3__["RagempService"]])
+    ], VeiculoService);
+    return VeiculoService;
 }());
 
 

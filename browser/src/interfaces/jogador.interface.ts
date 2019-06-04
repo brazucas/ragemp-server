@@ -3,4 +3,7 @@ export interface Jogador {
   email: string,
   celular: string,
   senha: string,
+  posicaoX?: number,
+  posicaoY?: number,
+  posicaoZ?: number,
 }

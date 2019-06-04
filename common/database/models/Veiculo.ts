@@ -25,14 +25,14 @@ export class Veiculo extends Model<Veiculo> {
   @Column({allowNull: false})
   modelo: string;
 
-  @Column({allowNull: false, type: DataType.FLOAT})
-  posicaoX: number;
+  @Column({allowNull: false, type: DataType.STRING})
+  posicaoX: string;
 
-  @Column({allowNull: false, type: DataType.FLOAT})
-  posicaoY: number;
+  @Column({allowNull: false, type: DataType.STRING})
+  posicaoY: string;
 
-  @Column({allowNull: false, type: DataType.FLOAT})
-  posicaoZ: number;
+  @Column({allowNull: false, type: DataType.STRING})
+  posicaoZ: string;
 
   @Column({allowNull: false})
   rotacao: number;
@@ -68,10 +68,10 @@ export class Veiculo extends Model<Veiculo> {
   mundo: number;
 
   @Column({allowNull: false})
-  valorOriginal: string;
+  valorOriginal: number;
 
   @Column({allowNull: false})
-  valorVenda: string;
+  valorVenda: number;
 
   @Column({allowNull: false, defaultValue: true})
   aVenda: boolean;

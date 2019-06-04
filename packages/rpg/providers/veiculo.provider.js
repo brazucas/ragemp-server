@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const BehaviorSubject_1 = require("rxjs/BehaviorSubject");
 const Observable_1 = require("rxjs/Observable");
 const mp_veiculo_cor_interface_1 = require("../interfaces/mp.veiculo-cor.interface");
 class VeiculoProvider {
@@ -31,9 +32,9 @@ class VeiculoProvider {
         return new Observable_1.Observable((resolver) => {
             let rpgVeiculo = VeiculoProvider.findFromMp(vehicle);
             if (rpgVeiculo) {
-                rpgVeiculo.storage.posicaoX = vehicle.position.x;
-                rpgVeiculo.storage.posicaoY = vehicle.position.y;
-                rpgVeiculo.storage.posicaoZ = vehicle.position.z;
+                rpgVeiculo.storage.posicaoX = vehicle.position.x.toString();
+                rpgVeiculo.storage.posicaoY = vehicle.position.y.toString();
+                rpgVeiculo.storage.posicaoZ = vehicle.position.z.toString();
                 rpgVeiculo.storage.rotacao = vehicle.heading;
                 resolver.next(rpgVeiculo.storage.save());
                 resolver.complete();
@@ -50,5 +51,6 @@ class VeiculoProvider {
     }
 }
 VeiculoProvider.veiculosArmazenados = [];
+VeiculoProvider.veiculos = new BehaviorSubject_1.BehaviorSubject(null);
 exports.VeiculoProvider = VeiculoProvider;
 //# sourceMappingURL=veiculo.provider.js.map

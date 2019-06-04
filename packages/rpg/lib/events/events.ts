@@ -1,3 +1,4 @@
+import { DadosVeiculo } from '../../../../browser/src/app/services/veiculo.service';
 import { DadosLogin, DadosRegistro, RegistroResultado } from '../../../../browser/src/interfaces/login.interface';
 import { BrazucasServer } from '../../../../common/brazucas-server';
 import { Jogador } from '../../../../common/database/models/Jogador';
@@ -69,6 +70,17 @@ export class Events {
         erro: true,
         mensagem: err.toString() || 'Erro interno ao cadastrar',
       });
+    }
+  }
+
+  public async CriarVeiculo(player: PlayerMp, dados: DadosVeiculo) {
+    try {
+      await this.brazucasServer.criarVeiculo(player, dados);
+    } catch (err) {
+      console.debug(`[REGISTRO] Um erro ocorreu ao criar o veículo`);
+      console.error(err.toString());
+
+      return false;
     }
   }
 }

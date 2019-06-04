@@ -5,6 +5,7 @@ var BrazucasEventos;
     BrazucasEventos["BROWSER"] = "browser";
     BrazucasEventos["SERVER"] = "server";
     BrazucasEventos["AUTENTICAR_JOGADOR"] = "AutenticarJogador";
+    BrazucasEventos["CRIAR_VEICULO"] = "CriarVeiculo";
     BrazucasEventos["REGISTRAR_JOGADOR"] = "RegistrarJogador";
     BrazucasEventos["AUTENTICACAO_RESULTADO"] = "AutenticacaoResultado";
     BrazucasEventos["REGISTRO_RESULTADO"] = "RegistroResultado";

@@ -4,5 +4,5 @@ export const environment: any = {
   database_password: 'abcd1234',
   database_host: 'ragemp_mysql',
   database_port: '3306',
-  posicaoLogin: new mp.Vector3(3548.5206519, 2581.8515625, 8.097),
+  posicaoLogin: new mp.Vector3(-1081.1380615234375, -2586.490234375, 13.800606727600098),
 };

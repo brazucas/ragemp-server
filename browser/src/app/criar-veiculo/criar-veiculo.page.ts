@@ -1,7 +1,10 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 import { Veiculos } from '../../../../common/util/vehicles';
 import { EnumToArray } from '../../interfaces/util';
+import { RagempService } from '../services/ragemp.service';
+import { VeiculoService } from '../services/veiculo.service';
 
 @Component({
   selector: 'app-criar-veiculo',
@@ -75,12 +78,23 @@ export class CriarVeiculoPage implements AfterViewInit {
   });
 
 
-  constructor() {
+  constructor(public ragemp: RagempService,
+              public toastCtrl: ToastController,
+              public veiculo: VeiculoService) {
     if (typeof mp === 'undefined') {
       this.formGroup.patchValue({
         posicaoX: 1233.123183323,
         posicaoY: 1233.123183323,
         posicaoZ: 1233.123183323,
+      });
+    } else {
+      this.ragemp.dadosJogador$.subscribe((dadosJogador) => {
+        console.debug(`DADOS JOGADOR ${JSON.stringify(dadosJogador)}`);
+        this.formGroup.patchValue({
+          posicaoX: dadosJogador.posicaoX,
+          posicaoY: dadosJogador.posicaoY,
+          posicaoZ: dadosJogador.posicaoZ,
+        });
       });
     }
   }
@@ -97,7 +111,34 @@ export class CriarVeiculoPage implements AfterViewInit {
 
   }
 
-  public criarVeiculo() {
+  public async criarVeiculo() {
+    try {
+      await this.veiculo.criarVeiculo(this.formGroup.value);
 
+      this.mostrarFormulario = false;
+
+      const toast = await this.toastCtrl.create({
+        message: 'Veículo criado com sucesso!',
+        position: 'top',
+        color: 'success',
+        duration: 3000,
+
+      });
+
+      toast.present();
+
+      setTimeout(() => {
+        this.ragemp.closeBrowser();
+        this.mostrarFormulario = true;
+      }, 3000);
+    } catch (err) {
+      const toast = await this.toastCtrl.create({
+        message: err.mensagem || 'Um erro ocorreu ao criar o veículo',
+        position: 'top',
+        color: 'danger',
+        duration: 3000
+      });
+      toast.present();
+    }
   }
 }

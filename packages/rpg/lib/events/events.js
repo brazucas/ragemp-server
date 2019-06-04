@@ -75,6 +75,18 @@ class Events {
             }
         });
     }
+    CriarVeiculo(player, dados) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this.brazucasServer.criarVeiculo(player, dados);
+            }
+            catch (err) {
+                console.debug(`[REGISTRO] Um erro ocorreu ao criar o veículo`);
+                console.error(err.toString());
+                return false;
+            }
+        });
+    }
 }
 exports.Events = Events;
 //# sourceMappingURL=events.js.map

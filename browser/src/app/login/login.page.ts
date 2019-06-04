@@ -68,7 +68,7 @@ export class LoginPage implements AfterViewInit {
       toast.present();
 
       setTimeout(() => {
-        mp.trigger('FecharBrowser');
+        this.ragemp.closeBrowser();
       }, 3000);
     } catch (err) {
       const toast = await this.toastCtrl.create({

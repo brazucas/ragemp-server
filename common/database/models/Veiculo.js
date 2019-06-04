@@ -26,16 +26,16 @@ __decorate([
     __metadata("design:type", String)
 ], Veiculo.prototype, "modelo", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.FLOAT }),
-    __metadata("design:type", Number)
+    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.STRING }),
+    __metadata("design:type", String)
 ], Veiculo.prototype, "posicaoX", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.FLOAT }),
-    __metadata("design:type", Number)
+    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.STRING }),
+    __metadata("design:type", String)
 ], Veiculo.prototype, "posicaoY", void 0);
 __decorate([
-    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.FLOAT }),
-    __metadata("design:type", Number)
+    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.STRING }),
+    __metadata("design:type", String)
 ], Veiculo.prototype, "posicaoZ", void 0);
 __decorate([
     sequelize_typescript_1.Column({ allowNull: false }),
@@ -83,11 +83,11 @@ __decorate([
 ], Veiculo.prototype, "mundo", void 0);
 __decorate([
     sequelize_typescript_1.Column({ allowNull: false }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Veiculo.prototype, "valorOriginal", void 0);
 __decorate([
     sequelize_typescript_1.Column({ allowNull: false }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Veiculo.prototype, "valorVenda", void 0);
 __decorate([
     sequelize_typescript_1.Column({ allowNull: false, defaultValue: true }),

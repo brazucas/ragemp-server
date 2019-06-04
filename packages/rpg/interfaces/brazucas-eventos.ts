@@ -2,6 +2,7 @@ export enum BrazucasEventos {
   BROWSER = 'browser',
   SERVER = 'server',
   AUTENTICAR_JOGADOR = 'AutenticarJogador',
+  CRIAR_VEICULO = 'CriarVeiculo',
   REGISTRAR_JOGADOR = 'RegistrarJogador',
   AUTENTICACAO_RESULTADO = 'AutenticacaoResultado',
   REGISTRO_RESULTADO = 'RegistroResultado',

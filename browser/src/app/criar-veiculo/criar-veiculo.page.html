@@ -15,7 +15,7 @@
 
                 <ion-searchbar placeholder="Pesquisar" (ionChange)="modeloPesquisa($event)"></ion-searchbar>
 
-                <select id="modelo" class="modelos" formControlName="modelo" formArrayName="" size="6"
+                <select id="modelo" class="modelos" formControlName="modelo" size="6"
                         (change)="modeloSelecionado($event)">
                     <option *ngFor="let veiculo of (listaVeiculos | filter: filtroPesquisa)">
                         {{ veiculo }}
@@ -49,12 +49,12 @@
 
             <ion-item>
                 <ion-label position="floating">Posição Y</ion-label>
-                <ion-input formControlName="posicaoX" readonly type="text" placeholder="Posição Y"></ion-input>
+                <ion-input formControlName="posicaoY" readonly type="text" placeholder="Posição Y"></ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-label position="floating">Posição Z</ion-label>
-                <ion-input formControlName="posicaoX" readonly type="text" placeholder="Posição Z"></ion-input>
+                <ion-input formControlName="posicaoZ" readonly type="text" placeholder="Posição Z"></ion-input>
             </ion-item>
         </div>
 

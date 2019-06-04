@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { RagempService } from '../../services/ragemp.service';
 
 declare let mp: any;
 
@@ -10,11 +11,11 @@ declare let mp: any;
 export class PaginaComponent implements OnInit {
   @Input() podeFechar = true;
 
-  constructor() { }
+  constructor(public ragemp: RagempService) { }
 
   ngOnInit() {}
 
   public fechar() {
-    mp.trigger('FecharBrowser');
+    this.ragemp.closeBrowser();
   }
 }

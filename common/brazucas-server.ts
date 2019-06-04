@@ -4,11 +4,14 @@ import 'rxjs/add/observable/of';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import { Observable } from 'rxjs/Observable';
 import * as Sequelize from 'sequelize';
+import { DadosVeiculo } from '../browser/src/app/services/veiculo.service';
 import { DadosRegistro } from '../browser/src/interfaces/login.interface';
 import { Database } from './database/database';
 import { Jogador } from './database/models/Jogador';
+import { Veiculo } from './database/models/Veiculo';
 import { PLAYER_NAME_MAXLENGTH, PLAYER_NAME_MINLENGTH, PLAYER_NAME_REGEXP } from './interfaces';
-import { bcryptCompare, bcryptHash, soNumeros } from './util/util';
+import { bcryptCompare, bcryptHash, hexToRgb, soNumeros } from './util/util';
+import { Veiculos } from './util/vehicles';
 import Bluebird = require('bluebird');
 
 export class BrazucasServer {
@@ -87,7 +90,7 @@ export class BrazucasServer {
 
     const senhaHash = await bcryptHash(dados.senha);
 
-    let jogador = new Jogador({
+    const jogador = new Jogador({
       nome: player.name,
       senha: (senhaHash as string),
       nivel: 1,
@@ -96,5 +99,54 @@ export class BrazucasServer {
     });
 
     return jogador.save();
+  }
+
+  public async criarVeiculo(player: PlayerMp, dadosVeiculo: DadosVeiculo): Promise<any> {
+    if (!Veiculos[dadosVeiculo.modelo]) {
+      throw 'Modelo não encontrado';
+    }
+
+    const rgb = hexToRgb(dadosVeiculo.cor);
+
+    const jogador = await this.loadPlayer(player.name);
+
+    const veiculo = new Veiculo({
+      placaOriginal: dadosVeiculo.placa,
+      placaExibido: dadosVeiculo.placa,
+      modelo: dadosVeiculo.modelo,
+      posicaoX: dadosVeiculo.posicaoX,
+      posicaoY: dadosVeiculo.posicaoY,
+      posicaoZ: dadosVeiculo.posicaoZ,
+      rotacao: 0,
+      transparencia: dadosVeiculo.transparencia,
+      corPrimariaR: rgb.r,
+      corPrimariaG: rgb.g,
+      corPrimariaB: rgb.b,
+      corSecundariaR: rgb.r,
+      corSecundariaG: rgb.g,
+      corSecundariaB: rgb.b,
+      trancado: dadosVeiculo.trancado,
+      motor: dadosVeiculo.motor,
+      mundo: 0,
+      valorOriginal: 1000,
+      valorVenda: 1000,
+      aVenda: true,
+      jogadorVeiculo: jogador,
+    });
+
+    await veiculo.save();
+
+    const veiculoMp = mp.vehicles.new(Veiculos[dadosVeiculo.modelo],
+      new mp.Vector3(parseFloat(dadosVeiculo.posicaoX), parseFloat(dadosVeiculo.posicaoY), parseFloat(dadosVeiculo.posicaoZ)));
+
+    veiculoMp.engine = dadosVeiculo.motor;
+    veiculoMp.locked = dadosVeiculo.trancado;
+    veiculoMp.setColorRGB(rgb.r, rgb.g, rgb.b, rgb.r, rgb.g, rgb.b);
+    veiculoMp.numberPlate = dadosVeiculo.placa;
+    veiculoMp.alpha = dadosVeiculo.transparencia;
+
+    veiculoMp.spawn(veiculoMp.position, 0);
+
+    return true;
   }
 }
