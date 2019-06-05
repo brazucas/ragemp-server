@@ -400,9 +400,9 @@ function CreateMovMarkerObjs()
 	editorYMovMarkerObj.setCollision(false, false);
 	editorZMovMarkerObj.freezePosition(true);
     editorZMovMarkerObj.setCollision(false, false);
-    mp.game.invoke(Natives.SET_ENTITY_ALPHA, editorXMovMarkerObj.handle, 0, false);
-	mp.game.invoke(Natives.SET_ENTITY_ALPHA, editorYMovMarkerObj.handle, 0, false);
-    mp.game.invoke(Natives.SET_ENTITY_ALPHA, editorZMovMarkerObj.handle, 0, false);
+	editorXMovMarkerObj.handle.setAlpha = 0;
+	editorYMovMarkerObj.handle.setAlpha = 0;
+	editorZMovMarkerObj.handle.setAlpha = 0;
     
     editorXMovColor = [255, 0, 0, 255];
     editorYMovColor = [0, 255, 0, 255];
@@ -487,9 +487,9 @@ function CreateAxisMarkerObjs()
     editorXAxisMarkerObj.setRotation(0, 0, 0, 2, true);
 	editorYAxisMarkerObj.setRotation(90, 0, 0, 2, true);
 	editorZAxisMarkerObj.setRotation(0, 90, 0, 2, true);
-    mp.game.invoke(Natives.SET_ENTITY_ALPHA, editorXAxisMarkerObj.handle, 0, false);
-	mp.game.invoke(Natives.SET_ENTITY_ALPHA, editorYAxisMarkerObj.handle, 0, false);
-    mp.game.invoke(Natives.SET_ENTITY_ALPHA, editorZAxisMarkerObj.handle, 0, false);
+	editorZAxisMarkerObj.handle.setAlpha = 0;
+	editorYAxisMarkerObj.handle.setAlpha = 0;
+	editorZAxisMarkerObj.handle.setAlpha = 0;
     
     editorXAxisColor = [255, 0, 0, 255];
     editorYAxisColor = [0, 255, 0, 255];
@@ -557,7 +557,7 @@ function CreateFocusObject(hash = null)
         editorFocusObject.setLodDist(LODDist);
         editorFocusObject.freezePosition(true);
         editorFocusObject.setCollision(false, false);
-        mp.game.invoke(Natives.SET_ENTITY_ALPHA, editorFocusObject.handle, editorTransparencySelect, false);
+		editorFocusObject.handle.setAlpha = editorTransparencySelect;
     }
     else
     {
@@ -575,7 +575,7 @@ function CreateFocusObject(hash = null)
             editorFocusObject.setLodDist(LODDist);
             editorFocusObject.freezePosition(true);
             editorFocusObject.setCollision(false, false);
-            mp.game.invoke(Natives.SET_ENTITY_ALPHA, editorFocusObject.handle, editorTransparencySelect, false);
+			editorFocusObject.handle.setAlpha = editorTransparencySelect;
         }
         else
         {
@@ -892,9 +892,9 @@ mp.events.add("playerCommand", (command) =>
                     if(memObj != null)
                     {
                         if(memObj.handle != null)
-                            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj.handle);
+							memObj.handle.resetAlpha;
                         else
-                            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj);
+							memObj.resetAlpha;
                         memObj = null;
                     }
                     editorState = 1;
@@ -917,9 +917,9 @@ mp.events.add("playerCommand", (command) =>
                     if(memObj != null)
                     {
                         if(memObj.handle != null)
-                            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj.handle);
+							memObj.handle.resetAlpha;
                         else
-                            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj);
+							memObj.resetAlpha;
                         memObj = null;
                     }
                     editorState = 1;
@@ -954,7 +954,7 @@ mp.keys.bind(bindKeys.KEY_1, false, function()
         }
         else
         {
-            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, editorFocusObject.handle);
+			editorFocusObject.handle.resetAlpha;
             editorFocusObject.freezePosition(true);
             editorFocusObject.setCollision(true, false);
             editorFocusObject = null;
@@ -972,9 +972,9 @@ mp.keys.bind(bindKeys.KEY_2, false, function()
     if(memObj != null)
     {
         if(memObj.handle != null)
-            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj.handle);
+			memObj.handle.resetAlpha;
         else
-            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj);
+            memObj.resetAlpha;
         memObj = null;
     }
 
@@ -1000,9 +1000,9 @@ mp.keys.bind(bindKeys.KEY_3, false, function()
     if(memObj != null)
     {
         if(memObj.handle != null)
-            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj.handle);
+			memObj.handle.resetAlpha;
         else
-            mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj);
+            memObj.resetAlpha;
         memObj = null;
     }
 
@@ -1036,7 +1036,7 @@ mp.keys.bind(bindKeys.KEY_ENTER, false, function()
 
     if(IsObjectSpawned(editorFocusObject))
     {
-        mp.game.invoke(Natives.RESET_ENTITY_ALPHA, editorFocusObject.handle);
+		editorFocusObject.handle.resetAlpha;
         editorFocusObject.setCollision(true, false);
         editorFocusObject.cmapcoll = editorFocusObjectCollision;
         editorFocusObject.cmapfreeze = editorFocusObjectFreeze;
@@ -1056,7 +1056,7 @@ mp.keys.bind(bindKeys.KEY_ENTER, false, function()
     }
     else
     {
-        mp.game.invoke(Natives.RESET_ENTITY_ALPHA, editorFocusObject.handle);
+		editorFocusObject.handle.resetAlpha;
         editorFocusObject.setCollision(true, false);
         editorFocusObject.cmapcoll = editorFocusObjectCollision;
         editorFocusObject.cmapfreeze = editorFocusObjectFreeze;
@@ -1310,7 +1310,6 @@ mp.events.add("render", () =>
     {
         mp.game.ui.setTextFont(7);
         mp.game.ui.setTextEntry2("STRING");
-        //mp.game.invoke(Natives.GET_ENTITY_MODEL, entity),
         if(memObj != null)
         {
             if(memObj.model != null)
@@ -1319,7 +1318,7 @@ mp.events.add("render", () =>
             }
             else
             {
-                mp.game.ui.addTextComponentSubstringPlayerName("[Invalid Object]: " + mp.game.invoke(Natives.GET_ENTITY_MODEL, memObj));
+                mp.game.ui.addTextComponentSubstringPlayerName("[Invalid Object]: " + memObj.model);
             }
         }
         else
@@ -1341,9 +1340,8 @@ mp.events.add("render", () =>
 			if(memObj != null)
 			{
                 if(memObj.handle != null)
-                    mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj.handle);
+					memObj.handle.resetAlpha;
                 else
-                    mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj);
 				editorFocusObject = null;
 				memObj = null;
 			}
@@ -1353,15 +1351,15 @@ mp.events.add("render", () =>
             if(memObj != null)
             {
                 if(memObj.handle != null)
-                    mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj.handle);
+					memObj.handle.resetAlpha;
                 else
-                    mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj);
+					memObj.resetAlpha;
             }
             
             if(newObj.entity.handle != null)
-                mp.game.invoke(Natives.SET_ENTITY_ALPHA, newObj.entity.handle, editorTransparencySelect, false);
+				newObj.entity.setAlpha = editorTransparencySelect;
             else
-                mp.game.invoke(Natives.SET_ENTITY_ALPHA, newObj.entity, editorTransparencySelect, false);
+                newObj.entity.setAlpha = editorTransparencySelect;
             
             memObj = newObj.entity;
             
@@ -1384,7 +1382,7 @@ mp.events.add("render", () =>
                 }
                 else if(mp.game.controls.isDisabledControlJustReleased(0, 25))
                 {
-                    mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj.handle);
+					memObj.handle.resetAlpha;
                     CreateFocusObject(memObj.model);
                     AxisMem = 0;
                     memObj = null;
@@ -1399,8 +1397,8 @@ mp.events.add("render", () =>
             {
                 if(mp.game.controls.isDisabledControlJustReleased(0, 25))
                 {
-                    mp.game.invoke(Natives.RESET_ENTITY_ALPHA, memObj);
-                    CreateFocusObject(mp.game.invoke(Natives.GET_ENTITY_MODEL, memObj));
+					memObj.resetAlpha;
+                    CreateFocusObject(memObj.model);
                     AxisMem = 0;
                     memObj = null;
 
@@ -1469,7 +1467,7 @@ mp.events.add("render", () =>
 
                 if(mp.game.controls.isDisabledControlJustReleased(0, 24))
                 {
-                    mp.game.invoke(Natives.RESET_ENTITY_ALPHA, editorFocusObject.handle);
+					editorFocusObject.handle.resetAlpha;
                     editorFocusObject.setCollision(true, false);
                     editorFocusObject.cmapcoll = editorFocusObjectCollision;
                     editorFocusObject.cmapfreeze = editorFocusObjectFreeze;
@@ -1985,7 +1983,7 @@ mp.events.add("render", () =>
                             }
                             else
                             {
-                                mp.game.invoke(Natives.RESET_ENTITY_ALPHA, editorFocusObject.handle);
+								editorFocusObject.handle.resetAlpha;
                                 editorFocusObject.freezePosition(true);
                                 editorFocusObject.setCollision(true, false);
                                 editorFocusObject = null;
