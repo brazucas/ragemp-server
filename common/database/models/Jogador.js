@@ -35,6 +35,14 @@ __decorate([
     __metadata("design:type", Number)
 ], Jogador.prototype, "nivel", void 0);
 __decorate([
+    sequelize_typescript_1.Column({ defaultValue: 0 }),
+    __metadata("design:type", Number)
+], Jogador.prototype, "dinheiro", void 0);
+__decorate([
+    sequelize_typescript_1.Column({ defaultValue: 0 }),
+    __metadata("design:type", Number)
+], Jogador.prototype, "creditos", void 0);
+__decorate([
     sequelize_typescript_1.BelongsTo(() => Profissao_1.Profissao, { foreignKey: { allowNull: true, name: 'profissao' } }),
     __metadata("design:type", Profissao_1.Profissao)
 ], Jogador.prototype, "jogadorProfissao", void 0);

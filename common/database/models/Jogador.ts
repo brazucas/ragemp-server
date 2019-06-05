@@ -32,6 +32,12 @@ export class Jogador extends Model<Jogador> {
   @Column({defaultValue: 1})
   nivel: number;
 
+  @Column({defaultValue: 0})
+  dinheiro: number;
+
+  @Column({defaultValue: 0})
+  creditos: number;
+
   @BelongsTo(() => Profissao, {foreignKey: {allowNull: true, name: 'profissao'}})
   jogadorProfissao: Profissao;
 
