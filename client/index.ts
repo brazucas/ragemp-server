@@ -1,7 +1,7 @@
 import { JogadorOnline } from '../browser/src/app/players-online/players-online.page';
 import { Jogador } from '../browser/src/interfaces/jogador.interface';
 import { AutenticacaoResultado, RegistroResultado } from '../browser/src/interfaces/login.interface';
-import { BrazucasEventos, ServerEvent } from '../packages/rpg/interfaces/brazucas-eventos';
+import { ServerEvent } from '../packages/rpg/interfaces/brazucas-eventos';
 import EventKey = RageEnums.EventKey;
 
 const StringIsNumber = value => isNaN(Number(value)) === false;
@@ -216,13 +216,13 @@ class PlayerEvents {
       const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p === player));
 
       diff.forEach(playerDiff => {
-        mp.events.callRemote(BrazucasEventos.DESABILITAR_VOICE_CHAT, JSON.stringify({
+        mp.events.callRemote('DesabilitarVoiceChat', JSON.stringify({
           targetId: playerDiff.id,
         }));
       });
 
       currentListeners.forEach(playerDiff => {
-        mp.events.callRemote(BrazucasEventos.HABILITAR_VOICE_CHAT, JSON.stringify({
+        mp.events.callRemote('HabilitarVoiceChat', JSON.stringify({
           targetId: playerDiff.id,
         }));
       });

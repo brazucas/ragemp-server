@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const brazucas_eventos_1 = require("../packages/rpg/interfaces/brazucas-eventos");
 const StringIsNumber = value => isNaN(Number(value)) === false;
 const VOICE_CHAT_RANGE = 50.0;
 const VOICE_CHAT_INTERVAL = 2000;
@@ -153,12 +152,12 @@ class PlayerEvents {
             });
             const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p === player));
             diff.forEach(playerDiff => {
-                mp.events.callRemote(brazucas_eventos_1.BrazucasEventos.DESABILITAR_VOICE_CHAT, JSON.stringify({
+                mp.events.callRemote('DesabilitarVoiceChat', JSON.stringify({
                     targetId: playerDiff.id,
                 }));
             });
             currentListeners.forEach(playerDiff => {
-                mp.events.callRemote(brazucas_eventos_1.BrazucasEventos.HABILITAR_VOICE_CHAT, JSON.stringify({
+                mp.events.callRemote('HabilitarVoiceChat', JSON.stringify({
                     targetId: playerDiff.id,
                 }));
             });
