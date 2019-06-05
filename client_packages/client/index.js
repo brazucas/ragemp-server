@@ -24,6 +24,7 @@ class Client {
         mp.players.local.setCollision(false, false);
         this.keysBindings();
         this.initServerEvents();
+        this.initPlayerEvents();
         this.initBrowserEvents();
         this.bindCommands();
     }
@@ -40,6 +41,9 @@ class Client {
     }
     initBrowserEvents() {
         this.browserEvents = new BrowserEvents(this);
+    }
+    initPlayerEvents() {
+        this.playerEvents = new PlayerEvents(this);
     }
     bindCommands() {
         const comandos = new Commands(this);

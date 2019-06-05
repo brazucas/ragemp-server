@@ -19,6 +19,7 @@ class Client {
   public jogador: Jogador;
   public serverEvents: ServerEvents;
   public browserEvents: BrowserEvents;
+  public playerEvents: PlayerEvents;
 
   public browsers: {
     central: Navegador,
@@ -44,6 +45,7 @@ class Client {
 
     this.keysBindings();
     this.initServerEvents();
+    this.initPlayerEvents();
     this.initBrowserEvents();
     this.bindCommands();
   }
@@ -64,6 +66,10 @@ class Client {
 
   private initBrowserEvents() {
     this.browserEvents = new BrowserEvents(this);
+  }
+
+  private initPlayerEvents() {
+    this.playerEvents = new PlayerEvents(this);
   }
 
   private bindCommands() {
