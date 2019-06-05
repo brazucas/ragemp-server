@@ -17,7 +17,6 @@ function carregarVeiculos() {
     return __awaiter(this, void 0, void 0, function* () {
         let veiculos = yield Veiculo_1.Veiculo.findAll();
         veiculos.forEach((veiculo) => {
-            console.log('>>> criando veiculo ', veiculo.posicaoX, typeof veiculo.posicaoX);
             const veiculoMp = mp.vehicles.new(vehicles_1.Veiculos[veiculo.modelo], new mp.Vector3(parseFloat(veiculo.posicaoX), parseFloat(veiculo.posicaoY), parseFloat(veiculo.posicaoZ)));
             veiculoMp.setColorRGB(veiculo.corPrimariaR, veiculo.corPrimariaG, veiculo.corPrimariaB, veiculo.corSecundariaR, veiculo.corSecundariaG, veiculo.corSecundariaB);
             veiculoMp.locked = veiculo.trancado;

@@ -78,7 +78,7 @@ export class Events {
     try {
       await this.brazucasServer.criarVeiculo(player, dados);
     } catch (err) {
-      console.debug(`[REGISTRO] Um erro ocorreu ao criar o veículo`);
+      console.debug(`[VEÍCULOS] Um erro ocorreu ao criar o veículo`);
       console.error(err.toString());
 
       return false;

@@ -224,7 +224,7 @@ class PlayerEvents {
         }
       });
 
-      const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p === player));
+      const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p.id === player.id));
 
       diff.forEach(playerDiff => {
         mp.events.callRemote('browser', JSON.stringify({
@@ -238,21 +238,17 @@ class PlayerEvents {
 
       currentListeners.forEach(player => {
         if (!this.voiceChatListeners.find(listener => listener.id == player.id)) {
-          if (player.isVoiceActive) {
-            mp.events.callRemote('browser', JSON.stringify({
-              eventId: -1,
-              event: 'HabilitarVoiceChat',
-              data: JSON.stringify({
-                targetId: player.id,
-              }),
-            }));
-            player.voice3d = true;
-            player.voiceAutoVolume = true;
+          mp.events.callRemote('browser', JSON.stringify({
+            eventId: -1,
+            event: 'HabilitarVoiceChat',
+            data: JSON.stringify({
+              targetId: player.id,
+            }),
+          }));
+          player.voice3d = true;
+          player.voiceAutoVolume = true;
 
-            mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${player.name} !{#FFFFFF}entrou.`);
-          } else {
-            mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${player.name} !{#FFFFFF}não está com o voice chat habilitado.`);
-          }
+          mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${player.name} !{#FFFFFF}entrou.`);
         }
       });
 

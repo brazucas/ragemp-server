@@ -12,7 +12,6 @@ export async function carregarVeiculos() {
   let veiculos = await Veiculo.findAll();
 
   veiculos.forEach((veiculo) => {
-    console.log('>>> criando veiculo ', veiculo.posicaoX, typeof veiculo.posicaoX);
     const veiculoMp = mp.vehicles.new(Veiculos[veiculo.modelo], new mp.Vector3(
       parseFloat(veiculo.posicaoX),
       parseFloat(veiculo.posicaoY),
