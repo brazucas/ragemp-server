@@ -163,18 +163,18 @@ class PlayerEvents {
                 mp.events.callRemote('browser', JSON.stringify({
                     eventId: -1,
                     event: 'DesabilitarVoiceChat',
-                    data: {
+                    data: JSON.stringify({
                         targetId: playerDiff.id,
-                    },
+                    }),
                 }));
             });
             currentListeners.forEach(player => {
                 mp.events.callRemote('browser', JSON.stringify({
                     eventId: -1,
                     event: 'HabilitarVoiceChat',
-                    data: {
+                    data: JSON.stringify({
                         targetId: player.id,
-                    },
+                    }),
                 }));
             });
             console.log(`[VOICE CHAT] Ativando para ${currentListeners.length}`);
