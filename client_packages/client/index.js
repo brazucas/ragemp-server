@@ -24,6 +24,7 @@ class Client {
         mp.players.local.setCollision(false, false);
         this.keysBindings();
         this.initServerEvents();
+        console.log('[VOICE CHAT] debug 0');
         this.initPlayerEvents();
         this.initBrowserEvents();
         this.bindCommands();
@@ -144,9 +145,11 @@ class PlayerEvents {
     constructor(client) {
         this.voiceChatListeners = [];
         this.client = client;
+        console.log('[VOICE CHAT] debug 1');
         this.startVoiceChat();
     }
     startVoiceChat() {
+        console.log('[VOICE CHAT] debug 2');
         this.chatInterval = setInterval(() => {
             console.log('[VOICE CHAT] Buscando jogadores');
             const currentListeners = [];

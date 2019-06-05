@@ -45,6 +45,9 @@ class Client {
 
     this.keysBindings();
     this.initServerEvents();
+
+    console.log('[VOICE CHAT] debug 0');
+
     this.initPlayerEvents();
     this.initBrowserEvents();
     this.bindCommands();
@@ -206,10 +209,14 @@ class PlayerEvents {
   constructor(client: Client) {
     this.client = client;
 
+    console.log('[VOICE CHAT] debug 1');
+
     this.startVoiceChat();
   }
 
   public startVoiceChat() {
+    console.log('[VOICE CHAT] debug 2');
+
     this.chatInterval = setInterval(() => {
       console.log('[VOICE CHAT] Buscando jogadores');
 
