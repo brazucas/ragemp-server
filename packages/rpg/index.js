@@ -11,6 +11,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const brazucas_server_1 = require("../../common/brazucas-server");
 const playerChat_1 = require("./handler/playerChat");
 const playerDeath_1 = require("./handler/playerDeath");
+const playerEnterVehicle_1 = require("./handler/playerEnterVehicle");
+const playerExitVehicle_1 = require("./handler/playerExitVehicle");
 const playerJoin_1 = require("./handler/playerJoin");
 const playerQuit_1 = require("./handler/playerQuit");
 const brazucas_eventos_1 = require("./interfaces/brazucas-eventos");
@@ -36,6 +38,8 @@ mp.events.add("playerJoin" /* PLAYER_JOIN */, playerJoin_1.PlayerJoinHandler.bin
 mp.events.add("playerQuit" /* PLAYER_QUIT */, playerQuit_1.PlayerQuitHandler.bind(playerQuit_1.PlayerQuitHandler, brazucasServer));
 mp.events.add("playerChat" /* PLAYER_CHAT */, playerChat_1.PlayerChatHandler.bind(playerChat_1.PlayerChatHandler, brazucasServer));
 mp.events.add("playerDeath" /* PLAYER_DEATH */, playerDeath_1.PlayerDeathHandler.bind(playerDeath_1.PlayerDeathHandler, brazucasServer));
+mp.events.add("playerExitVehicle" /* PLAYER_EXIT_VEHICLE */, playerExitVehicle_1.PlayerExitVehicle.bind(playerExitVehicle_1.PlayerExitVehicle, brazucasServer));
+mp.events.add("playerEnterVehicle" /* PLAYER_ENTER_VEHICLE */, playerEnterVehicle_1.PlayerEnterVehicle.bind(playerEnterVehicle_1.PlayerEnterVehicle, brazucasServer));
 mp.events.add(brazucas_eventos_1.BrazucasEventos.BROWSER, (player, serverEventStr) => __awaiter(this, void 0, void 0, function* () {
     const serverEvent = JSON.parse(serverEventStr);
     console.debug('>>>> ', serverEventStr, serverEvent);

@@ -4,6 +4,8 @@ import { AutenticacaoResultado } from '../../browser/src/interfaces/login.interf
 import { BrazucasServer } from '../../common/brazucas-server';
 import { PlayerChatHandler } from './handler/playerChat';
 import { PlayerDeathHandler } from './handler/playerDeath';
+import { PlayerEnterVehicle } from './handler/playerEnterVehicle';
+import { PlayerExitVehicle } from './handler/playerExitVehicle';
 import { PlayerJoinHandler } from './handler/playerJoin';
 import { PlayerQuitHandler } from './handler/playerQuit';
 import { BrazucasEventos, ServerEvent } from './interfaces/brazucas-eventos';
@@ -37,6 +39,8 @@ mp.events.add(EventKey.PLAYER_JOIN, PlayerJoinHandler.bind(PlayerJoinHandler, br
 mp.events.add(EventKey.PLAYER_QUIT, PlayerQuitHandler.bind(PlayerQuitHandler, brazucasServer));
 mp.events.add(EventKey.PLAYER_CHAT, PlayerChatHandler.bind(PlayerChatHandler, brazucasServer));
 mp.events.add(EventKey.PLAYER_DEATH, PlayerDeathHandler.bind(PlayerDeathHandler, brazucasServer));
+mp.events.add(EventKey.PLAYER_EXIT_VEHICLE, PlayerExitVehicle.bind(PlayerExitVehicle, brazucasServer));
+mp.events.add(EventKey.PLAYER_ENTER_VEHICLE, PlayerEnterVehicle.bind(PlayerEnterVehicle, brazucasServer));
 
 mp.events.add(BrazucasEventos.BROWSER, async (player: PlayerMp, serverEventStr: string) => {
   const serverEvent: ServerEvent<any> = JSON.parse(serverEventStr);
