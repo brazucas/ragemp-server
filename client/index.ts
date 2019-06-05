@@ -209,23 +209,19 @@ class PlayerEvents {
   constructor(client: Client) {
     this.client = client;
 
-    console.log('[VOICE CHAT] debug 1');
-
     this.startVoiceChat();
   }
 
   public startVoiceChat() {
-    console.log('[VOICE CHAT] debug 2');
+    mp.voiceChat.muted = false;
 
     this.chatInterval = setInterval(() => {
-      console.log('[VOICE CHAT] Buscando jogadores');
-
       const currentListeners: PlayerMp[] = [];
 
       mp.players.forEachInRange(mp.players.local.position, VOICE_CHAT_RANGE, player => {
-        currentListeners.push(player);
-        player.voice3d = true;
-        player.voiceAutoVolume = true;
+        if (player.id !== mp.players.local.id) {
+          currentListeners.push(player);
+        }
       });
 
       const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p === player));
@@ -241,16 +237,26 @@ class PlayerEvents {
       });
 
       currentListeners.forEach(player => {
-        mp.events.callRemote('browser', JSON.stringify({
-          eventId: -1,
-          event: 'HabilitarVoiceChat',
-          data: JSON.stringify({
-            targetId: player.id,
-          }),
-        }));
+        if (!this.voiceChatListeners.find(listener => listener.id == player.id)) {
+          if (player.isVoiceActive) {
+            mp.events.callRemote('browser', JSON.stringify({
+              eventId: -1,
+              event: 'HabilitarVoiceChat',
+              data: JSON.stringify({
+                targetId: player.id,
+              }),
+            }));
+            player.voice3d = true;
+            player.voiceAutoVolume = true;
+
+            mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${player.name} !{#FFFFFF}entrou.`);
+          } else {
+            mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${player.name} !{#FFFFFF}não está com o voice chat habilitado.`);
+          }
+        }
       });
 
-      console.log(`[VOICE CHAT] Ativando para ${currentListeners.length}`);
+      this.voiceChatListeners = currentListeners;
     }, VOICE_CHAT_INTERVAL);
   }
 
