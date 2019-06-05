@@ -21,6 +21,8 @@ let RagempService = class RagempService {
             email: '',
             celular: '',
             senha: '',
+            dinheiro: 0,
+            creditos: 0,
         });
         this.playerName$ = new BehaviorSubject_1.BehaviorSubject(null);
         this.jogadorLocal$ = new BehaviorSubject_1.BehaviorSubject(null);

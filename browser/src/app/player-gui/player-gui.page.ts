@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Jogador } from '../../interfaces/jogador.interface';
+import { dinheiroPad } from '../../interfaces/util';
 import { RagempService, VoiceChatListener } from '../services/ragemp.service';
 
 @Component({
@@ -8,6 +10,9 @@ import { RagempService, VoiceChatListener } from '../services/ragemp.service';
 })
 export class PlayerGuiPage implements OnInit {
   public voiceChatListeners: Array<VoiceChatListener>;
+  public dadosJogador: Jogador;
+  public dinheiro: string;
+  public creditos: string;
 
   constructor(public ragemp: RagempService) {
   }
@@ -15,6 +20,13 @@ export class PlayerGuiPage implements OnInit {
   ngOnInit() {
     this.ragemp.voiceChatListeners$.subscribe(listeners => {
       this.voiceChatListeners = listeners;
+    });
+
+    this.ragemp.dadosJogador$.subscribe(jogador => {
+      this.dadosJogador = jogador;
+
+      this.dinheiro = dinheiroPad(jogador.dinheiro);
+      this.creditos = dinheiroPad(jogador.creditos);
     });
   }
 

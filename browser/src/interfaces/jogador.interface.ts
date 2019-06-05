@@ -6,4 +6,6 @@ export interface Jogador {
   posicaoX?: number,
   posicaoY?: number,
   posicaoZ?: number,
+  dinheiro: number,
+  creditos: number,
 }

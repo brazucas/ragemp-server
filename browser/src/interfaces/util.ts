@@ -5,3 +5,7 @@ export function EnumToArray(enumme) {
     .filter(StringIsNumber)
     .map(key => enumme[key]);
 }
+
+export function dinheiroPad(valor) {
+  return ('000000000' + valor).substr(valor.toString().length);
+}

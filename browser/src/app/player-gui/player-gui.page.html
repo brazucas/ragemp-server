@@ -1,5 +1,5 @@
 <ion-content>
-    <app-pagina position="top-right" top="150" [anim]="false" [cabecalho]="false" [layout]="false">
+    <app-pagina position="top-right" top="200" [anim]="false" [cabecalho]="false" [layout]="false">
         <div class="gui-item go-up delay-1">
             <div class="gui-icon">
                 <img src="assets/player-gui/heart.png"/>
@@ -45,6 +45,18 @@
                 <app-player-gui-indicator [value]="50" activeColor="#e95bff" backgroundColor="#682972">
 
                 </app-player-gui-indicator>
+            </div>
+        </div>
+
+        <div class="gui-item go-up delay-5">
+            <div class="dinheiro">
+                R$ {{ dinheiro }}
+            </div>
+        </div>
+
+        <div class="gui-item go-up delay-6">
+            <div class="creditos">
+                C$ {{ creditos }}
             </div>
         </div>
     </app-pagina>
