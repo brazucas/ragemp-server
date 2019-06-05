@@ -9,6 +9,7 @@ export class PlayerGuiIndicatorComponent implements OnInit {
   @Input() min = 0;
   @Input() max = 100;
   @Input() value = 0;
+  @Input() invertido = false;
   @Input() activeColor = '#FF0000';
   @Input() backgroundColor = '#FF3333';
   public barWidth: number;
@@ -19,6 +20,10 @@ export class PlayerGuiIndicatorComponent implements OnInit {
 
   ngOnInit() {
     this.barWidth = Math.min((this.containerWidth * this.value) / this.max, this.containerWidth);
+
+    if (this.invertido) {
+      this.barWidth = this.containerWidth - this.barWidth;
+    }
   }
 
 }

@@ -1,28 +1,67 @@
 .gui-item {
   display: flex;
   align-items: center;
+  margin: 10px 0;
+
+  .gui-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   .gui-icon {
-    width: 60px;
-    margin-right: 10px;
+    width: 50px;
+
+    &.fome {
+      padding: 5px;
+      border: 7px solid #ffbf00;
+      border-radius: 50px;
+    }
+
+    &.sede {
+      padding: 5px;
+      border: 7px solid #00ffe5;
+      border-radius: 50px;
+    }
+
+    &.sono {
+      padding: 5px;
+      border: 7px solid #e95bff;
+      border-radius: 50px;
+    }
+
+    &.forca {
+      padding: 5px;
+      border: 7px solid #32d302;
+      border-radius: 50px;
+    }
   }
 
   .gui-indicator {
+    margin-bottom: 5px;
     width: 150px;
     color: orange;
     font-weight: bold;
     font-size: 22px;
+
+    &.barra-normal {
+      transform: translateX(-6px);
+    }
+
+    &.barra-invertida {
+      transform: translateX(6px);
+    }
   }
 
   .dinheiro {
-    margin-top: 15px;
+    margin: 40px auto 0 auto;
     font-size: 22px;
     font-weight: bold;
     color: green;
   }
 
   .creditos {
-    margin-top: 15px;
+    margin: 15px auto 0 auto;
     font-size: 22px;
     font-weight: bold;
     color: orange;

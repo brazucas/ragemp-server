@@ -1984,7 +1984,7 @@ var PaginaComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"indicator-container\" [style.width]=\"containerWidth + 'px'\" [style.backgroundColor]=\"backgroundColor\">\n  <div class=\"indicator-bar\" [style.width]=\"barWidth + 'px'\" [style.backgroundColor]=\"activeColor\"></div>\n</div>\n"
+module.exports = "<div class=\"indicator-container\" [style.width]=\"containerWidth + 'px'\"\n     [style.backgroundColor]=\"invertido ? activeColor : backgroundColor\"\n     [style.borderRadius]=\"invertido ? '15px 0 0 15px' : '0 15px 15px 0'\">\n    <div class=\"indicator-bar\" [style.width]=\"barWidth + 'px'\"\n         [style.backgroundColor]=\"invertido ? backgroundColor : activeColor\"\n         [style.borderRadius]=\"invertido ? '15px 0 0 15px' : '0 15px 15px 0'\"></div>\n</div>\n"
 
 /***/ }),
 
@@ -1995,7 +1995,7 @@ module.exports = "<div class=\"indicator-container\" [style.width]=\"containerWi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".indicator-container {\n  border-radius: 15px;\n  height: 15px; }\n\n.indicator-bar {\n  height: 15px;\n  border-radius: 15px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi91c3IvbG9jYWwvdmFyL3d3dy9odGRvY3MvQlJaL1JhZ2VNUC9icm93c2VyL3NyYy9hcHAvY29tcG9uZW50cy9wbGF5ZXItZ3VpLWluZGljYXRvci9wbGF5ZXItZ3VpLWluZGljYXRvci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFtQjtFQUNuQixZQUFZLEVBQUE7O0FBR2Q7RUFDRSxZQUFZO0VBQ1osbUJBQW1CLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3BsYXllci1ndWktaW5kaWNhdG9yL3BsYXllci1ndWktaW5kaWNhdG9yLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmluZGljYXRvci1jb250YWluZXIge1xuICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICBoZWlnaHQ6IDE1cHg7XG59XG5cbi5pbmRpY2F0b3ItYmFyIHtcbiAgaGVpZ2h0OiAxNXB4O1xuICBib3JkZXItcmFkaXVzOiAxNXB4O1xufVxuIl19 */"
+module.exports = ".indicator-container {\n  height: 15px; }\n\n.indicator-bar {\n  margin-left: -1px;\n  height: 15px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi91c3IvbG9jYWwvdmFyL3d3dy9odGRvY3MvQlJaL1JhZ2VNUC9icm93c2VyL3NyYy9hcHAvY29tcG9uZW50cy9wbGF5ZXItZ3VpLWluZGljYXRvci9wbGF5ZXItZ3VpLWluZGljYXRvci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQVksRUFBQTs7QUFHZDtFQUNFLGlCQUFpQjtFQUNqQixZQUFZLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3BsYXllci1ndWktaW5kaWNhdG9yL3BsYXllci1ndWktaW5kaWNhdG9yLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmluZGljYXRvci1jb250YWluZXIge1xuICBoZWlnaHQ6IDE1cHg7XG59XG5cbi5pbmRpY2F0b3ItYmFyIHtcbiAgbWFyZ2luLWxlZnQ6IC0xcHg7XG4gIGhlaWdodDogMTVweDtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -2018,12 +2018,16 @@ var PlayerGuiIndicatorComponent = /** @class */ (function () {
         this.min = 0;
         this.max = 100;
         this.value = 0;
+        this.invertido = false;
         this.activeColor = '#FF0000';
         this.backgroundColor = '#FF3333';
         this.containerWidth = 150;
     }
     PlayerGuiIndicatorComponent.prototype.ngOnInit = function () {
         this.barWidth = Math.min((this.containerWidth * this.value) / this.max, this.containerWidth);
+        if (this.invertido) {
+            this.barWidth = this.containerWidth - this.barWidth;
+        }
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -2037,6 +2041,10 @@ var PlayerGuiIndicatorComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], PlayerGuiIndicatorComponent.prototype, "value", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], PlayerGuiIndicatorComponent.prototype, "invertido", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -2878,7 +2886,7 @@ var FilterPipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content>\n    <app-pagina position=\"top-right\" top=\"150\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"gui-item go-up delay-1\">\n            <div class=\"gui-icon\">\n                <img src=\"assets/player-gui/heart.png\"/>\n            </div>\n\n            <div class=\"gui-indicator\">\n                <app-player-gui-indicator [value]=\"80\" activeColor=\"#FF0000\" backgroundColor=\"#660000\">\n\n                </app-player-gui-indicator>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-2\">\n            <div class=\"gui-icon\">\n                <img src=\"assets/player-gui/meat.png\"/>\n            </div>\n\n            <div class=\"gui-indicator\">\n                <app-player-gui-indicator [value]=\"60\" activeColor=\"#ffbf00\" backgroundColor=\"#9e7600\">\n\n                </app-player-gui-indicator>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-3\">\n            <div class=\"gui-icon\">\n                <img src=\"assets/player-gui/drink.png\"/>\n            </div>\n\n            <div class=\"gui-indicator\">\n                <app-player-gui-indicator [value]=\"90\" activeColor=\"#00ffe5\" backgroundColor=\"#009e8e\">\n\n                </app-player-gui-indicator>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-4\">\n            <div class=\"gui-icon\">\n                <img src=\"assets/player-gui/bed.png\"/>\n            </div>\n\n            <div class=\"gui-indicator\">\n                <app-player-gui-indicator [value]=\"50\" activeColor=\"#e95bff\" backgroundColor=\"#682972\">\n\n                </app-player-gui-indicator>\n            </div>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"bottom-left\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"gui-item go-up delay-1\">\n            <div class=\"gui-icon\">\n                <img src=\"assets/player-gui/headset.png\"/>\n            </div>\n\n            <div class=\"gui-indicator\">\n                {{ voiceChatListeners.length }}\n            </div>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"bottom-right\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"go-up delay-1\">\n            <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n        </div>\n    </app-pagina>\n</ion-content>\n"
+module.exports = "<ion-content>\n    <app-pagina position=\"top-right\" top=\"230\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"gui-item go-up delay-1\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon fome\">\n                    <img src=\"assets/player-gui/meat.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\">\n                        <app-player-gui-indicator [value]=\"60\" activeColor=\"#ffbf00\" backgroundColor=\"#9e7600\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"90\"\n                                                  activeColor=\"#00ffe5\" backgroundColor=\"#009e8e\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon sede\">\n                    <img src=\"assets/player-gui/drink.png\"/>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-3\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon sono\">\n                    <img src=\"assets/player-gui/bed.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\">\n                        <app-player-gui-indicator [value]=\"50\" activeColor=\"#e95bff\" backgroundColor=\"#682972\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"70\"\n                                                  activeColor=\"#32d302\" backgroundColor=\"#1a7000\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon forca\">\n                    <img src=\"assets/player-gui/strength.png\"/>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-6\">\n            <div class=\"dinheiro\">\n                R$ {{ dinheiro }}\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-7\">\n            <div class=\"creditos\">\n                C$ {{ creditos }}\n            </div>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"bottom-left\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"gui-item go-up delay-1\">\n            <div class=\"gui-icon\">\n                <img src=\"assets/player-gui/headset.png\"/>\n            </div>\n\n            <div class=\"gui-indicator\">\n                {{ voiceChatListeners.length }}\n            </div>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"bottom-right\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"go-up delay-1\">\n            <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n        </div>\n    </app-pagina>\n</ion-content>\n"
 
 /***/ }),
 
@@ -2889,7 +2897,7 @@ module.exports = "<ion-content>\n    <app-pagina position=\"top-right\" top=\"15
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".gui-item {\n  display: flex;\n  align-items: center; }\n  .gui-item .gui-icon {\n    width: 60px;\n    margin-right: 10px; }\n  .gui-item .gui-indicator {\n    width: 150px;\n    color: orange;\n    font-weight: bold;\n    font-size: 22px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi91c3IvbG9jYWwvdmFyL3d3dy9odGRvY3MvQlJaL1JhZ2VNUC9icm93c2VyL3NyYy9hcHAvcGxheWVyLWd1aS9wbGF5ZXItZ3VpLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixtQkFBbUIsRUFBQTtFQUZyQjtJQUtJLFdBQVc7SUFDWCxrQkFBa0IsRUFBQTtFQU50QjtJQVVJLFlBQVk7SUFDWixhQUFhO0lBQ2IsaUJBQWlCO0lBQ2pCLGVBQWUsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BsYXllci1ndWkvcGxheWVyLWd1aS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZ3VpLWl0ZW0ge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuXG4gIC5ndWktaWNvbiB7XG4gICAgd2lkdGg6IDYwcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xuICB9XG5cbiAgLmd1aS1pbmRpY2F0b3Ige1xuICAgIHdpZHRoOiAxNTBweDtcbiAgICBjb2xvcjogb3JhbmdlO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGZvbnQtc2l6ZTogMjJweDtcbiAgfVxufVxuIl19 */"
+module.exports = ".gui-item {\n  display: flex;\n  align-items: center;\n  margin: 10px 0; }\n  .gui-item .gui-item-container {\n    display: flex;\n    align-items: center;\n    justify-content: space-between; }\n  .gui-item .gui-icon {\n    width: 50px; }\n  .gui-item .gui-icon.fome {\n      padding: 5px;\n      border: 7px solid #ffbf00;\n      border-radius: 50px; }\n  .gui-item .gui-icon.sede {\n      padding: 5px;\n      border: 7px solid #00ffe5;\n      border-radius: 50px; }\n  .gui-item .gui-icon.sono {\n      padding: 5px;\n      border: 7px solid #e95bff;\n      border-radius: 50px; }\n  .gui-item .gui-icon.forca {\n      padding: 5px;\n      border: 7px solid #32d302;\n      border-radius: 50px; }\n  .gui-item .gui-indicator {\n    margin-bottom: 5px;\n    width: 150px;\n    color: orange;\n    font-weight: bold;\n    font-size: 22px; }\n  .gui-item .gui-indicator.barra-normal {\n      -webkit-transform: translateX(-6px);\n              transform: translateX(-6px); }\n  .gui-item .gui-indicator.barra-invertida {\n      -webkit-transform: translateX(6px);\n              transform: translateX(6px); }\n  .gui-item .dinheiro {\n    margin: 40px auto 0 auto;\n    font-size: 22px;\n    font-weight: bold;\n    color: green; }\n  .gui-item .creditos {\n    margin: 15px auto 0 auto;\n    font-size: 22px;\n    font-weight: bold;\n    color: orange; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi91c3IvbG9jYWwvdmFyL3d3dy9odGRvY3MvQlJaL1JhZ2VNUC9icm93c2VyL3NyYy9hcHAvcGxheWVyLWd1aS9wbGF5ZXItZ3VpLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsY0FBYyxFQUFBO0VBSGhCO0lBTUksYUFBYTtJQUNiLG1CQUFtQjtJQUNuQiw4QkFBOEIsRUFBQTtFQVJsQztJQVlJLFdBQVcsRUFBQTtFQVpmO01BZU0sWUFBWTtNQUNaLHlCQUF5QjtNQUN6QixtQkFBbUIsRUFBQTtFQWpCekI7TUFxQk0sWUFBWTtNQUNaLHlCQUF5QjtNQUN6QixtQkFBbUIsRUFBQTtFQXZCekI7TUEyQk0sWUFBWTtNQUNaLHlCQUF5QjtNQUN6QixtQkFBbUIsRUFBQTtFQTdCekI7TUFpQ00sWUFBWTtNQUNaLHlCQUF5QjtNQUN6QixtQkFBbUIsRUFBQTtFQW5DekI7SUF3Q0ksa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWixhQUFhO0lBQ2IsaUJBQWlCO0lBQ2pCLGVBQWUsRUFBQTtFQTVDbkI7TUErQ00sbUNBQTJCO2NBQTNCLDJCQUEyQixFQUFBO0VBL0NqQztNQW1ETSxrQ0FBMEI7Y0FBMUIsMEJBQTBCLEVBQUE7RUFuRGhDO0lBd0RJLHdCQUF3QjtJQUN4QixlQUFlO0lBQ2YsaUJBQWlCO0lBQ2pCLFlBQVksRUFBQTtFQTNEaEI7SUErREksd0JBQXdCO0lBQ3hCLGVBQWU7SUFDZixpQkFBaUI7SUFDakIsYUFBYSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGxheWVyLWd1aS9wbGF5ZXItZ3VpLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5ndWktaXRlbSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIG1hcmdpbjogMTBweCAwO1xuXG4gIC5ndWktaXRlbS1jb250YWluZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIH1cblxuICAuZ3VpLWljb24ge1xuICAgIHdpZHRoOiA1MHB4O1xuXG4gICAgJi5mb21lIHtcbiAgICAgIHBhZGRpbmc6IDVweDtcbiAgICAgIGJvcmRlcjogN3B4IHNvbGlkICNmZmJmMDA7XG4gICAgICBib3JkZXItcmFkaXVzOiA1MHB4O1xuICAgIH1cblxuICAgICYuc2VkZSB7XG4gICAgICBwYWRkaW5nOiA1cHg7XG4gICAgICBib3JkZXI6IDdweCBzb2xpZCAjMDBmZmU1O1xuICAgICAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgICB9XG5cbiAgICAmLnNvbm8ge1xuICAgICAgcGFkZGluZzogNXB4O1xuICAgICAgYm9yZGVyOiA3cHggc29saWQgI2U5NWJmZjtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDUwcHg7XG4gICAgfVxuXG4gICAgJi5mb3JjYSB7XG4gICAgICBwYWRkaW5nOiA1cHg7XG4gICAgICBib3JkZXI6IDdweCBzb2xpZCAjMzJkMzAyO1xuICAgICAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgICB9XG4gIH1cblxuICAuZ3VpLWluZGljYXRvciB7XG4gICAgbWFyZ2luLWJvdHRvbTogNXB4O1xuICAgIHdpZHRoOiAxNTBweDtcbiAgICBjb2xvcjogb3JhbmdlO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGZvbnQtc2l6ZTogMjJweDtcblxuICAgICYuYmFycmEtbm9ybWFsIHtcbiAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNnB4KTtcbiAgICB9XG5cbiAgICAmLmJhcnJhLWludmVydGlkYSB7XG4gICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoNnB4KTtcbiAgICB9XG4gIH1cblxuICAuZGluaGVpcm8ge1xuICAgIG1hcmdpbjogNDBweCBhdXRvIDAgYXV0bztcbiAgICBmb250LXNpemU6IDIycHg7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgY29sb3I6IGdyZWVuO1xuICB9XG5cbiAgLmNyZWRpdG9zIHtcbiAgICBtYXJnaW46IDE1cHggYXV0byAwIGF1dG87XG4gICAgZm9udC1zaXplOiAyMnB4O1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGNvbG9yOiBvcmFuZ2U7XG4gIH1cbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -2905,7 +2913,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlayerGuiPage", function() { return PlayerGuiPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+/* harmony import */ var _interfaces_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../interfaces/util */ "./src/interfaces/util.ts");
+/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+
 
 
 
@@ -2918,6 +2928,11 @@ var PlayerGuiPage = /** @class */ (function () {
         this.ragemp.voiceChatListeners$.subscribe(function (listeners) {
             _this.voiceChatListeners = listeners;
         });
+        this.ragemp.dadosJogador$.subscribe(function (jogador) {
+            _this.dadosJogador = jogador;
+            _this.dinheiro = Object(_interfaces_util__WEBPACK_IMPORTED_MODULE_2__["dinheiroPad"])(jogador.dinheiro);
+            _this.creditos = Object(_interfaces_util__WEBPACK_IMPORTED_MODULE_2__["dinheiroPad"])(jogador.creditos);
+        });
     };
     PlayerGuiPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2925,7 +2940,7 @@ var PlayerGuiPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./player-gui.page.html */ "./src/app/player-gui/player-gui.page.html"),
             styles: [__webpack_require__(/*! ./player-gui.page.scss */ "./src/app/player-gui/player-gui.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__["RagempService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_ragemp_service__WEBPACK_IMPORTED_MODULE_3__["RagempService"]])
     ], PlayerGuiPage);
     return PlayerGuiPage;
 }());
@@ -3417,6 +3432,8 @@ var RagempService = /** @class */ (function () {
             email: '',
             celular: '',
             senha: '',
+            dinheiro: 0,
+            creditos: 0,
         });
         this.playerName$ = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
         this.jogadorLocal$ = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
@@ -3560,17 +3577,21 @@ var environment = {
 /*!********************************!*\
   !*** ./src/interfaces/util.ts ***!
   \********************************/
-/*! exports provided: EnumToArray */
+/*! exports provided: EnumToArray, dinheiroPad */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EnumToArray", function() { return EnumToArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dinheiroPad", function() { return dinheiroPad; });
 var StringIsNumber = function (value) { return isNaN(Number(value)) === false; };
 function EnumToArray(enumme) {
     return Object.keys(enumme)
         .filter(StringIsNumber)
         .map(function (key) { return enumme[key]; });
+}
+function dinheiroPad(valor) {
+    return ('000000000' + valor).substr(valor.toString().length);
 }
 
 
