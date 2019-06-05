@@ -38,6 +38,18 @@ __decorate([
     __metadata("design:type", String)
 ], Veiculo.prototype, "posicaoZ", void 0);
 __decorate([
+    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.STRING }),
+    __metadata("design:type", String)
+], Veiculo.prototype, "posicaoOriginalX", void 0);
+__decorate([
+    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.STRING }),
+    __metadata("design:type", String)
+], Veiculo.prototype, "posicaoOriginalY", void 0);
+__decorate([
+    sequelize_typescript_1.Column({ allowNull: false, type: sequelize_typescript_1.DataType.STRING }),
+    __metadata("design:type", String)
+], Veiculo.prototype, "posicaoOriginalZ", void 0);
+__decorate([
     sequelize_typescript_1.Column({ allowNull: false }),
     __metadata("design:type", Number)
 ], Veiculo.prototype, "rotacao", void 0);

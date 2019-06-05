@@ -34,6 +34,15 @@ export class Veiculo extends Model<Veiculo> {
   @Column({allowNull: false, type: DataType.STRING})
   posicaoZ: string;
 
+  @Column({allowNull: false, type: DataType.STRING})
+  posicaoOriginalX: string;
+
+  @Column({allowNull: false, type: DataType.STRING})
+  posicaoOriginalY: string;
+
+  @Column({allowNull: false, type: DataType.STRING})
+  posicaoOriginalZ: string;
+
   @Column({allowNull: false})
   rotacao: number;
 
