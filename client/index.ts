@@ -217,13 +217,13 @@ class PlayerEvents {
 
       diff.forEach(playerDiff => {
         mp.events.callRemote(BrazucasEventos.DESABILITAR_VOICE_CHAT, JSON.stringify({
-          target: playerDiff.id,
+          targetId: playerDiff.id,
         }));
       });
 
       currentListeners.forEach(playerDiff => {
         mp.events.callRemote(BrazucasEventos.HABILITAR_VOICE_CHAT, JSON.stringify({
-          target: playerDiff.id,
+          targetId: playerDiff.id,
         }));
       });
     }, VOICE_CHAT_INTERVAL);

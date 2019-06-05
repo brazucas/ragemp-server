@@ -85,8 +85,8 @@ export class Events {
     }
   }
 
-  public async [BrazucasEventos.HABILITAR_VOICE_CHAT](player: PlayerMp, targetId: number) {
-    const target = mp.players.at(targetId);
+  public async [BrazucasEventos.HABILITAR_VOICE_CHAT](player: PlayerMp, dados: any) {
+    const target = mp.players.at(dados.targetId);
 
     if (!target) {
       return {
@@ -98,8 +98,8 @@ export class Events {
     VoiceChatProvider.habilitar(player, target);
   }
 
-  public async [BrazucasEventos.DESABILITAR_VOICE_CHAT](player: PlayerMp, targetId: number) {
-    const target = mp.players.at(targetId);
+  public async [BrazucasEventos.DESABILITAR_VOICE_CHAT](player: PlayerMp, dados: any) {
+    const target = mp.players.at(dados.targetId);
 
     if (!target) {
       return {

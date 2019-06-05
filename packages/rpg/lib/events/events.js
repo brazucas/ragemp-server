@@ -88,9 +88,9 @@ class Events {
             }
         });
     }
-    [brazucas_eventos_1.BrazucasEventos.HABILITAR_VOICE_CHAT](player, targetId) {
+    [brazucas_eventos_1.BrazucasEventos.HABILITAR_VOICE_CHAT](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
-            const target = mp.players.at(targetId);
+            const target = mp.players.at(dados.targetId);
             if (!target) {
                 return {
                     erro: true,
@@ -100,9 +100,9 @@ class Events {
             voice_chat_provider_1.VoiceChatProvider.habilitar(player, target);
         });
     }
-    [brazucas_eventos_1.BrazucasEventos.DESABILITAR_VOICE_CHAT](player, targetId) {
+    [brazucas_eventos_1.BrazucasEventos.DESABILITAR_VOICE_CHAT](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
-            const target = mp.players.at(targetId);
+            const target = mp.players.at(dados.targetId);
             if (!target) {
                 return {
                     erro: true,
