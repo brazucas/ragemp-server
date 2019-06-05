@@ -246,7 +246,7 @@ class PlayerEvents {
             }),
           }));
           player.voice3d = true;
-          player.voiceAutoVolume = true;
+          player.voiceVolume = 1.0;
 
           mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${player.name} !{#FFFFFF}entrou.`);
         }
@@ -278,6 +278,16 @@ class ServerEvents {
       }
 
       this.forwardEventToBrowser(serverEvent);
+    });
+
+    mp.events.add(EventKey.PLAYER_START_TALKING, () => {
+      mp.players.local.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
+      mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#00FF00}Você começou a falar.`);
+    });
+
+    mp.events.add(EventKey.PLAYER_STOP_TALKING, () => {
+      mp.players.local.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
+      mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}Você parou de falar.`);
     });
   }
 

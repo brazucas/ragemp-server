@@ -42,9 +42,8 @@ mp.events.add("playerExitVehicle" /* PLAYER_EXIT_VEHICLE */, playerExitVehicle_1
 mp.events.add("playerEnterVehicle" /* PLAYER_ENTER_VEHICLE */, playerEnterVehicle_1.PlayerEnterVehicle.bind(playerEnterVehicle_1.PlayerEnterVehicle, brazucasServer));
 mp.events.add(brazucas_eventos_1.BrazucasEventos.BROWSER, (player, serverEventStr) => __awaiter(this, void 0, void 0, function* () {
     const serverEvent = JSON.parse(serverEventStr);
-    console.debug('>>>> ', serverEventStr, serverEvent);
-    console.debug(`[EVENTOS] Jogador ${player.name} ativou o evento ${serverEvent.event} (ID ${serverEvent.eventId}) 
-  com os seguintes parâmetros: ${serverEvent.data}`);
+    console.debug(`[EVENTOS] Jogador ${player.name} ativou o evento ${serverEvent.event} (ID ${serverEvent.eventId})`
+        + ` com os seguintes parâmetros: ${serverEvent.data}`);
     const data = JSON.parse(serverEvent.data);
     const events = new events_1.Events(brazucasServer);
     if (events[serverEvent.event]) {

@@ -45,9 +45,8 @@ mp.events.add(EventKey.PLAYER_ENTER_VEHICLE, PlayerEnterVehicle.bind(PlayerEnter
 mp.events.add(BrazucasEventos.BROWSER, async (player: PlayerMp, serverEventStr: string) => {
   const serverEvent: ServerEvent<any> = JSON.parse(serverEventStr);
 
-  console.debug('>>>> ', serverEventStr, serverEvent);
-  console.debug(`[EVENTOS] Jogador ${player.name} ativou o evento ${serverEvent.event} (ID ${serverEvent.eventId}) 
-  com os seguintes parâmetros: ${serverEvent.data}`);
+  console.debug(`[EVENTOS] Jogador ${player.name} ativou o evento ${serverEvent.event} (ID ${serverEvent.eventId})`
+  + ` com os seguintes parâmetros: ${serverEvent.data}`);
 
   const data: any = JSON.parse(serverEvent.data);
 
