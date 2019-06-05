@@ -1,8 +1,49 @@
 @import '../../../global';
 
 .float {
-  @include center(true, true);
   width: 100%;
+  @include center(true, true);
+
+  &.superior-direito {
+    right: 0px;
+    top: 100px;
+    width: auto;
+    left: auto;
+  }
+
+  &.superior-esquerdo {
+    left: 100px;
+    top: 100px;
+    width: auto;
+  }
+
+  &.centro-esquerdo {
+    left: 100px;
+    width: auto;
+  }
+
+  &.centro-direito {
+    right: 100px;
+    width: auto;
+    left: auto;
+  }
+
+  &.inferior-esquerdo {
+    left: 100px;
+    bottom: 100px;
+    width: auto;
+    transform: initial;
+    top: auto;
+  }
+
+  &.inferior-direito {
+    right: 100px;
+    bottom: 100px;
+    width: auto;
+    transform: initial;
+    top: auto;
+    left: auto;
+  }
 }
 
 .container {

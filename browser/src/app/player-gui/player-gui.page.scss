@@ -1,0 +1,16 @@
+.gui-item {
+  display: flex;
+  align-items: center;
+
+  .gui-icon {
+    width: 60px;
+    margin-right: 10px;
+  }
+
+  .gui-indicator {
+    width: 150px;
+    color: orange;
+    font-weight: bold;
+    font-size: 22px;
+  }
+}

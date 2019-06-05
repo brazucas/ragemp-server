@@ -25,6 +25,7 @@ let RagempService = class RagempService {
         this.playerName$ = new BehaviorSubject_1.BehaviorSubject(null);
         this.jogadorLocal$ = new BehaviorSubject_1.BehaviorSubject(null);
         this.serverEvent$ = new rxjs_1.Subject();
+        this.voiceChatListeners$ = new BehaviorSubject_1.BehaviorSubject([]);
         if (!window) {
             window = {};
         }
@@ -32,6 +33,7 @@ let RagempService = class RagempService {
         window.ragemp = window.ragemp || {};
         window.ragemp.setPlayerName = this.setPlayerName.bind(this);
         window.ragemp.setBrowserName = this.setBrowserName.bind(this);
+        window.ragemp.setVoiceChatListeners = this.setVoiceChatListeners.bind(this);
         window.ragemp[brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR] = this[brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR].bind(this);
         window.ragemp.serverEvent = this.serverEvent.bind(this);
     }
@@ -61,6 +63,9 @@ let RagempService = class RagempService {
     }
     setBrowserName(browserName) {
         this.browserName$.next(browserName);
+    }
+    setVoiceChatListeners(listenersList) {
+        this.voiceChatListeners$.next(listenersList);
     }
     serverEvent(eventId, event, data) {
         this.serverEvent$.next({

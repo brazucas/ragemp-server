@@ -10,6 +10,11 @@ declare let mp: any;
 })
 export class PaginaComponent implements OnInit {
   @Input() podeFechar = true;
+  @Input() cabecalho = true;
+  @Input() position = 'center';
+  @Input() layout = true;
+  @Input() top: number;
+  @Input() anim = true;
 
   constructor(public ragemp: RagempService) { }
 

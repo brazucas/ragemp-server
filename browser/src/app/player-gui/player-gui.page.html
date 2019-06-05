@@ -1,0 +1,69 @@
+<ion-content>
+    <app-pagina position="top-right" top="150" [anim]="false" [cabecalho]="false" [layout]="false">
+        <div class="gui-item go-up delay-1">
+            <div class="gui-icon">
+                <img src="assets/player-gui/heart.png"/>
+            </div>
+
+            <div class="gui-indicator">
+                <app-player-gui-indicator [value]="80" activeColor="#FF0000" backgroundColor="#660000">
+
+                </app-player-gui-indicator>
+            </div>
+        </div>
+
+        <div class="gui-item go-up delay-2">
+            <div class="gui-icon">
+                <img src="assets/player-gui/meat.png"/>
+            </div>
+
+            <div class="gui-indicator">
+                <app-player-gui-indicator [value]="60" activeColor="#ffbf00" backgroundColor="#9e7600">
+
+                </app-player-gui-indicator>
+            </div>
+        </div>
+
+        <div class="gui-item go-up delay-3">
+            <div class="gui-icon">
+                <img src="assets/player-gui/drink.png"/>
+            </div>
+
+            <div class="gui-indicator">
+                <app-player-gui-indicator [value]="90" activeColor="#00ffe5" backgroundColor="#009e8e">
+
+                </app-player-gui-indicator>
+            </div>
+        </div>
+
+        <div class="gui-item go-up delay-4">
+            <div class="gui-icon">
+                <img src="assets/player-gui/bed.png"/>
+            </div>
+
+            <div class="gui-indicator">
+                <app-player-gui-indicator [value]="50" activeColor="#e95bff" backgroundColor="#682972">
+
+                </app-player-gui-indicator>
+            </div>
+        </div>
+    </app-pagina>
+
+    <app-pagina position="bottom-left" [anim]="false" [cabecalho]="false" [layout]="false">
+        <div class="gui-item go-up delay-1">
+            <div class="gui-icon">
+                <img src="assets/player-gui/headset.png"/>
+            </div>
+
+            <div class="gui-indicator">
+                {{ voiceChatListeners.length }}
+            </div>
+        </div>
+    </app-pagina>
+
+    <app-pagina position="bottom-right" [anim]="false" [cabecalho]="false" [layout]="false">
+        <div class="go-up delay-1">
+            <img src="assets/logotipo_full_web.png" alt="" width="120px"/>
+        </div>
+    </app-pagina>
+</ion-content>

@@ -75,6 +75,14 @@ class Client {
     this.playerEvents = new PlayerEvents(this);
   }
 
+  public broadcastBrowserEvent(eventName: string, data: any) {
+    const browsers: Navegador[] = Object.keys(this.browsers).map((key) => {
+      return this.browsers[key];
+    });
+
+    browsers.forEach(browser => browser.call(eventName, data));
+  }
+
   private bindCommands() {
     const comandos = new Commands(this);
 
@@ -196,6 +204,10 @@ class Navegador {
     mp.gui.cursor.visible = false;
   }
 
+  public call(eventName: string, data: any) {
+    this.execute(`window.my.ragemp.${eventName}(${JSON.stringify(data)})`);
+  }
+
   public execute(codigo: string) {
     this.browser.execute(codigo);
   }
@@ -253,7 +265,20 @@ class PlayerEvents {
       });
 
       this.voiceChatListeners = currentListeners;
+
+      this.broadcastListeners();
     }, VOICE_CHAT_INTERVAL);
+  }
+
+  public broadcastListeners() {
+    const simpleListeners = this.voiceChatListeners.map(listener => {
+      return {
+        playerId: listener.id,
+        playerName: listener.name,
+      };
+    });
+
+    this.client.broadcastBrowserEvent('setVoiceChatListeners', simpleListeners);
   }
 
   public stopVoiceChat() {

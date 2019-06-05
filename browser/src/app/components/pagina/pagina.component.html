@@ -1,11 +1,19 @@
-<form class="float">
-  <div class="container go-up delay-1">
-    <div class="header">
-      <img src="assets/logotipo_full_web.png" alt="" width="120px"/>
+<form class="float" [ngClass]="{
+        'centro': (position === 'center'),
+        'superior-direito': (position === 'top-right'),
+        'superior-esquerdo': (position === 'top-left'),
+        'centro-esquerdo': (position === 'middle-left'),
+        'centro-direito': (position === 'middle-right'),
+        'inferior-esquerdo': (position === 'bottom-left'),
+        'inferior-direito': (position === 'bottom-right')
+        }" [style.top]="top + 'px'">
+    <div [ngClass]="{'container': layout, 'go-up delay-1': anim}">
+        <div class="header" *ngIf="cabecalho">
+            <img src="assets/logotipo_full_web.png" alt="" width="120px"/>
 
-      <app-icone (click)="fechar()" name="md-close" *ngIf="podeFechar"></app-icone>
+            <app-icone (click)="fechar()" name="md-close" *ngIf="podeFechar"></app-icone>
+        </div>
+
+        <ng-content></ng-content>
     </div>
-
-    <ng-content></ng-content>
-  </div>
 </form>

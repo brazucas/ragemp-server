@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PaginaComponent } from './components/pagina/pagina.component';
 import { IconeComponent } from './components/icone/icone.component';
+import { PlayerGuiIndicatorComponent } from './components/player-gui-indicator/player-gui-indicator.component';
 import { CriarVeiculoPage } from './criar-veiculo/criar-veiculo.page';
 import { LoginPage } from './login/login.page';
 import { HomePage } from './home/home.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NickInvalidoPage } from './nick-invalido/nick-invalido.page';
+import { PlayerGuiPage } from './player-gui/player-gui.page';
 import { PlayersOnlinePage } from './players-online/players-online.page';
 import {
   ApresentarAsyncDirective,
@@ -33,12 +35,14 @@ import { FilterPipe } from './pipes/filter.pipe';
     AppComponent,
     PaginaComponent,
     IconeComponent,
+    PlayerGuiIndicatorComponent,
     PlayersOnlinePage,
     LoginPage,
     HomePage,
     RegistroPage,
     CriarVeiculoPage,
     NickInvalidoPage,
+    PlayerGuiPage,
     ApresentarAsyncDirective,
     CasoResultadoDirective,
     CasoCarregandoDirective,

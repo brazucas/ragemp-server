@@ -20,6 +20,7 @@ export class RagempService {
   public playerName$: BehaviorSubject<string> = new BehaviorSubject(null);
   public jogadorLocal$: BehaviorSubject<Jogador> = new BehaviorSubject(null);
   public serverEvent$: Subject<ServerEvent> = new Subject();
+  public voiceChatListeners$: BehaviorSubject<Array<VoiceChatListener>> = new BehaviorSubject([]);
 
   constructor() {
     if (!window) {
@@ -30,6 +31,7 @@ export class RagempService {
     (window as any).ragemp = (window as any).ragemp || {};
     (window as any).ragemp.setPlayerName = this.setPlayerName.bind(this);
     (window as any).ragemp.setBrowserName = this.setBrowserName.bind(this);
+    (window as any).ragemp.setVoiceChatListeners = this.setVoiceChatListeners.bind(this);
     (window as any).ragemp[BrazucasEventos.DADOS_JOGADOR] = this[BrazucasEventos.DADOS_JOGADOR].bind(this);
     (window as any).ragemp.serverEvent = this.serverEvent.bind(this);
   }
@@ -69,6 +71,10 @@ export class RagempService {
     this.browserName$.next(browserName);
   }
 
+  public setVoiceChatListeners(listenersList: Array<VoiceChatListener>) {
+    this.voiceChatListeners$.next(listenersList);
+  }
+
   public serverEvent(eventId: number, event: string, data: string) {
     this.serverEvent$.next({
       event: event,
@@ -90,4 +96,9 @@ export interface ServerEvent {
   eventId: number,
   event: string,
   data: any,
+}
+
+export interface VoiceChatListener {
+  playerId: number,
+  playerName: string,
 }
