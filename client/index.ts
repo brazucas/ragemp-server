@@ -211,6 +211,8 @@ class PlayerEvents {
 
   public startVoiceChat() {
     this.chatInterval = setInterval(() => {
+      console.log('[VOICE CHAT] Buscando jogadores');
+
       const currentListeners: PlayerMp[] = [];
 
       mp.players.forEachInRange(mp.players.local.position, VOICE_CHAT_RANGE, player => {
@@ -232,6 +234,8 @@ class PlayerEvents {
           targetId: playerDiff.id,
         }));
       });
+
+      console.log(`[VOICE CHAT] Ativando para ${currentListeners.length}`);
     }, VOICE_CHAT_INTERVAL);
   }
 

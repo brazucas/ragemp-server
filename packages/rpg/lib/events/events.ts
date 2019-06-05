@@ -85,7 +85,11 @@ export class Events {
     }
   }
 
-  public async [BrazucasEventos.HABILITAR_VOICE_CHAT](player: PlayerMp, dados: any) {
+  public async [BrazucasEventos.HABILITAR_VOICE_CHAT](player: PlayerMp, dadosStr: string) {
+    console.log(`[VOICE CHAT] Ativando voice chat para ${player.name} com os dados: ${dadosStr}`);
+
+    const dados = JSON.parse(dadosStr);
+
     const target = mp.players.at(dados.targetId);
 
     if (!target) {
@@ -98,7 +102,11 @@ export class Events {
     VoiceChatProvider.habilitar(player, target);
   }
 
-  public async [BrazucasEventos.DESABILITAR_VOICE_CHAT](player: PlayerMp, dados: any) {
+  public async [BrazucasEventos.DESABILITAR_VOICE_CHAT](player: PlayerMp, dadosStr: string) {
+    console.log(`[VOICE CHAT] Desativando voice chat para ${player.name} com os dados: ${dadosStr}`);
+
+    const dados = JSON.parse(dadosStr);
+
     const target = mp.players.at(dados.targetId);
 
     if (!target) {
