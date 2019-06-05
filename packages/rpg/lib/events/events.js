@@ -88,10 +88,9 @@ class Events {
             }
         });
     }
-    [brazucas_eventos_1.BrazucasEventos.HABILITAR_VOICE_CHAT](player, dadosStr) {
+    [brazucas_eventos_1.BrazucasEventos.HABILITAR_VOICE_CHAT](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[VOICE CHAT] Ativando voice chat para ${player.name} com os dados: ${dadosStr}`);
-            const dados = JSON.parse(dadosStr);
+            console.log(`[VOICE CHAT] Ativando voice chat para ${player.name} com os dados: ${JSON.stringify(dados)}`);
             const target = mp.players.at(dados.targetId);
             if (!target) {
                 return {
@@ -102,10 +101,9 @@ class Events {
             voice_chat_provider_1.VoiceChatProvider.habilitar(player, target);
         });
     }
-    [brazucas_eventos_1.BrazucasEventos.DESABILITAR_VOICE_CHAT](player, dadosStr) {
+    [brazucas_eventos_1.BrazucasEventos.DESABILITAR_VOICE_CHAT](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`[VOICE CHAT] Desativando voice chat para ${player.name} com os dados: ${dadosStr}`);
-            const dados = JSON.parse(dadosStr);
+            console.log(`[VOICE CHAT] Desativando voice chat para ${player.name} com os dados: ${JSON.stringify(dados)}`);
             const target = mp.players.at(dados.targetId);
             if (!target) {
                 return {
