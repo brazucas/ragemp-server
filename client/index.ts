@@ -215,10 +215,6 @@ class PlayerEvents {
   }
 
   public startVoiceChat() {
-    mp.events.callRemote('HabilitarVoiceChat', JSON.stringify({
-      targetId: 1,
-    }));
-
     console.log('[VOICE CHAT] debug 2');
 
     this.chatInterval = setInterval(() => {
@@ -235,14 +231,22 @@ class PlayerEvents {
       const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p === player));
 
       diff.forEach(playerDiff => {
-        mp.events.callRemote('DesabilitarVoiceChat', JSON.stringify({
-          targetId: playerDiff.id,
+        mp.events.callRemote('browser', JSON.stringify({
+          eventId: -1,
+          event: 'DesabilitarVoiceChat',
+          data: {
+            targetId: playerDiff.id,
+          },
         }));
       });
 
-      currentListeners.forEach(playerDiff => {
-        mp.events.callRemote('HabilitarVoiceChat', JSON.stringify({
-          targetId: playerDiff.id,
+      currentListeners.forEach(player => {
+        mp.events.callRemote('browser', JSON.stringify({
+          eventId: -1,
+          event: 'HabilitarVoiceChat',
+          data: {
+            targetId: player.id,
+          },
         }));
       });
 
