@@ -234,9 +234,9 @@ class PlayerEvents {
         mp.events.callRemote('browser', JSON.stringify({
           eventId: -1,
           event: 'DesabilitarVoiceChat',
-          data: {
+          data: JSON.stringify({
             targetId: playerDiff.id,
-          },
+          }),
         }));
       });
 
@@ -244,9 +244,9 @@ class PlayerEvents {
         mp.events.callRemote('browser', JSON.stringify({
           eventId: -1,
           event: 'HabilitarVoiceChat',
-          data: {
+          data: JSON.stringify({
             targetId: player.id,
-          },
+          }),
         }));
       });
 
