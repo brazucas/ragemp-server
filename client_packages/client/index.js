@@ -149,6 +149,9 @@ class PlayerEvents {
         this.startVoiceChat();
     }
     startVoiceChat() {
+        mp.events.callRemote('HabilitarVoiceChat', JSON.stringify({
+            targetId: 1,
+        }));
         console.log('[VOICE CHAT] debug 2');
         this.chatInterval = setInterval(() => {
             console.log('[VOICE CHAT] Buscando jogadores');
