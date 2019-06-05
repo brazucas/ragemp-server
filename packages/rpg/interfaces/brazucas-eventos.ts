@@ -9,6 +9,8 @@ export enum BrazucasEventos {
   DADOS_JOGADOR = 'DadosJogador',
   INICIAR_NAVEGADOR = 'IniciarNavegador',
   CURSOR = 'cursor',
+  HABILITAR_VOICE_CHAT = 'HabilitarVoiceChat',
+  DESABILITAR_VOICE_CHAT = 'DesabilitarVoiceChat',
 }
 
 export interface ServerEvent<T> {

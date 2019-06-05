@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const brazucas_eventos_1 = require("../packages/rpg/interfaces/brazucas-eventos");
 const StringIsNumber = value => isNaN(Number(value)) === false;
+const VOICE_CHAT_RANGE = 50.0;
+const VOICE_CHAT_INTERVAL = 2000;
 function EnumToArray(enumme) {
     return Object.keys(enumme)
         .filter(StringIsNumber)
@@ -132,6 +135,37 @@ class Navegador {
     }
     execute(codigo) {
         this.browser.execute(codigo);
+    }
+}
+class PlayerEvents {
+    constructor(client) {
+        this.voiceChatListeners = [];
+        this.client = client;
+        this.startVoiceChat();
+    }
+    startVoiceChat() {
+        this.chatInterval = setInterval(() => {
+            const currentListeners = [];
+            mp.players.forEachInRange(mp.players.local.position, VOICE_CHAT_RANGE, player => {
+                currentListeners.push(player);
+                player.voice3d = true;
+                player.voiceAutoVolume = true;
+            });
+            const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p === player));
+            diff.forEach(playerDiff => {
+                mp.events.callRemote(brazucas_eventos_1.BrazucasEventos.DESABILITAR_VOICE_CHAT, JSON.stringify({
+                    target: playerDiff.id,
+                }));
+            });
+            currentListeners.forEach(playerDiff => {
+                mp.events.callRemote(brazucas_eventos_1.BrazucasEventos.HABILITAR_VOICE_CHAT, JSON.stringify({
+                    target: playerDiff.id,
+                }));
+            });
+        }, VOICE_CHAT_INTERVAL);
+    }
+    stopVoiceChat() {
+        clearInterval(this.chatInterval);
     }
 }
 class ServerEvents {

@@ -102,6 +102,8 @@ export class BrazucasServer {
   }
 
   public async criarVeiculo(player: PlayerMp, dadosVeiculo: DadosVeiculo): Promise<any> {
+    console.debug(`[CRIAR VEICULO] Novo veículo criado por ${player.name}`);
+
     if (!Veiculos[dadosVeiculo.modelo]) {
       throw 'Modelo não encontrado';
     }

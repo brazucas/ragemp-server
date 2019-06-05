@@ -84,6 +84,7 @@ class BrazucasServer {
     }
     criarVeiculo(player, dadosVeiculo) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.debug(`[CRIAR VEICULO] Novo veículo criado por ${player.name}`);
             if (!vehicles_1.Veiculos[dadosVeiculo.modelo]) {
                 throw 'Modelo não encontrado';
             }

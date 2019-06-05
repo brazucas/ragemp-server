@@ -10,12 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const environment_1 = require("../../../../common/environment");
 const brazucas_eventos_1 = require("../../interfaces/brazucas-eventos");
+const voice_chat_provider_1 = require("../../providers/voice-chat.provider");
 const player_1 = require("../functions/player");
 class Events {
     constructor(brazucasServer) {
         this.brazucasServer = brazucasServer;
     }
-    AutenticarJogador(player, dados) {
+    [brazucas_eventos_1.BrazucasEventos.AUTENTICAR_JOGADOR](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const jogador = yield this.brazucasServer.autenticarJogador(player.name, dados.senha);
@@ -45,7 +46,7 @@ class Events {
             }
         });
     }
-    RegistrarJogador(player, dados) {
+    [brazucas_eventos_1.BrazucasEventos.REGISTRAR_JOGADOR](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const jogador = yield this.brazucasServer.registrarJogador(player, dados);
@@ -75,7 +76,7 @@ class Events {
             }
         });
     }
-    CriarVeiculo(player, dados) {
+    [brazucas_eventos_1.BrazucasEventos.CRIAR_VEICULO](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 yield this.brazucasServer.criarVeiculo(player, dados);
@@ -85,6 +86,30 @@ class Events {
                 console.error(err.toString());
                 return false;
             }
+        });
+    }
+    [brazucas_eventos_1.BrazucasEventos.HABILITAR_VOICE_CHAT](player, targetId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const target = mp.players.at(targetId);
+            if (!target) {
+                return {
+                    erro: true,
+                    mensagem: 'Jogador não encontrado',
+                };
+            }
+            voice_chat_provider_1.VoiceChatProvider.habilitar(player, target);
+        });
+    }
+    [brazucas_eventos_1.BrazucasEventos.DESABILITAR_VOICE_CHAT](player, targetId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const target = mp.players.at(targetId);
+            if (!target) {
+                return {
+                    erro: true,
+                    mensagem: 'Jogador não encontrado',
+                };
+            }
+            voice_chat_provider_1.VoiceChatProvider.desabilitar(player, target);
         });
     }
 }

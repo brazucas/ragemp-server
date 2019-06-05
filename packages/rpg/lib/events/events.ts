@@ -4,6 +4,7 @@ import { BrazucasServer } from '../../../../common/brazucas-server';
 import { Jogador } from '../../../../common/database/models/Jogador';
 import { environment } from '../../../../common/environment';
 import { BrazucasEventos } from '../../interfaces/brazucas-eventos';
+import { VoiceChatProvider } from '../../providers/voice-chat.provider';
 import { playerEvent } from '../functions/player';
 
 export class Events {
@@ -13,7 +14,7 @@ export class Events {
     this.brazucasServer = brazucasServer;
   }
 
-  public async AutenticarJogador(player: PlayerMp, dados: DadosLogin) {
+  public async [BrazucasEventos.AUTENTICAR_JOGADOR](player: PlayerMp, dados: DadosLogin) {
     try {
       const jogador: Jogador = await this.brazucasServer.autenticarJogador(player.name, dados.senha);
 
@@ -43,7 +44,7 @@ export class Events {
     }
   }
 
-  public async RegistrarJogador(player: PlayerMp, dados: DadosRegistro) {
+  public async [BrazucasEventos.REGISTRAR_JOGADOR](player: PlayerMp, dados: DadosRegistro) {
     try {
       const jogador: Jogador = await this.brazucasServer.registrarJogador(player, dados);
 
@@ -73,7 +74,7 @@ export class Events {
     }
   }
 
-  public async CriarVeiculo(player: PlayerMp, dados: DadosVeiculo) {
+  public async [BrazucasEventos.CRIAR_VEICULO](player: PlayerMp, dados: DadosVeiculo) {
     try {
       await this.brazucasServer.criarVeiculo(player, dados);
     } catch (err) {
@@ -82,5 +83,31 @@ export class Events {
 
       return false;
     }
+  }
+
+  public async [BrazucasEventos.HABILITAR_VOICE_CHAT](player: PlayerMp, targetId: number) {
+    const target = mp.players.at(targetId);
+
+    if (!target) {
+      return {
+        erro: true,
+        mensagem: 'Jogador não encontrado',
+      };
+    }
+
+    VoiceChatProvider.habilitar(player, target);
+  }
+
+  public async [BrazucasEventos.DESABILITAR_VOICE_CHAT](player: PlayerMp, targetId: number) {
+    const target = mp.players.at(targetId);
+
+    if (!target) {
+      return {
+        erro: true,
+        mensagem: 'Jogador não encontrado',
+      };
+    }
+
+    VoiceChatProvider.desabilitar(player, target);
   }
 }

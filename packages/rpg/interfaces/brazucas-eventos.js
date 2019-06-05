@@ -12,5 +12,7 @@ var BrazucasEventos;
     BrazucasEventos["DADOS_JOGADOR"] = "DadosJogador";
     BrazucasEventos["INICIAR_NAVEGADOR"] = "IniciarNavegador";
     BrazucasEventos["CURSOR"] = "cursor";
+    BrazucasEventos["HABILITAR_VOICE_CHAT"] = "HabilitarVoiceChat";
+    BrazucasEventos["DESABILITAR_VOICE_CHAT"] = "DesabilitarVoiceChat";
 })(BrazucasEventos = exports.BrazucasEventos || (exports.BrazucasEventos = {}));
 //# sourceMappingURL=brazucas-eventos.js.map

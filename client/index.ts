@@ -1,10 +1,13 @@
 import { JogadorOnline } from '../browser/src/app/players-online/players-online.page';
 import { Jogador } from '../browser/src/interfaces/jogador.interface';
 import { AutenticacaoResultado, RegistroResultado } from '../browser/src/interfaces/login.interface';
-import { ServerEvent } from '../packages/rpg/interfaces/brazucas-eventos';
+import { BrazucasEventos, ServerEvent } from '../packages/rpg/interfaces/brazucas-eventos';
 import EventKey = RageEnums.EventKey;
 
 const StringIsNumber = value => isNaN(Number(value)) === false;
+
+const VOICE_CHAT_RANGE = 50.0;
+const VOICE_CHAT_INTERVAL = 2000;
 
 function EnumToArray(enumme) {
   return Object.keys(enumme)
@@ -186,6 +189,48 @@ class Navegador {
 
   public execute(codigo: string) {
     this.browser.execute(codigo);
+  }
+}
+
+class PlayerEvents {
+  public client: Client;
+  public voiceChatListeners: PlayerMp[] = [];
+  public chatInterval: NodeJS.Timer;
+
+  constructor(client: Client) {
+    this.client = client;
+
+    this.startVoiceChat();
+  }
+
+  public startVoiceChat() {
+    this.chatInterval = setInterval(() => {
+      const currentListeners: PlayerMp[] = [];
+
+      mp.players.forEachInRange(mp.players.local.position, VOICE_CHAT_RANGE, player => {
+        currentListeners.push(player);
+        player.voice3d = true;
+        player.voiceAutoVolume = true;
+      });
+
+      const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p === player));
+
+      diff.forEach(playerDiff => {
+        mp.events.callRemote(BrazucasEventos.DESABILITAR_VOICE_CHAT, JSON.stringify({
+          target: playerDiff.id,
+        }));
+      });
+
+      currentListeners.forEach(playerDiff => {
+        mp.events.callRemote(BrazucasEventos.HABILITAR_VOICE_CHAT, JSON.stringify({
+          target: playerDiff.id,
+        }));
+      });
+    }, VOICE_CHAT_INTERVAL);
+  }
+
+  public stopVoiceChat() {
+    clearInterval(this.chatInterval);
   }
 }
 
