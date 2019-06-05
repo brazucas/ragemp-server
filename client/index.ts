@@ -268,8 +268,12 @@ class ServerEvents {
       mp.players.local.setVisible(true, true);
       mp.players.local.setCollision(true, true);
       mp.players.local.freezePosition(false);
-      this.client.noClipCamera.setActive(false);
-      this.client.noClipCamera.destroy();
+
+      if (this.client.noClipCamera) {
+        this.client.noClipCamera.setActive(false);
+        this.client.noClipCamera.destroy();
+      }
+
       mp.game.cam.renderScriptCams(false, false, 0, true, false);
       mp.gui.cursor.visible = false;
     }
