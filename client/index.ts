@@ -24,9 +24,11 @@ class Client {
   public browsers: {
     central: Navegador,
     playersOnline: Navegador,
+    playerGui: Navegador,
   } = {
     central: new Navegador('central'),
     playersOnline: new Navegador('playersOnline'),
+    playerGui: new Navegador('player-gui'),
   };
   public cursorVisible: boolean;
   public noClipCamera: CameraMp;
@@ -45,9 +47,6 @@ class Client {
 
     this.keysBindings();
     this.initServerEvents();
-
-    console.log('[VOICE CHAT] debug 0');
-
     this.initPlayerEvents();
     this.initBrowserEvents();
     this.bindCommands();
@@ -185,13 +184,15 @@ class Navegador {
     this.browser.execute(`window.my.app.mudarPagina('${pagina}')`);
   }
 
-  public mostrar() {
+  public mostrar(mostrarCursor = true) {
     this.navegadorAberto = true;
     this.browser.execute(`window.my.app.toggleNavegador(true)`);
 
-    setTimeout(() => {
-      mp.gui.cursor.visible = true;
-    }, 100);
+    if(mostrarCursor) {
+      setTimeout(() => {
+        mp.gui.cursor.visible = true;
+      }, 100);
+    }
   }
 
   public publish(event: string, eventId: number, data: any) {
@@ -338,6 +339,8 @@ class ServerEvents {
 
       mp.game.cam.renderScriptCams(false, false, 0, true, false);
       mp.gui.cursor.visible = false;
+
+      this.client.browsers.playerGui.mostrar(false);
     }
   }
 

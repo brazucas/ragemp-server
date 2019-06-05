@@ -13,6 +13,7 @@ class Client {
         this.browsers = {
             central: new Navegador('central'),
             playersOnline: new Navegador('playersOnline'),
+            playerGui: new Navegador('player-gui'),
         };
         this.noClipCamera = mp.cameras.new('default', new mp.Vector3(-485, 1095.75, 323.85), new mp.Vector3(0, 0, 0), 45);
         this.noClipCamera.setActive(true);
@@ -24,7 +25,6 @@ class Client {
         mp.players.local.setCollision(false, false);
         this.keysBindings();
         this.initServerEvents();
-        console.log('[VOICE CHAT] debug 0');
         this.initPlayerEvents();
         this.initBrowserEvents();
         this.bindCommands();
@@ -128,12 +128,14 @@ class Navegador {
     navegar(pagina) {
         this.browser.execute(`window.my.app.mudarPagina('${pagina}')`);
     }
-    mostrar() {
+    mostrar(mostrarCursor = true) {
         this.navegadorAberto = true;
         this.browser.execute(`window.my.app.toggleNavegador(true)`);
-        setTimeout(() => {
-            mp.gui.cursor.visible = true;
-        }, 100);
+        if (mostrarCursor) {
+            setTimeout(() => {
+                mp.gui.cursor.visible = true;
+            }, 100);
+        }
     }
     publish(event, eventId, data) {
         this.execute(`window.my.ragemp.serverEvent(${eventId}, '${event}', ${JSON.stringify(data)})`);
@@ -247,6 +249,7 @@ class ServerEvents {
             }
             mp.game.cam.renderScriptCams(false, false, 0, true, false);
             mp.gui.cursor.visible = false;
+            this.client.browsers.playerGui.mostrar(false);
         }
     }
     RegistroResultado(resultado) {
