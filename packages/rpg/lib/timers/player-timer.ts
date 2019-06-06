@@ -22,8 +22,14 @@ export class PlayerTimer {
     mp.players.forEach(playerMp => {
       const brzPlayer = Rpg.playerProvider.findFromMp(playerMp);
 
+      const updatedValue = Math.max(brzPlayer.storage.fome - FOME_DEFAULT_DECREASE, 0);
+
+      if (updatedValue === 0) {
+        playerMp.health -= 1;
+      }
+
       Rpg.playerProvider.update(playerMp, {
-        fome: brzPlayer.storage.fome - FOME_DEFAULT_DECREASE,
+        fome: updatedValue,
       });
     });
   }
@@ -32,8 +38,14 @@ export class PlayerTimer {
     mp.players.forEach(playerMp => {
       const brzPlayer = Rpg.playerProvider.findFromMp(playerMp);
 
+      const updatedValue = Math.max(brzPlayer.storage.sede - SEDE_DEFAULT_DECREASE, 0);
+
+      if (updatedValue === 0) {
+        brzPlayer.storage.fome -= 1;
+      }
+
       Rpg.playerProvider.update(playerMp, {
-        sede: brzPlayer.storage.sede - SEDE_DEFAULT_DECREASE,
+        sede: updatedValue,
       });
     });
   }
@@ -42,8 +54,14 @@ export class PlayerTimer {
     mp.players.forEach(playerMp => {
       const brzPlayer = Rpg.playerProvider.findFromMp(playerMp);
 
+      const updatedValue = Math.max(brzPlayer.storage.sono - SONO_DEFAULT_DECREASE, 0);
+
+      if (updatedValue === 0) {
+        // @TODO fazer o jogador dormir
+      }
+
       Rpg.playerProvider.update(playerMp, {
-        sono: brzPlayer.storage.sono - SONO_DEFAULT_DECREASE,
+        sono: updatedValue,
       });
     });
   }
@@ -52,8 +70,14 @@ export class PlayerTimer {
     mp.players.forEach(playerMp => {
       const brzPlayer = Rpg.playerProvider.findFromMp(playerMp);
 
+      const updatedValue = Math.max(brzPlayer.storage.forcaFisica - FORCA_FISICA_DEFAULT_DECREASE, 0);
+
+      if (updatedValue === 0) {
+        // @TODO O que fazer quando chegar a zero?
+      }
+
       Rpg.playerProvider.update(playerMp, {
-        forcaFisica: brzPlayer.storage.forcaFisica - FORCA_FISICA_DEFAULT_DECREASE,
+        forcaFisica: updatedValue,
       });
     });
   }

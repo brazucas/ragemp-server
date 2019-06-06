@@ -18,18 +18,36 @@ export class PlayerProvider {
     return this.players$.value.find((storedPlayer) => storedPlayer.mp.id === player.id);
   }
 
-  public async update(player: PlayerMp, data: Jogador | any) {
+  public async update(player: PlayerMp, data: Jogador | any, autoSave = true) {
     try {
       const brzPlayer = this.findFromMp(player);
 
-      Object.keys(data.toJSON()).forEach((key: string) => brzPlayer.storage[key] = data[key]);
+      if (brzPlayer) {
+        Object.keys(data.toJSON()).forEach((key: string) => brzPlayer.storage[key] = data[key]);
 
-      await brzPlayer.storage.save();
+        if (autoSave) {
+          await brzPlayer.storage.save();
+        }
 
-      playerEvent<Jogador>(player, BrazucasEventos.DADOS_JOGADOR, brzPlayer.storage.toJSON());
+        playerEvent<Jogador>(player, BrazucasEventos.DADOS_JOGADOR, brzPlayer.storage.toJSON());
+      } else {
+        console.warn('[WARNING] Jogador não encontrado para atualizar');
+      }
+
+      return true;
     } catch (err) {
       console.error(`[ERROR] Um erro ocorreu ao atualizar o jogador.`);
       console.error(err);
+
+      throw err;
+    }
+  }
+
+  savePlayer(player: PlayerMp) {
+    const brzPlayer = this.findFromMp(player);
+
+    if (brzPlayer) {
+      return brzPlayer.storage.save();
     }
   }
 

@@ -8,13 +8,13 @@
 
                 <div>
                     <div class="gui-indicator barra-normal">
-                        <app-player-gui-indicator [value]="60" activeColor="#ffbf00" backgroundColor="#9e7600">
+                        <app-player-gui-indicator [value]="dadosJogador.fome" activeColor="#ffbf00" backgroundColor="#9e7600">
 
                         </app-player-gui-indicator>
                     </div>
 
                     <div class="gui-indicator barra-invertida">
-                        <app-player-gui-indicator [invertido]="true" [value]="90"
+                        <app-player-gui-indicator [invertido]="true" [value]="dadosJogador.sede"
                                                   activeColor="#00ffe5" backgroundColor="#009e8e">
 
                         </app-player-gui-indicator>
@@ -35,13 +35,13 @@
 
                 <div>
                     <div class="gui-indicator barra-normal">
-                        <app-player-gui-indicator [value]="50" activeColor="#e95bff" backgroundColor="#682972">
+                        <app-player-gui-indicator [value]="dadosJogador.sono" activeColor="#e95bff" backgroundColor="#682972">
 
                         </app-player-gui-indicator>
                     </div>
 
                     <div class="gui-indicator barra-invertida">
-                        <app-player-gui-indicator [invertido]="true" [value]="70"
+                        <app-player-gui-indicator [invertido]="true" [value]="dadosJogador.forcaFisica"
                                                   activeColor="#32d302" backgroundColor="#1a7000">
 
                         </app-player-gui-indicator>

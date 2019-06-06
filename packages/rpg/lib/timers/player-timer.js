@@ -16,32 +16,48 @@ class PlayerTimer {
     atualizarFome() {
         mp.players.forEach(playerMp => {
             const brzPlayer = rpg_1.Rpg.playerProvider.findFromMp(playerMp);
+            const updatedValue = Math.max(brzPlayer.storage.fome - FOME_DEFAULT_DECREASE, 0);
+            if (updatedValue === 0) {
+                playerMp.health -= 1;
+            }
             rpg_1.Rpg.playerProvider.update(playerMp, {
-                fome: brzPlayer.storage.fome - FOME_DEFAULT_DECREASE,
+                fome: updatedValue,
             });
         });
     }
     atualizarSede() {
         mp.players.forEach(playerMp => {
             const brzPlayer = rpg_1.Rpg.playerProvider.findFromMp(playerMp);
+            const updatedValue = Math.max(brzPlayer.storage.sede - SEDE_DEFAULT_DECREASE, 0);
+            if (updatedValue === 0) {
+                brzPlayer.storage.fome -= 1;
+            }
             rpg_1.Rpg.playerProvider.update(playerMp, {
-                sede: brzPlayer.storage.sede - SEDE_DEFAULT_DECREASE,
+                sede: updatedValue,
             });
         });
     }
     atualizarSono() {
         mp.players.forEach(playerMp => {
             const brzPlayer = rpg_1.Rpg.playerProvider.findFromMp(playerMp);
+            const updatedValue = Math.max(brzPlayer.storage.sono - SONO_DEFAULT_DECREASE, 0);
+            if (updatedValue === 0) {
+                // @TODO fazer o jogador dormir
+            }
             rpg_1.Rpg.playerProvider.update(playerMp, {
-                sono: brzPlayer.storage.sono - SONO_DEFAULT_DECREASE,
+                sono: updatedValue,
             });
         });
     }
     atualizarForcaFisica() {
         mp.players.forEach(playerMp => {
             const brzPlayer = rpg_1.Rpg.playerProvider.findFromMp(playerMp);
+            const updatedValue = Math.max(brzPlayer.storage.forcaFisica - FORCA_FISICA_DEFAULT_DECREASE, 0);
+            if (updatedValue === 0) {
+                // @TODO O que fazer quando chegar a zero?
+            }
             rpg_1.Rpg.playerProvider.update(playerMp, {
-                forcaFisica: brzPlayer.storage.forcaFisica - FORCA_FISICA_DEFAULT_DECREASE,
+                forcaFisica: updatedValue,
             });
         });
     }
