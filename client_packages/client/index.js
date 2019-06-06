@@ -13,7 +13,7 @@ class Client {
         this.browsers = {
             central: new Navegador('central'),
             playersOnline: new Navegador('playersOnline'),
-            playerGui: new Navegador('player-gui'),
+            playerGui: new Navegador('playerGui'),
         };
         this.noClipCamera = mp.cameras.new('default', new mp.Vector3(-485, 1095.75, 323.85), new mp.Vector3(0, 0, 0), 45);
         this.noClipCamera.setActive(true);
@@ -249,6 +249,7 @@ class ServerEvents {
             }
             mp.game.cam.renderScriptCams(false, false, 0, true, false);
             mp.gui.cursor.visible = false;
+            this.client.browsers.playerGui.navegar('player-gui');
             this.client.browsers.playerGui.mostrar(false);
         }
     }
