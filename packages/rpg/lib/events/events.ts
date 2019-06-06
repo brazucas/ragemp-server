@@ -88,7 +88,13 @@ export class Events {
   public async [BrazucasEventos.HABILITAR_VOICE_CHAT](player: PlayerMp, dados: any) {
     console.log(`[VOICE CHAT] Ativando voice chat para ${player.name} com os dados: ${JSON.stringify(dados)}`);
 
-    const target = mp.players.at(dados.targetId);
+    let target: PlayerMp;
+
+    mp.players.forEach(player => {
+      if (player.id === dados.targetId) {
+        target = player;
+      }
+    });
 
     if (!target) {
       return {
@@ -103,7 +109,13 @@ export class Events {
   public async [BrazucasEventos.DESABILITAR_VOICE_CHAT](player: PlayerMp, dados: any) {
     console.log(`[VOICE CHAT] Desativando voice chat para ${player.name} com os dados: ${JSON.stringify(dados)}`);
 
-    const target = mp.players.at(dados.targetId);
+    let target: PlayerMp;
+
+    mp.players.forEach(player => {
+      if (player.id === dados.targetId) {
+        target = player;
+      }
+    });
 
     if (!target) {
       return {
