@@ -91,12 +91,7 @@ class Events {
     [brazucas_eventos_1.BrazucasEventos.HABILITAR_VOICE_CHAT](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(`[VOICE CHAT] Ativando voice chat para ${player.name} com os dados: ${JSON.stringify(dados)}`);
-            let target;
-            mp.players.forEach(player => {
-                if (player.id === dados.targetId) {
-                    target = player;
-                }
-            });
+            const target = mp.players.at(dados.targetId);
             if (!target) {
                 return {
                     erro: true,
@@ -109,12 +104,7 @@ class Events {
     [brazucas_eventos_1.BrazucasEventos.DESABILITAR_VOICE_CHAT](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(`[VOICE CHAT] Desativando voice chat para ${player.name} com os dados: ${JSON.stringify(dados)}`);
-            let target;
-            mp.players.forEach(player => {
-                if (player.id === dados.targetId) {
-                    target = player;
-                }
-            });
+            const target = mp.players.at(dados.targetId);
             if (!target) {
                 return {
                     erro: true,
@@ -122,6 +112,12 @@ class Events {
                 };
             }
             voice_chat_provider_1.VoiceChatProvider.desabilitar(player, target);
+        });
+    }
+    [brazucas_eventos_1.BrazucasEventos.ANIMACAO_VOICE_CHAT](player) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(`[VOICE CHAT] Aplicando animação para ${player.name}`);
+            player.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
         });
     }
 }

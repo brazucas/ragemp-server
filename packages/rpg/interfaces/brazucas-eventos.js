@@ -14,5 +14,6 @@ var BrazucasEventos;
     BrazucasEventos["CURSOR"] = "cursor";
     BrazucasEventos["HABILITAR_VOICE_CHAT"] = "HabilitarVoiceChat";
     BrazucasEventos["DESABILITAR_VOICE_CHAT"] = "DesabilitarVoiceChat";
+    BrazucasEventos["ANIMACAO_VOICE_CHAT"] = "AnimacaoVoiceChat";
 })(BrazucasEventos = exports.BrazucasEventos || (exports.BrazucasEventos = {}));
 //# sourceMappingURL=brazucas-eventos.js.map

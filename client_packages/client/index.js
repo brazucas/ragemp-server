@@ -177,6 +177,7 @@ class PlayerEvents {
                             targetId: playerDiff.remoteId,
                         }),
                     }));
+                    mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${playerDiff.name} !{#FF0000}saiu.`);
                 }
             });
             currentListeners.forEach(player => {
@@ -190,7 +191,7 @@ class PlayerEvents {
                     }));
                     player.voice3d = true;
                     player.voiceVolume = 1.0;
-                    mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${player.name} !{#FFFFFF}entrou.`);
+                    mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}${player.name} !{#00FFFF}entrou.`);
                 }
             });
             this.voiceChatListeners = currentListeners;
@@ -225,11 +226,16 @@ class ServerEvents {
             this.forwardEventToBrowser(serverEvent);
         });
         mp.events.add("playerStartTalking" /* PLAYER_START_TALKING */, () => {
-            // mp.players.local.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
+            mp.events.callRemote('browser', JSON.stringify({
+                eventId: -1,
+                event: 'AnimacaoVoiceChat',
+                data: JSON.stringify({
+                    targetId: mp.players.local.remoteId,
+                }),
+            }));
             mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#00FF00}Você começou a falar.`);
         });
         mp.events.add("playerStopTalking" /* PLAYER_STOP_TALKING */, () => {
-            // mp.players.local.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
             mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}Você parou de falar.`);
         });
     }

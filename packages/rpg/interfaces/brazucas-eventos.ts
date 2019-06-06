@@ -11,6 +11,7 @@ export enum BrazucasEventos {
   CURSOR = 'cursor',
   HABILITAR_VOICE_CHAT = 'HabilitarVoiceChat',
   DESABILITAR_VOICE_CHAT = 'DesabilitarVoiceChat',
+  ANIMACAO_VOICE_CHAT = 'AnimacaoVoiceChat',
 }
 
 export interface ServerEvent<T> {

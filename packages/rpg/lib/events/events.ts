@@ -88,13 +88,7 @@ export class Events {
   public async [BrazucasEventos.HABILITAR_VOICE_CHAT](player: PlayerMp, dados: any) {
     console.log(`[VOICE CHAT] Ativando voice chat para ${player.name} com os dados: ${JSON.stringify(dados)}`);
 
-    let target: PlayerMp;
-
-    mp.players.forEach(player => {
-      if (player.id === dados.targetId) {
-        target = player;
-      }
-    });
+    const target = mp.players.at(dados.targetId);
 
     if (!target) {
       return {
@@ -109,13 +103,7 @@ export class Events {
   public async [BrazucasEventos.DESABILITAR_VOICE_CHAT](player: PlayerMp, dados: any) {
     console.log(`[VOICE CHAT] Desativando voice chat para ${player.name} com os dados: ${JSON.stringify(dados)}`);
 
-    let target: PlayerMp;
-
-    mp.players.forEach(player => {
-      if (player.id === dados.targetId) {
-        target = player;
-      }
-    });
+    const target = mp.players.at(dados.targetId);
 
     if (!target) {
       return {
@@ -125,5 +113,11 @@ export class Events {
     }
 
     VoiceChatProvider.desabilitar(player, target);
+  }
+
+  public async [BrazucasEventos.ANIMACAO_VOICE_CHAT](player: PlayerMp) {
+    console.log(`[VOICE CHAT] Aplicando animação para ${player.name}`);
+
+    player.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
   }
 }
