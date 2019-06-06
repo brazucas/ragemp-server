@@ -112,7 +112,7 @@ class Client {
         mp.players.forEach((player) => jogadores.push({
           name: player.name,
           ping: player.ping,
-          id: player.id,
+          id: player.remoteId,
           data: {
             nivel: 0,
           }
@@ -232,12 +232,12 @@ class PlayerEvents {
       const currentListeners: PlayerMp[] = [];
 
       mp.players.forEachInRange(mp.players.local.position, VOICE_CHAT_RANGE, player => {
-        if (player.id !== mp.players.local.id) {
+        if (player.remoteId !== mp.players.local.remoteId) {
           currentListeners.push(player);
         }
       });
 
-      const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p.id === player.id));
+      const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p.remoteId === player.remoteId));
 
       diff.forEach(playerDiff => {
         if (playerDiff) {
@@ -245,19 +245,19 @@ class PlayerEvents {
             eventId: -1,
             event: 'DesabilitarVoiceChat',
             data: JSON.stringify({
-              targetId: playerDiff.id,
+              targetId: playerDiff.remoteId,
             }),
           }));
         }
       });
 
       currentListeners.forEach(player => {
-        if (!this.voiceChatListeners.find(listener => listener.id == player.id)) {
+        if (!this.voiceChatListeners.find(listener => listener.remoteId == player.remoteId)) {
           mp.events.callRemote('browser', JSON.stringify({
             eventId: -1,
             event: 'HabilitarVoiceChat',
             data: JSON.stringify({
-              targetId: player.id,
+              targetId: player.remoteId,
             }),
           }));
           player.voice3d = true;
@@ -276,7 +276,7 @@ class PlayerEvents {
   public broadcastListeners() {
     const simpleListeners = this.voiceChatListeners.map(listener => {
       return {
-        playerId: listener.id,
+        playerId: listener.remoteId,
         playerName: listener.name,
       };
     });
