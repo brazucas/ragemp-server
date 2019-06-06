@@ -18,6 +18,10 @@ export class RagempService {
     senha: '',
     dinheiro: 0,
     creditos: 0,
+    fome: 0,
+    sono: 0,
+    forcaFisica: 0,
+    sede: 0,
   });
   public playerName$: BehaviorSubject<string> = new BehaviorSubject(null);
   public jogadorLocal$: BehaviorSubject<Jogador> = new BehaviorSubject(null);

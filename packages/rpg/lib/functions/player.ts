@@ -13,3 +13,13 @@ export function playerEvent<T>(player: PlayerMp, event: string, data?: T, eventI
     data: data,
   }]);
 }
+
+export function playersEvent<T>(event: string, data?: T, eventId?: number) {
+  console.debug(`[ALL PLAYER EVENT] Evento ${event} (ID ${eventId}) com os seguintes dados: ${JSON.stringify(data)} disparado para ${mp.players.length} jogadores.`);
+
+  mp.players.call(BrazucasEventos.SERVER, [<ServerEvent<T>> {
+    eventId: eventId,
+    event: event,
+    data: data,
+  }]);
+}

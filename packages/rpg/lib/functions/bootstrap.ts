@@ -4,6 +4,7 @@ import { BrazucasServer } from '../../../../common/brazucas-server';
 import { Veiculo } from '../../../../common/database/models/Veiculo';
 import { Veiculos } from '../../../../common/util/vehicles';
 import { VeiculoProvider } from '../../providers/veiculo.provider';
+import { PlayerTimer } from '../timers/player-timer';
 import { VehiclesTimer } from '../timers/vehicles-timer';
 
 declare const mp: Mp;
@@ -37,4 +38,5 @@ export async function carregarVeiculos() {
 
 export async function carregarTimers(brazucasServer: BrazucasServer) {
   new VehiclesTimer(brazucasServer);
+  new PlayerTimer(brazucasServer);
 }

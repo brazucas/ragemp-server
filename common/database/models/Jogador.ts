@@ -38,6 +38,18 @@ export class Jogador extends Model<Jogador> {
   @Column({defaultValue: 0})
   creditos: number;
 
+  @Column({defaultValue: 100})
+  fome: number;
+
+  @Column({defaultValue: 100})
+  sono: number;
+
+  @Column({defaultValue: 100})
+  forcaFisica: number;
+
+  @Column({defaultValue: 100})
+  sede: number;
+
   @BelongsTo(() => Profissao, {foreignKey: {allowNull: true, name: 'profissao'}})
   jogadorProfissao: Profissao;
 

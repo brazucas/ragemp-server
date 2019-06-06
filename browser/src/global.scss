@@ -107,6 +107,10 @@
   }
 }
 
+.blink {
+  animation: blink 1s linear infinite;
+}
+
 @keyframes go-up {
   0% {
     transform: translateY(80px);
@@ -118,6 +122,19 @@
   }
   100% {
     transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
     opacity: 1;
   }
 }

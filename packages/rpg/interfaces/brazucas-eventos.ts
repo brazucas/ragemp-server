@@ -12,6 +12,10 @@ export enum BrazucasEventos {
   HABILITAR_VOICE_CHAT = 'HabilitarVoiceChat',
   DESABILITAR_VOICE_CHAT = 'DesabilitarVoiceChat',
   ANIMACAO_VOICE_CHAT = 'AnimacaoVoiceChat',
+  ATUALIZAR_FOME = 'AtualizarFome',
+  ATUALIZAR_SEDE = 'AtualizarSede',
+  ATUALIZAR_SONO = 'AtualizarSono',
+  ATUALIZAR_FORCA_FISICA = 'AtualizarForcaFisica',
 }
 
 export interface ServerEvent<T> {

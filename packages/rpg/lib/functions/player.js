@@ -14,4 +14,13 @@ function playerEvent(player, event, data, eventId) {
         }]);
 }
 exports.playerEvent = playerEvent;
+function playersEvent(event, data, eventId) {
+    console.debug(`[ALL PLAYER EVENT] Evento ${event} (ID ${eventId}) com os seguintes dados: ${JSON.stringify(data)} disparado para ${mp.players.length} jogadores.`);
+    mp.players.call(brazucas_eventos_1.BrazucasEventos.SERVER, [{
+            eventId: eventId,
+            event: event,
+            data: data,
+        }]);
+}
+exports.playersEvent = playersEvent;
 //# sourceMappingURL=player.js.map

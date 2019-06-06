@@ -6,6 +6,10 @@ export interface Jogador {
   posicaoX?: number,
   posicaoY?: number,
   posicaoZ?: number,
+  fome: number,
+  sono: number,
+  forcaFisica: number,
+  sede: number,
   dinheiro: number,
   creditos: number,
 }

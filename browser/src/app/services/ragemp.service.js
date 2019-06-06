@@ -23,6 +23,10 @@ let RagempService = class RagempService {
             senha: '',
             dinheiro: 0,
             creditos: 0,
+            fome: 0,
+            sono: 0,
+            forcaFisica: 0,
+            sede: 0,
         });
         this.playerName$ = new BehaviorSubject_1.BehaviorSubject(null);
         this.jogadorLocal$ = new BehaviorSubject_1.BehaviorSubject(null);

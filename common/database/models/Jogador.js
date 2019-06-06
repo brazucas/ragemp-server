@@ -43,6 +43,22 @@ __decorate([
     __metadata("design:type", Number)
 ], Jogador.prototype, "creditos", void 0);
 __decorate([
+    sequelize_typescript_1.Column({ defaultValue: 100 }),
+    __metadata("design:type", Number)
+], Jogador.prototype, "fome", void 0);
+__decorate([
+    sequelize_typescript_1.Column({ defaultValue: 100 }),
+    __metadata("design:type", Number)
+], Jogador.prototype, "sono", void 0);
+__decorate([
+    sequelize_typescript_1.Column({ defaultValue: 100 }),
+    __metadata("design:type", Number)
+], Jogador.prototype, "forcaFisica", void 0);
+__decorate([
+    sequelize_typescript_1.Column({ defaultValue: 100 }),
+    __metadata("design:type", Number)
+], Jogador.prototype, "sede", void 0);
+__decorate([
     sequelize_typescript_1.BelongsTo(() => Profissao_1.Profissao, { foreignKey: { allowNull: true, name: 'profissao' } }),
     __metadata("design:type", Profissao_1.Profissao)
 ], Jogador.prototype, "jogadorProfissao", void 0);

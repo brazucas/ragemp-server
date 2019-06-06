@@ -4,6 +4,7 @@ import 'rxjs/add/observable/of';
 import * as _ from 'underscore';
 import { BrazucasServer } from '../../common/brazucas-server';
 import { carregarTimers, carregarVeiculos } from './lib/functions/bootstrap';
+import { PlayerProvider } from './providers/player.provider';
 
 export class Rpg {
   private maps: Array<any> = [];
@@ -11,8 +12,12 @@ export class Rpg {
   public status: any = null;
   public brazucasServer: BrazucasServer;
 
+  public static playerProvider: PlayerProvider;
+
   constructor(brazucasServer: BrazucasServer) {
     this.brazucasServer = brazucasServer;
+
+    Rpg.playerProvider = new PlayerProvider(brazucasServer);
 
     this.init();
   }

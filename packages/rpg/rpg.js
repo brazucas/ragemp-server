@@ -13,12 +13,14 @@ const glob = require("glob");
 require("rxjs/add/observable/of");
 const _ = require("underscore");
 const bootstrap_1 = require("./lib/functions/bootstrap");
+const player_provider_1 = require("./providers/player.provider");
 class Rpg {
     constructor(brazucasServer) {
         this.maps = [];
         this.mapSelected = null;
         this.status = null;
         this.brazucasServer = brazucasServer;
+        Rpg.playerProvider = new player_provider_1.PlayerProvider(brazucasServer);
         this.init();
     }
     init() {

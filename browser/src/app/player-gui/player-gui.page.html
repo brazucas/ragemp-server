@@ -54,6 +54,18 @@
             </div>
         </div>
 
+        <div class="gui-item go-up delay-4 headset">
+            <div class="gui-item-container">
+                <div class="gui-icon">
+                    <img src="assets/player-gui/headset.png"/>
+                </div>
+
+                <div class="gui-indicator">
+                    {{ voiceChatListeners.length }}
+                </div>
+            </div>
+        </div>
+
         <div class="gui-item go-up delay-6">
             <div class="dinheiro">
                 R$ {{ dinheiro }}
@@ -63,18 +75,6 @@
         <div class="gui-item go-up delay-7">
             <div class="creditos">
                 C$ {{ creditos }}
-            </div>
-        </div>
-    </app-pagina>
-
-    <app-pagina position="bottom-left" [anim]="false" [cabecalho]="false" [layout]="false">
-        <div class="gui-item go-up delay-1">
-            <div class="gui-icon">
-                <img src="assets/player-gui/headset.png"/>
-            </div>
-
-            <div class="gui-indicator">
-                {{ voiceChatListeners.length }}
             </div>
         </div>
     </app-pagina>

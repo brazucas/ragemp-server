@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Veiculo_1 = require("../../../../common/database/models/Veiculo");
 const vehicles_1 = require("../../../../common/util/vehicles");
 const veiculo_provider_1 = require("../../providers/veiculo.provider");
+const player_timer_1 = require("../timers/player-timer");
 const vehicles_timer_1 = require("../timers/vehicles-timer");
 function carregarVeiculos() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -35,6 +36,7 @@ exports.carregarVeiculos = carregarVeiculos;
 function carregarTimers(brazucasServer) {
     return __awaiter(this, void 0, void 0, function* () {
         new vehicles_timer_1.VehiclesTimer(brazucasServer);
+        new player_timer_1.PlayerTimer(brazucasServer);
     });
 }
 exports.carregarTimers = carregarTimers;

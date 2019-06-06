@@ -15,5 +15,9 @@ var BrazucasEventos;
     BrazucasEventos["HABILITAR_VOICE_CHAT"] = "HabilitarVoiceChat";
     BrazucasEventos["DESABILITAR_VOICE_CHAT"] = "DesabilitarVoiceChat";
     BrazucasEventos["ANIMACAO_VOICE_CHAT"] = "AnimacaoVoiceChat";
+    BrazucasEventos["ATUALIZAR_FOME"] = "AtualizarFome";
+    BrazucasEventos["ATUALIZAR_SEDE"] = "AtualizarSede";
+    BrazucasEventos["ATUALIZAR_SONO"] = "AtualizarSono";
+    BrazucasEventos["ATUALIZAR_FORCA_FISICA"] = "AtualizarForcaFisica";
 })(BrazucasEventos = exports.BrazucasEventos || (exports.BrazucasEventos = {}));
 //# sourceMappingURL=brazucas-eventos.js.map

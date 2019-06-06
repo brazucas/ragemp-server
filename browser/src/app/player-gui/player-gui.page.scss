@@ -13,6 +13,32 @@
     justify-content: space-between;
   }
 
+  &.headset {
+    .gui-item-container {
+      align-items: flex-end;
+    }
+
+    .gui-icon {
+      width: 50px;
+
+      padding: 5px 9px;
+      border: 7px solid #8c601e;
+      border-radius: 56px;
+    }
+
+    .gui-indicator {
+      background-color: #8c601e;
+      border: 1px solid #8c601e;
+      border-radius: 15px;
+      color: #FFFFFF;
+      max-width: 55px;
+      text-align: center;
+      padding: 1px;
+      transform: translateX(-8px);
+      font-size: 15px;
+    }
+  }
+
   .gui-icon {
     width: 50px;
 
