@@ -188,7 +188,7 @@ class Navegador {
     this.navegadorAberto = true;
     this.browser.execute(`window.my.app.toggleNavegador(true)`);
 
-    if(mostrarCursor) {
+    if (mostrarCursor) {
       setTimeout(() => {
         mp.gui.cursor.visible = true;
       }, 100);
@@ -240,13 +240,15 @@ class PlayerEvents {
       const diff = this.voiceChatListeners.filter(player => !currentListeners.find((p) => p.id === player.id));
 
       diff.forEach(playerDiff => {
-        mp.events.callRemote('browser', JSON.stringify({
-          eventId: -1,
-          event: 'DesabilitarVoiceChat',
-          data: JSON.stringify({
-            targetId: playerDiff.id,
-          }),
-        }));
+        if (playerDiff) {
+          mp.events.callRemote('browser', JSON.stringify({
+            eventId: -1,
+            event: 'DesabilitarVoiceChat',
+            data: JSON.stringify({
+              targetId: playerDiff.id,
+            }),
+          }));
+        }
       });
 
       currentListeners.forEach(player => {
@@ -307,12 +309,12 @@ class ServerEvents {
     });
 
     mp.events.add(EventKey.PLAYER_START_TALKING, () => {
-      mp.players.local.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
+      // mp.players.local.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
       mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#00FF00}Você começou a falar.`);
     });
 
     mp.events.add(EventKey.PLAYER_STOP_TALKING, () => {
-      mp.players.local.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
+      // mp.players.local.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
       mp.gui.chat.push(`!{#FFFFFF}[CHAT POR VOZ] !{#FF0000}Você parou de falar.`);
     });
   }
