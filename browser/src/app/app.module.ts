@@ -29,6 +29,7 @@ import {
 } from './directives/apresentar-async.directive';
 import { RegistroPage } from './registro/registro.page';
 import { FilterPipe } from './pipes/filter.pipe';
+import { BlinkDirective } from './directives/blink.directive';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     CasoCarregandoDirective,
     CasoErroDirective,
     FilterPipe,
+    BlinkDirective,
   ],
   entryComponents: [],
   imports: [

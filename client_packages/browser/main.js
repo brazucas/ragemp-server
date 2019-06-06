@@ -1738,6 +1738,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./directives/apresentar-async.directive */ "./src/app/directives/apresentar-async.directive.ts");
 /* harmony import */ var _registro_registro_page__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./registro/registro.page */ "./src/app/registro/registro.page.ts");
 /* harmony import */ var _pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pipes/filter.pipe */ "./src/app/pipes/filter.pipe.ts");
+/* harmony import */ var _directives_blink_directive__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./directives/blink.directive */ "./src/app/directives/blink.directive.ts");
+
 
 
 
@@ -1785,6 +1787,7 @@ var AppModule = /** @class */ (function () {
                 _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_22__["CasoCarregandoDirective"],
                 _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_22__["CasoErroDirective"],
                 _pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_24__["FilterPipe"],
+                _directives_blink_directive__WEBPACK_IMPORTED_MODULE_25__["BlinkDirective"],
             ],
             entryComponents: [],
             imports: [
@@ -1989,7 +1992,7 @@ var PaginaComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"indicator-container\" [style.width]=\"containerWidth + 'px'\"\n     [style.backgroundColor]=\"invertido ? activeColor : backgroundColor\"\n     [style.borderRadius]=\"invertido ? '15px 0 0 15px' : '0 15px 15px 0'\"\n     [ngClass]=\"{'blink': (value <= 20)}\">\n    <div class=\"indicator-bar\" [style.width]=\"barWidth + 'px'\"\n         [style.backgroundColor]=\"invertido ? backgroundColor : activeColor\"\n         [style.borderRadius]=\"invertido ? '15px 0 0 15px' : '0 15px 15px 0'\"></div>\n</div>\n"
+module.exports = "<div class=\"indicator-container\" [style.width]=\"containerWidth + 'px'\"\n     [style.backgroundColor]=\"invertido ? activeColor : backgroundColor\"\n     [style.borderRadius]=\"invertido ? '15px 0 0 15px' : '0 15px 15px 0'\">\n    <div class=\"indicator-bar\" [style.width]=\"barWidth + 'px'\"\n         [style.backgroundColor]=\"invertido ? backgroundColor : activeColor\"\n         [style.borderRadius]=\"invertido ? '15px 0 0 15px' : '0 15px 15px 0'\"></div>\n</div>\n"
 
 /***/ }),
 
@@ -2543,6 +2546,54 @@ var CasoErroDirective = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/directives/blink.directive.ts":
+/*!***********************************************!*\
+  !*** ./src/app/directives/blink.directive.ts ***!
+  \***********************************************/
+/*! exports provided: BlinkDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlinkDirective", function() { return BlinkDirective; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var BlinkDirective = /** @class */ (function () {
+    function BlinkDirective() {
+    }
+    BlinkDirective.prototype.elementClass = function () {
+        return (this.blinkCurrentValue <= this.blinkStartValue);
+    };
+    ;
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], BlinkDirective.prototype, "blinkCurrentValue", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], BlinkDirective.prototype, "blinkStartValue", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostBinding"])('class.blink'),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Function),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", []),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:returntype", void 0)
+    ], BlinkDirective.prototype, "elementClass", null);
+    BlinkDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
+            selector: '[appBlink]'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], BlinkDirective);
+    return BlinkDirective;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/directives/incluir-status.ts":
 /*!**********************************************!*\
   !*** ./src/app/directives/incluir-status.ts ***!
@@ -2891,7 +2942,7 @@ var FilterPipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content>\n    <app-pagina position=\"top-right\" top=\"230\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"gui-item go-up delay-1\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon fome\">\n                    <img src=\"assets/player-gui/meat.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\">\n                        <app-player-gui-indicator [value]=\"dadosJogador.fome\" activeColor=\"#ffbf00\" backgroundColor=\"#9e7600\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"dadosJogador.sede\"\n                                                  activeColor=\"#00ffe5\" backgroundColor=\"#009e8e\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon sede\">\n                    <img src=\"assets/player-gui/drink.png\"/>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-3\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon sono\">\n                    <img src=\"assets/player-gui/bed.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\">\n                        <app-player-gui-indicator [value]=\"dadosJogador.sono\" activeColor=\"#e95bff\" backgroundColor=\"#682972\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"dadosJogador.forcaFisica\"\n                                                  activeColor=\"#32d302\" backgroundColor=\"#1a7000\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon forca\">\n                    <img src=\"assets/player-gui/strength.png\"/>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-4 headset\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon\">\n                    <img src=\"assets/player-gui/headset.png\"/>\n                </div>\n\n                <div class=\"gui-indicator\">\n                    {{ voiceChatListeners.length }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-6\">\n            <div class=\"dinheiro\">\n                R$ {{ dinheiro }}\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-7\">\n            <div class=\"creditos\">\n                C$ {{ creditos }}\n            </div>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"bottom-right\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"go-up delay-1\">\n            <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n        </div>\n    </app-pagina>\n</ion-content>\n"
+module.exports = "<ion-content>\n    <app-pagina position=\"top-right\" top=\"230\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"gui-item go-up delay-1\">\n            <div class=\"gui-item-container\">\n                <div class=\"\">\n                    \n                </div>\n\n                <div class=\"gui-icon fome\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.fome\">\n                    <img src=\"assets/player-gui/meat.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.fome\">\n                        <app-player-gui-indicator [value]=\"dadosJogador.fome\" activeColor=\"#ffbf00\" backgroundColor=\"#9e7600\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sede\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"dadosJogador.sede\"\n                                                  activeColor=\"#00ffe5\" backgroundColor=\"#009e8e\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon sede\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sede\">\n                    <img src=\"assets/player-gui/drink.png\"/>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-3\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon sono\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sono\">\n                    <img src=\"assets/player-gui/bed.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sono\">\n                        <app-player-gui-indicator [value]=\"dadosJogador.sono\" activeColor=\"#e95bff\" backgroundColor=\"#682972\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.forcaFisica\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"dadosJogador.forcaFisica\"\n                                                  activeColor=\"#32d302\" backgroundColor=\"#1a7000\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon forca\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.forcaFisica\">\n                    <img src=\"assets/player-gui/strength.png\"/>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-4 headset\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon\">\n                    <img src=\"assets/player-gui/headset.png\"/>\n                </div>\n\n                <div class=\"gui-indicator\">\n                    {{ voiceChatListeners.length }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-6\">\n            <div class=\"dinheiro\">\n                R$ {{ dinheiro }}\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-7\">\n            <div class=\"creditos\">\n                C$ {{ creditos }}\n            </div>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"bottom-right\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"go-up delay-1\">\n            <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n        </div>\n    </app-pagina>\n</ion-content>\n"
 
 /***/ }),
 

@@ -1,7 +1,6 @@
 <div class="indicator-container" [style.width]="containerWidth + 'px'"
      [style.backgroundColor]="invertido ? activeColor : backgroundColor"
-     [style.borderRadius]="invertido ? '15px 0 0 15px' : '0 15px 15px 0'"
-     [ngClass]="{'blink': (value <= 20)}">
+     [style.borderRadius]="invertido ? '15px 0 0 15px' : '0 15px 15px 0'">
     <div class="indicator-bar" [style.width]="barWidth + 'px'"
          [style.backgroundColor]="invertido ? backgroundColor : activeColor"
          [style.borderRadius]="invertido ? '15px 0 0 15px' : '0 15px 15px 0'"></div>
