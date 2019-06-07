@@ -7,6 +7,8 @@ import { maskMoneyToFloat } from '../../util/string-util';
 import { RagempService } from '../services/ragemp.service';
 import { VeiculoService } from '../services/veiculo.service';
 
+declare const mp;
+
 @Component({
   selector: 'app-criar-veiculo',
   templateUrl: './criar-veiculo.page.html',
@@ -167,6 +169,8 @@ export class CriarVeiculoPage implements AfterViewInit {
 
       loading.dismiss();
       toast.present();
+
+      mp.trigger('DesabilitarCursor');
 
       setTimeout(() => {
         this.ragemp.closeBrowser();

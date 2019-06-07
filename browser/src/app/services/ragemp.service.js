@@ -32,6 +32,7 @@ let RagempService = class RagempService {
         this.jogadorLocal$ = new BehaviorSubject_1.BehaviorSubject(null);
         this.serverEvent$ = new rxjs_1.Subject();
         this.voiceChatListeners$ = new BehaviorSubject_1.BehaviorSubject([]);
+        this.playerGuiMenuAtivo = false;
         if (!window) {
             window = {};
         }
@@ -40,6 +41,7 @@ let RagempService = class RagempService {
         window.ragemp.setPlayerName = this.setPlayerName.bind(this);
         window.ragemp.setBrowserName = this.setBrowserName.bind(this);
         window.ragemp.setVoiceChatListeners = this.setVoiceChatListeners.bind(this);
+        window.ragemp.togglePlayerGuiMenuAtivo = this.togglePlayerGuiMenuAtivo.bind(this);
         window.ragemp[brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR] = this[brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR].bind(this);
         window.ragemp.serverEvent = this.serverEvent.bind(this);
     }
@@ -79,6 +81,15 @@ let RagempService = class RagempService {
             data: data,
             eventId: eventId,
         });
+    }
+    togglePlayerGuiMenuAtivo() {
+        this.playerGuiMenuAtivo = !this.playerGuiMenuAtivo;
+        if (this.playerGuiMenuAtivo) {
+            mp.trigger('HabilitarCursor');
+        }
+        else {
+            mp.trigger('DesabilitarCursor');
+        }
     }
     closeBrowser() {
         mp.trigger('FecharBrowser', this.browserName$.value);

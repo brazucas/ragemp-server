@@ -141,6 +141,12 @@ class Client {
         mp.gui.cursor.visible = true;
       }
     });
+
+    mp.keys.bind(0x72, false, () => { // Pressionar a tecla F3
+      if (this.autenticacaoResultado.autenticado) {
+        this.browsers.playerGui.call('setPlayerGuiMenuAtivo', '');
+      }
+    });
   }
 }
 
@@ -400,6 +406,14 @@ class BrowserEvents {
       if (typeof this.client.browsers[browserName] !== 'undefined') {
         this.client.browsers[browserName].esconder();
       }
+    });
+
+    mp.events.add('HabilitarCursor', () => {
+      mp.gui.cursor.visible = true;
+    });
+
+    mp.events.add('DesabilitarCursor', () => {
+      mp.gui.cursor.visible = false;
     });
   }
 }

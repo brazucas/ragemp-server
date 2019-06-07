@@ -3,7 +3,8 @@
         <div class="gui-item go-up delay-1">
             <div class="gui-item-container">
                 <div class="go-up fome-text delay-4" *ngIf="diffFome !== 0">
-                    <ng-container *ngIf="diffFome > 0">+</ng-container>{{ diffFome }}
+                    <ng-container *ngIf="diffFome > 0">+</ng-container>
+                    {{ diffFome }}
                 </div>
 
                 <div class="gui-icon fome" appBlink [blinkStartValue]="20" [blinkCurrentValue]="dadosJogador.fome">
@@ -33,7 +34,8 @@
                 </div>
 
                 <div class="go-up sede-text delay-4" *ngIf="diffSede !== 0">
-                    <ng-container *ngIf="diffSede > 0">+</ng-container>{{ diffSede }}
+                    <ng-container *ngIf="diffSede > 0">+</ng-container>
+                    {{ diffSede }}
                 </div>
             </div>
         </div>
@@ -41,7 +43,8 @@
         <div class="gui-item go-up delay-3">
             <div class="gui-item-container">
                 <div class="go-up sono-text delay-4" *ngIf="diffSono !== 0">
-                    <ng-container *ngIf="diffSono > 0">+</ng-container>{{ diffSono }}
+                    <ng-container *ngIf="diffSono > 0">+</ng-container>
+                    {{ diffSono }}
                 </div>
 
                 <div class="gui-icon sono" appBlink [blinkStartValue]="20" [blinkCurrentValue]="dadosJogador.sono">
@@ -72,7 +75,8 @@
                 </div>
 
                 <div class="go-up forca-fisica-text delay-4" *ngIf="diffForcaFisica !== 0">
-                    <ng-container *ngIf="diffForcaFisica > 0">+</ng-container>{{ diffForcaFisica }}
+                    <ng-container *ngIf="diffForcaFisica > 0">+</ng-container>
+                    {{ diffForcaFisica }}
                 </div>
             </div>
         </div>
@@ -91,13 +95,13 @@
 
         <div class="gui-item go-up delay-6">
             <div class="dinheiro">
-                R$ <span id="dinheiro">{{ dinheiro }}</span>
+                R$ <span id="dinheiro">{{ dadosJogador.dinheiro }}</span>
             </div>
         </div>
 
         <div class="gui-item go-up delay-7">
             <div class="creditos">
-                C$ <span id="creditos">{{ creditos }}</span>
+                C$ <span id="creditos">{{ dadosJogador.creditos }}</span>
             </div>
         </div>
     </app-pagina>
@@ -105,6 +109,153 @@
     <app-pagina position="bottom-right" [anim]="false" [cabecalho]="false" [layout]="false">
         <div class="go-up delay-1">
             <img src="assets/logotipo_full_web.png" alt="" width="120px"/>
+        </div>
+    </app-pagina>
+
+    <app-pagina position="top-center" [anim]="false" [cabecalho]="false" [layout]="false">
+        <small>Pressione "F3" para acessar o menu.</small>
+
+        <div class="menu" [ngClass]="{'ativo': menuAtivo}">
+            <div class="go-down delay-1">
+                <div class="menu-container">
+                    <div class="menu-item">
+                        <div class="menu-label" (click)="toggleSubMenu('self')">
+                            Mandrakke_Army
+                        </div>
+
+                        <div class="menu-submenu" *ngIf="submenu['self']">
+                            <div class="menu-item go-down delay-1">
+                                <div class="menu-label">
+                                    Meus Dados
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-2">
+                                <div class="menu-label">
+                                    Profissão
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-3">
+                                <div class="menu-label">
+                                    Meus Veículos
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-4">
+                                <div class="menu-label">
+                                    Minhas Casas
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-5">
+                                <div class="menu-label">
+                                    Minhas Propriedades
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-label" (click)="toggleSubMenu('moderacao')">
+                            Moderação
+                        </div>
+
+                        <div class="menu-submenu" *ngIf="submenu['moderacao']">
+                            <div class="menu-item go-down delay-1">
+                                <div class="menu-label">
+                                    Checar Jogador
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-2">
+                                <div class="menu-label">
+                                    Chutar
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-3">
+                                <div class="menu-label">
+                                    Banir
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-4">
+                                <div class="menu-label">
+                                    Teleportar
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-5">
+                                <div class="menu-label">
+                                    Calar
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-label" (click)="toggleSubMenu('administracao')">
+                            Administração
+                        </div>
+
+                        <div class="menu-submenu" *ngIf="submenu['administracao']">
+                            <div class="menu-item go-down delay-1">
+                                <div class="menu-label">
+                                    Editor de Mapa
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-2">
+                                <div class="menu-label">
+                                    Gerenciar Veículos
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-3">
+                                <div class="menu-label">
+                                    Gerenciar Casas
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-4">
+                                <div class="menu-label">
+                                    Gerenciar Propriedades
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-5">
+                                <div class="menu-label">
+                                    Gerenciar Jogador
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-6">
+                                <div class="menu-label">
+                                    Lista de Banidos
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-label">
+                            Comprar Créditos
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-label" style="width: 80px" (click)="toggleSubMenu('ajuda')">
+                            Ajuda
+                        </div>
+
+                        <div class="menu-submenu" *ngIf="submenu['ajuda']">
+                            <div class="menu-item go-down delay-1">
+                                <div class="menu-label">
+                                    Profissões
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-2">
+                                <div class="menu-label">
+                                    Bicos
+                                </div>
+                            </div>
+                            <div class="menu-item go-down delay-3">
+                                <div class="menu-label">
+                                    Locais
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </app-pagina>
 </ion-content>

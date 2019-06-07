@@ -94,6 +94,8 @@ export class RegistroPage implements AfterViewInit {
       loading.dismiss();
       toast.present();
 
+      mp.trigger('DesabilitarCursor');
+
       setTimeout(() => {
         this.ragemp.closeBrowser();
       }, 3000);

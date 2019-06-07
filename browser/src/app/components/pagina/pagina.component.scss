@@ -22,6 +22,12 @@
     width: auto;
   }
 
+  &.centro-superior {
+    width: auto;
+    transform: matrix;
+    top: 50px;
+  }
+
   &.centro-direito {
     right: 100px;
     width: auto;

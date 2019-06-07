@@ -36,6 +36,8 @@
   }
 
   &.headset {
+    margin-left: 20px;
+
     .gui-item-container {
       align-items: flex-end;
     }
@@ -117,5 +119,56 @@
     font-size: 22px;
     font-weight: bold;
     color: orange;
+  }
+}
+
+.menu {
+  opacity: 0.3;
+
+  &.ativo {
+    opacity: 1;
+  }
+
+  .menu-container {
+    display: flex;
+    align-items: center;
+    background-color: #383a3e;
+    border-radius: 20px;
+    padding: 0 10px;
+
+    .menu-item {
+      padding: 0 15px;
+      margin: 5px 0;
+      border-right: 1px solid #FFFFFF;
+      position: relative;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      .menu-label {
+        color: #FFFFFF;
+        text-align: center;
+      }
+
+      .menu-submenu {
+        border-top: 1px solid #666;
+        position: absolute;
+        top: 24px;
+        left: 0;
+        background-color: #383a3e;
+        border-radius: 0 0 15px 15px;
+
+        .menu-item {
+          //border-bottom: 1px solid #666;
+          padding: 10px 15px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #86888f;
+          }
+        }
+      }
+    }
   }
 }

@@ -27,6 +27,7 @@ export class RagempService {
   public jogadorLocal$: BehaviorSubject<Jogador> = new BehaviorSubject(null);
   public serverEvent$: Subject<ServerEvent> = new Subject();
   public voiceChatListeners$: BehaviorSubject<Array<VoiceChatListener>> = new BehaviorSubject([]);
+  public playerGuiMenuAtivo = false;
 
   constructor() {
     if (!window) {
@@ -38,6 +39,7 @@ export class RagempService {
     (window as any).ragemp.setPlayerName = this.setPlayerName.bind(this);
     (window as any).ragemp.setBrowserName = this.setBrowserName.bind(this);
     (window as any).ragemp.setVoiceChatListeners = this.setVoiceChatListeners.bind(this);
+    (window as any).ragemp.togglePlayerGuiMenuAtivo = this.togglePlayerGuiMenuAtivo.bind(this);
     (window as any).ragemp[BrazucasEventos.DADOS_JOGADOR] = this[BrazucasEventos.DADOS_JOGADOR].bind(this);
     (window as any).ragemp.serverEvent = this.serverEvent.bind(this);
   }
@@ -87,6 +89,16 @@ export class RagempService {
       data: data,
       eventId: eventId,
     });
+  }
+
+  public togglePlayerGuiMenuAtivo() {
+    this.playerGuiMenuAtivo = !this.playerGuiMenuAtivo;
+
+    if (this.playerGuiMenuAtivo) {
+      mp.trigger('HabilitarCursor');
+    } else {
+      mp.trigger('DesabilitarCursor');
+    }
   }
 
   public closeBrowser() {

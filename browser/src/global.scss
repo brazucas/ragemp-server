@@ -107,6 +107,53 @@
   }
 }
 
+.go-down {
+  @include animation-name(go-down);
+  @include animation-iteration-count(1);
+  @include animation-timing-function(cubic-bezier(.55, 0, .1, 1));
+  @include animation-duration(0.3s);
+
+  &.delay-1 {
+    @include animation-duration(0.5s);
+  }
+
+  &.delay-2 {
+    @include animation-duration(0.7s);
+  }
+
+  &.delay-3 {
+    @include animation-duration(0.9s);
+  }
+
+  &.delay-4 {
+    @include animation-duration(1.1s);
+  }
+
+  &.delay-5 {
+    @include animation-duration(1.3s);
+  }
+
+  &.delay-6 {
+    @include animation-duration(1.5s);
+  }
+
+  &.delay-7 {
+    @include animation-duration(1.7s);
+  }
+
+  &.delay-8 {
+    @include animation-duration(1.9s);
+  }
+
+  &.delay-9 {
+    @include animation-duration(2.1s);
+  }
+
+  &.delay-10 {
+    @include animation-duration(2.3s);
+  }
+}
+
 .blink {
   animation: blink 1s linear infinite;
 }
@@ -122,6 +169,21 @@
   }
   100% {
     transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes go-down {
+  0% {
+    transform: translateY(-80px);
+    opacity: 0;
+
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }

@@ -73,6 +73,8 @@ export class LoginPage implements AfterViewInit {
       toast.present();
       loading.dismiss();
 
+      mp.trigger('DesabilitarCursor');
+
       setTimeout(() => {
         this.ragemp.closeBrowser();
       }, 3000);

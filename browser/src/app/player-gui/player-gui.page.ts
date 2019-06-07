@@ -15,8 +15,26 @@ export class PlayerGuiPage implements OnInit {
   public diffSono: number;
   public diffFome: number;
   public diffSede: number;
+  public submenu = {
+    self: false,
+    moderacao: false,
+    administracao: false,
+    ajuda: false,
+  };
+  public menuAtivo: boolean;
 
   constructor(public ragemp: RagempService) {
+    this.menuAtivo = this.ragemp.playerGuiMenuAtivo;
+  }
+
+  toggleSubMenu(submenu: string) {
+    Object.keys(this.submenu).forEach(key => {
+      if (submenu !== key) {
+        this.submenu[key] = false;
+      }
+    });
+
+    this.submenu[submenu] = !this.submenu[submenu];
   }
 
   ngOnInit() {
