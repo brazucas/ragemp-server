@@ -13,6 +13,28 @@
     justify-content: space-between;
   }
 
+  .fome-text, .sede-text, .sono-text, .forca-fisica-text {
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .fome-text {
+    color: #ffbf00;
+  }
+
+  .sede-text {
+    color: #00ffe5;
+  }
+
+  .sono-text {
+    color: #e95bff;
+  }
+
+  .forca-fisica-text {
+    color: #32d302;
+  }
+
   &.headset {
     .gui-item-container {
       align-items: flex-end;

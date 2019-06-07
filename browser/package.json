@@ -28,6 +28,7 @@
     "@types/ragemp-c": "git+https://github.com/CocaColaBear/types-ragemp-c.git",
     "br-mask": "0.0.6",
     "core-js": "^2.5.4",
+    "countup.js": "^2.0.4",
     "fstream": "^1.0.12",
     "ngx-color-picker": "^7.5.0",
     "rxjs": "~6.5.1",
