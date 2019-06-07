@@ -1537,6 +1537,62 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/alterar-veiculo/alterar-veiculo.page.html":
+/*!***********************************************************!*\
+  !*** ./src/app/alterar-veiculo/alterar-veiculo.page.html ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-content>\n  <app-pagina>\n\n  </app-pagina>\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./src/app/alterar-veiculo/alterar-veiculo.page.scss":
+/*!***********************************************************!*\
+  !*** ./src/app/alterar-veiculo/alterar-veiculo.page.scss ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FsdGVyYXItdmVpY3Vsby9hbHRlcmFyLXZlaWN1bG8ucGFnZS5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/alterar-veiculo/alterar-veiculo.page.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/alterar-veiculo/alterar-veiculo.page.ts ***!
+  \*********************************************************/
+/*! exports provided: AlterarVeiculoPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlterarVeiculoPage", function() { return AlterarVeiculoPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AlterarVeiculoPage = /** @class */ (function () {
+    function AlterarVeiculoPage() {
+    }
+    AlterarVeiculoPage.prototype.ngOnInit = function () {
+    };
+    AlterarVeiculoPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-alterar-veiculo',
+            template: __webpack_require__(/*! ./alterar-veiculo.page.html */ "./src/app/alterar-veiculo/alterar-veiculo.page.html"),
+            styles: [__webpack_require__(/*! ./alterar-veiculo.page.scss */ "./src/app/alterar-veiculo/alterar-veiculo.page.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AlterarVeiculoPage);
+    return AlterarVeiculoPage;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -1550,13 +1606,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _criar_veiculo_criar_veiculo_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./criar-veiculo/criar-veiculo.page */ "./src/app/criar-veiculo/criar-veiculo.page.ts");
-/* harmony import */ var _home_home_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home/home.page */ "./src/app/home/home.page.ts");
-/* harmony import */ var _login_login_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login/login.page */ "./src/app/login/login.page.ts");
-/* harmony import */ var _nick_invalido_nick_invalido_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nick-invalido/nick-invalido.page */ "./src/app/nick-invalido/nick-invalido.page.ts");
-/* harmony import */ var _player_gui_player_gui_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./player-gui/player-gui.page */ "./src/app/player-gui/player-gui.page.ts");
-/* harmony import */ var _players_online_players_online_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./players-online/players-online.page */ "./src/app/players-online/players-online.page.ts");
-/* harmony import */ var _registro_registro_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./registro/registro.page */ "./src/app/registro/registro.page.ts");
+/* harmony import */ var _alterar_veiculo_alterar_veiculo_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./alterar-veiculo/alterar-veiculo.page */ "./src/app/alterar-veiculo/alterar-veiculo.page.ts");
+/* harmony import */ var _criar_veiculo_criar_veiculo_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./criar-veiculo/criar-veiculo.page */ "./src/app/criar-veiculo/criar-veiculo.page.ts");
+/* harmony import */ var _gerenciar_veiculo_gerenciar_veiculo_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./gerenciar-veiculo/gerenciar-veiculo.page */ "./src/app/gerenciar-veiculo/gerenciar-veiculo.page.ts");
+/* harmony import */ var _home_home_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home.page */ "./src/app/home/home.page.ts");
+/* harmony import */ var _login_login_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./login/login.page */ "./src/app/login/login.page.ts");
+/* harmony import */ var _nick_invalido_nick_invalido_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./nick-invalido/nick-invalido.page */ "./src/app/nick-invalido/nick-invalido.page.ts");
+/* harmony import */ var _player_gui_player_gui_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./player-gui/player-gui.page */ "./src/app/player-gui/player-gui.page.ts");
+/* harmony import */ var _players_online_players_online_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./players-online/players-online.page */ "./src/app/players-online/players-online.page.ts");
+/* harmony import */ var _registro_registro_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./registro/registro.page */ "./src/app/registro/registro.page.ts");
+
+
 
 
 
@@ -1569,13 +1629,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: _home_home_page__WEBPACK_IMPORTED_MODULE_4__["HomePage"] },
-    { path: 'login', component: _login_login_page__WEBPACK_IMPORTED_MODULE_5__["LoginPage"] },
-    { path: 'players-online', component: _players_online_players_online_page__WEBPACK_IMPORTED_MODULE_8__["PlayersOnlinePage"] },
-    { path: 'registro', component: _registro_registro_page__WEBPACK_IMPORTED_MODULE_9__["RegistroPage"] },
-    { path: 'criar-veiculo', component: _criar_veiculo_criar_veiculo_page__WEBPACK_IMPORTED_MODULE_3__["CriarVeiculoPage"] },
-    { path: 'nick-invalido', component: _nick_invalido_nick_invalido_page__WEBPACK_IMPORTED_MODULE_6__["NickInvalidoPage"] },
-    { path: 'player-gui', component: _player_gui_player_gui_page__WEBPACK_IMPORTED_MODULE_7__["PlayerGuiPage"] },
+    { path: 'home', component: _home_home_page__WEBPACK_IMPORTED_MODULE_6__["HomePage"] },
+    { path: 'login', component: _login_login_page__WEBPACK_IMPORTED_MODULE_7__["LoginPage"] },
+    { path: 'players-online', component: _players_online_players_online_page__WEBPACK_IMPORTED_MODULE_10__["PlayersOnlinePage"] },
+    { path: 'registro', component: _registro_registro_page__WEBPACK_IMPORTED_MODULE_11__["RegistroPage"] },
+    { path: 'criar-veiculo', component: _criar_veiculo_criar_veiculo_page__WEBPACK_IMPORTED_MODULE_4__["CriarVeiculoPage"] },
+    { path: 'nick-invalido', component: _nick_invalido_nick_invalido_page__WEBPACK_IMPORTED_MODULE_8__["NickInvalidoPage"] },
+    { path: 'player-gui', component: _player_gui_player_gui_page__WEBPACK_IMPORTED_MODULE_9__["PlayerGuiPage"] },
+    { path: 'gerenciar-veiculo', component: _gerenciar_veiculo_gerenciar_veiculo_page__WEBPACK_IMPORTED_MODULE_5__["GerenciarVeiculoPage"] },
+    { path: 'alterar-veiculo', component: _alterar_veiculo_alterar_veiculo_page__WEBPACK_IMPORTED_MODULE_3__["AlterarVeiculoPage"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -1722,23 +1784,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var br_mask__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! br-mask */ "./node_modules/br-mask/dist/index.js");
 /* harmony import */ var ngx_color_picker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-color-picker */ "./node_modules/ngx-color-picker/dist/ngx-color-picker.es5.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _components_pagina_pagina_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/pagina/pagina.component */ "./src/app/components/pagina/pagina.component.ts");
-/* harmony import */ var _components_icone_icone_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/icone/icone.component */ "./src/app/components/icone/icone.component.ts");
-/* harmony import */ var _components_player_gui_indicator_player_gui_indicator_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/player-gui-indicator/player-gui-indicator.component */ "./src/app/components/player-gui-indicator/player-gui-indicator.component.ts");
-/* harmony import */ var _criar_veiculo_criar_veiculo_page__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./criar-veiculo/criar-veiculo.page */ "./src/app/criar-veiculo/criar-veiculo.page.ts");
-/* harmony import */ var _login_login_page__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./login/login.page */ "./src/app/login/login.page.ts");
-/* harmony import */ var _home_home_page__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./home/home.page */ "./src/app/home/home.page.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _nick_invalido_nick_invalido_page__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./nick-invalido/nick-invalido.page */ "./src/app/nick-invalido/nick-invalido.page.ts");
-/* harmony import */ var _player_gui_player_gui_page__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./player-gui/player-gui.page */ "./src/app/player-gui/player-gui.page.ts");
-/* harmony import */ var _players_online_players_online_page__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./players-online/players-online.page */ "./src/app/players-online/players-online.page.ts");
-/* harmony import */ var _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./directives/apresentar-async.directive */ "./src/app/directives/apresentar-async.directive.ts");
-/* harmony import */ var _registro_registro_page__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./registro/registro.page */ "./src/app/registro/registro.page.ts");
-/* harmony import */ var _pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pipes/filter.pipe */ "./src/app/pipes/filter.pipe.ts");
-/* harmony import */ var _directives_blink_directive__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./directives/blink.directive */ "./src/app/directives/blink.directive.ts");
+/* harmony import */ var _alterar_veiculo_alterar_veiculo_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./alterar-veiculo/alterar-veiculo.page */ "./src/app/alterar-veiculo/alterar-veiculo.page.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _components_pagina_pagina_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/pagina/pagina.component */ "./src/app/components/pagina/pagina.component.ts");
+/* harmony import */ var _components_icone_icone_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/icone/icone.component */ "./src/app/components/icone/icone.component.ts");
+/* harmony import */ var _components_player_gui_indicator_player_gui_indicator_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/player-gui-indicator/player-gui-indicator.component */ "./src/app/components/player-gui-indicator/player-gui-indicator.component.ts");
+/* harmony import */ var _criar_veiculo_criar_veiculo_page__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./criar-veiculo/criar-veiculo.page */ "./src/app/criar-veiculo/criar-veiculo.page.ts");
+/* harmony import */ var _gerenciar_veiculo_gerenciar_veiculo_page__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./gerenciar-veiculo/gerenciar-veiculo.page */ "./src/app/gerenciar-veiculo/gerenciar-veiculo.page.ts");
+/* harmony import */ var _login_login_page__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./login/login.page */ "./src/app/login/login.page.ts");
+/* harmony import */ var _home_home_page__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./home/home.page */ "./src/app/home/home.page.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _nick_invalido_nick_invalido_page__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./nick-invalido/nick-invalido.page */ "./src/app/nick-invalido/nick-invalido.page.ts");
+/* harmony import */ var _player_gui_player_gui_page__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./player-gui/player-gui.page */ "./src/app/player-gui/player-gui.page.ts");
+/* harmony import */ var _players_online_players_online_page__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./players-online/players-online.page */ "./src/app/players-online/players-online.page.ts");
+/* harmony import */ var _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./directives/apresentar-async.directive */ "./src/app/directives/apresentar-async.directive.ts");
+/* harmony import */ var _registro_registro_page__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./registro/registro.page */ "./src/app/registro/registro.page.ts");
+/* harmony import */ var _pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pipes/filter.pipe */ "./src/app/pipes/filter.pipe.ts");
+/* harmony import */ var _directives_blink_directive__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./directives/blink.directive */ "./src/app/directives/blink.directive.ts");
+
+
 
 
 
@@ -1771,32 +1837,34 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
-                _components_pagina_pagina_component__WEBPACK_IMPORTED_MODULE_11__["PaginaComponent"],
-                _components_icone_icone_component__WEBPACK_IMPORTED_MODULE_12__["IconeComponent"],
-                _components_player_gui_indicator_player_gui_indicator_component__WEBPACK_IMPORTED_MODULE_13__["PlayerGuiIndicatorComponent"],
-                _players_online_players_online_page__WEBPACK_IMPORTED_MODULE_21__["PlayersOnlinePage"],
-                _login_login_page__WEBPACK_IMPORTED_MODULE_15__["LoginPage"],
-                _home_home_page__WEBPACK_IMPORTED_MODULE_16__["HomePage"],
-                _registro_registro_page__WEBPACK_IMPORTED_MODULE_23__["RegistroPage"],
-                _criar_veiculo_criar_veiculo_page__WEBPACK_IMPORTED_MODULE_14__["CriarVeiculoPage"],
-                _nick_invalido_nick_invalido_page__WEBPACK_IMPORTED_MODULE_19__["NickInvalidoPage"],
-                _player_gui_player_gui_page__WEBPACK_IMPORTED_MODULE_20__["PlayerGuiPage"],
-                _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_22__["ApresentarAsyncDirective"],
-                _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_22__["CasoResultadoDirective"],
-                _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_22__["CasoCarregandoDirective"],
-                _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_22__["CasoErroDirective"],
-                _pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_24__["FilterPipe"],
-                _directives_blink_directive__WEBPACK_IMPORTED_MODULE_25__["BlinkDirective"],
+                _app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"],
+                _components_pagina_pagina_component__WEBPACK_IMPORTED_MODULE_12__["PaginaComponent"],
+                _components_icone_icone_component__WEBPACK_IMPORTED_MODULE_13__["IconeComponent"],
+                _components_player_gui_indicator_player_gui_indicator_component__WEBPACK_IMPORTED_MODULE_14__["PlayerGuiIndicatorComponent"],
+                _players_online_players_online_page__WEBPACK_IMPORTED_MODULE_23__["PlayersOnlinePage"],
+                _login_login_page__WEBPACK_IMPORTED_MODULE_17__["LoginPage"],
+                _home_home_page__WEBPACK_IMPORTED_MODULE_18__["HomePage"],
+                _registro_registro_page__WEBPACK_IMPORTED_MODULE_25__["RegistroPage"],
+                _criar_veiculo_criar_veiculo_page__WEBPACK_IMPORTED_MODULE_15__["CriarVeiculoPage"],
+                _nick_invalido_nick_invalido_page__WEBPACK_IMPORTED_MODULE_21__["NickInvalidoPage"],
+                _player_gui_player_gui_page__WEBPACK_IMPORTED_MODULE_22__["PlayerGuiPage"],
+                _gerenciar_veiculo_gerenciar_veiculo_page__WEBPACK_IMPORTED_MODULE_16__["GerenciarVeiculoPage"],
+                _alterar_veiculo_alterar_veiculo_page__WEBPACK_IMPORTED_MODULE_9__["AlterarVeiculoPage"],
+                _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_24__["ApresentarAsyncDirective"],
+                _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_24__["CasoResultadoDirective"],
+                _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_24__["CasoCarregandoDirective"],
+                _directives_apresentar_async_directive__WEBPACK_IMPORTED_MODULE_24__["CasoErroDirective"],
+                _pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_26__["FilterPipe"],
+                _directives_blink_directive__WEBPACK_IMPORTED_MODULE_27__["BlinkDirective"],
             ],
             entryComponents: [],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
-                _angular_common__WEBPACK_IMPORTED_MODULE_18__["CommonModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_17__["FormsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_17__["ReactiveFormsModule"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_20__["CommonModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_19__["FormsModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_19__["ReactiveFormsModule"],
                 br_mask__WEBPACK_IMPORTED_MODULE_7__["BrMaskerModule"],
                 ngx_color_picker__WEBPACK_IMPORTED_MODULE_8__["ColorPickerModule"],
             ],
@@ -1805,7 +1873,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -2083,7 +2151,7 @@ var PlayerGuiIndicatorComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content *ngIf=\"mostrarFormulario\">\n    <app-pagina [formGroup]=\"formGroup\" [podeFechar]=\"true\" (submit)=\"criarVeiculo()\">\n        <div class=\"titulo\">,culo</div>\n\n        <div class=\"container-veiculo\">\n            <div class=\"imagem-modelo\">\n                <img [src]=\"'assets/veiculos/'+ formGroup.controls.modelo.value.toLowerCase() +'.png'\" alt=\"\"\n                     width=\"200px\"/>\n            </div>\n\n            <div class=\"formulario\">\n                <div class=\"titulo\">\n                    Modelo\n                </div>\n\n                <ion-searchbar placeholder=\"Pesquisar\" (ionChange)=\"modeloPesquisa($event)\"></ion-searchbar>\n\n                <select id=\"modelo\" class=\"modelos\" formControlName=\"modelo\" size=\"6\"\n                        (change)=\"modeloSelecionado($event)\">\n                    <option *ngFor=\"let veiculo of (listaVeiculos | filter: filtroPesquisa)\">\n                        {{ veiculo }}\n                    </option>\n                </select>\n            </div>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Cor Primária</ion-label>\n                <ion-input formControlName=\"corPrimaria\" [(colorPicker)]=\"corPrimaria\"\n                           (colorPickerChange)=\"corVeiculoPrimaria($event)\"\n                           [style.background]=\"corPrimaria\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Cor Secundária</ion-label>\n                <ion-input formControlName=\"corSecundaria\" [(colorPicker)]=\"corSecundaria\"\n                           (colorPickerChange)=\"corVeiculoSecundaria($event)\"\n                           [style.background]=\"corSecundaria\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Proprietário</ion-label>\n                <ion-input formControlName=\"proprietario\" type=\"text\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Placa</ion-label>\n                <ion-input formControlName=\"placa\" placeholder=\"Ex: BRZ5\" type=\"text\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Valor Original</ion-label>\n                <ion-input formControlName=\"valorOriginal\" type=\"text\"\n                           placeholder=\"(R$) Real\"\n                           [brmasker]=\"{form: formGroup.get('valorOriginal'), money: true, thousand: '.'}\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Valor Venda</ion-label>\n                <ion-input formControlName=\"valorVenda\" type=\"text\"\n                           placeholder=\"(R$) Real\"\n                           [brmasker]=\"{form: formGroup.get('valorVenda'), money: true, thousand: '.'}\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Posição X</ion-label>\n                <ion-input formControlName=\"posicaoX\" readonly type=\"text\" placeholder=\"Posição X\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Posição Y</ion-label>\n                <ion-input formControlName=\"posicaoY\" readonly type=\"text\" placeholder=\"Posição Y\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Posição Z</ion-label>\n                <ion-input formControlName=\"posicaoZ\" readonly type=\"text\" placeholder=\"Posição Z\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"booleans\">\n            <ion-item>\n                <ion-label position=\"floating\">Trancado?</ion-label>\n                <ion-toggle formControlName=\"trancado\"></ion-toggle>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">A Venda?</ion-label>\n                <ion-toggle formControlName=\"aVenda\"></ion-toggle>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Motor ligado?</ion-label>\n                <ion-toggle formControlName=\"motor\"></ion-toggle>\n            </ion-item>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Transparência</ion-label>\n                <ion-input formControlName=\"transparencia\" type=\"number\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Tamanho</ion-label>\n                <ion-input formControlName=\"tamanho\" type=\"number\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"acoes\">\n            <button type=\"submit\" [disabled]=\"!formGroup.valid\" class=\"btn-enviar\">Criar</button>\n        </div>\n    </app-pagina>\n</ion-content>\n"
+module.exports = "<ion-content *ngIf=\"mostrarFormulario\">\n    <app-pagina [formGroup]=\"formGroup\" [podeFechar]=\"true\" (submit)=\"criarVeiculo()\">\n        <div class=\"titulo\">Criando Veículo</div>\n\n        <div class=\"container-veiculo\">\n            <div class=\"imagem-modelo\">\n                <img [src]=\"'assets/veiculos/'+ formGroup.controls.modelo.value.toLowerCase() +'.png'\" alt=\"\"\n                     width=\"200px\"/>\n            </div>\n\n            <div class=\"formulario\">\n                <div class=\"titulo\">\n                    Modelo\n                </div>\n\n                <ion-searchbar placeholder=\"Pesquisar\" (ionChange)=\"modeloPesquisa($event)\"></ion-searchbar>\n\n                <select id=\"modelo\" class=\"modelos\" formControlName=\"modelo\" size=\"6\"\n                        (change)=\"modeloSelecionado($event)\">\n                    <option *ngFor=\"let veiculo of (listaVeiculos | filter: filtroPesquisa)\">\n                        {{ veiculo }}\n                    </option>\n                </select>\n            </div>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Cor Primária</ion-label>\n                <ion-input formControlName=\"corPrimaria\" [(colorPicker)]=\"corPrimaria\"\n                           (colorPickerChange)=\"corVeiculoPrimaria($event)\"\n                           [style.background]=\"corPrimaria\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Cor Secundária</ion-label>\n                <ion-input formControlName=\"corSecundaria\" [(colorPicker)]=\"corSecundaria\"\n                           (colorPickerChange)=\"corVeiculoSecundaria($event)\"\n                           [style.background]=\"corSecundaria\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Proprietário</ion-label>\n                <ion-input formControlName=\"proprietario\" type=\"text\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Placa</ion-label>\n                <ion-input formControlName=\"placa\" placeholder=\"Ex: BRZ5\" type=\"text\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Valor Original</ion-label>\n                <ion-input formControlName=\"valorOriginal\" type=\"text\"\n                           placeholder=\"(R$) Real\"\n                           [brmasker]=\"{form: formGroup.get('valorOriginal'), money: true, thousand: '.'}\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Valor Venda</ion-label>\n                <ion-input formControlName=\"valorVenda\" type=\"text\"\n                           placeholder=\"(R$) Real\"\n                           [brmasker]=\"{form: formGroup.get('valorVenda'), money: true, thousand: '.'}\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Posição X</ion-label>\n                <ion-input formControlName=\"posicaoX\" readonly type=\"text\" placeholder=\"Posição X\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Posição Y</ion-label>\n                <ion-input formControlName=\"posicaoY\" readonly type=\"text\" placeholder=\"Posição Y\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Posição Z</ion-label>\n                <ion-input formControlName=\"posicaoZ\" readonly type=\"text\" placeholder=\"Posição Z\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"booleans\">\n            <ion-item>\n                <ion-label position=\"floating\">Trancado?</ion-label>\n                <ion-toggle formControlName=\"trancado\"></ion-toggle>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">A Venda?</ion-label>\n                <ion-toggle formControlName=\"aVenda\"></ion-toggle>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Motor ligado?</ion-label>\n                <ion-toggle formControlName=\"motor\"></ion-toggle>\n            </ion-item>\n        </div>\n\n        <div class=\"posicao\">\n            <ion-item>\n                <ion-label position=\"floating\">Transparência</ion-label>\n                <ion-input formControlName=\"transparencia\" type=\"number\"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label position=\"floating\">Tamanho</ion-label>\n                <ion-input formControlName=\"tamanho\" type=\"number\"></ion-input>\n            </ion-item>\n        </div>\n\n        <div class=\"acoes\">\n            <button type=\"submit\" [disabled]=\"!formGroup.valid\" class=\"btn-enviar\">Criar</button>\n        </div>\n    </app-pagina>\n</ion-content>\n"
 
 /***/ }),
 
@@ -2632,6 +2700,68 @@ function incluirStatus(inicial, absorverErros) {
 
 /***/ }),
 
+/***/ "./src/app/gerenciar-veiculo/gerenciar-veiculo.page.html":
+/*!***************************************************************!*\
+  !*** ./src/app/gerenciar-veiculo/gerenciar-veiculo.page.html ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-content>\n  <app-pagina>\n    <div class=\"choose-container\">\n      <div class=\"choose-item\" (click)=\"browserPage('criar-veiculo')\">\n        Criar Veículo\n      </div>\n\n      <div class=\"choose-item\">\n        Alterar Veículo\n      </div>\n    </div>\n  </app-pagina>\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./src/app/gerenciar-veiculo/gerenciar-veiculo.page.scss":
+/*!***************************************************************!*\
+  !*** ./src/app/gerenciar-veiculo/gerenciar-veiculo.page.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".choose-container {\n  display: flex;\n  align-items: center;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 40px auto; }\n  .choose-container .choose-item {\n    padding: 25px;\n    text-align: center;\n    font-size: 25px;\n    color: #FFFFFF;\n    cursor: pointer;\n    border-right: 1px solid #aaa;\n    background-color: #319136;\n    margin-bottom: 40px; }\n  .choose-container .choose-item:first-child {\n      border-radius: 20px 0 0 20px; }\n  .choose-container .choose-item:last-child {\n      border-radius: 0 20px 20px 0;\n      border-right: none; }\n  .choose-container .choose-item:hover {\n      opacity: 0.8; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi91c3IvbG9jYWwvdmFyL3d3dy9odGRvY3MvQlJaL1JhZ2VNUC9icm93c2VyL3NyYy9hcHAvZ2VyZW5jaWFyLXZlaWN1bG8vZ2VyZW5jaWFyLXZlaWN1bG8ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiwwQkFBa0I7RUFBbEIsdUJBQWtCO0VBQWxCLGtCQUFrQjtFQUNsQixpQkFBaUIsRUFBQTtFQUpuQjtJQU9JLGFBQWE7SUFDYixrQkFBa0I7SUFDbEIsZUFBZTtJQUNmLGNBQWM7SUFDZCxlQUFlO0lBQ2YsNEJBQThCO0lBQzlCLHlCQUF5QjtJQUN6QixtQkFBbUIsRUFBQTtFQWR2QjtNQWlCTSw0QkFBNEIsRUFBQTtFQWpCbEM7TUFxQk0sNEJBQTRCO01BQzVCLGtCQUFrQixFQUFBO0VBdEJ4QjtNQTBCTSxZQUFZLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9nZXJlbmNpYXItdmVpY3Vsby9nZXJlbmNpYXItdmVpY3Vsby5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2hvb3NlLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHdpZHRoOiBmaXQtY29udGVudDtcbiAgbWFyZ2luOiA0MHB4IGF1dG87XG5cbiAgLmNob29zZS1pdGVtIHtcbiAgICBwYWRkaW5nOiAyNXB4O1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBmb250LXNpemU6IDI1cHg7XG4gICAgY29sb3I6ICNGRkZGRkY7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkICNhYWEgIDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzE5MTM2O1xuICAgIG1hcmdpbi1ib3R0b206IDQwcHg7XG5cbiAgICAmOmZpcnN0LWNoaWxkIHtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDIwcHggMCAwIDIwcHg7XG4gICAgfVxuXG4gICAgJjpsYXN0LWNoaWxkIHtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDAgMjBweCAyMHB4IDA7XG4gICAgICBib3JkZXItcmlnaHQ6IG5vbmU7XG4gICAgfVxuXG4gICAgJjpob3ZlciB7XG4gICAgICBvcGFjaXR5OiAwLjg7XG4gICAgfVxuICB9XG59XG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/gerenciar-veiculo/gerenciar-veiculo.page.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/gerenciar-veiculo/gerenciar-veiculo.page.ts ***!
+  \*************************************************************/
+/*! exports provided: GerenciarVeiculoPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GerenciarVeiculoPage", function() { return GerenciarVeiculoPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/ragemp.service */ "./src/app/services/ragemp.service.ts");
+
+
+
+var GerenciarVeiculoPage = /** @class */ (function () {
+    function GerenciarVeiculoPage(ragemp) {
+        this.ragemp = ragemp;
+    }
+    GerenciarVeiculoPage.prototype.ngOnInit = function () {
+    };
+    GerenciarVeiculoPage.prototype.browserPage = function (pagina) {
+        mp.trigger('BrowserPagina', 'central', pagina);
+    };
+    GerenciarVeiculoPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-gerenciar-veiculo',
+            template: __webpack_require__(/*! ./gerenciar-veiculo.page.html */ "./src/app/gerenciar-veiculo/gerenciar-veiculo.page.html"),
+            styles: [__webpack_require__(/*! ./gerenciar-veiculo.page.scss */ "./src/app/gerenciar-veiculo/gerenciar-veiculo.page.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_ragemp_service__WEBPACK_IMPORTED_MODULE_2__["RagempService"]])
+    ], GerenciarVeiculoPage);
+    return GerenciarVeiculoPage;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/home/home.page.html":
 /*!*************************************!*\
   !*** ./src/app/home/home.page.html ***!
@@ -2944,7 +3074,7 @@ var FilterPipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content>\n    <app-pagina position=\"top-right\" top=\"230\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"gui-item go-up delay-1\">\n            <div class=\"gui-item-container\">\n                <div class=\"go-up fome-text delay-4\" *ngIf=\"diffFome !== 0\">\n                    <ng-container *ngIf=\"diffFome > 0\">+</ng-container>\n                    {{ diffFome }}\n                </div>\n\n                <div class=\"gui-icon fome\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.fome\">\n                    <img src=\"assets/player-gui/meat.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.fome\">\n                        <app-player-gui-indicator [value]=\"dadosJogador.fome\" activeColor=\"#ffbf00\"\n                                                  backgroundColor=\"#9e7600\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sede\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"dadosJogador.sede\"\n                                                  activeColor=\"#00ffe5\" backgroundColor=\"#009e8e\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon sede\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sede\">\n                    <img src=\"assets/player-gui/drink.png\"/>\n                </div>\n\n                <div class=\"go-up sede-text delay-4\" *ngIf=\"diffSede !== 0\">\n                    <ng-container *ngIf=\"diffSede > 0\">+</ng-container>\n                    {{ diffSede }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-3\">\n            <div class=\"gui-item-container\">\n                <div class=\"go-up sono-text delay-4\" *ngIf=\"diffSono !== 0\">\n                    <ng-container *ngIf=\"diffSono > 0\">+</ng-container>\n                    {{ diffSono }}\n                </div>\n\n                <div class=\"gui-icon sono\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sono\">\n                    <img src=\"assets/player-gui/bed.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sono\">\n                        <app-player-gui-indicator [value]=\"dadosJogador.sono\" activeColor=\"#e95bff\"\n                                                  backgroundColor=\"#682972\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.forcaFisica\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"dadosJogador.forcaFisica\"\n                                                  activeColor=\"#32d302\" backgroundColor=\"#1a7000\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon forca\" appBlink [blinkStartValue]=\"20\"\n                     [blinkCurrentValue]=\"dadosJogador.forcaFisica\">\n                    <img src=\"assets/player-gui/strength.png\"/>\n                </div>\n\n                <div class=\"go-up forca-fisica-text delay-4\" *ngIf=\"diffForcaFisica !== 0\">\n                    <ng-container *ngIf=\"diffForcaFisica > 0\">+</ng-container>\n                    {{ diffForcaFisica }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-4 headset\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon\">\n                    <img src=\"assets/player-gui/headset.png\"/>\n                </div>\n\n                <div class=\"gui-indicator\">\n                    {{ voiceChatListeners.length }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-6\">\n            <div class=\"dinheiro\">\n                R$ <span id=\"dinheiro\">{{ dadosJogador.dinheiro }}</span>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-7\">\n            <div class=\"creditos\">\n                C$ <span id=\"creditos\">{{ dadosJogador.creditos }}</span>\n            </div>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"bottom-right\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"go-up delay-1\">\n            <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"top-center\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <small>Pressione \"F3\" para acessar o menu.</small>\n\n        <div class=\"menu\" [ngClass]=\"{'ativo': menuAtivo}\">\n            <div class=\"go-down delay-1\">\n                <div class=\"menu-container\">\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\" (click)=\"toggleSubMenu('self')\">\n                            Mandrakke_Army\n                        </div>\n\n                        <div class=\"menu-submenu\" *ngIf=\"submenu['self']\">\n                            <div class=\"menu-item go-down delay-1\">\n                                <div class=\"menu-label\">\n                                    Meus Dados\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-2\">\n                                <div class=\"menu-label\">\n                                    Profissão\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-3\">\n                                <div class=\"menu-label\">\n                                    Meus Veículos\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-4\">\n                                <div class=\"menu-label\">\n                                    Minhas Casas\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-5\">\n                                <div class=\"menu-label\">\n                                    Minhas Propriedades\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\" (click)=\"toggleSubMenu('moderacao')\">\n                            Moderação\n                        </div>\n\n                        <div class=\"menu-submenu\" *ngIf=\"submenu['moderacao']\">\n                            <div class=\"menu-item go-down delay-1\">\n                                <div class=\"menu-label\">\n                                    Checar Jogador\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-2\">\n                                <div class=\"menu-label\">\n                                    Chutar\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-3\">\n                                <div class=\"menu-label\">\n                                    Banir\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-4\">\n                                <div class=\"menu-label\">\n                                    Teleportar\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-5\">\n                                <div class=\"menu-label\">\n                                    Calar\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\" (click)=\"toggleSubMenu('administracao')\">\n                            Administração\n                        </div>\n\n                        <div class=\"menu-submenu\" *ngIf=\"submenu['administracao']\">\n                            <div class=\"menu-item go-down delay-1\">\n                                <div class=\"menu-label\">\n                                    Editor de Mapa\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-2\">\n                                <div class=\"menu-label\">\n                                    Gerenciar Veículos\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-3\">\n                                <div class=\"menu-label\">\n                                    Gerenciar Casas\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-4\">\n                                <div class=\"menu-label\">\n                                    Gerenciar Propriedades\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-5\">\n                                <div class=\"menu-label\">\n                                    Gerenciar Jogador\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-6\">\n                                <div class=\"menu-label\">\n                                    Lista de Banidos\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\">\n                            Comprar Créditos\n                        </div>\n                    </div>\n\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\" style=\"width: 80px\" (click)=\"toggleSubMenu('ajuda')\">\n                            Ajuda\n                        </div>\n\n                        <div class=\"menu-submenu\" *ngIf=\"submenu['ajuda']\">\n                            <div class=\"menu-item go-down delay-1\">\n                                <div class=\"menu-label\">\n                                    Profissões\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-2\">\n                                <div class=\"menu-label\">\n                                    Bicos\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-3\">\n                                <div class=\"menu-label\">\n                                    Locais\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </app-pagina>\n</ion-content>\n"
+module.exports = "<ion-content>\n    <app-pagina position=\"top-right\" top=\"230\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"gui-item go-up delay-1\">\n            <div class=\"gui-item-container\">\n                <div class=\"go-up fome-text delay-4\" *ngIf=\"diffFome !== 0\">\n                    <ng-container *ngIf=\"diffFome > 0\">+</ng-container>\n                    {{ diffFome }}\n                </div>\n\n                <div class=\"gui-icon fome\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.fome\">\n                    <img src=\"assets/player-gui/meat.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.fome\">\n                        <app-player-gui-indicator [value]=\"dadosJogador.fome\" activeColor=\"#ffbf00\"\n                                                  backgroundColor=\"#9e7600\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sede\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"dadosJogador.sede\"\n                                                  activeColor=\"#00ffe5\" backgroundColor=\"#009e8e\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon sede\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sede\">\n                    <img src=\"assets/player-gui/drink.png\"/>\n                </div>\n\n                <div class=\"go-up sede-text delay-4\" *ngIf=\"diffSede !== 0\">\n                    <ng-container *ngIf=\"diffSede > 0\">+</ng-container>\n                    {{ diffSede }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-3\">\n            <div class=\"gui-item-container\">\n                <div class=\"go-up sono-text delay-4\" *ngIf=\"diffSono !== 0\">\n                    <ng-container *ngIf=\"diffSono > 0\">+</ng-container>\n                    {{ diffSono }}\n                </div>\n\n                <div class=\"gui-icon sono\" appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sono\">\n                    <img src=\"assets/player-gui/bed.png\"/>\n                </div>\n\n                <div>\n                    <div class=\"gui-indicator barra-normal\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.sono\">\n                        <app-player-gui-indicator [value]=\"dadosJogador.sono\" activeColor=\"#e95bff\"\n                                                  backgroundColor=\"#682972\">\n\n                        </app-player-gui-indicator>\n                    </div>\n\n                    <div class=\"gui-indicator barra-invertida\"\n                         appBlink [blinkStartValue]=\"20\" [blinkCurrentValue]=\"dadosJogador.forcaFisica\">\n                        <app-player-gui-indicator [invertido]=\"true\" [value]=\"dadosJogador.forcaFisica\"\n                                                  activeColor=\"#32d302\" backgroundColor=\"#1a7000\">\n\n                        </app-player-gui-indicator>\n                    </div>\n                </div>\n\n                <div class=\"gui-icon forca\" appBlink [blinkStartValue]=\"20\"\n                     [blinkCurrentValue]=\"dadosJogador.forcaFisica\">\n                    <img src=\"assets/player-gui/strength.png\"/>\n                </div>\n\n                <div class=\"go-up forca-fisica-text delay-4\" *ngIf=\"diffForcaFisica !== 0\">\n                    <ng-container *ngIf=\"diffForcaFisica > 0\">+</ng-container>\n                    {{ diffForcaFisica }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-4 headset\">\n            <div class=\"gui-item-container\">\n                <div class=\"gui-icon\">\n                    <img src=\"assets/player-gui/headset.png\"/>\n                </div>\n\n                <div class=\"gui-indicator\">\n                    {{ voiceChatListeners.length }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-6\">\n            <div class=\"dinheiro\">\n                R$ <span id=\"dinheiro\">{{ dadosJogador.dinheiro }}</span>\n            </div>\n        </div>\n\n        <div class=\"gui-item go-up delay-7\">\n            <div class=\"creditos\">\n                C$ <span id=\"creditos\">{{ dadosJogador.creditos }}</span>\n            </div>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"bottom-right\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <div class=\"go-up delay-1\">\n            <img src=\"assets/logotipo_full_web.png\" alt=\"\" width=\"120px\"/>\n        </div>\n    </app-pagina>\n\n    <app-pagina position=\"top-center\" [anim]=\"false\" [cabecalho]=\"false\" [layout]=\"false\">\n        <small>Pressione \"F3\" para acessar o menu.</small>\n\n        <div class=\"menu\" [ngClass]=\"{'ativo': menuAtivo}\">\n            <div class=\"go-down delay-1\">\n                <div class=\"menu-container\">\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\" (click)=\"toggleSubMenu('self')\">\n                            Mandrakke_Army\n                        </div>\n\n                        <div class=\"menu-submenu\" *ngIf=\"submenu['self']\">\n                            <div class=\"menu-item go-down delay-1\">\n                                <div class=\"menu-label\">\n                                    Meus Dados\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-2\">\n                                <div class=\"menu-label\">\n                                    Profissão\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-3\">\n                                <div class=\"menu-label\">\n                                    Meus Veículos\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-4\">\n                                <div class=\"menu-label\">\n                                    Minhas Casas\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-5\">\n                                <div class=\"menu-label\">\n                                    Minhas Propriedades\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\" (click)=\"toggleSubMenu('moderacao')\">\n                            Moderação\n                        </div>\n\n                        <div class=\"menu-submenu\" *ngIf=\"submenu['moderacao']\">\n                            <div class=\"menu-item go-down delay-1\">\n                                <div class=\"menu-label\">\n                                    Checar Jogador\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-2\">\n                                <div class=\"menu-label\">\n                                    Chutar\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-3\">\n                                <div class=\"menu-label\">\n                                    Banir\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-4\">\n                                <div class=\"menu-label\">\n                                    Teleportar\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-5\">\n                                <div class=\"menu-label\">\n                                    Calar\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\" (click)=\"toggleSubMenu('administracao')\">\n                            Administração\n                        </div>\n\n                        <div class=\"menu-submenu\" *ngIf=\"submenu['administracao']\">\n                            <div class=\"menu-item go-down delay-1\">\n                                <div class=\"menu-label\">\n                                    Editor de Mapa\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-2\">\n                                <div class=\"menu-label\" (click)=\"browserPage('gerenciar-veiculo')\">\n                                    Gerenciar Veículos\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-3\">\n                                <div class=\"menu-label\">\n                                    Gerenciar Casas\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-4\">\n                                <div class=\"menu-label\">\n                                    Gerenciar Propriedades\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-5\">\n                                <div class=\"menu-label\">\n                                    Gerenciar Jogador\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-6\">\n                                <div class=\"menu-label\">\n                                    Lista de Banidos\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\">\n                            Comprar Créditos\n                        </div>\n                    </div>\n\n                    <div class=\"menu-item\">\n                        <div class=\"menu-label\" style=\"width: 80px\" (click)=\"toggleSubMenu('ajuda')\">\n                            Ajuda\n                        </div>\n\n                        <div class=\"menu-submenu\" *ngIf=\"submenu['ajuda']\">\n                            <div class=\"menu-item go-down delay-1\">\n                                <div class=\"menu-label\">\n                                    Profissões\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-2\">\n                                <div class=\"menu-label\">\n                                    Bicos\n                                </div>\n                            </div>\n                            <div class=\"menu-item go-down delay-3\">\n                                <div class=\"menu-label\">\n                                    Locais\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </app-pagina>\n</ion-content>\n"
 
 /***/ }),
 
@@ -3039,6 +3169,10 @@ var PlayerGuiPage = /** @class */ (function () {
             dinheiroCountUp.update(jogador.dinheiro);
             creditosCountUp.update(jogador.creditos);
         });
+    };
+    PlayerGuiPage.prototype.browserPage = function (pagina) {
+        this.ragemp.togglePlayerGuiMenuAtivo();
+        mp.trigger('BrowserPagina', 'central', pagina);
     };
     PlayerGuiPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

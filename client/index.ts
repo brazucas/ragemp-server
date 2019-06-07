@@ -415,6 +415,14 @@ class BrowserEvents {
     mp.events.add('DesabilitarCursor', () => {
       mp.gui.cursor.visible = false;
     });
+
+    mp.events.add('BrowserPagina', (browserName: string, browserPage: string) => {
+      const browser: Navegador = this.client.browsers[browserName];
+      if (browser) {
+        browser.navegar(browserPage);
+        browser.mostrar();
+      }
+    });
   }
 }
 

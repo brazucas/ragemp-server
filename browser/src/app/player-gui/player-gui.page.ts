@@ -3,6 +3,8 @@ import { CountUp } from 'countup.js';
 import { Jogador } from '../../interfaces/jogador.interface';
 import { RagempService, VoiceChatListener } from '../services/ragemp.service';
 
+declare const mp;
+
 @Component({
   selector: 'app-player-gui',
   templateUrl: './player-gui.page.html',
@@ -84,6 +86,11 @@ export class PlayerGuiPage implements OnInit {
       dinheiroCountUp.update(jogador.dinheiro);
       creditosCountUp.update(jogador.creditos);
     });
+  }
+
+  browserPage(pagina: string) {
+    this.ragemp.togglePlayerGuiMenuAtivo();
+    mp.trigger('BrowserPagina', 'central', pagina);
   }
 
 }

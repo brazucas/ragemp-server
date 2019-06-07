@@ -1,0 +1,30 @@
+.choose-container {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 40px auto;
+
+  .choose-item {
+    padding: 25px;
+    text-align: center;
+    font-size: 25px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-right: 1px solid #aaa  ;
+    background-color: #319136;
+    margin-bottom: 40px;
+
+    &:first-child {
+      border-radius: 20px 0 0 20px;
+    }
+
+    &:last-child {
+      border-radius: 0 20px 20px 0;
+      border-right: none;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
