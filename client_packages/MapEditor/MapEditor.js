@@ -529,7 +529,7 @@ function CreateFocusObject(hash = null)
 
         if(oldIndex !== IndexMem)
         {
-            mp.gui.chat.push("Index adjusted to " + IndexMem + " due to object error.");
+            mp.gui.chat.push("Índice ajustado para " + IndexMem + " por causa de um erro.");
         }
 
         mp.game.streaming.requestModel(mp.game.joaat(objData[IndexMem]));
@@ -579,7 +579,7 @@ function CreateFocusObject(hash = null)
         }
         else
         {
-            mp.gui.chat.push("Invalid Hash");
+            mp.gui.chat.push("Hash inválido");
         }
     }
 }
@@ -706,9 +706,9 @@ mp.keys.bind(bindKeys.KEY_SAVE, false, function()
     if(!editorStart)
         return;
 
-    mp.gui.chat.push("Type '/msave name' to save your map.");
-    mp.gui.chat.push("Please note that your map is autosaved every few seconds!");
-    mp.gui.chat.push("To load that type '/mload autosave'");
+    mp.gui.chat.push("Digite '/msave [nome]' para salvar seu mapa.");
+    mp.gui.chat.push("Seu mapa também é salvo automaticamente a cada minuto!");
+    mp.gui.chat.push("Para habilitar o salvamento automatico, digite '/mload autosave'");
 });
 
 mp.keys.bind(bindKeys.KEY_SPACE, false, function()
@@ -739,11 +739,11 @@ mp.events.add("playerCommand", (command) =>
     {
         if(args.length === 0)
         {
-            mp.gui.chat.push("Please enter a valid name");
+            mp.gui.chat.push("Informe um nome válido");
         }
         else if(args[0] === "autosave")
         {
-            mp.gui.chat.push("Please enter a valid name");
+            mp.gui.chat.push("Informe um nome válido");
         }
         else
         {
@@ -760,9 +760,9 @@ mp.events.add("playerCommand", (command) =>
                     mapData.push({model : editorObjects[i].getModel(), x: pos.x, y: pos.y, z: pos.z, rx: rot.x, ry: rot.y, rz: rot.z, col: !!coll, freeze: !!frz});
                 }
             }
-            mp.gui.chat.push("save LEN: " + editorObjects.length);
+            mp.gui.chat.push("Número de objetos salvos: " + editorObjects.length);
             mp.events.callRemote("MapEditor_Save", args[0], JSON.stringify(mapData, null, " ") + "");
-            mp.gui.chat.push("Map saved!");
+            mp.gui.chat.push("Mapa salvo!");
         }
     }
     else if(commandName === "mclear")
@@ -776,13 +776,13 @@ mp.events.add("playerCommand", (command) =>
             }
         }
         editorObjects = [];
-        mp.gui.chat.push("Map editor cleared!");
+        mp.gui.chat.push("Editor de mapas limpo!");
     }
     else if(commandName === "mload")
 	{
         if(args.length === 0)
         {
-            mp.gui.chat.push("Please enter a valid name");
+            mp.gui.chat.push("Informe um nome válido");
             return;
         }
         let i = 0;
@@ -795,24 +795,24 @@ mp.events.add("playerCommand", (command) =>
         }
         editorObjects = [];
         mp.events.callRemote("MapEditor_Load", args[0]);
-        mp.gui.chat.push("Map loaded!");
+        mp.gui.chat.push("Mapa carregado!");
     }
     else if(commandName === "mindx")
 	{
         if(args.length === 0)
         {
-            mp.gui.chat.push("Please enter a valid index (Max: " + objData.length + ")");
+            mp.gui.chat.push("Informe um índice válido (Máximo: " + objData.length + ")");
             return;
         }
         if(isNaN(args[0]))
         {
-            mp.gui.chat.push("Please enter a valid index (Max: " + objData.length + ")");
+            mp.gui.chat.push("Informe um índice válido (Máximo: " + objData.length + ")");
             return;
         }
 
         if(parseInt(args[0]) < 0 || parseInt(args[0]) >= objData.length)
         {
-            mp.gui.chat.push("Please enter a valid index (Max: " + objData.length + ")");
+            mp.gui.chat.push("Informe um índice válido (Máximo: " + objData.length + ")");
             return;
         }
         IndexMem = parseInt(args[0]);
@@ -821,15 +821,15 @@ mp.events.add("playerCommand", (command) =>
     }
     else if(commandName === "mcmds")
     {
-        mp.gui.chat.push("Editor Commands: medit [name], msave [name], mload [name]");
-        mp.gui.chat.push("Editor Commands: mindx [index], mobj [hash], mlmaps");
-        mp.gui.chat.push("Editor Commands: mdeload [name], mmaps, mclear");
+        mp.gui.chat.push("Comandos do editor: medit [nome], msave [nome], mload [nome]");
+        mp.gui.chat.push("Comandos do editor: mindx [index], mobj [hash], mlmaps");
+        mp.gui.chat.push("Comandos do editor: mdeload [nome], mmaps, mclear");
     }
     else if(commandName === "mdeload")
 	{
         if(args.length === 0)
         {
-            mp.gui.chat.push("Please enter a valid name");
+            mp.gui.chat.push("Informe um nome válido");
             return;
         }
         let i = 0;
@@ -842,13 +842,13 @@ mp.events.add("playerCommand", (command) =>
         }
         editorObjects = [];
         mp.events.callRemote("MapEditor_Deload", args[0]);
-        mp.gui.chat.push("Map deloaded!");
+        mp.gui.chat.push("Mapa descarregado!");
     }
     else if(commandName === "medit")
 	{
         if(args.length === 0)
         {
-            mp.gui.chat.push("Please enter a valid name");
+            mp.gui.chat.push("Informe um nome válido");
             return;
         }
         let i = 0;
@@ -861,7 +861,7 @@ mp.events.add("playerCommand", (command) =>
         }
         editorObjects = [];
         mp.events.callRemote("MapEditor_Edit", args[0]);
-        mp.gui.chat.push("Map edit mode!");
+        mp.gui.chat.push("Mapa em modo de edição!");
     }
 	else if(commandName === "mmaps")
 	{
@@ -875,7 +875,7 @@ mp.events.add("playerCommand", (command) =>
 	{
 		if(args.length == 0)
 		{
-			mp.gui.chat.push("Invalid object");
+			mp.gui.chat.push("Objeto inválido");
 		}
 		else
 		{
@@ -883,7 +883,7 @@ mp.events.add("playerCommand", (command) =>
             {
                 if(!mp.game.streaming.isModelInCdimage(parseInt(args[0])) || !mp.game.streaming.isModelValid(parseInt(args[0])))
                 {
-                    mp.gui.chat.push("Invalid object");
+                    mp.gui.chat.push("Objeto inválido");
                 }
                 else
                 {
@@ -908,7 +908,7 @@ mp.events.add("playerCommand", (command) =>
             {
                 if(!mp.game.streaming.isModelInCdimage(mp.game.joaat(args[0])) || !mp.game.streaming.isModelValid(mp.game.joaat(args[0])))
                 {
-                    mp.gui.chat.push("Invalid object");
+                    mp.gui.chat.push("Objeto inválido");
                 }
                 else
                 {
@@ -1325,12 +1325,12 @@ mp.events.add("render", () =>
             mp.game.ui.addTextComponentSubstringPlayerName("Selector Mode");
 		mp.game.ui.drawSubtitleTimed(1, true);
         AddInstructionalStart();
-        AddInstructionalButtonCustom("Exit Editor", "t_F2");
-        AddInstructionalButtonCustom("Save Map", "t_F4");
-        AddInstructionalButtonCustom("Placement Mode", "t_2");
-        AddInstructionalButtonCustom("Adjustment Mode", "t_3");
-        AddInstructionalButton("Duplicate Object", 101);
-        AddInstructionalButton("Select Object", 100);
+        AddInstructionalButtonCustom("Sair do editor", "t_F2");
+        AddInstructionalButtonCustom("Salvar mapa", "t_F4");
+        AddInstructionalButtonCustom("Modo de edição", "t_2");
+        AddInstructionalButtonCustom("Modo de ajuste", "t_3");
+        AddInstructionalButton("Duplicar objeto", 101);
+        AddInstructionalButton("Selecionar objeto", 100);
         AddInstructionalEnd(1);
         
         let newObj = GetCameraHitCoordObjs(true);
@@ -1425,34 +1425,34 @@ mp.events.add("render", () =>
             let colvar = editorFocusObject.cmapcoll;
             let frzvar = editorFocusObject.cmapfreeze;
             AddInstructionalStart();
-            AddInstructionalButtonCustom("Exit Editor", "t_F2");
-            AddInstructionalButtonCustom("Selector Mode", "t_1");
-            AddInstructionalButtonCustom("Adjustment Mode", "t_3");
-            AddInstructionalButtonCustom("Delete Object", "w_Delete");
+            AddInstructionalButtonCustom("Sair do editor", "t_F2");
+            AddInstructionalButtonCustom("Modo de seleção", "t_1");
+            AddInstructionalButtonCustom("Modo de ajuste", "t_3");
+            AddInstructionalButtonCustom("Apagar objeto", "w_Delete");
             if(colvar != null)
             {
                 if(colvar)
-                    AddInstructionalButtonCustom("Collision: ON", "t_C");
+                    AddInstructionalButtonCustom("Colisão: LIGADO", "t_C");
                 else
-                    AddInstructionalButtonCustom("Collision: OFF", "t_C");
+                    AddInstructionalButtonCustom("Colisão: DESLIGADO", "t_C");
             }
             else
             {
-                AddInstructionalButtonCustom("Collision: ON", "t_C");
+                AddInstructionalButtonCustom("Colisão: LIGADO", "t_C");
             }
             if(frzvar != null)
             {
                 if(frzvar)
-                    AddInstructionalButtonCustom("Frozen: ON", "t_F");
+                    AddInstructionalButtonCustom("Congelado: LIGADO", "t_F");
                 else
-                    AddInstructionalButtonCustom("Frozen: OFF", "t_F");
+                    AddInstructionalButtonCustom("Congelado: DESLIGADO", "t_F");
             }
             else
             {
-                AddInstructionalButtonCustom("Frozen: ON", "t_F");
+                AddInstructionalButtonCustom("Congelado: LIGADO", "t_F");
             }
-            AddInstructionalButton("Auto Adjust", 101);
-            AddInstructionalButton("Place Object", 100);
+            AddInstructionalButton("Ajuste Automático", 101);
+            AddInstructionalButton("Posicionar Objeto", 100);
             AddInstructionalEnd(1);
 
             let drawObj = GetCameraHitCoord();
@@ -1547,52 +1547,52 @@ mp.events.add("render", () =>
             let colvar = editorFocusObject.cmapcoll;
             let frzvar = editorFocusObject.cmapfreeze;
             AddInstructionalStart();
-            AddInstructionalButtonCustom("Exit Editor", "t_F2");
-            AddInstructionalButtonCustom("Placement Mode", "t_2");
-            AddInstructionalButtonCustom("Selector Mode", "t_1");
+            AddInstructionalButtonCustom("Sair do Edtiro", "t_F2");
+            AddInstructionalButtonCustom("Modo de edição", "t_2");
+            AddInstructionalButtonCustom("Modo de seleção", "t_1");
             if(colvar != null)
             {
                 if(colvar)
-                    AddInstructionalButtonCustom("Collision: ON", "t_C");
+                    AddInstructionalButtonCustom("Colisão: LIGADO", "t_C");
                 else
-                    AddInstructionalButtonCustom("Collision: OFF", "t_C");
+                    AddInstructionalButtonCustom("Colisão: DESLIGADO", "t_C");
             }
             else
             {
-                AddInstructionalButtonCustom("Collision: ON", "t_C");
+                AddInstructionalButtonCustom("Colisão: LIGADO", "t_C");
             }
             if(frzvar != null)
             {
                 if(frzvar)
-                    AddInstructionalButtonCustom("Frozen: ON", "t_F");
+                    AddInstructionalButtonCustom("Congelado: LIGADO", "t_F");
                 else
-                    AddInstructionalButtonCustom("Frozen: OFF", "t_F");
+                    AddInstructionalButtonCustom("Congelado: DESLIGADO", "t_F");
             }
             else
             {
-                AddInstructionalButtonCustom("Frozen: ON", "t_F");
+                AddInstructionalButtonCustom("Congelado: LIGADO", "t_F");
             }
             if(ToggleArrowKeyMovement)
             {
-                AddInstructionalButtonCustom("Move Up", "t_+");
-                AddInstructionalButtonCustom("Move Down", "t_-");
-                AddInstructionalButton("Move Forward", 194);
-                AddInstructionalButton("Move Backward", 195);
-                AddInstructionalButton("Move Left", 196);
-                AddInstructionalButton("Move Right", 197);
+                AddInstructionalButtonCustom("Mover para cima", "t_+");
+                AddInstructionalButtonCustom("Mover para baixo", "t_-");
+                AddInstructionalButton("Mover para frente", 194);
+                AddInstructionalButton("Mover para trás", 195);
+                AddInstructionalButton("Mover para esquerda", 196);
+                AddInstructionalButton("Mover para direita", 197);
             }
             else
             {
-                AddInstructionalButtonCustom("Rotate Up", "t_+");
-                AddInstructionalButtonCustom("Rotate Down", "t_-");
-                AddInstructionalButton("Rotate Forward", 194);
-                AddInstructionalButton("Rotate Backward", 195);
-                AddInstructionalButton("Rotate Left", 196);
-                AddInstructionalButton("Rotate Right", 197);
+                AddInstructionalButtonCustom("Rotacionar para cima", "t_+");
+                AddInstructionalButtonCustom("Rotacionar para baixo", "t_-");
+                AddInstructionalButton("Rotacionar para frente", 194);
+                AddInstructionalButton("Rotacionar para trás", 195);
+                AddInstructionalButton("Rotacionar para esquerda", 196);
+                AddInstructionalButton("Rotacionar para direita", 197);
             }
-            AddInstructionalButtonCustom("Toggle Arrow Keys", "w_Space");
-            AddInstructionalButtonCustom("Delete Object", "w_Delete");
-            AddInstructionalButtonCustom("Save Object", "w_Enter");
+            AddInstructionalButtonCustom("(Des)/ativar teclas de direção", "w_Space");
+            AddInstructionalButtonCustom("Apagar objeto", "w_Delete");
+            AddInstructionalButtonCustom("Salvar objeto", "w_Enter");
             AddInstructionalEnd(1);
 
             if(ToggleArrowKeyMovement)
