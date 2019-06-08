@@ -128,7 +128,7 @@
                 <div class="menu-container" (mouseleave)="toggleSubMenu('self', false)">
                     <div class="menu-item" (mouseenter)="toggleSubMenu('self', true)">
                         <div class="menu-label">
-                            Mandrakke_Army
+                            {{ dadosJogador.nome }}
                         </div>
 
                         <div class="menu-submenu" *ngIf="submenu['self']">
