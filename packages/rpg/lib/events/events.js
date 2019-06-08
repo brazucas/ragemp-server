@@ -11,6 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const environment_1 = require("../../../../common/environment");
 const brazucas_eventos_1 = require("../../interfaces/brazucas-eventos");
 const voice_chat_provider_1 = require("../../providers/voice-chat.provider");
+const rpg_1 = require("../../rpg");
 const player_1 = require("../functions/player");
 class Events {
     constructor(brazucasServer) {
@@ -22,6 +23,7 @@ class Events {
                 const jogador = yield this.brazucasServer.autenticarJogador(player.name, dados.senha);
                 if (jogador) {
                     player.spawn(environment_1.environment.posicaoLogin);
+                    yield rpg_1.Rpg.playerProvider.update(player, jogador.toJSON());
                     return {
                         eventoResposta: 'AutenticacaoResultado',
                         credenciaisInvalidas: false,

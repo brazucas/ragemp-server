@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { CountUp } from 'countup.js';
 import { Jogador } from '../../interfaces/jogador.interface';
 import { RagempService, VoiceChatListener } from '../services/ragemp.service';
@@ -25,18 +25,27 @@ export class PlayerGuiPage implements OnInit {
   };
   public menuAtivo: boolean;
 
-  constructor(public ragemp: RagempService) {
-    this.menuAtivo = this.ragemp.playerGuiMenuAtivo;
+  constructor(public ragemp: RagempService,
+              public zone: NgZone) {
+    this.ragemp.playerGuiMenuAtivo.subscribe((ativo) => this.menuAtivo = ativo);
   }
 
-  toggleSubMenu(submenu: string) {
+  hideMenus() {
     Object.keys(this.submenu).forEach(key => {
-      if (submenu !== key) {
-        this.submenu[key] = false;
+      this.submenu[key] = false;
+    });
+  }
+
+  toggleSubMenu(submenu: string, force?: boolean) {
+    this.zone.run(() => {
+      this.hideMenus();
+
+      if (typeof force !== 'undefined') {
+        this.submenu[submenu] = force;
+      } else {
+        this.submenu[submenu] = !this.submenu[submenu];
       }
     });
-
-    this.submenu[submenu] = !this.submenu[submenu];
   }
 
   ngOnInit() {
@@ -66,6 +75,9 @@ export class PlayerGuiPage implements OnInit {
       this.voiceChatListeners = listeners;
     });
 
+    this.diffForcaFisica = 1;
+    this.diffFome = 2;
+
     this.ragemp.dadosJogador$.subscribe(jogador => {
       if (this.dadosJogador) {
         this.diffForcaFisica = jogador.forcaFisica - this.dadosJogador.forcaFisica;
@@ -78,7 +90,7 @@ export class PlayerGuiPage implements OnInit {
           this.diffSono = 0;
           this.diffFome = 0;
           this.diffSede = 0;
-        }, 100000);
+        }, 5000);
       }
 
       this.dadosJogador = jogador;
@@ -89,6 +101,7 @@ export class PlayerGuiPage implements OnInit {
   }
 
   browserPage(pagina: string) {
+    this.hideMenus();
     this.ragemp.togglePlayerGuiMenuAtivo();
     mp.trigger('BrowserPagina', 'central', pagina);
   }

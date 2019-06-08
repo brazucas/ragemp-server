@@ -5,6 +5,7 @@ import { Jogador } from '../../../../common/database/models/Jogador';
 import { environment } from '../../../../common/environment';
 import { BrazucasEventos } from '../../interfaces/brazucas-eventos';
 import { VoiceChatProvider } from '../../providers/voice-chat.provider';
+import { Rpg } from '../../rpg';
 import { playerEvent } from '../functions/player';
 
 export class Events {
@@ -20,6 +21,8 @@ export class Events {
 
       if (jogador) {
         player.spawn(environment.posicaoLogin);
+
+        await Rpg.playerProvider.update(player, jogador.toJSON());
 
         return {
           eventoResposta: 'AutenticacaoResultado',

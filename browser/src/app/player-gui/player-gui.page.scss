@@ -36,7 +36,7 @@
   }
 
   &.headset {
-    margin-left: 20px;
+    margin-left: 50px;
 
     .gui-item-container {
       align-items: flex-end;
@@ -137,6 +137,7 @@
     padding: 0 10px;
 
     .menu-item {
+      cursor: pointer;
       padding: 0 15px;
       margin: 5px 0;
       border-right: 1px solid #FFFFFF;
@@ -160,7 +161,7 @@
         border-radius: 0 0 15px 15px;
 
         .menu-item {
-          //border-bottom: 1px solid #666;
+          border-right: none;
           padding: 10px 15px;
           cursor: pointer;
 

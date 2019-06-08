@@ -7,6 +7,7 @@ export enum BrazucasEventos {
   AUTENTICACAO_RESULTADO = 'AutenticacaoResultado',
   REGISTRO_RESULTADO = 'RegistroResultado',
   DADOS_JOGADOR = 'DadosJogador',
+  ATUALIZAR_DADOS_JOGADOR = 'AtualizarDadosJogador',
   INICIAR_NAVEGADOR = 'IniciarNavegador',
   CURSOR = 'cursor',
   HABILITAR_VOICE_CHAT = 'HabilitarVoiceChat',

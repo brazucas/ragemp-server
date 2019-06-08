@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const BehaviorSubject_1 = require("rxjs/BehaviorSubject");
 const brazucas_eventos_1 = require("../interfaces/brazucas-eventos");
-const player_1 = require("../lib/functions/player");
 class PlayerProvider {
     constructor(brazucasServer) {
         this.players$ = new BehaviorSubject_1.BehaviorSubject([]);
@@ -24,11 +23,12 @@ class PlayerProvider {
             try {
                 const brzPlayer = this.findFromMp(player);
                 if (brzPlayer) {
-                    Object.keys(data.toJSON()).forEach((key) => brzPlayer.storage[key] = data[key]);
+                    Object.keys(data).forEach((key) => brzPlayer.storage[key] = data[key]);
                     if (autoSave) {
                         yield brzPlayer.storage.save();
                     }
-                    player_1.playerEvent(player, brazucas_eventos_1.BrazucasEventos.DADOS_JOGADOR, brzPlayer.storage.toJSON());
+                    console.log(`Atualizando jogador ${player.name} ${JSON.stringify(brzPlayer.storage.toJSON())}`);
+                    player.call(brazucas_eventos_1.BrazucasEventos.ATUALIZAR_DADOS_JOGADOR, [brzPlayer.storage.toJSON()]);
                 }
                 else {
                     console.warn('[WARNING] Jogador não encontrado para atualizar');

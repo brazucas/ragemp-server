@@ -7,10 +7,8 @@ export class BlinkDirective {
   @Input() blinkCurrentValue: number;
   @Input() blinkStartValue: number;
 
-  @HostBinding('class.blink') elementClass() {
+  @HostBinding('class.blink')
+  get elementClass() {
     return (this.blinkCurrentValue <= this.blinkStartValue);
   };
-
-  constructor() {
-  }
 }

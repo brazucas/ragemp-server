@@ -10,6 +10,7 @@ var BrazucasEventos;
     BrazucasEventos["AUTENTICACAO_RESULTADO"] = "AutenticacaoResultado";
     BrazucasEventos["REGISTRO_RESULTADO"] = "RegistroResultado";
     BrazucasEventos["DADOS_JOGADOR"] = "DadosJogador";
+    BrazucasEventos["ATUALIZAR_DADOS_JOGADOR"] = "AtualizarDadosJogador";
     BrazucasEventos["INICIAR_NAVEGADOR"] = "IniciarNavegador";
     BrazucasEventos["CURSOR"] = "cursor";
     BrazucasEventos["HABILITAR_VOICE_CHAT"] = "HabilitarVoiceChat";

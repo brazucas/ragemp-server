@@ -144,7 +144,7 @@ class Client {
 
     mp.keys.bind(0x72, false, () => { // Pressionar a tecla F3
       if (this.autenticacaoResultado.autenticado) {
-        this.browsers.playerGui.call('setPlayerGuiMenuAtivo', '');
+        this.browsers.playerGui.call('togglePlayerGuiMenuAtivo', '');
       }
     });
   }
@@ -212,7 +212,7 @@ class Navegador {
   }
 
   public call(eventName: string, data: any) {
-    this.execute(`window.my.ragemp.${eventName}(${JSON.stringify(data)})`);
+    this.execute(`window.my.ragemp.${eventName}('${JSON.stringify(data)}')`);
   }
 
   public execute(codigo: string) {
@@ -317,6 +317,10 @@ class ServerEvents {
       this.forwardEventToBrowser(serverEvent);
     });
 
+    mp.events.add('AtualizarDadosJogador', (data: any) => {
+      this.client.broadcastBrowserEvent('setPlayerData', data);
+    });
+
     mp.events.add(EventKey.PLAYER_START_TALKING, () => {
       mp.events.callRemote('browser', JSON.stringify({
         eventId: -1,
@@ -335,7 +339,11 @@ class ServerEvents {
   }
 
   private browserEvent(event: string, eventId: number, data: string) {
-    this.client.browsers.central.publish(event, eventId, data);
+    const browsers: Navegador[] = Object.keys(this.client.browsers).map((key) => {
+      return this.client.browsers[key];
+    });
+
+    browsers.forEach(browser => browser.publish(event, eventId, data));
   }
 
   private forwardEventToBrowser(serverEvent: ServerEvent<any>) {

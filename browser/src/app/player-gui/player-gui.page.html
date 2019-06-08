@@ -2,9 +2,11 @@
     <app-pagina position="top-right" top="230" [anim]="false" [cabecalho]="false" [layout]="false">
         <div class="gui-item go-up delay-1">
             <div class="gui-item-container">
-                <div class="go-up fome-text delay-4" *ngIf="diffFome !== 0">
-                    <ng-container *ngIf="diffFome > 0">+</ng-container>
-                    {{ diffFome }}
+                <div style="width: 50px;">
+                    <div class="go-up fome-text delay-4" *ngIf="diffFome !== 0">
+                        <ng-container *ngIf="diffFome > 0">+</ng-container>
+                        {{ diffFome }}
+                    </div>
                 </div>
 
                 <div class="gui-icon fome" appBlink [blinkStartValue]="20" [blinkCurrentValue]="dadosJogador.fome">
@@ -33,18 +35,22 @@
                     <img src="assets/player-gui/drink.png"/>
                 </div>
 
-                <div class="go-up sede-text delay-4" *ngIf="diffSede !== 0">
-                    <ng-container *ngIf="diffSede > 0">+</ng-container>
-                    {{ diffSede }}
+                <div style="width: 50px;">
+                    <div class="go-up sede-text delay-4" *ngIf="diffSede !== 0">
+                        <ng-container *ngIf="diffSede > 0">+</ng-container>
+                        {{ diffSede }}
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="gui-item go-up delay-3">
             <div class="gui-item-container">
-                <div class="go-up sono-text delay-4" *ngIf="diffSono !== 0">
-                    <ng-container *ngIf="diffSono > 0">+</ng-container>
-                    {{ diffSono }}
+                <div style="width: 50px;">
+                    <div class="go-up sono-text delay-4" *ngIf="diffSono !== 0">
+                        <ng-container *ngIf="diffSono > 0">+</ng-container>
+                        {{ diffSono }}
+                    </div>
                 </div>
 
                 <div class="gui-icon sono" appBlink [blinkStartValue]="20" [blinkCurrentValue]="dadosJogador.sono">
@@ -74,9 +80,11 @@
                     <img src="assets/player-gui/strength.png"/>
                 </div>
 
-                <div class="go-up forca-fisica-text delay-4" *ngIf="diffForcaFisica !== 0">
-                    <ng-container *ngIf="diffForcaFisica > 0">+</ng-container>
-                    {{ diffForcaFisica }}
+                <div style="width: 50px;">
+                    <div class="go-up forca-fisica-text delay-4" *ngIf="diffForcaFisica !== 0">
+                        <ng-container *ngIf="diffForcaFisica > 0">+</ng-container>
+                        {{ diffForcaFisica }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,9 +125,9 @@
 
         <div class="menu" [ngClass]="{'ativo': menuAtivo}">
             <div class="go-down delay-1">
-                <div class="menu-container">
-                    <div class="menu-item">
-                        <div class="menu-label" (click)="toggleSubMenu('self')">
+                <div class="menu-container" (mouseleave)="toggleSubMenu('self', false)">
+                    <div class="menu-item" (mouseenter)="toggleSubMenu('self', true)">
+                        <div class="menu-label">
                             Mandrakke_Army
                         </div>
 
@@ -153,7 +161,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <div class="menu-label" (click)="toggleSubMenu('moderacao')">
+                        <div class="menu-label" (mouseenter)="toggleSubMenu('moderacao', true)">
                             Moderação
                         </div>
 
@@ -187,7 +195,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <div class="menu-label" (click)="toggleSubMenu('administracao')">
+                        <div class="menu-label" (mouseenter)="toggleSubMenu('administracao', true)">
                             Administração
                         </div>
 
@@ -232,7 +240,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <div class="menu-label" style="width: 80px" (click)="toggleSubMenu('ajuda')">
+                        <div class="menu-label" style="width: 80px" (mouseenter)="toggleSubMenu('ajuda', true)">
                             Ajuda
                         </div>
 

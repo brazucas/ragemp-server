@@ -3,7 +3,6 @@ import { BrazucasServer } from '../../../common/brazucas-server';
 import { Jogador } from '../../../common/database/models/Jogador';
 import { BrazucasEventos } from '../interfaces/brazucas-eventos';
 import { BRZPlayerInterface } from '../interfaces/player.interface';
-import { playerEvent } from '../lib/functions/player';
 
 export class PlayerProvider {
   private static brazucasServer: BrazucasServer;
@@ -23,13 +22,15 @@ export class PlayerProvider {
       const brzPlayer = this.findFromMp(player);
 
       if (brzPlayer) {
-        Object.keys(data.toJSON()).forEach((key: string) => brzPlayer.storage[key] = data[key]);
+        Object.keys(data).forEach((key: string) => brzPlayer.storage[key] = data[key]);
 
         if (autoSave) {
           await brzPlayer.storage.save();
         }
 
-        playerEvent<Jogador>(player, BrazucasEventos.DADOS_JOGADOR, brzPlayer.storage.toJSON());
+        console.log(`Atualizando jogador ${player.name} ${JSON.stringify(brzPlayer.storage.toJSON())}`);
+
+        player.call(BrazucasEventos.ATUALIZAR_DADOS_JOGADOR, [brzPlayer.storage.toJSON()]);
       } else {
         console.warn('[WARNING] Jogador não encontrado para atualizar');
       }

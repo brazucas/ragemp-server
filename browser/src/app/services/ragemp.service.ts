@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { BrazucasEventos } from '../../../../packages/rpg/interfaces/brazucas-eventos';
@@ -19,7 +19,7 @@ export class RagempService {
     dinheiro: 0,
     creditos: 0,
     fome: 0,
-    sono: 0,
+    sono: 77,
     forcaFisica: 0,
     sede: 0,
   });
@@ -27,9 +27,9 @@ export class RagempService {
   public jogadorLocal$: BehaviorSubject<Jogador> = new BehaviorSubject(null);
   public serverEvent$: Subject<ServerEvent> = new Subject();
   public voiceChatListeners$: BehaviorSubject<Array<VoiceChatListener>> = new BehaviorSubject([]);
-  public playerGuiMenuAtivo = false;
+  public playerGuiMenuAtivo: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor() {
+  constructor(public zone: NgZone) {
     if (!window) {
       (window as any) = {};
     }
@@ -39,6 +39,7 @@ export class RagempService {
     (window as any).ragemp.setPlayerName = this.setPlayerName.bind(this);
     (window as any).ragemp.setBrowserName = this.setBrowserName.bind(this);
     (window as any).ragemp.setVoiceChatListeners = this.setVoiceChatListeners.bind(this);
+    (window as any).ragemp.setPlayerData = this.setPlayerData.bind(this);
     (window as any).ragemp.togglePlayerGuiMenuAtivo = this.togglePlayerGuiMenuAtivo.bind(this);
     (window as any).ragemp[BrazucasEventos.DADOS_JOGADOR] = this[BrazucasEventos.DADOS_JOGADOR].bind(this);
     (window as any).ragemp.serverEvent = this.serverEvent.bind(this);
@@ -83,7 +84,18 @@ export class RagempService {
     this.voiceChatListeners$.next(listenersList);
   }
 
-  public serverEvent(eventId: number, event: string, data: string) {
+  public setPlayerData(dadosJogadorStr: string) {
+    const dadosJogador: Jogador = JSON.parse(dadosJogadorStr);
+
+    console.log(`ATUALIZAR DADOS JOGADOR (${this.browserName$.value}) ${JSON.stringify(dadosJogador)}`);
+
+    this.zone.run(() => {
+      this.dadosJogador$.next(dadosJogador);
+    });
+  }
+
+  public serverEvent(eventId: number, event: string, data: any) {
+    console.log(`Evento recebido para o navegador ${this.browserName$.value}: ${event} ${JSON.stringify(data)}`);
     this.serverEvent$.next({
       event: event,
       data: data,
@@ -92,13 +104,15 @@ export class RagempService {
   }
 
   public togglePlayerGuiMenuAtivo() {
-    this.playerGuiMenuAtivo = !this.playerGuiMenuAtivo;
+    this.zone.run(() => {
+      this.playerGuiMenuAtivo.next(!this.playerGuiMenuAtivo.value);
 
-    if (this.playerGuiMenuAtivo) {
-      mp.trigger('HabilitarCursor');
-    } else {
-      mp.trigger('DesabilitarCursor');
-    }
+      if (this.playerGuiMenuAtivo) {
+        mp.trigger('HabilitarCursor');
+      } else {
+        mp.trigger('DesabilitarCursor');
+      }
+    });
   }
 
   public closeBrowser() {
@@ -106,7 +120,11 @@ export class RagempService {
   }
 
   public [BrazucasEventos.DADOS_JOGADOR](jogador: string) {
-    this.dadosJogador$.next(Object.assign(this.dadosJogador$.value, JSON.parse(jogador)));
+    console.log(`[DADOS JOGADOR] ${JSON.stringify(jogador)}`);
+
+    this.zone.run(() => {
+      this.dadosJogador$.next(Object.assign(this.dadosJogador$.value, JSON.parse(jogador)));
+    });
   }
 }
 

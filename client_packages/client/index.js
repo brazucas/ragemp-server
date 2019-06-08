@@ -100,7 +100,7 @@ class Client {
         });
         mp.keys.bind(0x72, false, () => {
             if (this.autenticacaoResultado.autenticado) {
-                this.browsers.playerGui.call('setPlayerGuiMenuAtivo', '');
+                this.browsers.playerGui.call('togglePlayerGuiMenuAtivo', '');
             }
         });
     }
@@ -151,7 +151,7 @@ class Navegador {
         mp.gui.cursor.visible = false;
     }
     call(eventName, data) {
-        this.execute(`window.my.ragemp.${eventName}(${JSON.stringify(data)})`);
+        this.execute(`window.my.ragemp.${eventName}('${JSON.stringify(data)}')`);
     }
     execute(codigo) {
         this.browser.execute(codigo);
@@ -230,6 +230,9 @@ class ServerEvents {
             }
             this.forwardEventToBrowser(serverEvent);
         });
+        mp.events.add('AtualizarDadosJogador', (data) => {
+            this.client.broadcastBrowserEvent('setPlayerData', data);
+        });
         mp.events.add("playerStartTalking" /* PLAYER_START_TALKING */, () => {
             mp.events.callRemote('browser', JSON.stringify({
                 eventId: -1,
@@ -245,7 +248,10 @@ class ServerEvents {
         });
     }
     browserEvent(event, eventId, data) {
-        this.client.browsers.central.publish(event, eventId, data);
+        const browsers = Object.keys(this.client.browsers).map((key) => {
+            return this.client.browsers[key];
+        });
+        browsers.forEach(browser => browser.publish(event, eventId, data));
     }
     forwardEventToBrowser(serverEvent) {
         this.browserEvent(serverEvent.event, serverEvent.eventId, serverEvent.data);
