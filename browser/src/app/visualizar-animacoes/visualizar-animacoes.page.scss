@@ -21,6 +21,8 @@
   height: 50px;
   background-color: #AAA;
   cursor: pointer;
+  mask-repeat: no-repeat;
+  mask-position: center center;
 
   &.esquerda {
     mask-image: url(../../assets/svg/ios-arrow-back.svg);
@@ -43,6 +45,7 @@
 }
 
 .titulo {
+  font-size: 18px;
   color: #FFF;
   margin: 20px 0;
   text-align: center;

@@ -1,11 +1,11 @@
 <ion-content>
-    <app-pagina position="centro-inferior">
-        <h1 class="titulo">Visualizador de animações</h1>
+    <app-pagina position="middle-left">
+        <div class="titulo">Visualizador de animações</div>
 
         <form [formGroup]="formGroup">
-            <div class="pesquisar">
-                <ion-auto-complete [dataProvider]="completeTestService"></ion-auto-complete>
-            </div>
+<!--            <div class="pesquisar">-->
+<!--                <ion-auto-complete [dataProvider]="completeTestService"></ion-auto-complete>-->
+<!--            </div>-->
 
             <div class="animacoes-container">
                 <div class="flecha esquerda" (click)="animacaoPacoteAnterior()">

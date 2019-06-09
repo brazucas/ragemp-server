@@ -5,7 +5,7 @@
   @include center(true, true);
 
   &.superior-direito {
-    right: 0px;
+    right: 0;
     top: 100px;
     width: auto;
     left: auto;
@@ -18,8 +18,11 @@
   }
 
   &.centro-esquerdo {
-    left: 100px;
-    width: auto;
+    width: 550px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%) !important;
   }
 
   &.centro-superior {
