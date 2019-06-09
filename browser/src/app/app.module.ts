@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { BrMaskerModule } from 'br-mask';
+import { AutoCompleteModule } from 'ionic4-auto-complete';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { AlterarVeiculoPage } from './alterar-veiculo/alterar-veiculo.page';
 
@@ -32,6 +33,7 @@ import {
 import { RegistroPage } from './registro/registro.page';
 import { FilterPipe } from './pipes/filter.pipe';
 import { BlinkDirective } from './directives/blink.directive';
+import { VisualizarAnimacoesPage } from './visualizar-animacoes/visualizar-animacoes.page';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { BlinkDirective } from './directives/blink.directive';
     PlayerGuiPage,
     GerenciarVeiculoPage,
     AlterarVeiculoPage,
+    VisualizarAnimacoesPage,
     ApresentarAsyncDirective,
     CasoResultadoDirective,
     CasoCarregandoDirective,
@@ -65,6 +68,7 @@ import { BlinkDirective } from './directives/blink.directive';
     ReactiveFormsModule,
     BrMaskerModule,
     ColorPickerModule,
+    AutoCompleteModule,
   ],
   providers: [
     StatusBar,

@@ -17,6 +17,7 @@ export enum BrazucasEventos {
   ATUALIZAR_SEDE = 'AtualizarSede',
   ATUALIZAR_SONO = 'AtualizarSono',
   ATUALIZAR_FORCA_FISICA = 'AtualizarForcaFisica',
+  VISUALIZAR_ANIMACAO = 'VisualizarAnimacao',
 }
 
 export interface ServerEvent<T> {

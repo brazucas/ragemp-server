@@ -20,5 +20,6 @@ var BrazucasEventos;
     BrazucasEventos["ATUALIZAR_SEDE"] = "AtualizarSede";
     BrazucasEventos["ATUALIZAR_SONO"] = "AtualizarSono";
     BrazucasEventos["ATUALIZAR_FORCA_FISICA"] = "AtualizarForcaFisica";
+    BrazucasEventos["VISUALIZAR_ANIMACAO"] = "VisualizarAnimacao";
 })(BrazucasEventos = exports.BrazucasEventos || (exports.BrazucasEventos = {}));
 //# sourceMappingURL=brazucas-eventos.js.map

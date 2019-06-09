@@ -30,6 +30,7 @@
     "core-js": "^2.5.4",
     "countup.js": "^2.0.4",
     "fstream": "^1.0.12",
+    "ionic4-auto-complete": "^1.7.1",
     "ngx-color-picker": "^7.5.0",
     "rxjs": "~6.5.1",
     "tar": "^4.4.9",

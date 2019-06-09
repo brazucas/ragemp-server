@@ -1,0 +1,59 @@
+:host {
+  --ion-background-color: transparent;
+
+  ion-label {
+    --color: #FFFFFF;
+  }
+
+  ion-input {
+    --color: #FFFFFF;
+  }
+
+  ion-searchbar {
+    --icon-color: #FFF;
+    --placeholder-color: #888;
+    --color: #FFF;
+  }
+}
+
+.flecha {
+  width: 50px;
+  height: 50px;
+  background-color: #AAA;
+  cursor: pointer;
+
+  &.esquerda {
+    mask-image: url(../../assets/svg/ios-arrow-back.svg);
+  }
+
+  &.direita {
+    mask-image: url(../../assets/svg/ios-arrow-forward.svg);
+  }
+
+  &:hover {
+    background-color: #FFF;
+  }
+}
+
+.animacoes-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.titulo {
+  color: #FFF;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.pesquisar {
+  ion-auto-complete {
+    width: auto;
+
+      --icon-color: #FFF;
+      --placeholder-color: #888;
+      --color: #FFF;
+  }
+}

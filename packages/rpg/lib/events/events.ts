@@ -123,4 +123,11 @@ export class Events {
 
     player.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
   }
+
+  public async [BrazucasEventos.VISUALIZAR_ANIMACAO](player: PlayerMp, dados: {
+    pacote: string,
+    nome: string;
+  }) {
+    player.playAnimation(dados.pacote, dados.nome, 1, 0);
+  }
 }

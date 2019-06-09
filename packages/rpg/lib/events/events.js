@@ -122,6 +122,11 @@ class Events {
             player.playAnimation('special_ped@baygor@monologue_3@monologue_3e', 'trees_can_talk_4', 1, 0);
         });
     }
+    [brazucas_eventos_1.BrazucasEventos.VISUALIZAR_ANIMACAO](player, dados) {
+        return __awaiter(this, void 0, void 0, function* () {
+            player.playAnimation(dados.pacote, dados.nome, 1, 0);
+        });
+    }
 }
 exports.Events = Events;
 //# sourceMappingURL=events.js.map

@@ -16,7 +16,7 @@ class PlayerProvider {
         PlayerProvider.brazucasServer = brazucasServer;
     }
     findFromMp(player) {
-        return this.players$.value.find((storedPlayer) => storedPlayer.mp.id === player.id);
+        return this.players$.value.find((storedPlayer) => (storedPlayer.mp && storedPlayer.mp.id === player.id));
     }
     update(player, data, autoSave = true) {
         return __awaiter(this, void 0, void 0, function* () {

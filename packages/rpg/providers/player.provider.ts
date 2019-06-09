@@ -14,7 +14,7 @@ export class PlayerProvider {
   public players$: BehaviorSubject<Array<BRZPlayerInterface>> = new BehaviorSubject([]);
 
   public findFromMp(player: PlayerMp) {
-    return this.players$.value.find((storedPlayer) => storedPlayer.mp.id === player.id);
+    return this.players$.value.find((storedPlayer) => (storedPlayer.mp && storedPlayer.mp.id === player.id));
   }
 
   public async update(player: PlayerMp, data: Jogador | any, autoSave = true) {

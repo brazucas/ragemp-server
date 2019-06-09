@@ -9,6 +9,7 @@ import { NickInvalidoPage } from './nick-invalido/nick-invalido.page';
 import { PlayerGuiPage } from './player-gui/player-gui.page';
 import { PlayersOnlinePage } from './players-online/players-online.page';
 import { RegistroPage } from './registro/registro.page';
+import { VisualizarAnimacoesPage } from './visualizar-animacoes/visualizar-animacoes.page';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'player-gui', component: PlayerGuiPage},
   {path: 'gerenciar-veiculo', component: GerenciarVeiculoPage},
   {path: 'alterar-veiculo', component: AlterarVeiculoPage},
+  {path: 'visualizar-animacoes', component: VisualizarAnimacoesPage},
 ];
 
 @NgModule({
