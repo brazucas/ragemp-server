@@ -128,6 +128,7 @@ export class Events {
     pacote: string,
     nome: string;
   }) {
+    player.stopAnimation();
     player.playAnimation(dados.pacote, dados.nome, 1, 0);
   }
 }

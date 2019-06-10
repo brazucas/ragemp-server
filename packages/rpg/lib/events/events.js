@@ -124,6 +124,7 @@ class Events {
     }
     [brazucas_eventos_1.BrazucasEventos.VISUALIZAR_ANIMACAO](player, dados) {
         return __awaiter(this, void 0, void 0, function* () {
+            player.stopAnimation();
             player.playAnimation(dados.pacote, dados.nome, 1, 0);
         });
     }
