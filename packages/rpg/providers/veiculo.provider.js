@@ -50,7 +50,7 @@ class VeiculoProvider {
         });
     }
 }
+exports.VeiculoProvider = VeiculoProvider;
 VeiculoProvider.veiculosArmazenados = [];
 VeiculoProvider.veiculos = new BehaviorSubject_1.BehaviorSubject(null);
-exports.VeiculoProvider = VeiculoProvider;
 //# sourceMappingURL=veiculo.provider.js.map

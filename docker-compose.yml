@@ -1,0 +1,55 @@
+# docker-compose used for the dev environment
+
+version: "3.2"
+
+services:
+  ragemp_server:
+    image: brzserver/ragemp
+    depends_on:
+      - ragemp_mysql
+    ports:
+      - target: 22005
+        published: 22005
+        protocol: udp
+        mode: host
+      - 22006:22006
+    volumes:
+      - ./:/ragemp
+    networks:
+      - ragemp
+
+  ragemp_mysql:
+    image: mysql:5.6
+    volumes:
+      - ../ragemp-data/mysql:/var/lib/mysql
+    ports:
+      - 33010:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: abcd1234
+      MYSQL_DATABASE: BRAZUCAS
+    networks:
+      - ragemp
+
+  ragemp_browser_server:
+    ports:
+      - 4230:4200
+    image: node
+    command: bash -c "npm i -g @angular/cli && ng serve --open --host 0.0.0.0 --disable-host-check"
+    volumes:
+      - ./:/source
+    working_dir: /source/browser
+    networks:
+      - ragemp
+
+  typescript_compiler:
+    image: node
+    command: bash -c "npm i typescript -g && tsc -w"
+    volumes:
+      - ./:/source
+    working_dir: /source
+    networks:
+      - ragemp
+
+networks:
+  ragemp:
+    driver: bridge

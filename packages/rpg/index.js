@@ -1,9 +1,10 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -40,7 +41,7 @@ mp.events.add("playerChat" /* PLAYER_CHAT */, playerChat_1.PlayerChatHandler.bin
 mp.events.add("playerDeath" /* PLAYER_DEATH */, playerDeath_1.PlayerDeathHandler.bind(playerDeath_1.PlayerDeathHandler, brazucasServer));
 mp.events.add("playerExitVehicle" /* PLAYER_EXIT_VEHICLE */, playerExitVehicle_1.PlayerExitVehicle.bind(playerExitVehicle_1.PlayerExitVehicle, brazucasServer));
 mp.events.add("playerEnterVehicle" /* PLAYER_ENTER_VEHICLE */, playerEnterVehicle_1.PlayerEnterVehicle.bind(playerEnterVehicle_1.PlayerEnterVehicle, brazucasServer));
-mp.events.add(brazucas_eventos_1.BrazucasEventos.BROWSER, (player, serverEventStr) => __awaiter(this, void 0, void 0, function* () {
+mp.events.add(brazucas_eventos_1.BrazucasEventos.BROWSER, (player, serverEventStr) => __awaiter(void 0, void 0, void 0, function* () {
     const serverEvent = JSON.parse(serverEventStr);
     console.debug(`[EVENTOS] Jogador ${player.name} ativou o evento ${serverEvent.event} (ID ${serverEvent.eventId})`
         + ` com os seguintes parâmetros: ${serverEvent.data}`);

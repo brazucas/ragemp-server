@@ -1,10 +1,12 @@
+# docker-compose used for the dev environment
+
 version: "3.2"
 
 services:
-  server:
+  ragemp_server:
     image: brzserver/ragemp
     depends_on:
-      - mysql
+      - ragemp_mysql
     ports:
       - target: 22005
         published: 22005
@@ -12,41 +14,22 @@ services:
         mode: host
       - 22006:22006
     volumes:
-      - /data/ragemp:/ragemp
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-      placement:
-        constraints:
-         - node.hostname == samp-rpgmgs
+      - ./:/ragemp
     networks:
       - ragemp
-      - proxy
 
-  mysql:
+  ragemp_mysql:
     image: mysql:5.6
     volumes:
-        - /data/ragempdb:/var/lib/mysql
+      - ../ragemp-data/mysql:/var/lib/mysql
     ports:
       - 33010:3306
     environment:
-      MYSQL_ROOT_PASSWORD: abcd1234
+      MYSQL_ROOT_PASSWORD: changeme
       MYSQL_DATABASE: BRAZUCAS
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-      placement:
-        constraints:
-         - node.hostname == samp-rpgmgs
     networks:
       - ragemp
-      - proxy
 
 networks:
   ragemp:
-  proxy:
-    external: true
+    driver: bridge
