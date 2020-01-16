@@ -40,54 +40,9 @@ Claro! o projeto é de código aberto e qualquer um pode contribuir, basta fazer
 2. Faça uma cópia do arquivo ```conf.json.dist``` para ```conf.json```.
 3. Abra as portas 22005/udp e 22006 no seu firewall.
 4. Baixe e instale o Docker: https://docs.docker.com/install/
-5. Crie um arquivo chamado ragemp.yml com o seguinte conteúdo:
-    ```
-    version: "3.2"
-       
-       services:
-         server:
-           image: brzserver/ragemp
-           depends_on:
-             - mysql
-           ports:
-             - target: 22005
-               published: 22005
-               protocol: udp
-               mode: host
-             - 22006:22006
-           volumes:
-             - /caminho/para/projeto/ragemp:/ragemp
-           deploy:
-             mode: replicated
-             replicas: 1
-             restart_policy:
-               condition: on-failure
-           networks:
-             - ragemp
-       
-         mysql:
-           image: mysql:5.6
-           volumes:
-               - /data/ragempdb:/var/lib/mysql
-           ports:
-             - 33010:3306
-           environment:
-             MYSQL_ROOT_PASSWORD: abcd1234
-             MYSQL_DATABASE: BRAZUCAS
-           deploy:
-             mode: replicated
-             replicas: 1
-             restart_policy:
-               condition: on-failure
-           networks:
-             - ragemp
-       
-       networks:
-         ragemp:
-    ```
 
 6. Execute o arquivo utilizando o seguinte comando:
-    > docker stack deploy -c /caminho/para/ragemp.yml ragemp
+    > docker-compose -f docker/ragemp.yml up -d
     
      Aguarde alguns minutos para que o Docker baixe as imagens e suba os containers.
     
@@ -103,29 +58,25 @@ Claro! o projeto é de código aberto e qualquer um pode contribuir, basta fazer
 # Contribuindo
 
 1. Siga os passos para abrir o servidor local.
-2. Instale o NodeJS, NPM, Typescript e o Angular CLI.
+2. Instale o NodeJS, NPM, Typescript, Docker e o Angular CLI.
      
      - NodeJS: https://nodejs.org/en/download/
      - NPM: https://docs.npmjs.com/cli/install
      - Typescript: Basta executar o comando ```npm i typescript -g```.
      - Angular CLI: Basta executar o comando ```npm i @angular/cli -g```.
+     - Docker: https://docs.docker.com/install/
 3. Faça instalação dos pacotes:
     > npm install
     
-4. Para os passos a seguir, tenha como base que você esteja na pasta do projeto, e preste atenção na instrução "Mantenha uma sessão do terminal aberta".
-5. Mantenha uma sessão do terminal aberta com o seguinte comando executando:
-    > tsc -w
-    
-    Este comando irá compilar os arquivos ```.ts``` para ```.js``` a medida que são alterados.
-6. Para qualquer alteração na pasta ```browser```:
-    - Navegue até a pasta ```browser```:
-        > cd browser
-    - Compile o index.ts: (ignore qualquer erro apresentado)
-        > tsc index.ts
-    - Construa o projeto:
-        > ng build --output-path=../client_packages/browser/ --prod
+4. Inicialize o Docker
 
-7. Para desenvolver as telas do navegador, navegue até a pasta ```browser``` e execute o seguinte comando:
-    > ng serve
+5. Suba os containers do Docker responsáveis pelo o ambiente de desenvolvimento:
+    > docker-compose up -d
     
-    Acesse o link: http://localhost:4200/ para acessar o projeto. A página de login, por exemplo, pode ser vista em: http://localhost:4200/#/login. 
+    Acesse o link: http://localhost:4200/ para acessar o projeto. A página de login, por exemplo, pode ser vista em: http://localhost:4200/#/login.
+
+6. Para fazer a build do código client-side para ser utilizado no servidor, execute o seguinte comando:
+    > docker exec -it ragemp_ragemp_browser_server_1 bash -c "ng build --output-path=../client_packages/browser/ --prod"
+
+6. Para parar os containers do Docker execute o seguinte comando:
+    > docker-compose down 
