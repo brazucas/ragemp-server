@@ -27,6 +27,10 @@ Nós manteremos o código aberto até o anúncio oficial da abertura do servidor
 
 A primeira versão do servidor irá contemplar o RPG e os Minigames, nossa ideia, diferente de como era no SA-MP, é manter o servidor online 24/7 no mesmo modo de jogo. 
 
+##### Roadmap
+
+É possível acompanhar como está o desenvolvimento de todas as funcionalidades que existirão através da nossa página de [projetos](https://github.com/brazucas/ragemp/projects).
+
 ##### Posso entrar no time de testes?
 Atualmente nosso time de testes está cheio.
 
