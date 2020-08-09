@@ -422,6 +422,11 @@ readdirp@~3.4.0:
   dependencies:
     picomatch "^2.2.1"
 
+regexparam@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/regexparam/-/regexparam-1.3.0.tgz#2fe42c93e32a40eff6235d635e0ffa344b92965f"
+  integrity sha512-6IQpFBv6e5vz1QAqI+V4k8P2e/3gRrqfCJ9FI+O1FLQTO+Uz6RXZEZOPmTJ6hlGj7gkERzY5BRCv09whKP96/g==
+
 require-relative@^0.8.7:
   version "0.8.7"
   resolved "https://registry.yarnpkg.com/require-relative/-/require-relative-0.8.7.tgz#7999539fc9e047a37928fa196f8e1563dabd36de"
@@ -546,6 +551,13 @@ supports-color@^6.1.0:
   integrity sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
   dependencies:
     has-flag "^3.0.0"
+
+svelte-spa-router@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/svelte-spa-router/-/svelte-spa-router-2.2.0.tgz#ff56ca24890fccb0e6e58e729485a39ae92181ac"
+  integrity sha512-S3KpmiBszjdjkU1QA9FyNgrSdQORbXWp4wl8R147Gl7KoNof/0SfFJ23+9E47jLiNz+lCw1uaCfeHJi2I60bVg==
+  dependencies:
+    regexparam "1.3.0"
 
 svelte@^3.0.0:
   version "3.24.1"
