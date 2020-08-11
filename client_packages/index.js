@@ -1,6 +1,10 @@
-require('client/index.js');
-require('noclip/index.js');
-require("MapEditor/MapEditor.js");
-require("MapEditor/object_data.js");
-require("MapEditor/Natives.js");
-//# sourceMappingURL=index.js.map
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+//import "./rpg/index";
+require("./rpg/browser/menuAdmin");
+require("./rpg/admin/funcoes");
+require("./rpg/Log/log");
+require("./rpg/gui/player");
+require("./rpg/player/data");
+require("./rpg/profissoes/pizzaboy");
+require("./betternotifs/index");

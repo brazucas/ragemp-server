@@ -1,1 +1,0 @@
-require('rpg/index.js');

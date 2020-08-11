@@ -1,5 +1,8 @@
-require('client/index.js');
-require('noclip/index.js');
-require("MapEditor/MapEditor.js");
-require("MapEditor/object_data.js");
-require("MapEditor/Natives.js");
+//import "./rpg/index";
+import "./rpg/browser/menuAdmin";
+import "./rpg/admin/funcoes";
+import "./rpg/Log/log";
+import "./rpg/gui/player";
+import "./rpg/player/data";
+import "./rpg/profissoes/pizzaboy";
+import "./betternotifs/index";
