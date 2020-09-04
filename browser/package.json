@@ -32,7 +32,7 @@
     "fstream": "^1.0.12",
     "ionic4-auto-complete": "^1.7.1",
     "ngx-color-picker": "^7.5.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "rxjs": "~6.5.1",
     "tar": "^4.4.9",
     "tslib": "^1.9.0",
