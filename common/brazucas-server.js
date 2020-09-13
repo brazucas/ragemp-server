@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.BrazucasServer = void 0;
 const rxjs_1 = require("rxjs");
 require("rxjs/add/observable/forkJoin");
 require("rxjs/add/observable/of");

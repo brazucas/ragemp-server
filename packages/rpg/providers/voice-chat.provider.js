@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.VoiceChatProvider = void 0;
 class VoiceChatProvider {
     static habilitar(player, target) {
         console.debug(`[VOICE CHAT] Habilitando voice chat de ${player.name} para ${target.name}`);

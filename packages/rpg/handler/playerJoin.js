@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlayerJoinHandler = void 0;
 const brazucas_eventos_1 = require("../interfaces/brazucas-eventos");
 const player_1 = require("../lib/functions/player");
 const rpg_1 = require("../rpg");

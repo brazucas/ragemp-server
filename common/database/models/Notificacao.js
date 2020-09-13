@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Notificacao = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const Jogador_1 = require("./Jogador");
 let Notificacao = class Notificacao extends sequelize_typescript_1.Model {

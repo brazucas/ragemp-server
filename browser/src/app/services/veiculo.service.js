@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.VeiculoService = void 0;
 const core_1 = require("@angular/core");
 const brazucas_eventos_1 = require("../../../../packages/rpg/interfaces/brazucas-eventos");
 const ragemp_service_1 = require("./ragemp.service");

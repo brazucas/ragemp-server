@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlayerTimer = void 0;
 const rpg_1 = require("../../rpg");
 const FOME_DEFAULT_DECREASE = 1;
 const SEDE_DEFAULT_DECREASE = 1;

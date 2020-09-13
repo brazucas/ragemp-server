@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Skins = void 0;
 exports.Skins = {
     'Skins': ['a_c_boar', 'a_c_chickenhawk', 'a_c_chimp', 'a_c_chop', 'a_c_cormorant', 'a_c_cow', 'a_c_coyote', 'a_c_crow',
         'a_c_deer', 'a_c_fish', 'a_c_hen', 'a_c_husky', 'a_c_mtlion', 'a_c_pig', 'a_c_pigeon', 'a_c_rat', 'a_c_retriever',

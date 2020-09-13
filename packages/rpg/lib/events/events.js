@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Events = void 0;
 const environment_1 = require("../../../../common/environment");
 const brazucas_eventos_1 = require("../../interfaces/brazucas-eventos");
 const voice_chat_provider_1 = require("../../providers/voice-chat.provider");

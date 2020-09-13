@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StatusConsts = void 0;
 var StatusConsts;
 (function (StatusConsts) {
     StatusConsts[StatusConsts["WAITING_PLAYERS"] = 1] = "WAITING_PLAYERS";

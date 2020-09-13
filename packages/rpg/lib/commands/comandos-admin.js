@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ComandosAdmin = void 0;
 class ComandosAdmin {
     constructor(brazucasServer) {
         this.brazucasServer = brazucasServer;

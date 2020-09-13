@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Rpg = void 0;
 const fs = require("fs");
 const glob = require("glob");
 require("rxjs/add/observable/of");
