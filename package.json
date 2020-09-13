@@ -25,7 +25,7 @@
     "@types/rx": "^4.1.1",
     "@types/sequelize": "^4.27.23",
     "angular-cli-ghpages": "^0.6.2",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "0.0.3",
     "commitplease": "^3.2.0",
     "eslint": "^4.6.1",
