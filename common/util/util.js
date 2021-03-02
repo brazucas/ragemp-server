@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.hexToRgb = exports.bcryptCompare = exports.bcryptHash = exports.soNumeros = exports.EnumToArray = void 0;
 const bcrypt = require("bcrypt-nodejs");
 const StringIsNumber = value => isNaN(Number(value)) === false;
 function EnumToArray(enumme) {

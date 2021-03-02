@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.VehiclesTimer = void 0;
 const veiculo_provider_1 = require("../../providers/veiculo.provider");
 class VehiclesTimer {
     constructor(brazucasServer) {

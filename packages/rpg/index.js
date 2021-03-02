@@ -21,7 +21,8 @@ const commands_1 = require("./lib/commands/commands");
 const events_1 = require("./lib/events/events");
 const player_1 = require("./lib/functions/player");
 const rpg_1 = require("./rpg");
-mp.events.add("playerCommand" /* PLAYER_COMMAND */, (player, command) => {
+var EventKey = RageEnums.EventKey;
+mp.events.add(EventKey.PLAYER_COMMAND, (player, command) => {
     console.debug(`[COMANDO] ${player.name} enviou o comando ${command}`);
     const comandos = new commands_1.Commands(brazucasServer);
     const arr = command.split(' ');
@@ -35,12 +36,12 @@ mp.events.add("playerCommand" /* PLAYER_COMMAND */, (player, command) => {
     }
 });
 let brazucasServer = new brazucas_server_1.BrazucasServer();
-mp.events.add("playerJoin" /* PLAYER_JOIN */, playerJoin_1.PlayerJoinHandler.bind(playerJoin_1.PlayerJoinHandler, brazucasServer));
-mp.events.add("playerQuit" /* PLAYER_QUIT */, playerQuit_1.PlayerQuitHandler.bind(playerQuit_1.PlayerQuitHandler, brazucasServer));
-mp.events.add("playerChat" /* PLAYER_CHAT */, playerChat_1.PlayerChatHandler.bind(playerChat_1.PlayerChatHandler, brazucasServer));
-mp.events.add("playerDeath" /* PLAYER_DEATH */, playerDeath_1.PlayerDeathHandler.bind(playerDeath_1.PlayerDeathHandler, brazucasServer));
-mp.events.add("playerExitVehicle" /* PLAYER_EXIT_VEHICLE */, playerExitVehicle_1.PlayerExitVehicle.bind(playerExitVehicle_1.PlayerExitVehicle, brazucasServer));
-mp.events.add("playerEnterVehicle" /* PLAYER_ENTER_VEHICLE */, playerEnterVehicle_1.PlayerEnterVehicle.bind(playerEnterVehicle_1.PlayerEnterVehicle, brazucasServer));
+mp.events.add(EventKey.PLAYER_JOIN, playerJoin_1.PlayerJoinHandler.bind(playerJoin_1.PlayerJoinHandler, brazucasServer));
+mp.events.add(EventKey.PLAYER_QUIT, playerQuit_1.PlayerQuitHandler.bind(playerQuit_1.PlayerQuitHandler, brazucasServer));
+mp.events.add(EventKey.PLAYER_CHAT, playerChat_1.PlayerChatHandler.bind(playerChat_1.PlayerChatHandler, brazucasServer));
+mp.events.add(EventKey.PLAYER_DEATH, playerDeath_1.PlayerDeathHandler.bind(playerDeath_1.PlayerDeathHandler, brazucasServer));
+mp.events.add(EventKey.PLAYER_EXIT_VEHICLE, playerExitVehicle_1.PlayerExitVehicle.bind(playerExitVehicle_1.PlayerExitVehicle, brazucasServer));
+mp.events.add(EventKey.PLAYER_ENTER_VEHICLE, playerEnterVehicle_1.PlayerEnterVehicle.bind(playerEnterVehicle_1.PlayerEnterVehicle, brazucasServer));
 mp.events.add(brazucas_eventos_1.BrazucasEventos.BROWSER, (player, serverEventStr) => __awaiter(void 0, void 0, void 0, function* () {
     const serverEvent = JSON.parse(serverEventStr);
     console.debug(`[EVENTOS] Jogador ${player.name} ativou o evento ${serverEvent.event} (ID ${serverEvent.eventId})`

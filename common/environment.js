@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.environment = void 0;
 exports.environment = {
     database_name: 'BRAZUCAS',
     database_username: 'root',

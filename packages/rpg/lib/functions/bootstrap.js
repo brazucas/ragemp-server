@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.carregarTimers = exports.carregarVeiculos = void 0;
 const Veiculo_1 = require("../../../../common/database/models/Veiculo");
 const vehicles_1 = require("../../../../common/util/vehicles");
 const veiculo_provider_1 = require("../../providers/veiculo.provider");

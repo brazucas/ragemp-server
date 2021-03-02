@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.BrazucasEventos = void 0;
 var BrazucasEventos;
 (function (BrazucasEventos) {
     BrazucasEventos["BROWSER"] = "browser";

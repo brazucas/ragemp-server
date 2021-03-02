@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.VeiculoProvider = void 0;
 const BehaviorSubject_1 = require("rxjs/BehaviorSubject");
 const Observable_1 = require("rxjs/Observable");
 const mp_veiculo_cor_interface_1 = require("../interfaces/mp.veiculo-cor.interface");

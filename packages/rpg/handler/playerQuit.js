@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlayerQuitHandler = void 0;
 const _ = require("underscore");
 const player_1 = require("../lib/functions/player");
 const rpg_1 = require("../rpg");

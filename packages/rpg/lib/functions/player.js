@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.playersEvent = exports.playerEvent = exports.notificarTodos = void 0;
 const brazucas_eventos_1 = require("../../interfaces/brazucas-eventos");
 function notificarTodos(text) {
     mp.players.forEach(player => player.notify(text));

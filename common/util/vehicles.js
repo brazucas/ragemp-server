@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Veiculos = void 0;
 var Veiculos;
 (function (Veiculos) {
     Veiculos[Veiculos["ADDER"] = 3078201489] = "ADDER";

@@ -1,6 +1,7 @@
 "use strict";
 ///<reference path="../../../../node_modules/@types/ragemp-s/index.d.ts" />
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Commands = void 0;
 const brazucas_eventos_1 = require("../../interfaces/brazucas-eventos");
 const player_1 = require("../functions/player");
 const comandos_admin_1 = require("./comandos-admin");

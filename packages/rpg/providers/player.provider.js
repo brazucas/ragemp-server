@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlayerProvider = void 0;
 const BehaviorSubject_1 = require("rxjs/BehaviorSubject");
 const brazucas_eventos_1 = require("../interfaces/brazucas-eventos");
 class PlayerProvider {

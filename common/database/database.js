@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Database = void 0;
 require("rxjs/add/observable/of");
 const from_1 = require("rxjs/internal/observable/from");
 const SequelizeOrigin = require("sequelize");
