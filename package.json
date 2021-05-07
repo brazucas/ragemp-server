@@ -43,7 +43,7 @@
     "sequelize-typescript": "^0.6.5",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^2.9.2",
-    "underscore": "^1.8.3",
+    "underscore": "^1.12.1",
     "util": "^0.10.4"
   },
   "devDependencies": {}
