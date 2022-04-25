@@ -1,3 +1,12 @@
+# REPOSITÓRIO ARQUIVADO
+**O servidor agora está sendo desenvolvido com código-fonte fechado, este repositório foi arquivado e permancerá disponível apenas como histórico.**
+
+
+
+================================================
+
+
+
 <table>
     <td><img src="https://github.com/brazucas/ragemp/raw/master/demo/demo2.jpeg" width="300px"/></td>
     <td><img src="https://github.com/brazucas/ragemp/raw/master/demo/demo3.png" width="300px"/></td>
